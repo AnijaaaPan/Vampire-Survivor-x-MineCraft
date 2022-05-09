@@ -14,10 +14,7 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < PlayerDataBase.GetPlayerLists().Count; i++)//  Playerのリストの数の分だけ繰り返す処理
         {
-            PlayerDataBase.GetPlayerLists()[i].SetMoney(PlayerDataBase.GetPlayerLists()[i].GetMoney() + 1);
-            Debug.Log(PlayerDataBase.GetPlayerLists()[i].GetMoney());//　確認の為のデータ出力
-        }
-        EditorUtility.SetDirty(PlayerDataBase);
-        AssetDatabase.SaveAssets();
+            //Debug.Log(PlayerDataBase.GetPlayerLists()[i].GetMoney());//　確認の為のデータ出力
+        };
     }
  }

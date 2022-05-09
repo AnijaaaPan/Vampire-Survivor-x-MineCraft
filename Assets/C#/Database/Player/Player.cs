@@ -47,10 +47,4 @@ public class Player : ScriptableObject
     {
         return damage; // damage‚É•Ô‚·
     }
-
-    public void SetMoney(int value) //Š‹àŠz‚ğ“ü—Í‚µ‚½‚çA
-    {
-        money = value; // money‚É•Ô‚·
-    }
-
 }

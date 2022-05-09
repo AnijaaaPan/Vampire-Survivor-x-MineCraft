@@ -16,9 +16,7 @@ public class Change_to_SelectCharacter : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if ( eventData.button == PointerEventData.InputButton.Right ) {
-            //Debug.Log(name + " Game Object Right Clicked!");
-        } else if ( eventData.button == PointerEventData.InputButton.Left ) {
+        if (eventData.button == PointerEventData.InputButton.Left) {
             SceneManager.LoadSceneAsync("SelectCharacter");
         }
     }

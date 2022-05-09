@@ -1,1 +1,32 @@
-{"money":71}
+{
+    "FirstTime": true,
+    "Latest_Chara": 0,
+    "Money": 1,
+    "Sound": 100,
+    "Music": 100,
+    "Flash": true,
+    "JoyStick": false,
+    "Damage": true,
+    "Character": [
+        {
+            "id": 0,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 1,
+            "use": false,
+            "hidden": false
+        },
+        {
+            "id": 2,
+            "use": false,
+            "hidden": false
+        },
+        {
+            "id": 3,
+            "use": false,
+            "hidden": false
+        }
+    ]
+}
