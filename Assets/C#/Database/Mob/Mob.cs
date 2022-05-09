@@ -6,7 +6,10 @@ using UnityEngine;
 public class Mob: ScriptableObject
 {
     [SerializeField]
-    private string mob; //Mobの名前
+    private string name; //Mobの名前
+
+    [SerializeField]
+    private string description; //Mobの説明
 
     [SerializeField]
     private int id; //MobのID
@@ -26,9 +29,13 @@ public class Mob: ScriptableObject
     [SerializeField]
     private bool hidden; //現在条件が満たされてなく隠されているか否か
 
-    public string GetMob() //名前を入力したら、
+    public string GetName() //名前を入力したら、
     {
-        return mob; // mobに返す
+        return name; // nameに返す
+    }
+    public string GetDescription() //説明を入力したら、
+    {
+        return description; // descriptionに返す
     }
     public int GetId() //IDを入力したら、
     {

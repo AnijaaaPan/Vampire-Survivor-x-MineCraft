@@ -21,38 +21,49 @@ public class chara : MonoBehaviour
     public Image Select_Image;
     public Text Select_Name;
     public Text Select_Descrpition;
+    public Text Unlock_Check;
+    public GameObject Unlock_Cost;
+    public Text Unlock_Cost_Text;
 
     private List<GameObject> ListGameObject = new List<GameObject>();
 
     void Start()
     {
         Json.PlayerData player = Json.instance.Load();
-        foreach ( var c in player.Character ) {
-            if ( c.hidden == false) {
-                Mob mob = MobDataBase.FindMobFromId(c.id);
-                //Debug.Log(mob.GetMob());
+        Unlock_Cost_Text.text = CountUnlockChara(player.Character).ToString();
+        Unlock_Cost.SetActive(false);
 
-                var chara_object = new GameObject($"Chara_{mob.GetMob()}");
-                chara_object.transform.localScale = new Vector3(1/34.3583755f, 1/34.3583755f, 1/34.3583755f);
+        foreach (var c in player.Character)
+        {
+            if (c.hidden == false)
+            {
+                Mob mob = MobDataBase.FindMobFromId(c.id);
+                //Debug.Log(mob.GetName());
+
+                var chara_object = new GameObject($"Chara_{mob.GetName()}");
+                chara_object.transform.localScale = new Vector3(1 / 34.3583755f, 1 / 34.3583755f, 1 / 34.3583755f);
 
                 Image img = chara_object.AddComponent<Image>();
                 img.maskable = false;
                 if (player.Latest_Chara != mob.GetId())
                 {
                     img.sprite = no_select_chara;
-                } else {
-                    img.sprite = CharaDescription(mob);
-                };                
+                }
+                else
+                {
+                    img.sprite = CharaDescription(mob, c);
+                };
 
                 chara_object.AddComponent<Button>();
                 chara_object.GetComponent<Button>().onClick.AddListener(() => {
-                    for (int i = 0; i < ListGameObject.Count; i++) {
+                    for (int i = 0; i < ListGameObject.Count; i++)
+                    {
                         ListGameObject[i].GetComponent<Image>().sprite = no_select_chara;
                     };
-                    img.sprite = CharaDescription(mob);
+                    img.sprite = CharaDescription(mob, c);
                 });
 
-                var image_object = new GameObject($"Image_{mob.GetMob()}");
+                var image_object = new GameObject($"Image_{mob.GetName()}");
                 image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.3f, 1 / 34.35838f * 0.3f, 1 / 34.35838f * 0.3f);
                 image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(68.85f, 110);
                 image_object.GetComponent<RectTransform>().position = new Vector3(0.305f, -0.1175f, 0);
@@ -62,15 +73,21 @@ public class chara : MonoBehaviour
                 chara_img.preserveAspect = true;
                 chara_img.sprite = mob.GetIcon();
 
-                var name_object = new GameObject($"Name_{mob.GetMob()}");
+                var name_object = new GameObject($"Name_{mob.GetName()}");
                 Text name = name_object.AddComponent<Text>();
-                name.text = mob.GetMob();
+                name.text = mob.GetName();
                 name.fontSize = 100;
-                name.font = (Font) Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+                name.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
                 name_object.transform.localScale = new Vector3(1 / 34.35838f * 0.09f, 1 / 34.35838f * 0.09f, 1 / 34.35838f * 0.09f);
                 name_object.GetComponent<RectTransform>().sizeDelta = new Vector2(444, 115);
                 name_object.GetComponent<RectTransform>().position = new Vector3(0.015f, 0.45f, 0);
+
+                if (c.use == false)
+                {
+                    name.color = new Color(0, 0, 0, 255);
+                    chara_img.color = new Color(0, 0, 0, 255);
+                };
 
                 ListGameObject.Add(chara_object);
                 image_object.transform.SetParent(chara_object.transform);
@@ -82,12 +99,31 @@ public class chara : MonoBehaviour
         };
     }
 
-    public Sprite CharaDescription(Mob mob)
+    public Sprite CharaDescription(Mob mob, Json.CharacterData c)
     {
+
         Select_Image.maskable = false;
         Select_Image.preserveAspect = true;
         Select_Image.sprite = mob.GetIcon();
-        Select_Name.text = mob.GetMob();
+        Select_Name.text = mob.GetName();
+        Select_Descrpition.text = mob.GetDescription();
+
+        Select_Image.color = c.use == false ? new Color(0, 0, 0, 255) : new Color(255, 255, 255, 255);
+        Unlock_Cost.SetActive(c.use == false);
+        Unlock_Check.text = c.use == false ? "アンロック" : "確認";
         return select_chara;
+    }
+
+    public int CountUnlockChara(List<Json.CharacterData> Characters)
+    {
+        var count = -1;
+        foreach (var c in Characters)
+        {
+            if (c.use == true)
+            {
+                count++;
+            };
+        };
+        return 500 + count;
     }
 }

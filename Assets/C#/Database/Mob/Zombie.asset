@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e428886ca3edb54e913d1fa8469ae11, type: 3}
   m_Name: Zombie
   m_EditorClassIdentifier: 
-  mob: Zombie
+  name: Zombie
+  description: "5\u30EC\u30D9\u30EB\u3054\u3068\u306BEXP\u309210%\u7372\u5F97(\u4E0A\u9650:30%)"
   id: 1
   icon: {fileID: 21300000, guid: b0a006b5511db2a429fcbf9211985a09, type: 3}
   damage: 3
