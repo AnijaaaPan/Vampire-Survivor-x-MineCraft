@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// TestScrollSceneä«óùÉNÉâÉX
@@ -22,6 +23,7 @@ public class chara : MonoBehaviour
     public Text Select_Name;
     public Text Select_Descrpition;
     public Text Unlock_Check;
+    public Button Submit_button;
     public GameObject Unlock_Cost;
     public Text Unlock_Cost_Text;
 
@@ -51,16 +53,15 @@ public class chara : MonoBehaviour
                 }
                 else
                 {
-                    img.sprite = CharaDescription(mob, c);
+                    img.sprite = CharaDescription(player, mob, c);
                 };
 
-                chara_object.AddComponent<Button>();
-                chara_object.GetComponent<Button>().onClick.AddListener(() => {
+                chara_object.AddComponent<Button>().onClick.AddListener(() => {
                     for (int i = 0; i < ListGameObject.Count; i++)
                     {
                         ListGameObject[i].GetComponent<Image>().sprite = no_select_chara;
                     };
-                    img.sprite = CharaDescription(mob, c);
+                    img.sprite = CharaDescription(player, mob, c);
                 });
 
                 var image_object = new GameObject($"Image_{mob.GetName()}");
@@ -95,11 +96,26 @@ public class chara : MonoBehaviour
                 chara_object.transform.SetParent(parent_object);
 
                 //Debug.Log(c.use);
-            }
+            };
         };
+
+        Submit_button.onClick.AddListener(() => {
+            Mob mob = MobDataBase.FindMobFromName(Select_Name.text);
+            var c = player.Character[mob.GetId()];
+            if (c.use == false && CountUnlockChara(player.Character) <= player.Money)
+            {
+                player.Money -= CountUnlockChara(player.Character);
+                player.Latest_Chara = mob.GetId();
+                c.use = true;
+                Json.instance.Save(player);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else if (c.use == true) { 
+            };
+        });
     }
 
-    public Sprite CharaDescription(Mob mob, Json.CharacterData c)
+    public Sprite CharaDescription(Json.PlayerData player, Mob mob, Json.CharacterData c)
     {
 
         Select_Image.maskable = false;
@@ -124,6 +140,6 @@ public class chara : MonoBehaviour
                 count++;
             };
         };
-        return 500 + count;
+        return 500 + count*50;
     }
 }

@@ -1,7 +1,7 @@
 {
     "FirstTime": true,
-    "Latest_Chara": 0,
-    "Money": 1,
+    "Money": 5550,
+    "Latest_Chara": 2,
     "Sound": 100,
     "Music": 100,
     "Flash": true,
@@ -15,17 +15,17 @@
         },
         {
             "id": 1,
-            "use": false,
+            "use": true,
             "hidden": false
         },
         {
             "id": 2,
-            "use": false,
+            "use": true,
             "hidden": false
         },
         {
             "id": 3,
-            "use": false,
+            "use": true,
             "hidden": false
         }
     ]

@@ -14,7 +14,13 @@ public class MobDataBase : ScriptableObject
         return MobLists;//  MobLists‚É•Ô‚·
     }
 
-    public Mob FindMobFromId(int id) {
+    public Mob FindMobFromId(int id)
+    {
         return MobLists.Find(mob => mob.GetId() == id);
+    }
+
+    public Mob FindMobFromName(string name)
+    {
+        return MobLists.Find(mob => mob.GetName() == name);
     }
 }
