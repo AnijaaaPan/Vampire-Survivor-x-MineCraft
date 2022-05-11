@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: 
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Title.unity
@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectCharacter.unity
     guid: a5692562c2f0f7242adc8b2fa5906a69
+  - enabled: 1
+    path: Assets/Scenes/Collection.unity
+    guid: 1137fac85e47cb74fb8339b3b3711332
+  - enabled: 1
+    path: Assets/Scenes/Achievement.unity
+    guid: 811a443b820233c4e89c167e9f3aaf4a
+  - enabled: 1
+    path: Assets/Scenes/Powerup.unity
+    guid: 8c73a0dd890df25418fb91ff8231a0e8
+  - enabled: 1
+    path: Assets/Scenes/Option.unity
+    guid: eb0eee030366d6d439aeb93cc8429ade
   m_configObjects: {}
