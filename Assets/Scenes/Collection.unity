@@ -682,8 +682,9 @@ MonoBehaviour:
   parent_object: {fileID: 494837831}
   WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
   background: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
-  select: {fileID: 21300000, guid: 890ccc37b4a487c48b90b909866a7c37, type: 3}
+  select: {fileID: 21300000, guid: 1ed1086ca5582b348a87b566e51a0cbd, type: 3}
   unknown: {fileID: 21300000, guid: d5715ed312c94b441aa389ece57d852e, type: 3}
+  Title: {fileID: 1076141489}
   Select_Image: {fileID: 808265835}
   Select_Name: {fileID: 1647145870}
   Select_Descrpition: {fileID: 811444642}
