@@ -20,6 +20,7 @@ public class Json : MonoBehaviour
         public bool JoyStick;
         public bool Damage;
         public List<CharacterData> Character;
+        public List<WeaponData> Weapon;
     }
 
     [System.Serializable]
@@ -30,8 +31,18 @@ public class Json : MonoBehaviour
         public bool hidden;
     }
 
+    [System.Serializable]
+    public class WeaponData
+    {
+        public int id;
+        public bool use;
+    }
+
     [SerializeField]
     private MobDataBase MobDataBase;//  使用するデータベース
+
+    [SerializeField]
+    private WeaponDataBase WeaponDataBase;//  使用するデータベース
 
     private void Awake()
     {
@@ -62,16 +73,66 @@ public class Json : MonoBehaviour
             player.Flash = true;
             player.JoyStick = false;
             player.Damage = true;
-            for (int i = 0; i < MobDataBase.GetMobLists().Count; i++)//  Mobのリストの数の分だけ繰り返す処理
-            {
-                CharacterData character = new CharacterData();
-                character.id = MobDataBase.GetMobLists()[i].GetId();
-                character.use = MobDataBase.GetMobLists()[i].GetUse();
-                character.hidden = MobDataBase.GetMobLists()[i].GetHidden();
-                player.Character.Add(character);
-            };
-            Save(player);
         };
+        player = SaveCharacters(player);
+        player = SaveWeapons(player);
+        Save(player);
+    }
+
+    public PlayerData SaveCharacters(PlayerData player)
+    {
+        CharacterData SaveFunction(Mob mob)
+        {
+            CharacterData character = new CharacterData();
+            character.id = mob.GetId();
+            character.use = mob.GetUse();
+            character.hidden = mob.GetHidden();
+            return character;
+        };
+
+        for (int i = 0; i < MobDataBase.GetMobLists().Count; i++)//  Mobのリストの数の分だけ繰り返す処理
+        {
+            Mob mob = MobDataBase.FindMobFromId(i);
+            try
+            {
+                if (player.Character[i].id != i)
+                {
+                    player.Character.Add(SaveFunction(mob));
+                };
+            } catch
+            {
+                player.Character.Add(SaveFunction(mob));
+            };
+        };
+        return player;
+    }
+
+    public PlayerData SaveWeapons(PlayerData player)
+    {
+        WeaponData SaveFunction(Weapon weapon_data)
+        {
+            WeaponData weapon = new WeaponData();
+            weapon.id = weapon_data.GetId();
+            weapon.use = weapon_data.GetDefault();
+            return weapon;
+        };
+
+        for (int i = 1; i < WeaponDataBase.GetWeaponLists().Count+1; i++)//  Mobのリストの数の分だけ繰り返す処理
+        {
+            Weapon weapon_data = WeaponDataBase.FindWeaponFromId(i);
+            try
+            {
+                if ( player.Weapon[i-1].id != i)
+                {
+                    player.Weapon.Add(SaveFunction(weapon_data));
+                };
+            } catch
+            {
+                player.Weapon.Add(SaveFunction(weapon_data));
+            };
+            
+        };
+        return player;
     }
 
     public PlayerData Load()
@@ -81,6 +142,7 @@ public class Json : MonoBehaviour
         reader.Close();//ファイルを閉じる
         return JsonUtility.FromJson<PlayerData>(datastr);
     }
+
     public void Save(PlayerData player)
     {
         string jsonstr = JsonUtility.ToJson(player, true);//受け取ったPlayerDataをJSONに変換

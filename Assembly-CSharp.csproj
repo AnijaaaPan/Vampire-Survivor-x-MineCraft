@@ -59,18 +59,17 @@
     <Compile Include="Assets\C#\Json.cs" />
     <Compile Include="Assets\C#\QuitGame\QuitGame.cs" />
     <Compile Include="Assets\C#\SelectCharacter\select_character.cs" />
-    <Compile Include="Assets\C#\Database\Player\PlayerManager.cs" />
     <Compile Include="Assets\C#\Header\backescape.cs" />
-    <Compile Include="Assets\C#\Database\Player\PlayerDataBase.cs" />
-    <Compile Include="Assets\C#\Database\Mob\MobManager.cs" />
     <Compile Include="Assets\C#\SelectCharacter\chara.cs" />
     <Compile Include="Assets\C#\Title\MousePointerTitle.cs" />
     <Compile Include="Assets\C#\Database\Mob\MobDataBase.cs" />
     <Compile Include="Assets\C#\Database\Mob\Mob.cs" />
     <Compile Include="Assets\C#\Header\backmenu.cs" />
-    <Compile Include="Assets\C#\Database\Player\Player.cs" />
-    <Compile Include="Assets\C#\Header\CountMoney.cs" />
     <Compile Include="Assets\C#\Title\Move_Scene.cs" />
+    <Compile Include="Assets\C#\Header\CountMoney.cs" />
+    <Compile Include="Assets\C#\Database\Weapon\Weapon.cs" />
+    <Compile Include="Assets\C#\Database\Weapon\WeaponDataBase.cs" />
+    <Compile Include="Assets\C#\Collection\collection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

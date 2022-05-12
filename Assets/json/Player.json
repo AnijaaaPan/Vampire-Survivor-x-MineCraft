@@ -28,5 +28,23 @@
             "use": false,
             "hidden": false
         }
+    ],
+    "Weapon": [
+        {
+            "id": 1,
+            "use": true
+        },
+        {
+            "id": 2,
+            "use": false
+        },
+        {
+            "id": 3,
+            "use": true
+        },
+        {
+            "id": 4,
+            "use": false
+        }
     ]
 }
