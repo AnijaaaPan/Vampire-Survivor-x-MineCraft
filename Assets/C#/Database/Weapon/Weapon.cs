@@ -21,7 +21,7 @@ public class Weapon : ScriptableObject
     private Sprite icon; //Weaponのアイコン
 
     [SerializeField]
-    private int damage; //Weaponのデフォルト攻撃力
+    private float damage; //Weaponのデフォルト攻撃力
 
     [SerializeField]
     private int powerup; //進化先の武器ID
@@ -49,7 +49,7 @@ public class Weapon : ScriptableObject
     {
         return icon; // iconに返す
     }
-    public int GetDamage() //デフォルト攻撃力を入力したら、
+    public float GetDamage() //デフォルト攻撃力を入力したら、
     {
         return damage; // damageに返す
     }

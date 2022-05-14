@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc0686dc8d2e5044be51d54d52b42b5, type: 3}
+  m_Name: id_29
+  m_EditorClassIdentifier: 
+  name: "\u30AF\u30EC\u30A4\u30B8\u30FC\u30FB\u30EF\u30F3\u30C9"
+  description: "\u5DE6\u53F3\u306E\u4E0A\u4E0B\u659C\u3081\u306B\u7D20\u65E9\u304F\u8D64\u3044\u5F3E\u4E38\u3092\u767A\u5C04\u3059\u308B\u3002"
+  effect: "\u6301\u7D9A\u6642\u9593\u3092\u7121\u8996\u3059\u308B\u3002"
+  id: 29
+  icon: {fileID: 21300000, guid: 4f8bb961e8171fd40b1ca037d6d791d1, type: 3}
+  damage: 5
+  powerup: 30
+  default_waepon: 0

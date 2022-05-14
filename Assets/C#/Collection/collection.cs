@@ -71,6 +71,12 @@ public class collection : MonoBehaviour
             image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(17.5f, 17.5f);
 
             Image weapon_img = image_object.AddComponent<Image>();
+
+            weapon_img.color = new Color(255, 255, 255, 255);
+            if ( w.id == 36 )
+            {
+                weapon_img.color = new Color(255, 0, 0, 255);
+            }
             weapon_img.maskable = false;
             weapon_img.preserveAspect = true;
             if (w.use == true)
@@ -123,6 +129,12 @@ public class collection : MonoBehaviour
             Select_Descrpition.text = "‚Ü‚¾–¢”­Œ©‚Å‚·";
             Select_Effect.text = "";
             GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
+        };
+
+        GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(255, 255, 255, 255);
+        if (w.id == 36)
+        {
+            GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(255, 0, 0, 255);
         };
         return background;
     }

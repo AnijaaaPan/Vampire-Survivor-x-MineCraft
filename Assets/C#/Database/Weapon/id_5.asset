@@ -17,6 +17,6 @@ MonoBehaviour:
   effect: "\u6301\u7D9A\u6642\u9593\u3092\u7121\u8996\u3059\u308B\u3002"
   id: 5
   icon: {fileID: 21300000, guid: 391012ca3f174a74bb14472e1d21c5e7, type: 3}
-  damage: 5
+  damage: 6.5
   powerup: 6
   default_waepon: 1
