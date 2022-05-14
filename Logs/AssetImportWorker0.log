@@ -15,11 +15,11 @@ C:/Users/Anijaaa/UnityProject/Vampire Survivor x MineCraft
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58190
+50743
 Successfully changed project path to: C:/Users/Anijaaa/UnityProject/Vampire Survivor x MineCraft
 C:/Users/Anijaaa/UnityProject/Vampire Survivor x MineCraft
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 28.22 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 29.34 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.33f1 (915a7af8b0d5)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Resources/UnitySubsystems
@@ -35,90 +35,90 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56692
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56200
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.33f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000752 seconds.
+Registered in 0.000795 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 29.24 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 28.98 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.341 seconds
+- Completed reload, in  0.340 seconds
 Domain Reload Profiling:
 	ReloadAssembly (341ms)
-		BeginReloadAssembly (34ms)
+		BeginReloadAssembly (37ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (0ms)
-		EndReloadAssembly (268ms)
-			LoadAssemblies (33ms)
+		EndReloadAssembly (263ms)
+			LoadAssemblies (36ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (85ms)
+			SetupTypeCache (81ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (16ms)
-			SetupLoadedEditorAssemblies (107ms)
+			SetupLoadedEditorAssemblies (106ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (29ms)
-				BeforeProcessingInitializeOnLoad (11ms)
+				BeforeProcessingInitializeOnLoad (10ms)
 				ProcessInitializeOnLoadAttributes (47ms)
-				ProcessInitializeOnLoadMethodAttributes (16ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001310 seconds.
+Registered in 0.001624 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Anijaaa\UnityProject\Vampire Survivor x MineCraft\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 29.54 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 28.43 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.676 seconds
+- Completed reload, in  0.633 seconds
 Domain Reload Profiling:
-	ReloadAssembly (677ms)
-		BeginReloadAssembly (82ms)
+	ReloadAssembly (634ms)
+		BeginReloadAssembly (83ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (2ms)
+			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (13ms)
-		EndReloadAssembly (560ms)
-			LoadAssemblies (60ms)
+		EndReloadAssembly (517ms)
+			LoadAssemblies (58ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (174ms)
+			SetupTypeCache (155ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (30ms)
-			SetupLoadedEditorAssemblies (221ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (210ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (2ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (30ms)
-				BeforeProcessingInitializeOnLoad (49ms)
-				ProcessInitializeOnLoadAttributes (125ms)
-				ProcessInitializeOnLoadMethodAttributes (13ms)
-				AfterProcessingInitializeOnLoad (2ms)
+				RefreshPlugins (29ms)
+				BeforeProcessingInitializeOnLoad (47ms)
+				ProcessInitializeOnLoadAttributes (115ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (3ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.31 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.33 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2216 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 97.5 MB.
 System memory in use after: 97.4 MB.
 
 Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 2648.
-Total: 2.129300 ms (FindLiveObjects: 0.161400 ms CreateObjectMapping: 0.030100 ms MarkObjects: 1.831700 ms  DeleteObjects: 0.105400 ms)
+Total: 1.980600 ms (FindLiveObjects: 0.115000 ms CreateObjectMapping: 0.029100 ms MarkObjects: 1.734800 ms  DeleteObjects: 0.101000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -132,154 +132,193 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Image/Weapon/id_6.png
-  artifactKey: Guid(410dca8d4931eff45a90409cc9a7d1fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Image/Weapon/id_6.png using Guid(410dca8d4931eff45a90409cc9a7d1fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd45ded367d69443178872963f2a34ff') in 0.294539 seconds 
+  path: Assets/C#/Database/Weapon/id_21.asset
+  artifactKey: Guid(c38a838d20ed57449af383417e112ed0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_21.asset using Guid(c38a838d20ed57449af383417e112ed0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d175eab22adcb532df42b74cc6d012d') in 0.022270 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Image/Weapon/id_5.png
-  artifactKey: Guid(391012ca3f174a74bb14472e1d21c5e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Image/Weapon/id_5.png using Guid(391012ca3f174a74bb14472e1d21c5e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f95ebd6b7fb8756b6d5fda40a6fb0715') in 0.012246 seconds 
+  Time since last request: 5.284347 seconds.
+  path: Assets/C#/Database/Weapon/id_22.asset
+  artifactKey: Guid(62eb9d1482c90c242b7c249226f1520b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_22.asset using Guid(62eb9d1482c90c242b7c249226f1520b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bef5328e0daf8289479041dd3df7b8e5') in 0.005197 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 32.037152 seconds.
-  path: Assets/C#/Database/Weapon/id_5.asset
-  artifactKey: Guid(994e1f1c86be7c342bffd4a942bbbd7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/C#/Database/Weapon/id_5.asset using Guid(994e1f1c86be7c342bffd4a942bbbd7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6c6efdd746b84f58ddd8be551446b98') in 0.004367 seconds 
+  Time since last request: 4.368086 seconds.
+  path: Assets/C#/Database/Weapon/id_23.asset
+  artifactKey: Guid(95fe9f5000c89eb43a2a8d0201069b3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_23.asset using Guid(95fe9f5000c89eb43a2a8d0201069b3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75bb2c633302973b5861084f76fabead') in 0.005452 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.924312 seconds.
-  path: Assets/C#/Database/Weapon/id_6.asset
-  artifactKey: Guid(3ae2fd078455e7f4e85382c04ed920a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/C#/Database/Weapon/id_6.asset using Guid(3ae2fd078455e7f4e85382c04ed920a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd877fcf515d852893ac2dc373ab5e236') in 0.001712 seconds 
+  Time since last request: 5.521835 seconds.
+  path: Assets/C#/Database/Weapon/id_24.asset
+  artifactKey: Guid(29923c8f3183f4f41b9ac1186b364e99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_24.asset using Guid(29923c8f3183f4f41b9ac1186b364e99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8c87da6310aa796acbfe67d7c5af66c') in 0.005441 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.260439 seconds.
+  path: Assets/C#/Database/Weapon/id_25.asset
+  artifactKey: Guid(7ac72fe1d806a14469f544bdfc0bef1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_25.asset using Guid(7ac72fe1d806a14469f544bdfc0bef1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4b7cfc14ad40638068ce076111c99fe') in 0.005161 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.395479 seconds.
+  path: Assets/C#/Database/Weapon/id_26.asset
+  artifactKey: Guid(e4660d72e23fd824593c3630c0281f78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_26.asset using Guid(e4660d72e23fd824593c3630c0281f78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb0f2b8c7340ca9b8ef42d1bcc22983f') in 0.004761 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.818932 seconds.
+  path: Assets/C#/Database/Weapon/id_27.asset
+  artifactKey: Guid(f611413dfcdbed64fa0dadc9aa56124f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_27.asset using Guid(f611413dfcdbed64fa0dadc9aa56124f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e82c590a1f983489ec34ee265df0e12') in 0.004139 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 118.363526 seconds.
+  path: Assets/C#/Database/Weapon/id_11.asset
+  artifactKey: Guid(22ee7e3136da5b6498d9d84f1d874de3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_11.asset using Guid(22ee7e3136da5b6498d9d84f1d874de3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73a379127bd472bdfea75d2df36f0322') in 0.004642 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/C#/Database/Weapon/id_12.asset
+  artifactKey: Guid(036bf09482a06fc489970fb8ab5ab860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_12.asset using Guid(036bf09482a06fc489970fb8ab5ab860) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '019a48b68ca11e71e5b9014d03d7d073') in 0.004495 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 74.199504 seconds.
+  path: Assets/Image/Weapon/id_21.png
+  artifactKey: Guid(82086a3b627907544bec9728abd666a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Image/Weapon/id_21.png using Guid(82086a3b627907544bec9728abd666a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aaf114412d5a34abf7bed7e8c24a3fa') in 0.070163 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/Image/Weapon/id_23.png
+  artifactKey: Guid(206dfdd367b6cc84b916409d2ddae41d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Image/Weapon/id_23.png using Guid(206dfdd367b6cc84b916409d2ddae41d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14c3c2202ccf6875f59e2a17adbef8a5') in 0.046805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Image/Weapon/id_25.png
+  artifactKey: Guid(9465508fcd7538c439a862e57013d4fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Image/Weapon/id_25.png using Guid(9465508fcd7538c439a862e57013d4fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e0ee2465c56fd914ca9014786e6681e') in 0.016629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000106 seconds.
+  path: Assets/Image/Weapon/id_26.png
+  artifactKey: Guid(6c4a647414d517d4e9e5fe5ce1b9a9b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Image/Weapon/id_26.png using Guid(6c4a647414d517d4e9e5fe5ce1b9a9b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '059040af781b26769a635657f859f077') in 0.017434 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000110 seconds.
+  path: Assets/Image/Weapon/id_24.png
+  artifactKey: Guid(a0807c45e340b264ba95fd580745d58e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Image/Weapon/id_24.png using Guid(a0807c45e340b264ba95fd580745d58e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0881213ad9f64049383416c4a554672b') in 0.021228 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/Image/Weapon/id_22.png
+  artifactKey: Guid(c98c3b32e66f7fa4e9fc23cf302924f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Image/Weapon/id_22.png using Guid(c98c3b32e66f7fa4e9fc23cf302924f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5463f030a275b04ded53fdbd39b29ce') in 0.032791 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/Image/Weapon/id_27.png
+  artifactKey: Guid(ef20151e4406e2a4093dc0f84f7cf652) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Image/Weapon/id_27.png using Guid(ef20151e4406e2a4093dc0f84f7cf652) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4701633d65aac363d26b66b1c868b0bb') in 0.012685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 26.086541 seconds.
+  path: Assets/C#/Database/Weapon/id_14.asset
+  artifactKey: Guid(9f64ec5445be4684bb5d795e71a0f3a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_14.asset using Guid(9f64ec5445be4684bb5d795e71a0f3a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7aa2b68a89ce1e535cf966f890c665ff') in 0.004643 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 27.074427 seconds.
+  path: Assets/C#/Database/Weapon/id_13.asset
+  artifactKey: Guid(8b8dda38d155ba54f9ba3b8b24f4a985) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_13.asset using Guid(8b8dda38d155ba54f9ba3b8b24f4a985) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1bfc070fdd614f0ce3ac73cff2af7cf') in 0.005149 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 187.620861 seconds.
+  path: Assets/C#/Database/Weapon/id_15.asset
+  artifactKey: Guid(251d9c62b621d7c47af3f4fd59be8136) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_15.asset using Guid(251d9c62b621d7c47af3f4fd59be8136) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42753b31ef985903c81a272a94e511ee') in 0.005603 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000120 seconds.
+  path: Assets/C#/Database/Weapon/id_16.asset
+  artifactKey: Guid(8dab2b0fa5516d54e9ef663102903339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_16.asset using Guid(8dab2b0fa5516d54e9ef663102903339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '348e46ebbcf81b26dc090ba0954dca25') in 0.005484 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/C#/Database/Weapon/id_18.asset
+  artifactKey: Guid(399b279133156c54b9c6e42276ffa301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_18.asset using Guid(399b279133156c54b9c6e42276ffa301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6aadcddbd15f61d8769a2dd1dea72058') in 0.004853 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/C#/Database/Weapon/id_17.asset
+  artifactKey: Guid(8d64094013e9afe45a4dfcc7527487ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_17.asset using Guid(8d64094013e9afe45a4dfcc7527487ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb6f63fef9ad5a3edf307e727118ed42') in 0.005175 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 60.960605 seconds.
+  path: Assets/C#/Database/Weapon/id_17.asset
+  artifactKey: Guid(8d64094013e9afe45a4dfcc7527487ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_17.asset using Guid(8d64094013e9afe45a4dfcc7527487ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a7a01bc50ebad249a884d0fab77518a') in 0.002119 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/C#/Database/Weapon/id_18.asset
+  artifactKey: Guid(399b279133156c54b9c6e42276ffa301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_18.asset using Guid(399b279133156c54b9c6e42276ffa301) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6025309e98bd9a8f2e8d2c169cc413e9') in 0.002133 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001501 seconds.
+Registered in 0.001471 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Anijaaa\UnityProject\Vampire Survivor x MineCraft\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.34 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.627 seconds
+- Completed reload, in  0.579 seconds
 Domain Reload Profiling:
-	ReloadAssembly (627ms)
+	ReloadAssembly (580ms)
 		BeginReloadAssembly (77ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (24ms)
-		EndReloadAssembly (515ms)
-			LoadAssemblies (57ms)
+			CreateAndSetChildDomain (25ms)
+		EndReloadAssembly (468ms)
+			LoadAssemblies (58ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (161ms)
+			SetupTypeCache (162ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (187ms)
+			RebuildScriptCaches (23ms)
+			SetupLoadedEditorAssemblies (176ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (0ms)
-				BeforeProcessingInitializeOnLoad (52ms)
-				ProcessInitializeOnLoadAttributes (121ms)
-				ProcessInitializeOnLoadMethodAttributes (7ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.34 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2211 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 100.4 MB.
-System memory in use after: 100.3 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2659.
-Total: 2.257300 ms (FindLiveObjects: 0.144600 ms CreateObjectMapping: 0.040600 ms MarkObjects: 1.972200 ms  DeleteObjects: 0.099000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 512.636646 seconds.
-  path: Assets/Image/Weapon/id_7.png
-  artifactKey: Guid(7d786ce74e983014b935e040da513a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Image/Weapon/id_7.png using Guid(7d786ce74e983014b935e040da513a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5efc1e1e7a91c8a5124cc1810a9f37a4') in 0.033910 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000109 seconds.
-  path: Assets/Image/Weapon/id_8.png
-  artifactKey: Guid(7016d280d98dff141a8684311e22966e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Image/Weapon/id_8.png using Guid(7016d280d98dff141a8684311e22966e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c23bd15abf94d45193493cb15d2eb2b') in 0.011725 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 17.289366 seconds.
-  path: Assets/C#/Database/Weapon/id_7.asset
-  artifactKey: Guid(bc6022398e8ec364aab52347e5ec8cdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/C#/Database/Weapon/id_7.asset using Guid(bc6022398e8ec364aab52347e5ec8cdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27008773b9b417ad1aac810b6b8641fe') in 0.002313 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.712945 seconds.
-  path: Assets/C#/Database/Weapon/id_8.asset
-  artifactKey: Guid(9f6b6ae00c6e24649be12ff7c084df11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/C#/Database/Weapon/id_8.asset using Guid(9f6b6ae00c6e24649be12ff7c084df11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08c36ff254f28f7efc1c0061e3a293f5') in 0.001959 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002011 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Anijaaa\UnityProject\Vampire Survivor x MineCraft\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.47 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.618 seconds
-Domain Reload Profiling:
-	ReloadAssembly (619ms)
-		BeginReloadAssembly (82ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (502ms)
-			LoadAssemblies (61ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (165ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (194ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (52ms)
-				ProcessInitializeOnLoadAttributes (128ms)
+				BeforeProcessingInitializeOnLoad (49ms)
+				ProcessInitializeOnLoadAttributes (114ms)
 				ProcessInitializeOnLoadMethodAttributes (7ms)
 				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.49 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.36 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2211 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 100.4 MB.
+System memory in use before: 100.5 MB.
 System memory in use after: 100.4 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2663.
-Total: 2.524200 ms (FindLiveObjects: 0.169800 ms CreateObjectMapping: 0.045700 ms MarkObjects: 2.214600 ms  DeleteObjects: 0.093100 ms)
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2665.
+Total: 2.017900 ms (FindLiveObjects: 0.107600 ms CreateObjectMapping: 0.034900 ms MarkObjects: 1.784500 ms  DeleteObjects: 0.089900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -293,32 +332,290 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1013.019454 seconds.
-  path: Assets/Image/Weapon/id_9.png
-  artifactKey: Guid(33033875ce789d94ebea0fdaa520bcc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Image/Weapon/id_9.png using Guid(33033875ce789d94ebea0fdaa520bcc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a42f2c036f37d8c463990f7708fa5583') in 0.035787 seconds 
+  Time since last request: 699.113008 seconds.
+  path: Assets/C#/Database/Weapon/id_27.asset
+  artifactKey: Guid(f611413dfcdbed64fa0dadc9aa56124f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_27.asset using Guid(f611413dfcdbed64fa0dadc9aa56124f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef7c63956676f7e2359bc43fa148e23c') in 0.009094 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000219 seconds.
-  path: Assets/Image/Weapon/id_10.png
-  artifactKey: Guid(277287985951bb741952f68e15833e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Image/Weapon/id_10.png using Guid(277287985951bb741952f68e15833e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d44bff0a5a19b2f14a71fe72f2c22f5') in 0.012881 seconds 
+  Time since last request: 0.000123 seconds.
+  path: Assets/C#/Database/Weapon/id_24.asset
+  artifactKey: Guid(29923c8f3183f4f41b9ac1186b364e99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_24.asset using Guid(29923c8f3183f4f41b9ac1186b364e99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2113eb42609fc149239514ff15b56cba') in 0.002211 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 16.055580 seconds.
-  path: Assets/C#/Database/Weapon/Weapon.asset
-  artifactKey: Guid(f99d64d08b3ca7f49a481ab4dbf4ae79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/C#/Database/Weapon/Weapon.asset using Guid(f99d64d08b3ca7f49a481ab4dbf4ae79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea6eaa65f32318f8150ecc1403c0d19d') in 0.004872 seconds 
+  Time since last request: 0.000114 seconds.
+  path: Assets/C#/Database/Weapon/id_25.asset
+  artifactKey: Guid(7ac72fe1d806a14469f544bdfc0bef1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_25.asset using Guid(7ac72fe1d806a14469f544bdfc0bef1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be5147be4e0512554686256efe549f04') in 0.002238 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 7.565080 seconds.
-  path: Assets/C#/Database/Weapon/id_9.asset
-  artifactKey: Guid(f99d64d08b3ca7f49a481ab4dbf4ae79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/C#/Database/Weapon/id_9.asset using Guid(f99d64d08b3ca7f49a481ab4dbf4ae79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2bcca6758236c0be59ce06386b369bf') in 0.001893 seconds 
+  Time since last request: 0.000152 seconds.
+  path: Assets/C#/Database/Weapon/id_23.asset
+  artifactKey: Guid(95fe9f5000c89eb43a2a8d0201069b3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_23.asset using Guid(95fe9f5000c89eb43a2a8d0201069b3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '492c77cf92b77a3fcb15c362cf4b8cc5') in 0.002099 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.568342 seconds.
-  path: Assets/C#/Database/Weapon/id_10.asset
-  artifactKey: Guid(6057a5a22d8fd734ab16175ee7941043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/C#/Database/Weapon/id_10.asset using Guid(6057a5a22d8fd734ab16175ee7941043) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b55200e888c2be48e43a28378d02a4fb') in 0.001706 seconds 
+  Time since last request: 0.000120 seconds.
+  path: Assets/C#/Database/Weapon/id_26.asset
+  artifactKey: Guid(e4660d72e23fd824593c3630c0281f78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_26.asset using Guid(e4660d72e23fd824593c3630c0281f78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '005aad7f34fd9f970b0cbd6c8ea29dec') in 0.002116 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000138 seconds.
+  path: Assets/C#/Database/Weapon/id_19.asset
+  artifactKey: Guid(c91218539b01a7b4dae69276b79c694f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_19.asset using Guid(c91218539b01a7b4dae69276b79c694f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91c3516d5257aa0c34511ddd958df3f9') in 0.005369 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/C#/Database/Weapon/id_20.asset
+  artifactKey: Guid(7b0a8ff225ab19140815e54a0192f189) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_20.asset using Guid(7b0a8ff225ab19140815e54a0192f189) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94dd1726a2a7d2645c706d521fa3333d') in 0.005258 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000198 seconds.
+  path: Assets/C#/Database/Weapon/WeaponDataBase.asset
+  artifactKey: Guid(30799523c1e1da44f87db6b06e77276c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/WeaponDataBase.asset using Guid(30799523c1e1da44f87db6b06e77276c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1beab14f29088eb83d88a9faea54c31a') in 0.011852 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/C#/Database/Weapon/id_21.asset
+  artifactKey: Guid(c38a838d20ed57449af383417e112ed0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_21.asset using Guid(c38a838d20ed57449af383417e112ed0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f0b3f8f9e811bae18f35d84bc6a12e7') in 0.002351 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/C#/Database/Weapon/id_22.asset
+  artifactKey: Guid(62eb9d1482c90c242b7c249226f1520b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/C#/Database/Weapon/id_22.asset using Guid(62eb9d1482c90c242b7c249226f1520b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '280b344e9b0b650c1e6cb553c21dbcb0') in 0.001967 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001849 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Anijaaa\UnityProject\Vampire Survivor x MineCraft\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.626 seconds
+Domain Reload Profiling:
+	ReloadAssembly (627ms)
+		BeginReloadAssembly (80ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (511ms)
+			LoadAssemblies (62ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (166ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (201ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (132ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2211 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 100.5 MB.
+System memory in use after: 100.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2668.
+Total: 2.420400 ms (FindLiveObjects: 0.243100 ms CreateObjectMapping: 0.041700 ms MarkObjects: 2.039600 ms  DeleteObjects: 0.094200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001648 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Anijaaa\UnityProject\Vampire Survivor x MineCraft\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.34 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.620 seconds
+Domain Reload Profiling:
+	ReloadAssembly (621ms)
+		BeginReloadAssembly (85ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (500ms)
+			LoadAssemblies (65ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (173ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (183ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (118ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2211 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 100.6 MB.
+System memory in use after: 100.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2671.
+Total: 2.084600 ms (FindLiveObjects: 0.106600 ms CreateObjectMapping: 0.030000 ms MarkObjects: 1.860000 ms  DeleteObjects: 0.087100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001552 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Anijaaa\UnityProject\Vampire Survivor x MineCraft\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.37 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.607 seconds
+Domain Reload Profiling:
+	ReloadAssembly (608ms)
+		BeginReloadAssembly (72ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (499ms)
+			LoadAssemblies (63ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (172ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (186ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (54ms)
+				ProcessInitializeOnLoadAttributes (119ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.35 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2211 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 100.6 MB.
+System memory in use after: 100.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2674.
+Total: 2.068000 ms (FindLiveObjects: 0.107500 ms CreateObjectMapping: 0.032400 ms MarkObjects: 1.797500 ms  DeleteObjects: 0.129800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001478 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Anijaaa\UnityProject\Vampire Survivor x MineCraft\Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\unityplastic.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.34 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.536 seconds
+Domain Reload Profiling:
+	ReloadAssembly (536ms)
+		BeginReloadAssembly (70ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (21ms)
+		EndReloadAssembly (433ms)
+			LoadAssemblies (54ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (148ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (22ms)
+			SetupLoadedEditorAssemblies (161ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (2ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (46ms)
+				ProcessInitializeOnLoadAttributes (103ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.32 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2211 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 100.6 MB.
+System memory in use after: 100.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2677.
+Total: 2.146500 ms (FindLiveObjects: 0.103400 ms CreateObjectMapping: 0.029200 ms MarkObjects: 1.931800 ms  DeleteObjects: 0.081600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
