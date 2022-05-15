@@ -70,6 +70,8 @@
     <Compile Include="Assets\C#\Title\Move_Scene.cs" />
     <Compile Include="Assets\C#\Database\Weapon\WeaponDataBase.cs" />
     <Compile Include="Assets\C#\Header\CountMoney.cs" />
+    <Compile Include="Assets\C#\Database\Item\Item.cs" />
+    <Compile Include="Assets\C#\Database\Item\ItemDataBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

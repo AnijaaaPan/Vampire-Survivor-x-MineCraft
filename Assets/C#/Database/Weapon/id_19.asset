@@ -17,6 +17,13 @@ MonoBehaviour:
   effect: "\u6700\u9069\u306A\u7D44\u307F\u5408\u308F\u305B\uFF1A\u901F\u5EA6\u3068\u6301\u7D9A\u6642\u9593"
   id: 19
   icon: {fileID: 21300000, guid: 8a95c4dec04df6c468312670d8f6fa74, type: 3}
-  damage: 10
   powerup: 20
   default_waepon: 0
+  parameter:
+    damage: 10
+    range: 1
+    atk_spd: 1
+    atk_count: 1
+    atk_time: 2.25
+    cooldown: 3
+    penetrate: -1

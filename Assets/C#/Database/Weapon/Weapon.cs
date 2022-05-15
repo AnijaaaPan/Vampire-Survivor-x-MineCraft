@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class WeaponParn
+{
+    public float damage; //Weaponのダメージ量
+    public float range; //Weaponの効果範囲
+    public float atk_spd; //Weaponの攻撃速度
+    public float atk_count;  //Weaponの投射数
+    public float atk_time; //Weaponの持続時間
+    public float cooldown; //Weaponのクールダウン
+    public float penetrate; //Weaponの敵貫通数
+}
+
 [CreateAssetMenu(fileName = "Weapon", menuName = "CreateWeapon")]//  CreateからCreateWeaponというメニューを表示し、Weaponを作成する
 public class Weapon : ScriptableObject
 {
@@ -21,13 +33,13 @@ public class Weapon : ScriptableObject
     private Sprite icon; //Weaponのアイコン
 
     [SerializeField]
-    private float damage; //Weaponのデフォルト攻撃力
-
-    [SerializeField]
     private int powerup; //進化先の武器ID
 
     [SerializeField]
     private bool default_waepon; //デフォルトで武器が使用可能かどうか
+
+    [SerializeField]
+    private WeaponParn parameter; //Weaponのデフォルト攻撃力
 
     public string GetName() //名前を入力したら、
     {
@@ -49,10 +61,6 @@ public class Weapon : ScriptableObject
     {
         return icon; // iconに返す
     }
-    public float GetDamage() //デフォルト攻撃力を入力したら、
-    {
-        return damage; // damageに返す
-    }
     public int GetPowerup() //進化先の武器IDを入力したら、
     {
         return powerup; // powerupに返す 進化先がない場合は0を返す
@@ -60,5 +68,9 @@ public class Weapon : ScriptableObject
     public bool GetDefault() //デフォルトで武器が使用可能かどうかを入力したら、
     {
         return default_waepon; // default_waeponに返す
+    }
+    public WeaponParn GetParameter() //デフォルトパラメーターを入力したら、
+    {
+        return parameter; // parameterに返す
     }
 }
