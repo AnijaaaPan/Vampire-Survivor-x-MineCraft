@@ -442,7 +442,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 481447776}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.9999998
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -626,7 +626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0007370617, y: 0.001296401}
+  m_AnchoredPosition: {x: 0.0016068127, y: 0.001296401}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &494837832
@@ -656,15 +656,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 3
+    m_Right: 3
+    m_Top: 3
+    m_Bottom: 3
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 25, y: 25}
-  m_Spacing: {x: 2.5, y: 2.5}
+  m_Spacing: {x: 2, y: 2}
   m_Constraint: 1
   m_ConstraintCount: 8
 --- !u!114 &494837834
@@ -681,6 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent_object: {fileID: 494837831}
   WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
+  ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
   background: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
   select: {fileID: 21300000, guid: 1ed1086ca5582b348a87b566e51a0cbd, type: 3}
   unknown: {fileID: 21300000, guid: d5715ed312c94b441aa389ece57d852e, type: 3}
@@ -2043,8 +2044,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0245, y: 0.2794}
-  m_SizeDelta: {x: 221.1982, y: 191.9896}
+  m_AnchoredPosition: {x: 0, y: 0.2794}
+  m_SizeDelta: {x: 226.97981, y: 191.9896}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647720478
 MonoBehaviour:

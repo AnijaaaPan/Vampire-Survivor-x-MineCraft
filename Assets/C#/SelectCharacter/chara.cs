@@ -46,7 +46,6 @@ public class chara : MonoBehaviour
                 chara_object.transform.localScale = new Vector3(1 / 34.3583755f, 1 / 34.3583755f, 1 / 34.3583755f);
 
                 Image img = chara_object.AddComponent<Image>();
-                img.maskable = false;
                 if (player.Latest_Chara != mob.GetId())
                 {
                     img.sprite = no_select_chara;
@@ -70,7 +69,6 @@ public class chara : MonoBehaviour
                 image_object.GetComponent<RectTransform>().position = new Vector3(0.305f, -0.1175f, 0);
 
                 Image chara_img = image_object.AddComponent<Image>();
-                chara_img.maskable = false;
                 chara_img.preserveAspect = true;
                 chara_img.sprite = mob.GetIcon();
 
@@ -117,8 +115,6 @@ public class chara : MonoBehaviour
 
     public Sprite CharaDescription(Json.PlayerData player, Mob mob, Json.CharacterData c)
     {
-
-        Select_Image.maskable = false;
         Select_Image.preserveAspect = true;
         Select_Image.sprite = mob.GetIcon();
         Select_Name.text = mob.GetName();

@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDataBase : MonoBehaviour
+[CreateAssetMenu(fileName = "ItemDataBase", menuName = "CreateItemDataBase")]//  CreateからCreateItemというメニューを表示し、Itemを作成する
+public class ItemDataBase : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField]
+    private List<Item> ItemLists = new List<Item>();//  Itemのリストを新しく生成する
+
+    public List<Item> GetItemLists()//  Itemのリストがあったら、
     {
-        
+        return ItemLists;//  ItemListsに返す
     }
 
-    // Update is called once per frame
-    void Update()
+    public Item FindItemFromId(int id)
     {
-        
+        return ItemLists.Find(Item => Item.GetId() == id);
+    }
+
+    public Item FindItemFromName(string name)
+    {
+        return ItemLists.Find(Item => Item.GetName() == name);
     }
 }
