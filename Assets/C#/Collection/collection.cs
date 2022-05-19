@@ -60,9 +60,9 @@ public class collection : MonoBehaviour
             select_weapon_img.color = w.id == 1 ? new Color(255, 255, 255, 255) : new Color(0, 0, 0, 0);
 
             weapon_object.AddComponent<Button>().onClick.AddListener(() => {
-                for (int i = 1; i < ListGameObject.Count+1; i++)
+                for (int i = 1; i < ListGameObject.Count + 1; i++)
                 {
-                    ListGameObject[i-1].GetComponent<Image>().sprite = background;
+                    ListGameObject[i - 1].GetComponent<Image>().sprite = background;
                     GameObject.Find($"List_Select_Image_{i}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
                 };
                 img.sprite = weaponDescription(weapon, w);
@@ -74,7 +74,7 @@ public class collection : MonoBehaviour
             Image weapon_img = image_object.AddComponent<Image>();
 
             weapon_img.color = new Color(255, 255, 255, 255);
-            if ( w.id == 36 )
+            if (w.id == 36)
             {
                 weapon_img.color = new Color(255, 0, 0, 255);
             }
@@ -156,7 +156,7 @@ public class collection : MonoBehaviour
         GameObject.Find("List_1").GetComponent<Image>().sprite = weaponDescription(WeaponDataBase.FindWeaponFromId(1), player.Weapon[0]);
 
         int unlock = 0;
-        for (int i = 1; i < ListGameObject.Count+1; i++)
+        for (int i = 1; i < ListGameObject.Count + 1; i++)
         {
             if (GameObject.Find($"List_Image_{i}").GetComponent<Image>().sprite != unknown)
             {
