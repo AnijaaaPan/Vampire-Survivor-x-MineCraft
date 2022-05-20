@@ -264,5 +264,55 @@
             "id": 16,
             "use": true
         }
+    ],
+    "SpecialItem": [
+        {
+            "id": 1,
+            "use": true
+        },
+        {
+            "id": 2,
+            "use": true
+        },
+        {
+            "id": 3,
+            "use": true
+        },
+        {
+            "id": 4,
+            "use": true
+        },
+        {
+            "id": 5,
+            "use": true
+        },
+        {
+            "id": 6,
+            "use": true
+        },
+        {
+            "id": 7,
+            "use": true
+        },
+        {
+            "id": 8,
+            "use": true
+        },
+        {
+            "id": 9,
+            "use": true
+        },
+        {
+            "id": 10,
+            "use": true
+        },
+        {
+            "id": 11,
+            "use": true
+        },
+        {
+            "id": 12,
+            "use": true
+        }
     ]
 }

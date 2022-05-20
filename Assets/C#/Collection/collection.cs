@@ -19,7 +19,11 @@ public class collection : MonoBehaviour
     [SerializeField]
     private ItemDataBase ItemDataBase;//  使用するデータベース
 
+    [SerializeField]
+    private SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
+
     public Sprite background;
+    public Sprite specialitembackground;
     public Sprite select;
     public Sprite unknown;
 
@@ -33,6 +37,8 @@ public class collection : MonoBehaviour
 
     void Start()
     {
+        var check_item_id = 1;
+
         Json.PlayerData player = Json.instance.Load();
         foreach (var w in player.Weapon)
         {
@@ -60,11 +66,9 @@ public class collection : MonoBehaviour
             select_weapon_img.color = w.id == 1 ? new Color(255, 255, 255, 255) : new Color(0, 0, 0, 0);
 
             weapon_object.AddComponent<Button>().onClick.AddListener(() => {
-                for (int i = 1; i < ListGameObject.Count + 1; i++)
-                {
-                    ListGameObject[i - 1].GetComponent<Image>().sprite = background;
-                    GameObject.Find($"List_Select_Image_{i}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
-                };
+                GameObject.Find($"List_Select_Image_{check_item_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+                check_item_id = w.id;
                 img.sprite = weaponDescription(weapon, w);
             });
 
@@ -99,7 +103,7 @@ public class collection : MonoBehaviour
         foreach (var i in player.Item)
         {
             Item item = ItemDataBase.FindItemFromId(i.id);
-            int i_id = i.id + WeaponDataBase.GetWeaponLists().Count;
+            int i_id = ListGameObject.Count + 1;
 
             var Item_object = new GameObject($"List_{i_id}");
             Image img = Item_object.AddComponent<Image>();
@@ -123,11 +127,9 @@ public class collection : MonoBehaviour
             select_Item_img.color = new Color(0, 0, 0, 0);
 
             Item_object.AddComponent<Button>().onClick.AddListener(() => {
-                for (int i = 1; i < ListGameObject.Count + 1; i++)
-                {
-                    ListGameObject[i - 1].GetComponent<Image>().sprite = background;
-                    GameObject.Find($"List_Select_Image_{i}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
-                };
+                GameObject.Find($"List_Select_Image_{check_item_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+                check_item_id = i_id;
                 img.sprite = ItemDescription(item, i, i_id);
             });
 
@@ -151,6 +153,61 @@ public class collection : MonoBehaviour
             image_object.transform.SetParent(Item_object.transform);
             select_image_object.transform.SetParent(Item_object.transform);
             Item_object.transform.SetParent(parent_object);
+        }
+
+        foreach (var i in player.SpecialItem)
+        {
+            SpecialItem item = SpecialItemDataBase.FindSpecialItemFromId(i.id);
+            int i_id = ListGameObject.Count + 1;
+
+            var SpecialItem_object = new GameObject($"List_{i_id}");
+            Image img = SpecialItem_object.AddComponent<Image>();
+            img.sprite = specialitembackground;
+            if (i.use == true)
+            {
+                SpecialItem_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+            }
+            else
+            {
+                SpecialItem_object.transform.localScale = new Vector3(1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f);
+            };
+
+            var select_image_object = new GameObject($"List_Select_Image_{i_id}");
+            select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(27.5f, 27.5f);
+            select_image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+
+            Image select_SpecialItem_img = select_image_object.AddComponent<Image>();
+            select_SpecialItem_img.preserveAspect = true;
+            select_SpecialItem_img.sprite = select;
+            select_SpecialItem_img.color = new Color(0, 0, 0, 0);
+
+            SpecialItem_object.AddComponent<Button>().onClick.AddListener(() => {
+                GameObject.Find($"List_Select_Image_{check_item_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+                check_item_id = i_id;
+                img.sprite = SpecialItemDescription(item, i, i_id);
+            });
+
+            var image_object = new GameObject($"List_Image_{i_id}");
+            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(17.5f, 17.5f);
+
+            Image SpecialItem_img = image_object.AddComponent<Image>();
+            SpecialItem_img.preserveAspect = true;
+            if (i.use == true)
+            {
+                image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+                SpecialItem_img.sprite = item.GetIcon();
+            }
+            else
+            {
+                image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f);
+                SpecialItem_img.sprite = unknown;
+            };
+
+            ListGameObject.Add(SpecialItem_object);
+            image_object.transform.SetParent(SpecialItem_object.transform);
+            select_image_object.transform.SetParent(SpecialItem_object.transform);
+            SpecialItem_object.transform.SetParent(parent_object);
         }
 
         GameObject.Find("List_1").GetComponent<Image>().sprite = weaponDescription(WeaponDataBase.FindWeaponFromId(1), player.Weapon[0]);
@@ -217,5 +274,30 @@ public class collection : MonoBehaviour
 
         GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(255, 255, 255, 255);
         return background;
+    }
+    public Sprite SpecialItemDescription(SpecialItem item, Json.SpecialItemData i, int i_id)
+    {
+        GameObject.Find($"List_Select_Image_{i_id}").GetComponent<Image>().color = new Color(255, 255, 255, 255);
+        Select_Image.preserveAspect = true;
+        Select_Effect.text = "";
+        if (i.use == true)
+        {
+            Select_Image.sprite = item.GetIcon();
+            Select_Name.text = item.GetName();
+            Select_Descrpition.text = item.GetDescription();
+            Select_Effect.text = item.GetEffect();
+            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(35, 35);
+        }
+        else
+        {
+            Select_Image.sprite = unknown;
+            Select_Name.text = "???";
+            Select_Descrpition.text = "まだ未発見です";
+            Select_Effect.text = "";
+            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
+        };
+
+        GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(255, 255, 255, 255);
+        return specialitembackground;
     }
 }

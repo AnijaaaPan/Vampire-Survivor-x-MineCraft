@@ -22,6 +22,7 @@ public class Json : MonoBehaviour
         public List<CharacterData> Character;
         public List<WeaponData> Weapon;
         public List<ItemData> Item;
+        public List<SpecialItemData> SpecialItem;
     }
 
     [System.Serializable]
@@ -46,6 +47,13 @@ public class Json : MonoBehaviour
         public bool use;
     }
 
+    [System.Serializable]
+    public class SpecialItemData
+    {
+        public int id;
+        public bool use;
+    }
+
     [SerializeField]
     private MobDataBase MobDataBase;//  使用するデータベース
 
@@ -54,6 +62,9 @@ public class Json : MonoBehaviour
 
     [SerializeField]
     private ItemDataBase ItemDataBase;//  使用するデータベース
+
+    [SerializeField]
+    private SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
 
     private void Awake()
     {
@@ -88,6 +99,7 @@ public class Json : MonoBehaviour
         player = SaveCharacters(player);
         player = SaveWeapons(player);
         player = SaveItems(player);
+        player = SaveSpecialItems(player);
         Save(player);
     }
 
@@ -176,6 +188,34 @@ public class Json : MonoBehaviour
         return player;
     }
 
+    public PlayerData SaveSpecialItems(PlayerData player)
+    {
+        SpecialItemData SaveFunction(SpecialItem item_data)
+        {
+            SpecialItemData item = new SpecialItemData();
+            item.id = item_data.GetId();
+            item.use = false;
+            return item;
+        };
+
+        for (int i = 1; i < SpecialItemDataBase.GetSpecialItemLists().Count + 1; i++)//  Mobのリストの数の分だけ繰り返す処理
+        {
+            SpecialItem item_data = SpecialItemDataBase.FindSpecialItemFromId(i);
+            try
+            {
+                if (player.SpecialItem[i - 1].id != i)
+                {
+                    player.SpecialItem.Add(SaveFunction(item_data));
+                };
+            }
+            catch
+            {
+                player.SpecialItem.Add(SaveFunction(item_data));
+            };
+
+        };
+        return player;
+    }
     public PlayerData Load()
     {
         StreamReader reader = new StreamReader(datapath); //受け取ったパスのファイルを読み込む

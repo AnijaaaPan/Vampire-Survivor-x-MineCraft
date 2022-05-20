@@ -1857,6 +1857,7 @@ MonoBehaviour:
   MobDataBase: {fileID: 11400000, guid: 562b800f72d716f4f987138e3b09cc85, type: 2}
   WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
   ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
+  SpecialItemDataBase: {fileID: 11400000, guid: 49355435b2c483244809e22388a5765d, type: 2}
 --- !u!1 &1453664341
 GameObject:
   m_ObjectHideFlags: 0
