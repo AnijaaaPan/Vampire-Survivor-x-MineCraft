@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e428886ca3edb54e913d1fa8469ae11, type: 3}
+  m_Name: mob_id_10
+  m_EditorClassIdentifier: 
+  id: 10
+  weapon_id: 9
+  name: Krochi
+  description: "\u30B9\u30BF\u30FC\u30C8\u6642Revival\u30921\u3064\u8FFD\u52A0  Lv33\u3067Revival\u3092\u66F4\u306B\u8FFD\u52A0
+    (Revival\u3092\u30D1\u30EF\u30FC\u30A2\u30C3\u30D7\u3055\u305B\u3066\u3044\u308C\u3070\u6B8B\u6A5F3\u306B\u306A\u308B)"
+  icon: {fileID: 21300000, guid: 07bd4cf872ab9ec43ba5481de35e2ff9, type: 3}
+  use: 0
+  hidden: 1
+  Parameter:
+  - effect_id: 10
+    phase: 3
+  - effect_id: 16
+    phase: 1

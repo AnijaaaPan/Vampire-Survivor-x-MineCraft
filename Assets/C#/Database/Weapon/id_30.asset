@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u30AF\u30EF\u30C3\u30C9\u30FB\u30B9\u30BF\u30FC"
   description: "\u30DE\u30B8\u30C3\u30AF\u30FB\u30EF\u30F3\u30C9\u3068\u30AF\u30EC\u30A4\u30B8\u30FC\u30FB\u30EF\u30F3\u30C9\u306E\u7A76\u6975\u9032\u5316"
-  effect: "\u5FC5\u8981\u6761\u4EF6\uFF1A\u56DE\u5FA9\u56DE\u6570\u4E0A\u6607"
+  effect: "\u5FC5\u8981\u6761\u4EF6\uFF1A\u5FA9\u6D3B"
   id: 30
   icon: {fileID: 21300000, guid: ec9f0189210326046b8306b38f2e263a, type: 3}
   powerup: 0

@@ -21,6 +21,12 @@ public class Item : ScriptableObject
     private int powerup; //進化先の武器ID
 
     [SerializeField]
+    private int cost; //パワーアップするために必要なコスト
+
+    [SerializeField]
+    private int count; //パワーアップ出来る回数
+
+    [SerializeField]
     private bool default_item; //デフォルトでアイテムが使用可能かどうか
 
     [SerializeField]
@@ -45,6 +51,14 @@ public class Item : ScriptableObject
     public int GetPowerup() //進化先の武器IDを入力したら、
     {
         return powerup; // powerupに返す 進化先がない場合は0を返す
+    }
+    public int GetCost() //パワーアップするために必要なコストを入力したら、
+    {
+        return cost; // costに返す
+    }
+    public int GetCount() //パワーアップ出来る回数を入力したら、
+    {
+        return count; // countに返す
     }
     public bool GetDefault() //デフォルトでアイテムが使用可能かどうかを入力したら、
     {

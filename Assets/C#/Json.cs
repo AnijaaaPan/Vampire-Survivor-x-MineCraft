@@ -22,6 +22,7 @@ public class Json : MonoBehaviour
         public List<CharacterData> Character;
         public List<WeaponData> Weapon;
         public List<ItemData> Item;
+        public PowerUpData PowerUp;
         public List<SpecialItemData> SpecialItem;
     }
 
@@ -52,6 +53,21 @@ public class Json : MonoBehaviour
     {
         public int id;
         public bool use;
+    }
+
+    [System.Serializable]
+    public class PowerUpData
+    {
+        public int allcost;
+        public int allcount;
+        public List<PowerUpList> poweruplist;
+    }
+
+    [System.Serializable]
+    public class PowerUpList
+    {
+        public int id;
+        public int powerupcount;
     }
 
     [SerializeField]
@@ -95,6 +111,8 @@ public class Json : MonoBehaviour
             player.Flash = true;
             player.JoyStick = false;
             player.Damage = true;
+            player.PowerUp.allcost = 0;
+            player.PowerUp.allcount = 0;
         };
         player = SaveCharacters(player);
         player = SaveWeapons(player);
@@ -159,6 +177,7 @@ public class Json : MonoBehaviour
         };
         return player;
     }
+    
     public PlayerData SaveItems(PlayerData player)
     {
         ItemData SaveFunction(Item item_data)
@@ -166,6 +185,14 @@ public class Json : MonoBehaviour
             ItemData item = new ItemData();
             item.id = item_data.GetId();
             item.use = item_data.GetDefault();
+            return item;
+        };
+
+        PowerUpList SavePowerUp(Item item_data)
+        {
+            PowerUpList item = new PowerUpList();
+            item.id = item_data.GetId();
+            item.powerupcount = item_data.GetCount();
             return item;
         };
 
@@ -177,11 +204,13 @@ public class Json : MonoBehaviour
                 if (player.Item[i - 1].id != i)
                 {
                     player.Item.Add(SaveFunction(item_data));
+                    player.PowerUp.poweruplist.Add(SavePowerUp(item_data));
                 };
             }
             catch
             {
                 player.Item.Add(SaveFunction(item_data));
+                player.PowerUp.poweruplist.Add(SavePowerUp(item_data));
             };
 
         };

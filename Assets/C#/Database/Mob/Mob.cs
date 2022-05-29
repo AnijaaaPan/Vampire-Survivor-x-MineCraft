@@ -2,9 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Parameter
+{
+    public int effect_id; //効果id
+    public float phase; //n段階上昇させるか
+}
+
 [CreateAssetMenu(fileName = "Mob", menuName = "CreateMob")]//  CreateからCreateMobというメニューを表示し、Mobを作成する
 public class Mob: ScriptableObject
 {
+    [SerializeField]
+    private int id; //MobのID
+
+    [SerializeField]
+    private int weapon_id; //キャラのWeaponのID
+
     [SerializeField]
     private string name; //Mobの名前
 
@@ -12,22 +25,16 @@ public class Mob: ScriptableObject
     private string description; //Mobの説明
 
     [SerializeField]
-    private int id; //MobのID
-
-    [SerializeField]
     private Sprite icon; //Mobのアイコン
-
-    [SerializeField]
-    private int damage; //Mobのデフォルト攻撃力
-
-    [SerializeField]
-    private int hp; //Mobのデフォルト体力
 
     [SerializeField]
     private bool use; //現在使用できるキャラか否か
 
     [SerializeField]
     private bool hidden; //現在条件が満たされてなく隠されているか否か
+
+    [SerializeField]
+    private List<Parameter> Parameter; //Mobのparameter
 
     public string GetName() //名前を入力したら、
     {
@@ -41,17 +48,13 @@ public class Mob: ScriptableObject
     {
         return id; // idに返す
     }
+    public int GetWeaponId() //WeaponIDを入力したら、
+    {
+        return weapon_id; // weapon_idに返す
+    }
     public Sprite GetIcon() //アイコンを入力したら、
     {
         return icon; // iconに返す
-    }
-    public int GetDamage() //デフォルト攻撃力を入力したら、
-    {
-        return damage; // damageに返す
-    }
-    public int GetHp() //デフォルト体力を入力したら、
-    {
-        return hp; // hpに返す
     }
     public bool GetUse() //現在使用できるキャラか否かを入力したら、
     {
@@ -60,5 +63,9 @@ public class Mob: ScriptableObject
     public bool GetHidden() //現在条件が満たされてなく隠されているか否かを入力したら、
     {
         return hidden; // hiddenに返す
+    }
+    public List<Parameter> GetParameter() //MOBのステータスパラメータの設定
+    {
+        return Parameter; // Parameterに返す
     }
 }

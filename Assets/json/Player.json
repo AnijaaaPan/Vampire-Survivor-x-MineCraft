@@ -1,7 +1,7 @@
 {
     "FirstTime": true,
-    "Money": 450,
-    "Latest_Chara": 2,
+    "Money": 2100,
+    "Latest_Chara": 0,
     "Sound": 100,
     "Music": 100,
     "Flash": true,
@@ -25,6 +25,86 @@
         },
         {
             "id": 3,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 4,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 5,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 6,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 7,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 8,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 9,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 10,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 11,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 12,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 13,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 14,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 15,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 16,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 17,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 18,
+            "use": true,
+            "hidden": false
+        },
+        {
+            "id": 19,
             "use": true,
             "hidden": false
         }
@@ -265,6 +345,76 @@
             "use": true
         }
     ],
+    "PowerUp": {
+        "allcost": 68780,
+        "allcount": 32,
+        "poweruplist": [
+            {
+                "id": 1,
+                "powerupcount": 0
+            },
+            {
+                "id": 2,
+                "powerupcount": 0
+            },
+            {
+                "id": 3,
+                "powerupcount": 0
+            },
+            {
+                "id": 4,
+                "powerupcount": 0
+            },
+            {
+                "id": 5,
+                "powerupcount": 0
+            },
+            {
+                "id": 6,
+                "powerupcount": 0
+            },
+            {
+                "id": 7,
+                "powerupcount": 0
+            },
+            {
+                "id": 8,
+                "powerupcount": 0
+            },
+            {
+                "id": 9,
+                "powerupcount": 0
+            },
+            {
+                "id": 10,
+                "powerupcount": 0
+            },
+            {
+                "id": 11,
+                "powerupcount": 0
+            },
+            {
+                "id": 12,
+                "powerupcount": 0
+            },
+            {
+                "id": 13,
+                "powerupcount": 5
+            },
+            {
+                "id": 14,
+                "powerupcount": 5
+            },
+            {
+                "id": 15,
+                "powerupcount": 5
+            },
+            {
+                "id": 16,
+                "powerupcount": 1
+            }
+        ]
+    },
     "SpecialItem": [
         {
             "id": 1,

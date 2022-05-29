@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a563dee0f316f42ac54c173d94825e, type: 3}
   m_Name: item_id_11
   m_EditorClassIdentifier: 
-  name: "\u53D6\u5F97\u7BC4\u56F2\u4E0A\u6607"
+  name: "\u78C1\u77F3"
   description: "\u30A2\u30A4\u30C6\u30E0\u306E\u53D6\u5F97\u7BC4\u56F2\u62E1\u5927"
   id: 11
   icon: {fileID: 21300000, guid: f25e157598ded9240994aa59ba6c3cc3, type: 3}
   powerup: 17
+  cost: 300
+  count: 2
+  default_item: 0
   cant_use_waepon: 
