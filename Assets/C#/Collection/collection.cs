@@ -78,7 +78,7 @@ public class collection : MonoBehaviour
             Image weapon_img = image_object.AddComponent<Image>();
 
             weapon_img.color = new Color(255, 255, 255, 255);
-            if (w.id == 36)
+            if (w.use == true && w.id == 36)
             {
                 weapon_img.color = new Color(255, 0, 0, 255);
             }
@@ -245,7 +245,7 @@ public class collection : MonoBehaviour
         };
 
         GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(255, 255, 255, 255);
-        if (w.id == 36)
+        if (w.use == true && w.id == 36)
         {
             GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(255, 0, 0, 255);
         };
