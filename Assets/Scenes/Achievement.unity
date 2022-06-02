@@ -1370,6 +1370,7 @@ GameObject:
   - component: {fileID: 1107364468}
   - component: {fileID: 1107364470}
   - component: {fileID: 1107364469}
+  - component: {fileID: 1107364471}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -1434,7 +1435,28 @@ MonoBehaviour:
   m_CellSize: {x: 215, y: 20}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
-  m_ConstraintCount: 4
+  m_ConstraintCount: 1
+--- !u!114 &1107364471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107364467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4141be380da09a344b9b5f9943f893d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent_object: {fileID: 1107364468}
+  MobDataBase: {fileID: 11400000, guid: 562b800f72d716f4f987138e3b09cc85, type: 2}
+  WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
+  ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
+  SpecialItemDataBase: {fileID: 11400000, guid: 49355435b2c483244809e22388a5765d, type: 2}
+  background: {fileID: 0}
+  specialitembackground: {fileID: 0}
+  select: {fileID: 0}
+  unknown: {fileID: 0}
 --- !u!1 &1115790387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,8 +1491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.7, y: -10}
-  m_SizeDelta: {x: 965, y: 116}
+  m_AnchoredPosition: {x: 105.96, y: -10}
+  m_SizeDelta: {x: 992.17, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1115790389
 MonoBehaviour:
@@ -2163,7 +2185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 189.3, y: -10}
+  m_AnchoredPosition: {x: 194.9, y: -10}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1516958467

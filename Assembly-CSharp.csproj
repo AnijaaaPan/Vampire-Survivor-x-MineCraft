@@ -67,7 +67,7 @@
     <Compile Include="Assets\C#\Title\MousePointerTitle.cs" />
     <Compile Include="Assets\C#\Database\Mob\MobDataBase.cs" />
     <Compile Include="Assets\C#\Database\Item\ItemDataBase.cs" />
-    <Compile Include="Assets\powerup.cs" />
+    <Compile Include="Assets\C#\Powerup\powerup.cs" />
     <Compile Include="Assets\C#\Database\Weapon\Weapon.cs" />
     <Compile Include="Assets\C#\Database\Mob\Mob.cs" />
     <Compile Include="Assets\C#\Header\backmenu.cs" />
@@ -75,6 +75,7 @@
     <Compile Include="Assets\C#\Database\Weapon\WeaponDataBase.cs" />
     <Compile Include="Assets\C#\Database\Item\Special\SpecialItem.cs" />
     <Compile Include="Assets\C#\Header\CountMoney.cs" />
+    <Compile Include="Assets\C#\Achievement\achievement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
