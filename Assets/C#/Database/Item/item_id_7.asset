@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u901F\u5EA6"
   description: "\u6295\u64F2\u901F\u5EA6\u304C10%\u4E0A\u6607"
-  id: 0
+  id: 7
   icon: {fileID: 21300000, guid: 5db41b890d14e174682fe1ec9a7a2314, type: 3}
   powerup: 5
   cost: 300
