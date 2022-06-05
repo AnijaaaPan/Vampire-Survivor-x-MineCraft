@@ -35,6 +35,7 @@ public class collection : MonoBehaviour
 
     private List<GameObject> ListGameObject = new List<GameObject>();
 
+    private float init_int = 1 / 34.35838f;
     void Start()
     {
         var check_item_id = 1;
@@ -49,16 +50,16 @@ public class collection : MonoBehaviour
             img.sprite = background;
             if (w.use == true)
             {
-                weapon_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+                weapon_object.transform.localScale = new Vector3(init_int, init_int, init_int);
             }
             else
             {
-                weapon_object.transform.localScale = new Vector3(1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f);
+                weapon_object.transform.localScale = new Vector3(init_int * 0.85f, init_int * 0.85f, init_int * 0.85f);
             };
 
             var select_image_object = new GameObject($"List_Select_Image_{w.id}");
             select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(27.5f, 27.5f);
-            select_image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+            select_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image select_weapon_img = select_image_object.AddComponent<Image>();
             select_weapon_img.preserveAspect = true;
@@ -85,12 +86,12 @@ public class collection : MonoBehaviour
             weapon_img.preserveAspect = true;
             if (w.use == true)
             {
-                image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+                image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
                 weapon_img.sprite = weapon.GetIcon();
             }
             else
             {
-                image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f);
+                image_object.transform.localScale = new Vector3(init_int * 0.65f, init_int * 0.65f, init_int * 0.65f);
                 weapon_img.sprite = unknown;
             };
 
@@ -110,16 +111,16 @@ public class collection : MonoBehaviour
             img.sprite = background;
             if (i.use == true)
             {
-                Item_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+                Item_object.transform.localScale = new Vector3(init_int, init_int, init_int);
             }
             else
             {
-                Item_object.transform.localScale = new Vector3(1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f);
+                Item_object.transform.localScale = new Vector3(init_int * 0.85f, init_int * 0.85f, init_int * 0.85f);
             };
 
             var select_image_object = new GameObject($"List_Select_Image_{i_id}");
             select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(27.5f, 27.5f);
-            select_image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+            select_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image select_Item_img = select_image_object.AddComponent<Image>();
             select_Item_img.preserveAspect = true;
@@ -140,12 +141,12 @@ public class collection : MonoBehaviour
             Item_img.preserveAspect = true;
             if (i.use == true)
             {
-                image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+                image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
                 Item_img.sprite = item.GetIcon();
             }
             else
             {
-                image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f);
+                image_object.transform.localScale = new Vector3(init_int * 0.65f, init_int * 0.65f, init_int * 0.65f);
                 Item_img.sprite = unknown;
             };
 
@@ -165,16 +166,16 @@ public class collection : MonoBehaviour
             img.sprite = specialitembackground;
             if (i.use == true)
             {
-                SpecialItem_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+                SpecialItem_object.transform.localScale = new Vector3(init_int, init_int, init_int);
             }
             else
             {
-                SpecialItem_object.transform.localScale = new Vector3(1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f, 1 / 34.35838f * 0.85f);
+                SpecialItem_object.transform.localScale = new Vector3(init_int * 0.85f, init_int * 0.85f, init_int * 0.85f);
             };
 
             var select_image_object = new GameObject($"List_Select_Image_{i_id}");
             select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(27.5f, 27.5f);
-            select_image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+            select_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image select_SpecialItem_img = select_image_object.AddComponent<Image>();
             select_SpecialItem_img.preserveAspect = true;
@@ -195,12 +196,12 @@ public class collection : MonoBehaviour
             SpecialItem_img.preserveAspect = true;
             if (i.use == true)
             {
-                image_object.transform.localScale = new Vector3(1 / 34.35838f, 1 / 34.35838f, 1 / 34.35838f);
+                image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
                 SpecialItem_img.sprite = item.GetIcon();
             }
             else
             {
-                image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f, 1 / 34.35838f * 0.65f);
+                image_object.transform.localScale = new Vector3(init_int * 0.65f, init_int * 0.65f, init_int * 0.65f);
                 SpecialItem_img.sprite = unknown;
             };
 

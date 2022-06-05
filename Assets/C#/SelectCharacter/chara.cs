@@ -35,7 +35,7 @@ public class chara : MonoBehaviour
 
     public GameObject Effect_list;
 
-    private List<GameObject> ListGameObject = new List<GameObject>();
+    private int? select_chara_id = null;
 
     void Start()
     {
@@ -87,76 +87,74 @@ public class chara : MonoBehaviour
             item_object.transform.SetParent(Effect_list.transform);
         };
 
+        int check_id = player.Latest_Chara;
         foreach (var c in player.Character)
         {
-            if (c.hidden == false)
+            if (c.hidden == true) continue;
+
+            Mob mob = MobDataBase.FindMobFromId(c.id);
+            Weapon weapon = WeaponDataBase.FindWeaponFromId(mob.GetWeaponId());
+            //Debug.Log(mob.GetName());
+
+            var chara_object = new GameObject($"Chara_{mob.GetId()}");
+            chara_object.transform.localScale = new Vector3(1 / 34.3583755f, 1 / 34.3583755f, 1 / 34.3583755f);
+
+            Image img = chara_object.AddComponent<Image>();
+            if (player.Latest_Chara != mob.GetId())
             {
-                Mob mob = MobDataBase.FindMobFromId(c.id);
-                Weapon weapon = WeaponDataBase.FindWeaponFromId(mob.GetWeaponId());
-                //Debug.Log(mob.GetName());
-
-                var chara_object = new GameObject($"Chara_{mob.GetName()}");
-                chara_object.transform.localScale = new Vector3(1 / 34.3583755f, 1 / 34.3583755f, 1 / 34.3583755f);
-
-                Image img = chara_object.AddComponent<Image>();
-                if (player.Latest_Chara != mob.GetId())
-                {
-                    img.sprite = no_select_chara;
-                }
-                else
-                {
-                    img.sprite = CharaDescription(mob, c, weapon, player);
-                };
-
-                chara_object.AddComponent<Button>().onClick.AddListener(() => {
-                    for (int i = 0; i < ListGameObject.Count; i++)
-                    {
-                        ListGameObject[i].GetComponent<Image>().sprite = no_select_chara;
-                    };
-                    img.sprite = CharaDescription(mob, c, weapon, player);
-                });
-
-                var image_object = new GameObject($"Image_{mob.GetName()}");
-                image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.3f, 1 / 34.35838f * 0.3f, 1 / 34.35838f * 0.3f);
-                image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(68.85f, 110);
-                image_object.GetComponent<RectTransform>().position = new Vector3(0.305f, -0.1175f, 0);
-
-                Image chara_img = image_object.AddComponent<Image>();
-                chara_img.preserveAspect = true;
-                chara_img.sprite = mob.GetIcon();
-
-                var weapon_image_object = new GameObject($"Weapon_Image_{mob.GetName()}");
-                weapon_image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.25f, 1 / 34.35838f * 0.25f, 1 / 34.35838f * 0.25f);
-                weapon_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(65, 65);
-                weapon_image_object.GetComponent<RectTransform>().position = new Vector3(-0.23f, -0.2175f, 0);
-
-                Image weapon_img = weapon_image_object.AddComponent<Image>();
-                weapon_img.preserveAspect = true;
-                weapon_img.sprite = weapon.GetIcon();
-
-                var name_object = new GameObject($"Name_{mob.GetName()}");
-                Text name = name_object.AddComponent<Text>();
-                name.text = mob.GetName();
-                name.fontSize = 100;
-                name.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-                name_object.transform.localScale = new Vector3(1 / 34.35838f * 0.09f, 1 / 34.35838f * 0.09f, 1 / 34.35838f * 0.09f);
-                name_object.GetComponent<RectTransform>().sizeDelta = new Vector2(444, 115);
-                name_object.GetComponent<RectTransform>().position = new Vector3(0.015f, 0.45f, 0);
-
-                if (c.use == false)
-                {
-                    name.color = new Color(0, 0, 0, 255);
-                    chara_img.color = new Color(0, 0, 0, 255);
-                    weapon_img.color = new Color(0, 0, 0, 255);
-                };
-
-                ListGameObject.Add(chara_object);
-                image_object.transform.SetParent(chara_object.transform);
-                weapon_image_object.transform.SetParent(chara_object.transform);
-                name_object.transform.SetParent(chara_object.transform);
-                chara_object.transform.SetParent(parent_object);
+                img.sprite = no_select_chara;
+            }
+            else
+            {
+                img.sprite = CharaDescription(mob, c, weapon, player);
             };
+
+            chara_object.AddComponent<Button>().onClick.AddListener(() => {
+                GameObject.Find($"Chara_{check_id}").GetComponent<Image>().sprite = no_select_chara;
+                GameObject.Find($"Chara_{check_id}").GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                check_id = mob.GetId();
+                img.sprite = CharaDescription(mob, c, weapon, player);
+            });
+
+            var image_object = new GameObject($"Image_{mob.GetId()}");
+            image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.3f, 1 / 34.35838f * 0.3f, 1 / 34.35838f * 0.3f);
+            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(68.85f, 110);
+            image_object.GetComponent<RectTransform>().position = new Vector3(0.305f, -0.1175f, 0);
+
+            Image chara_img = image_object.AddComponent<Image>();
+            chara_img.preserveAspect = true;
+            chara_img.sprite = mob.GetIcon();
+
+            var weapon_image_object = new GameObject($"Weapon_Image_{mob.GetId()}");
+            weapon_image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.25f, 1 / 34.35838f * 0.25f, 1 / 34.35838f * 0.25f);
+            weapon_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(65, 65);
+            weapon_image_object.GetComponent<RectTransform>().position = new Vector3(-0.23f, -0.2175f, 0);
+
+            Image weapon_img = weapon_image_object.AddComponent<Image>();
+            weapon_img.preserveAspect = true;
+            weapon_img.sprite = weapon.GetIcon();
+
+            var name_object = new GameObject($"Name_{mob.GetId()}");
+            Text name = name_object.AddComponent<Text>();
+            name.text = mob.GetName();
+            name.fontSize = 100;
+            name.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+
+            name_object.transform.localScale = new Vector3(1 / 34.35838f * 0.09f, 1 / 34.35838f * 0.09f, 1 / 34.35838f * 0.09f);
+            name_object.GetComponent<RectTransform>().sizeDelta = new Vector2(444, 115);
+            name_object.GetComponent<RectTransform>().position = new Vector3(0.015f, 0.45f, 0);
+
+            if (c.use == false)
+            {
+                name.color = new Color(0, 0, 0, 255);
+                chara_img.color = new Color(0, 0, 0, 255);
+                weapon_img.color = new Color(0, 0, 0, 255);
+            };
+
+            image_object.transform.SetParent(chara_object.transform);
+            weapon_image_object.transform.SetParent(chara_object.transform);
+            name_object.transform.SetParent(chara_object.transform);
+            chara_object.transform.SetParent(parent_object);
         };
 
         Submit_button.onClick.AddListener(() => {
@@ -170,7 +168,16 @@ public class chara : MonoBehaviour
                 Json.instance.Save(player);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-            else if (c.use == true) { 
+            else if (select_chara_id != null)
+            {
+                player.Latest_Chara = (int) select_chara_id;
+                Json.instance.Save(player);
+                SceneManager.LoadScene("MapSelect");
+            }
+            else if (c.use == true)
+            {
+                select_chara_id = check_id;
+                GameObject.Find($"Chara_{check_id}").GetComponent<Image>().color = new Color(1, 1, 0.6f, 1);
             };
         });
     }
@@ -178,6 +185,7 @@ public class chara : MonoBehaviour
     public Sprite CharaDescription(Mob mob, Json.CharacterData c, Weapon weapon, Json.PlayerData player)
     {
         initParameter(mob, player);
+        select_chara_id = null;
         Select_Image.preserveAspect = true;
         Select_Image.sprite = mob.GetIcon();
         Select_Name.text = mob.GetName();

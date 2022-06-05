@@ -2,6 +2,8 @@
     "FirstTime": true,
     "Money": 0,
     "Latest_Chara": 0,
+    "Latest_Map": 1,
+    "Latest_Map_Hyper": false,
     "Sound": 100,
     "Music": 100,
     "Flash": true,
@@ -797,28 +799,28 @@
         },
         {
             "id": 48,
-            "type": "map",
+            "type": "hyper",
             "description": "狂乱の森に出現するTESTを撃破",
             "type_id": 1,
             "use": false
         },
         {
             "id": 49,
-            "type": "map",
+            "type": "hyper",
             "description": "象眼の図書館に出現するTESTを撃破",
             "type_id": 2,
             "use": false
         },
         {
             "id": 50,
-            "type": "map",
+            "type": "hyper",
             "description": "酪農場に出現するTESTを撃破",
             "type_id": 3,
             "use": false
         },
         {
             "id": 51,
-            "type": "map",
+            "type": "hyper",
             "description": "Gallo Towerに出現するTESTを撃破",
             "type_id": 4,
             "use": false
@@ -934,6 +936,28 @@
             "description": "サボテンを進化",
             "type_id": 36,
             "use": false
+        }
+    ],
+    "Map": [
+        {
+            "id": 1,
+            "use": true,
+            "hyper": false
+        },
+        {
+            "id": 2,
+            "use": false,
+            "hyper": false
+        },
+        {
+            "id": 3,
+            "use": false,
+            "hyper": false
+        },
+        {
+            "id": 4,
+            "use": false,
+            "hyper": false
         }
     ]
 }

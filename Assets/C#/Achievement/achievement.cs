@@ -22,23 +22,32 @@ public class achievement : MonoBehaviour
     [SerializeField]
     private SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
 
+    [SerializeField]
+    private MapDataBase MapDataBase;//  使用するデータベース
+
     public Sprite select_achievement;
     public Sprite check_background;
     public Sprite check;
     public Sprite money;
 
+    public Text Title;
     public Image Select_Weapon_Item_Image;
     public Image Select_Chara_Image;
     public Image Select_Monery_Weapon_Image;
+    public Image Select_Map_Image;
     public GameObject Select_Weapon_Item_Object;
     public GameObject Select_Chara_Object;
     public GameObject Select_Monery_Weapon_Object;
+    public GameObject Select_Map_Object;
     public Text Select_Descrpition;
     public Text Select_Effect;
+
+    private List<GameObject> ListGameObject = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+        int unlock = 0;
         var check_item_id = 1;
 
         Json.PlayerData player = Json.instance.Load();
@@ -51,7 +60,6 @@ public class achievement : MonoBehaviour
             var achievement_select_object = new GameObject($"Achievement_Select_Id_{a.id}");
             achievement_select_object.AddComponent<RectTransform>().sizeDelta = new Vector2(210, 20);
             achievement_select_object.transform.localScale = new Vector3(1 / 34.36426f, 1 / 34.36426f, 1 / 34.36426f);
-            achievement_select_object.AddComponent<RectTransform>();
 
             Image achievement_select_img = achievement_select_object.AddComponent<Image>();
             achievement_select_img.sprite = select_achievement;
@@ -88,6 +96,10 @@ public class achievement : MonoBehaviour
             check_img.preserveAspect = true;
             check_img.sprite = check;
             check_img.color = a.use == false ? new Color(0, 0, 0, 0) : new Color(1, 1, 1, 1);
+            if (a.use == true)
+            {
+                unlock++;
+            }
             check_img.GetComponent<RectTransform>().position = new Vector3(-2.7f, 0, 0);
 
             var description_object = new GameObject($"Description_{a.id}");
@@ -121,7 +133,12 @@ public class achievement : MonoBehaviour
                 Item item_data = ItemDataBase.FindItemFromId(a.type_id);
                 img.sprite = item_data.GetIcon();
 
-            }            
+            }
+            else if (a.type == "map" || a.type == "hyper")
+            {
+                Map map_data = MapDataBase.FindMapFromId(a.type_id);
+                img.sprite = map_data.GetBlockIcon();
+            }
 
             image_object.transform.SetParent(achievement_object.transform);
             if (a.type == "money")
@@ -144,7 +161,10 @@ public class achievement : MonoBehaviour
             description_object.transform.SetParent(achievement_object.transform);
             achievement_select_object.transform.SetParent(achievement_object.transform);
             achievement_object.transform.SetParent(parent_object);
+            ListGameObject.Add(achievement_object);
         };
+
+        Title.text = $"進行度：{ListGameObject.Count}のうち{unlock}完了";
     }
     
     public void achievementDescription(Json.AchievementData a)
@@ -152,9 +172,9 @@ public class achievement : MonoBehaviour
         Select_Weapon_Item_Object.SetActive(false);
         Select_Chara_Object.SetActive(false);
         Select_Monery_Weapon_Object.SetActive(false);
+        Select_Map_Object.SetActive(false);
 
         Select_Descrpition.text = a.description;
-
         Select_Effect.text = a.use == false ? "未達成: " : "達成済み: ";
 
         if (a.type == "chara")
@@ -189,6 +209,24 @@ public class achievement : MonoBehaviour
             Select_Monery_Weapon_Image.sprite = weapon_data.GetIcon();
             Select_Monery_Weapon_Image.preserveAspect = true;
             Select_Effect.text += $"金貨500枚獲得";
+
+        }
+        else if (a.type == "map")
+        {
+            Select_Map_Object.SetActive(true);
+            Map map_data = MapDataBase.FindMapFromId(a.type_id);
+            Select_Map_Image.sprite = map_data.GetBlockIcon();
+            Select_Map_Image.preserveAspect = true;
+            Select_Effect.text += map_data.GetName();
+
+        }
+        else if (a.type == "hyper")
+        {
+            Select_Map_Object.SetActive(true);
+            Map map_data = MapDataBase.FindMapFromId(a.type_id);
+            Select_Map_Image.sprite = map_data.GetBlockIcon();
+            Select_Map_Image.preserveAspect = true;
+            Select_Effect.text += $"{map_data.GetName()}「ハイパーモード」";
 
         }
     }

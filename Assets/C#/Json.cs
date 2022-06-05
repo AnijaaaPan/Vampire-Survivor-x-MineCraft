@@ -14,6 +14,8 @@ public class Json : MonoBehaviour
         public bool FirstTime;
         public int Money;
         public int Latest_Chara;
+        public int Latest_Map;
+        public bool Latest_Map_Hyper;
         public int Sound;
         public int Music;
         public bool Flash;
@@ -25,6 +27,7 @@ public class Json : MonoBehaviour
         public PowerUpData PowerUp;
         public List<SpecialItemData> SpecialItem;
         public List<AchievementData> Achievement;
+        public List<MapData> Map;
     }
 
     [System.Serializable]
@@ -71,7 +74,6 @@ public class Json : MonoBehaviour
         public int powerupcount;
     }
 
-
     [System.Serializable]
     public class AchievementData
     {
@@ -80,6 +82,14 @@ public class Json : MonoBehaviour
         public string description;
         public int type_id;
         public bool use;
+    }
+
+    [System.Serializable]
+    public class MapData
+    {
+        public int id;
+        public bool use;
+        public bool hyper;
     }
 
     [SerializeField]
@@ -94,6 +104,9 @@ public class Json : MonoBehaviour
     [SerializeField]
     private SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
 
+    [SerializeField]
+    private MapDataBase MapDataBase;//  使用するデータベース
+
     private void Awake()
     {
         datapath = Application.dataPath + "/json/Player.json";
@@ -105,7 +118,6 @@ public class Json : MonoBehaviour
         }
         else
         {
-
             Destroy(gameObject);
         }
     }
@@ -119,6 +131,9 @@ public class Json : MonoBehaviour
         {
             player.FirstTime = true;
             player.Money = 0;
+            player.Latest_Chara = 0;
+            player.Latest_Map = 1;
+            player.Latest_Map_Hyper = false;
             player.Sound = 100;
             player.Music = 100;
             player.Flash = true;
@@ -132,7 +147,8 @@ public class Json : MonoBehaviour
         player = SaveWeapons(player);
         player = SaveItems(player);
         player = SaveSpecialItems(player);
-        player = SaveAchievement(player);
+        player = SaveAchievements(player);
+        player = SaveMaps(player);
         Save(player);
     }
 
@@ -228,7 +244,7 @@ public class Json : MonoBehaviour
         return player;
     }
 
-    public PlayerData SaveAchievement(PlayerData player)
+    public PlayerData SaveAchievements(PlayerData player)
     {
         void SaveFunction(int id, string description, string type, int type_id)
         {
@@ -291,10 +307,10 @@ public class Json : MonoBehaviour
         SaveFunction(45, "TESTを合計3000体倒す", "chara", 19);
         SaveFunction(46, "敵を合計5,000体倒す", "weapon", 21);
         SaveFunction(47, "敵を合計10,000体倒す", "chara", 10);
-        SaveFunction(48, "狂乱の森に出現するTESTを撃破", "map", 1);
-        SaveFunction(49, "象眼の図書館に出現するTESTを撃破", "map", 2);
-        SaveFunction(50, "酪農場に出現するTESTを撃破", "map", 3);
-        SaveFunction(51, "Gallo Towerに出現するTESTを撃破", "map", 4);
+        SaveFunction(48, "狂乱の森に出現するTESTを撃破", "hyper", 1);
+        SaveFunction(49, "象眼の図書館に出現するTESTを撃破", "hyper", 2);
+        SaveFunction(50, "酪農場に出現するTESTを撃破", "hyper", 3);
+        SaveFunction(51, "Gallo Towerに出現するTESTを撃破", "hyper", 4);
         SaveFunction(52, "木の剣を進化", "money", 2);
         SaveFunction(53, "松明を進化", "money", 4);
         SaveFunction(54, "矢を進化", "money", 6);
@@ -311,6 +327,28 @@ public class Json : MonoBehaviour
         SaveFunction(65, "猫を進化", "money", 32);
         SaveFunction(66, "額縁を進化", "money", 34);
         SaveFunction(67, "サボテンを進化", "money", 36);
+        return player;
+    }
+
+    public PlayerData SaveMaps(PlayerData player)
+    {
+        void SaveFunction(Map map_data)
+        {
+            MapData map = new MapData();
+            map.id = map_data.GetId();
+            map.use = map_data.GetUse();
+            map.hyper = false;
+            player.Map.Add(map);
+        };
+
+        for (int i = 1; i < MapDataBase.GetMapLists().Count + 1; i++)//  Mobのリストの数の分だけ繰り返す処理
+        {
+            Map item_data = MapDataBase.FindMapFromId(i);
+            if (player.Map.Count == i - 1)
+            {
+                SaveFunction(item_data);
+            };
+        };
         return player;
     }
 
