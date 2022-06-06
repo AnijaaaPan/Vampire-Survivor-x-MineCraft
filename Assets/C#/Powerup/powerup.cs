@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class powerup : MonoBehaviour
@@ -27,11 +24,13 @@ public class powerup : MonoBehaviour
     public Button SellPowerUp;
     public Text Unlock_Cost_Text;
 
-    private List<GameObject> ListGameObject = new List<GameObject>();
+    private float init_int = 1 / 34.35838f;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        int check_id = 1;
         Json.PlayerData player = Json.instance.Load();
         for (int i = 1; i < ItemDataBase.GetItemLists().Count + 1; i++)//  Mob‚ÌƒŠƒXƒg‚Ì”‚Ì•ª‚¾‚¯ŒJ‚è•Ô‚·ˆ—
         {
@@ -39,7 +38,7 @@ public class powerup : MonoBehaviour
             Json.PowerUpList poweroup_data = player.PowerUp.poweruplist.Find(data => data.id == item_data.GetId());
 
             var chara_object = new GameObject($"Item_{item_data.GetId()}");
-            chara_object.transform.localScale = new Vector3(1 / 34.3583755f, 1 / 34.3583755f, 1 / 34.3583755f);
+            chara_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image img = chara_object.AddComponent<Image>();
             img.sprite = item_data.GetId() != 1 ? background : SelectDescription(item_data, player, poweroup_data);
@@ -49,22 +48,20 @@ public class powerup : MonoBehaviour
             }
 
             chara_object.AddComponent<Button>().onClick.AddListener(() => {
-                for (int i = 0; i < ListGameObject.Count; i++)
-                {
-                    ListGameObject[i].GetComponent<Image>().sprite = background;
-                };
+                GameObject.Find($"Item_{check_id}").GetComponent<Image>().sprite = background;
+                check_id = item_data.GetId();
                 img.sprite = SelectDescription(item_data, player, poweroup_data);
             });
 
             var back_image_object = new GameObject($"Image_BackGround_{item_data.GetId()}");
-            back_image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.185f, 1 / 34.35838f * 0.185f, 1 / 34.35838f * 0.185f);
+            back_image_object.transform.localScale = new Vector3(init_int * 0.185f, init_int * 0.185f, init_int * 0.185f);
 
             Image back_img = back_image_object.AddComponent<Image>();
             back_img.preserveAspect = true;
             back_img.sprite = item_background;
 
             var image_object = new GameObject($"Image_{item_data.GetId()}");
-            image_object.transform.localScale = new Vector3(1 / 34.35838f * 0.115f, 1 / 34.35838f * 0.115f, 1 / 34.35838f * 0.115f);
+            image_object.transform.localScale = new Vector3(init_int * 0.115f, init_int * 0.115f, init_int * 0.115f);
 
             Image item_img = image_object.AddComponent<Image>();
             item_img.preserveAspect = true;
@@ -87,7 +84,7 @@ public class powerup : MonoBehaviour
             var poweruplist_object = new GameObject($"PowerUpList_{item_data.GetId()}");
             poweruplist_object.AddComponent<RectTransform>().sizeDelta = new Vector2(item_data.GetCount() * 5, 5);
             poweruplist_object.GetComponent<RectTransform>().position = new Vector3(0, -0.45f, 0);
-            poweruplist_object.transform.localScale = new Vector3(1 / 34.35838f * 1.16f, 1 / 34.35838f * 1.16f, 1 / 34.35838f * 1.16f);
+            poweruplist_object.transform.localScale = new Vector3(init_int * 1.16f, init_int * 1.16f, init_int * 1.16f);
 
             poweruplist_object.AddComponent<GridLayoutGroup>().cellSize = new Vector2(5, 5);
             poweruplist_object.GetComponent<GridLayoutGroup>().constraint = GridLayoutGroup.Constraint.FixedColumnCount;
@@ -112,7 +109,6 @@ public class powerup : MonoBehaviour
                 powerup_object.transform.SetParent(poweruplist_object.transform);
             }
 
-            ListGameObject.Add(chara_object);
             back_image_object.transform.SetParent(chara_object.transform);
             image_object.transform.SetParent(back_image_object.transform);
             name_object.transform.SetParent(chara_object.transform);
@@ -124,43 +120,41 @@ public class powerup : MonoBehaviour
             Item item_data = ItemDataBase.FindItemFromName(Select_Name.text);
             Json.PowerUpList poweroup_data = player.PowerUp.poweruplist.Find(data => data.id == item_data.GetId());
             int cost = MathCost(item_data, player);
-            if (poweroup_data.powerupcount != 0 && cost <= player.Money)
-            {
-                player.Money -= cost;
-                poweroup_data.powerupcount -= 1;
-                player.PowerUp.allcount += 1;
-                player.PowerUp.allcost += cost;
-                Json.instance.Save(player);
-                if (poweroup_data.powerupcount == 0)
-                {
-                    GameObject.Find($"Item_{item_data.GetId()}").GetComponent<Image>().color = new Color(1, 1, 0.6f, 1);
-                }
+            if (poweroup_data.powerupcount == 0 || cost > player.Money) return;
 
-                GameObject.Find($"Money_remain").GetComponent<Text>().text = player.Money.ToString();
-                int powerup_id = item_data.GetCount() - poweroup_data.powerupcount;
-                GameObject.Find($"PowerUp_Check_{item_data.GetId()}_{powerup_id}").GetComponent<Image>().color = new Color(255, 255, 255, 255);
-                SelectDescription(item_data, player, poweroup_data);
-            };
+            player.Money -= cost;
+            poweroup_data.powerupcount -= 1;
+            player.PowerUp.allcount += 1;
+            player.PowerUp.allcost += cost;
+            Json.instance.Save(player);
+            if (poweroup_data.powerupcount == 0)
+            {
+                GameObject.Find($"Item_{item_data.GetId()}").GetComponent<Image>().color = new Color(1, 1, 0.6f, 1);
+            }
+
+            GameObject.Find($"Money_remain").GetComponent<Text>().text = player.Money.ToString();
+            int powerup_id = item_data.GetCount() - poweroup_data.powerupcount;
+            GameObject.Find($"PowerUp_Check_{item_data.GetId()}_{powerup_id}").GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            SelectDescription(item_data, player, poweroup_data);
         });
 
         SellPowerUp.onClick.AddListener(() => {
-            if (player.PowerUp.allcount != 0)
-            {
-                for (int i = 1; i < ItemDataBase.GetItemLists().Count + 1; i++)//  Mob‚ÌƒŠƒXƒg‚Ì”‚Ì•ª‚¾‚¯ŒJ‚è•Ô‚·ˆ—
-                {
-                    Item item_data = ItemDataBase.FindItemFromId(i);
-                    Json.PowerUpList initPowerUp = new Json.PowerUpList();
-                    initPowerUp.id = item_data.GetId();
-                    initPowerUp.powerupcount = item_data.GetCount();
-                    player.PowerUp.poweruplist[i-1] = initPowerUp;
-                };
+            if (player.PowerUp.allcount == 0) return;
 
-                player.Money += player.PowerUp.allcost;
-                player.PowerUp.allcount = 0;
-                player.PowerUp.allcost = 0;
-                Json.instance.Save(player);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            for (int i = 1; i < ItemDataBase.GetItemLists().Count + 1; i++)//  Mob‚ÌƒŠƒXƒg‚Ì”‚Ì•ª‚¾‚¯ŒJ‚è•Ô‚·ˆ—
+            {
+                Item item_data = ItemDataBase.FindItemFromId(i);
+                Json.PowerUpList initPowerUp = new Json.PowerUpList();
+                initPowerUp.id = item_data.GetId();
+                initPowerUp.powerupcount = item_data.GetCount();
+                player.PowerUp.poweruplist[i-1] = initPowerUp;
             };
+
+            player.Money += player.PowerUp.allcost;
+            player.PowerUp.allcount = 0;
+            player.PowerUp.allcost = 0;
+            Json.instance.Save(player);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         });
     }
 

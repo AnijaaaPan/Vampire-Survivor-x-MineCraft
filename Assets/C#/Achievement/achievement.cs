@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class achievement : MonoBehaviour
 {
@@ -44,6 +41,8 @@ public class achievement : MonoBehaviour
 
     private List<GameObject> ListGameObject = new List<GameObject>();
 
+    private float init_int = 1 / 34.36426f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,12 +53,12 @@ public class achievement : MonoBehaviour
         foreach (var a in player.Achievement)
         {
             var achievement_object = new GameObject($"Achievement_Id_{a.id}");
-            achievement_object.transform.localScale = new Vector3(1 / 34.36426f, 1 / 34.36426f, 1 / 34.36426f);
+            achievement_object.transform.localScale = new Vector3(init_int, init_int, init_int);
             achievement_object.AddComponent<RectTransform>();
 
             var achievement_select_object = new GameObject($"Achievement_Select_Id_{a.id}");
             achievement_select_object.AddComponent<RectTransform>().sizeDelta = new Vector2(210, 20);
-            achievement_select_object.transform.localScale = new Vector3(1 / 34.36426f, 1 / 34.36426f, 1 / 34.36426f);
+            achievement_select_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image achievement_select_img = achievement_select_object.AddComponent<Image>();
             achievement_select_img.sprite = select_achievement;
@@ -81,7 +80,7 @@ public class achievement : MonoBehaviour
 
             var check_box_object = new GameObject($"Check_Box_{a.id}");
             check_box_object.AddComponent<RectTransform>().sizeDelta = new Vector2(14, 14);
-            check_box_object.transform.localScale = new Vector3(1 / 34.36426f, 1 / 34.36426f, 1 / 34.36426f);
+            check_box_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image check_box_img = check_box_object.AddComponent<Image>();
             check_box_img.preserveAspect = true;
@@ -90,7 +89,7 @@ public class achievement : MonoBehaviour
 
             var check_object = new GameObject($"Check_{a.id}");
             check_object.AddComponent<RectTransform>().sizeDelta = new Vector2(8, 8);
-            check_object.transform.localScale = new Vector3(1 / 34.36426f, 1 / 34.36426f, 1 / 34.36426f);
+            check_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image check_img = check_object.AddComponent<Image>();
             check_img.preserveAspect = true;
@@ -109,11 +108,11 @@ public class achievement : MonoBehaviour
             descript.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
             descript.alignment = TextAnchor.MiddleLeft;
             description_object.GetComponent<RectTransform>().sizeDelta = new Vector2(992, 116);
-            description_object.transform.localScale = new Vector3(1 / 34.36426f * 0.1662177f, 1 / 34.36426f * 0.1662177f, 1 / 34.36426f * 0.1662177f);
+            description_object.transform.localScale = new Vector3(init_int * 0.1662177f, init_int * 0.1662177f, init_int * 0.1662177f);
 
             var image_object = new GameObject($"Image_{a.id}");
             image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(16, 16);
-            image_object.transform.localScale = new Vector3(1 / 34.36426f, 1 / 34.36426f, 1 / 34.36426f);
+            image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
             Image img = image_object.AddComponent<Image>();
             img.preserveAspect = true;
@@ -147,7 +146,7 @@ public class achievement : MonoBehaviour
 
                 var money_image_object = new GameObject($"Money_Image_{a.id}");
                 money_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(16, 16);
-                money_image_object.transform.localScale = new Vector3(1 / 34.36426f, 1 / 34.36426f, 1 / 34.36426f);
+                money_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
 
                 Image money_img = money_image_object.AddComponent<Image>();
                 money_img.preserveAspect = true;

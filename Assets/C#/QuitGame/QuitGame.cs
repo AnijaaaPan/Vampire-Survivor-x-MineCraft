@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 public class QuitGame : MonoBehaviour, IPointerClickHandler
 {
     void Quit() {
@@ -12,17 +11,6 @@ public class QuitGame : MonoBehaviour, IPointerClickHandler
         #endif
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)

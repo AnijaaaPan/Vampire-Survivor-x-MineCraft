@@ -56,13 +56,14 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\C#\Database\Map\MapDataBase.cs" />
     <Compile Include="Assets\C#\Json.cs" />
     <Compile Include="Assets\C#\QuitGame\QuitGame.cs" />
     <Compile Include="Assets\C#\Collection\collection.cs" />
-    <Compile Include="Assets\C#\SelectCharacter\select_character.cs" />
     <Compile Include="Assets\C#\Database\Item\Item.cs" />
     <Compile Include="Assets\C#\Database\Item\Special\SpecialItemDataBase.cs" />
     <Compile Include="Assets\C#\Header\backescape.cs" />
+    <Compile Include="Assets\C#\MapSelect\map.cs" />
     <Compile Include="Assets\C#\SelectCharacter\chara.cs" />
     <Compile Include="Assets\C#\Title\MousePointerTitle.cs" />
     <Compile Include="Assets\C#\Database\Mob\MobDataBase.cs" />
@@ -74,11 +75,9 @@
     <Compile Include="Assets\C#\Header\backmenu.cs" />
     <Compile Include="Assets\C#\Title\Move_Scene.cs" />
     <Compile Include="Assets\C#\Database\Weapon\WeaponDataBase.cs" />
+    <Compile Include="Assets\C#\Database\Map\Map.cs" />
     <Compile Include="Assets\C#\Database\Item\Special\SpecialItem.cs" />
     <Compile Include="Assets\C#\Header\CountMoney.cs" />
-    <Compile Include="Assets\C#\Database\Map\Map.cs" />
-    <Compile Include="Assets\C#\Database\Map\MapDataBase.cs" />
-    <Compile Include="Assets\C#\MapSelect\map.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SpecialItem", menuName = "CreateSpecialItem")]//  CreateからCreateSpecialItemというメニューを表示し、SpecialItemを作成する

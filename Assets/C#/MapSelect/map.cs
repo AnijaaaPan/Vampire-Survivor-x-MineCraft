@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class map : MonoBehaviour
 {
@@ -143,7 +139,7 @@ public class map : MonoBehaviour
                 player.Latest_Map_Hyper = false;
             }
             Json.instance.Save(player);
-            //SceneManager.LoadScene("PlayGame");
+            //SceneManager.LoadSceneAsync("PlayGame");
         });
     }
 
