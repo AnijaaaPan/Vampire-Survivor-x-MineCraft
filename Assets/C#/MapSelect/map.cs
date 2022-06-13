@@ -104,7 +104,6 @@ public class map : MonoBehaviour
             description.fontSize = 65;
             description.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
-
             var map_type_object = new GameObject($"Map_Type_{m.id}");
             map_type_object.transform.localScale = new Vector3(init_int * 0.09361279f, init_int * 0.09361279f, init_int * 0.09361279f);
             map_type_object.AddComponent<RectTransform>().sizeDelta = new Vector2(390, 134);
@@ -113,11 +112,13 @@ public class map : MonoBehaviour
             Text type = map_type_object.AddComponent<Text>();
             type.text = map.GetType();
             type.fontSize = 100;
+            type.alignment = TextAnchor.MiddleCenter;
             type.color = new Color(1, 0.75f, 0, 1);
             type.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
             Outline outline = map_type_object.AddComponent<Outline>();
-            outline.effectColor = new Color(1, 0.75f, 0, 1);
+            outline.effectColor = new Color(0, 0, 0, 1);
+            outline.effectDistance = new Vector2(3, -3);
 
             if (player.Latest_Map == m.id)
             {
@@ -129,6 +130,7 @@ public class map : MonoBehaviour
             map_image_object.transform.SetParent(map_object.transform);
             map_select_image_object.transform.SetParent(map_object.transform);
             map_description_object.transform.SetParent(map_object.transform);
+            map_type_object.transform.SetParent(map_object.transform);
             map_object.transform.SetParent(parent_object);
         }
 
