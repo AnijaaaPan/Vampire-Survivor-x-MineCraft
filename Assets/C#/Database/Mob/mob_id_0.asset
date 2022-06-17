@@ -16,7 +16,6 @@ MonoBehaviour:
   weapon_id: 1
   name: Antonio
   description: "10\u30EC\u30D9\u30EB\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8\u304C10%\u30A2\u30C3\u30D7(\u4E0A\u9650:50%)\u3002"
-  icon: {fileID: 21300000, guid: 07bd4cf872ab9ec43ba5481de35e2ff9, type: 3}
   use: 1
   hidden: 0
   Parameter:

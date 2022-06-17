@@ -116,7 +116,7 @@ public class chara : MonoBehaviour
 
             var image_object = new GameObject($"Image_{mob.GetId()}");
             image_object.transform.localScale = new Vector3(init_int * 0.3f, init_int * 0.3f, init_int * 0.3f);
-            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(68.85f, 110);
+            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(110, 110);
             image_object.GetComponent<RectTransform>().position = new Vector3(0.305f, -0.1175f, 0);
 
             Image chara_img = image_object.AddComponent<Image>();

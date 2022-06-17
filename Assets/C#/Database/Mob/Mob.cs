@@ -24,9 +24,6 @@ public class Mob: ScriptableObject
     private string description; //Mobの説明
 
     [SerializeField]
-    private Sprite icon; //Mobのアイコン
-
-    [SerializeField]
     private bool use; //現在使用できるキャラか否か
 
     [SerializeField]
@@ -53,7 +50,13 @@ public class Mob: ScriptableObject
     }
     public Sprite GetIcon() //アイコンを入力したら、
     {
-        return icon; // iconに返す
+        Sprite[] image = Resources.LoadAll<Sprite>($"Mob/{GetName()}/");
+        return image[0]; // IconList[0]に返す
+    }
+    public Sprite[] GetIcons() //アイコンリストを入力したら、
+    {
+        Sprite[] image = Resources.LoadAll<Sprite>($"Mob/{GetName()}/");
+        return image; // imageに返す
     }
     public bool GetUse() //現在使用できるキャラか否かを入力したら、
     {
