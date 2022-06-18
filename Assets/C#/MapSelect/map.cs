@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class map : MonoBehaviour
 {
     [SerializeField, Tooltip("êe")]
@@ -156,7 +156,7 @@ public class map : MonoBehaviour
                 player.Latest_Map_Hyper = false;
             }
             Json.instance.Save(player);
-            //SceneManager.LoadSceneAsync("PlayGame");
+            SceneManager.LoadSceneAsync("Map");
         });
     }
 
