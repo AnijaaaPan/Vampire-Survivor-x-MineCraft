@@ -78,7 +78,7 @@
     <Compile Include="Assets\C#\Database\Map\Map.cs" />
     <Compile Include="Assets\C#\Database\Item\Special\SpecialItem.cs" />
     <Compile Include="Assets\C#\Header\CountMoney.cs" />
-    <Compile Include="Assets\C#\MapSelect\CharaMove.cs" />
+    <Compile Include="Assets\C#\MapSelect\MoveChara.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
