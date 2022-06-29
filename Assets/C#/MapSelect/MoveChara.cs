@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class MoveChara : MonoBehaviour
@@ -61,27 +62,11 @@ public class MoveChara : MonoBehaviour
         float MathMoveDistanceX = 0;
         float MathMoveDistanceY = 0;
 
-        if (Input.GetMouseButtonDown(0) && ClickScreen == false)
-        {
-            ClickScreen = true;
-            ClickStartPosition = Input.mousePosition;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            ClickScreen = false;
-        }
-
         if (Input.GetMouseButton(0))
         {
-            ClickEndPosition = Input.mousePosition;
-            if (ClickStartPosition.x == ClickEndPosition.x && ClickStartPosition.y == ClickEndPosition.y) return;
-
-            float Radian = GetRadian(ClickStartPosition.x, ClickStartPosition.y, ClickEndPosition.x, ClickEndPosition.y) * (180 / Mathf.PI);
-            float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
-            float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
-
-            MathMoveDistanceX = 0.014f * cos;
-            MathMoveDistanceY = 0.014f * sin;
+            List<float> PushMouseButtonSinCos = PushMouseButton();
+            MathMoveDistanceX = PushMouseButtonSinCos[0];
+            MathMoveDistanceY = PushMouseButtonSinCos[1];
         }
         else
         {
@@ -92,6 +77,28 @@ public class MoveChara : MonoBehaviour
         UpdateObjectCoordinate(MathMoveDistanceX, MathMoveDistanceY);
     }
 
+    List<float> PushMouseButton()
+    {
+        if (Input.GetMouseButtonDown(0) && ClickScreen == false)
+        {
+            ClickScreen = true;
+            ClickStartPosition = Input.mousePosition;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            ClickScreen = false;
+        }
+
+        ClickEndPosition = Input.mousePosition;
+        if (ClickStartPosition.x == ClickEndPosition.x && ClickStartPosition.y == ClickEndPosition.y) return new List<float>() { 0, 0 };
+
+        float Radian = GetRadian(ClickStartPosition.x, ClickStartPosition.y, ClickEndPosition.x, ClickEndPosition.y) * (180 / Mathf.PI);
+        float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
+        float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
+
+        return new List<float>() { 0.014f * cos, 0.014f * sin };
+    }
+
     float GetRadian(float x, float y, float x2, float y2)
     {
         return Mathf.Atan2(y2 - y, x2 - x);
@@ -99,6 +106,7 @@ public class MoveChara : MonoBehaviour
 
     void GetLatestPlayerVector()
     {
+
         if (!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow) &&
             !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) LatestPlayerVector[0] = null;
 
