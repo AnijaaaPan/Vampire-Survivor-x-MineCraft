@@ -16,6 +16,8 @@ public class MoveChara : MonoBehaviour
     Transform BackCharaTransform;
     Transform CameraTransform;
 
+    float MoveSpeed = 0.014f;
+
     Image CharaImage;
     Image CharaBackImageFront;
     Image CharaBackImageBack;
@@ -96,7 +98,7 @@ public class MoveChara : MonoBehaviour
         float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
         float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
-        return new List<float>() { 0.014f * cos, 0.014f * sin };
+        return new List<float>() { MoveSpeed * cos, MoveSpeed * sin };
     }
 
     float GetRadian(float x, float y, float x2, float y2)
@@ -171,12 +173,12 @@ public class MoveChara : MonoBehaviour
 
         if (LatestPlayerVector[0] != null)
         {
-            MathMoveDistanceX = LatestPlayerVector[0] == true ? 0.014f : -0.014f;
+            MathMoveDistanceX = LatestPlayerVector[0] == true ? MoveSpeed : -MoveSpeed;
         }
 
         if (LatestPlayerVector[1] != null)
         {
-            MathMoveDistanceY = LatestPlayerVector[1] == true ? 0.014f : -0.014f;
+            MathMoveDistanceY = LatestPlayerVector[1] == true ? MoveSpeed : -MoveSpeed;
         }
 
         if (LatestPlayerVector[0] != null && LatestPlayerVector[1] != null)

@@ -71,6 +71,7 @@
     <Compile Include="Assets\C#\Powerup\powerup.cs" />
     <Compile Include="Assets\C#\Database\Weapon\Weapon.cs" />
     <Compile Include="Assets\C#\Achievement\achievement.cs" />
+    <Compile Include="Assets\C#\MapSelect\MoveChara.cs" />
     <Compile Include="Assets\C#\Database\Mob\Mob.cs" />
     <Compile Include="Assets\C#\Header\backmenu.cs" />
     <Compile Include="Assets\C#\Title\Move_Scene.cs" />
@@ -78,7 +79,7 @@
     <Compile Include="Assets\C#\Database\Map\Map.cs" />
     <Compile Include="Assets\C#\Database\Item\Special\SpecialItem.cs" />
     <Compile Include="Assets\C#\Header\CountMoney.cs" />
-    <Compile Include="Assets\C#\MapSelect\MoveChara.cs" />
+    <Compile Include="Assets\C#\MapSelect\MoveMapBackGround.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

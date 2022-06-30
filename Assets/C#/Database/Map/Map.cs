@@ -29,6 +29,12 @@ public class Map : ScriptableObject
     private int id; //MapのID
 
     [SerializeField]
+    private int sizeX; //Mapのx軸の大きさ
+
+    [SerializeField]
+    private int sizeY; //Mapのy軸の大きさ
+
+    [SerializeField]
     private string description; //Mapの説明
 
     [SerializeField]
@@ -57,6 +63,14 @@ public class Map : ScriptableObject
     public int GetId() //IDを入力したら、
     {
         return id; // idに返す
+    }
+    public int GetSizeX() //Mapのx軸の大きさを入力したら、
+    {
+        return sizeX; // sizeXに返す
+    }
+    public int GetSizeY() //Mapのy軸の大きさを入力したら、
+    {
+        return sizeY; // sizeYに返す
     }
     public string GetDescription() //説明を入力したら、
     {
