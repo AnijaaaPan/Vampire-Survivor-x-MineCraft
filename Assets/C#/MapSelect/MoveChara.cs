@@ -26,12 +26,7 @@ public class MoveChara : MonoBehaviour
     int CharaImagePageIndex = 0;
     int CharaImageListCount;
 
-    Vector3 CharaPosition;
-    Vector3 FrontCharaPosition;
-    Vector3 BackCharaPosition;
-    Vector3 CameraPosition;
-
-    bool ClickScreen = false;
+    bool isClickScreen = false;
     Vector3 ClickStartPosition;
     Vector3 ClickEndPosition;
 
@@ -47,11 +42,6 @@ public class MoveChara : MonoBehaviour
         BackCharaTransform = CharaBack.transform;
         CameraTransform = Camera.main.transform;
 
-        CharaPosition = CharaTransform.position;
-        FrontCharaPosition = FrontCharaTransform.position;
-        BackCharaPosition = BackCharaTransform.position;
-        CameraPosition = CameraTransform.position;
-
         CharaImage = this.gameObject.GetComponent<Image>();
         CharaBackImageFront = CharaFront.GetComponent<Image>();
         CharaBackImageBack = CharaBack.GetComponent<Image>();
@@ -64,7 +54,7 @@ public class MoveChara : MonoBehaviour
         float MathMoveDistanceX = 0;
         float MathMoveDistanceY = 0;
 
-        if (Input.GetMouseButton(0))
+        if (LatestPlayerVector[0] == null && LatestPlayerVector[1] == null && isPushMouseButton())
         {
             List<float> PushMouseButtonSinCos = PushMouseButton();
             MathMoveDistanceX = PushMouseButtonSinCos[0];
@@ -75,20 +65,16 @@ public class MoveChara : MonoBehaviour
             GetLatestPlayerVector();
         }
 
-        UpdateCharaImagePage();
+        UpdateCharaImagePage(MathMoveDistanceX, MathMoveDistanceY);
         UpdateObjectCoordinate(MathMoveDistanceX, MathMoveDistanceY);
     }
 
     List<float> PushMouseButton()
     {
-        if (Input.GetMouseButtonDown(0) && ClickScreen == false)
+        if (!isClickScreen)
         {
-            ClickScreen = true;
+            isClickScreen = true;
             ClickStartPosition = Input.mousePosition;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            ClickScreen = false;
         }
 
         ClickEndPosition = Input.mousePosition;
@@ -101,6 +87,11 @@ public class MoveChara : MonoBehaviour
         return new List<float>() { MoveSpeed * cos, MoveSpeed * sin };
     }
 
+    bool isPushMouseButton()
+    {
+        return Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2);
+    }
+
     float GetRadian(float x, float y, float x2, float y2)
     {
         return Mathf.Atan2(y2 - y, x2 - x);
@@ -108,7 +99,7 @@ public class MoveChara : MonoBehaviour
 
     void GetLatestPlayerVector()
     {
-
+        isClickScreen = false;
         if (!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow) &&
             !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) LatestPlayerVector[0] = null;
 
@@ -134,20 +125,19 @@ public class MoveChara : MonoBehaviour
         };
     }
 
-    void UpdateCharaImagePage()
+    void UpdateCharaImagePage(float MathMoveDistanceX, float MathMoveDistanceY)
     {
-        if (LatestPlayerVector[0] == null && LatestPlayerVector[1] == null && !Input.GetMouseButton(0))
+        if (!isPushMouseButton() && LatestPlayerVector[0] == null && LatestPlayerVector[1] == null || 
+            isPushMouseButton() && MathMoveDistanceX == 0 && MathMoveDistanceY == 0)
         {
             CharaImagePageIndex = 0;
         }
         else
-        {
             CharaImagePageIndex++;
             if (Mathf.FloorToInt(CharaImagePageIndex / 4) > CharaImageListCount)
             {
                 CharaImagePageIndex = 0;
             }
-        }
         CharaImage.sprite = CharaImageList[Mathf.FloorToInt(CharaImagePageIndex / 4)];
         CharaBackImageFront.GetComponent<Image>().sprite = CharaImage.sprite;
         CharaBackImageBack.GetComponent<Image>().sprite = CharaImage.sprite;
@@ -155,15 +145,13 @@ public class MoveChara : MonoBehaviour
 
     void UpdateObjectCoordinate(float MathMoveDistanceX, float MathMoveDistanceY)
     {
-        if (LatestPlayerVector[0] == null && LatestPlayerVector[1] == null && !Input.GetMouseButton(0))
+        if (LatestPlayerVector[0] == null && LatestPlayerVector[1] == null && !isPushMouseButton())
         {
-            FrontCharaPosition.x = CharaPosition.x;
-            FrontCharaPosition.y = CharaPosition.y;
-            BackCharaPosition.x = CharaPosition.x;
-            BackCharaPosition.y = CharaPosition.y;
+            FrontCharaTransform.position = new Vector3(CharaTransform.position.x, CharaTransform.position.y);
+            BackCharaTransform.position = new Vector3(CharaTransform.position.x, CharaTransform.position.y);
         };
 
-        if (LatestPlayerVector[0] != null || Input.GetMouseButton(0))
+        if (LatestPlayerVector[0] != null || isPushMouseButton() && MathMoveDistanceX != 0 && MathMoveDistanceY != 0)
         {
             int PlayerVectorLeftRight = LatestPlayerVector[0] == true || MathMoveDistanceX > 0 ? -1 : 1;
             CharaTransform.localScale = new Vector3(PlayerVectorLeftRight, 1, 1);
@@ -188,18 +176,12 @@ public class MoveChara : MonoBehaviour
             MathMoveDistanceY /= Root2;
         }
 
-        CharaPosition.x += MathMoveDistanceX;
-        CharaPosition.y += MathMoveDistanceY;
-        FrontCharaPosition.x = CharaPosition.x - MathMoveDistanceX * 5;
-        FrontCharaPosition.y = CharaPosition.y - MathMoveDistanceY * 5;
-        BackCharaPosition.x = CharaPosition.x - MathMoveDistanceX * 10;
-        BackCharaPosition.y = CharaPosition.y - MathMoveDistanceY * 10;
-        CameraPosition.x += MathMoveDistanceX;
-        CameraPosition.y += MathMoveDistanceY;
+        float MoveX = CharaTransform.position.x + MathMoveDistanceX;
+        float MoveY = CharaTransform.position.y + MathMoveDistanceY;
 
-        CharaTransform.position = CharaPosition;
-        FrontCharaTransform.position = FrontCharaPosition;
-        BackCharaTransform.position = BackCharaPosition;
-        CameraTransform.position = CameraPosition;
+        CharaTransform.position = new Vector3(MoveX, MoveY, 0);
+        CameraTransform.position = new Vector3(MoveX, MoveY, -10f);
+        FrontCharaTransform.position = new Vector3(MoveX - MathMoveDistanceX * 5, MoveY - MathMoveDistanceY * 5);
+        BackCharaTransform.position = new Vector3(MoveX - MathMoveDistanceX * 10, MoveY - MathMoveDistanceY * 10);
     }
 }

@@ -8,8 +8,11 @@ public class Move_Scene : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left ||
+            eventData.button == PointerEventData.InputButton.Right ||
+            eventData.button == PointerEventData.InputButton.Middle)
         {
+            Music.instance.ClickSound();
             SceneManager.LoadSceneAsync(SceneName);
         }
     }

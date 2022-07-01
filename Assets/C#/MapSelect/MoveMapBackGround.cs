@@ -60,12 +60,12 @@ public class MoveMapBackGround : MonoBehaviour
     void Update()
     {
         float getAbsX = Mathf.Abs(Chara.transform.position.x % PlayMapInfo.initX);
-        if (Chara.transform.position.x <= 0)
+        if (Chara.transform.position.x < 0)
         {
             getAbsX = PlayMapInfo.initX - getAbsX;
         }
         float getAbsY = Mathf.Abs(Chara.transform.position.y % PlayMapInfo.initY);
-        if (Chara.transform.position.y <= 0)
+        if (Chara.transform.position.y < 0)
         {
             getAbsY = PlayMapInfo.initY - getAbsY;
         }
@@ -87,12 +87,12 @@ public class MoveMapBackGround : MonoBehaviour
         SelectMap.SetActive(true);
 
         RightTopMap = Instantiate(SelectMap);
-        if (PlayMapInfo.x_axis == false)
+        if (PlayMapInfo.x_axis == true)
         {
             LeftTopMap = Instantiate(SelectMap);
         }
 
-        if (PlayMapInfo.y_axis == false)
+        if (PlayMapInfo.y_axis == true)
         {
             RightLowMap = Instantiate(SelectMap);
         }
