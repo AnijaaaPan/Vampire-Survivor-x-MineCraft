@@ -1,232 +1,270 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class achievement : MonoBehaviour
 {
-    [SerializeField, Tooltip("親")]
-    Transform parent_object = null;
-
-    [SerializeField]
-    private MobDataBase MobDataBase;//  使用するデータベース
-
-    [SerializeField]
-    private WeaponDataBase WeaponDataBase;//  使用するデータベース
-
-    [SerializeField]
-    private ItemDataBase ItemDataBase;//  使用するデータベース
-
-    [SerializeField]
-    private SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
-
-    [SerializeField]
-    private MapDataBase MapDataBase;//  使用するデータベース
-
-    public Sprite select_achievement;
-    public Sprite check_background;
-    public Sprite check;
-    public Sprite money;
+    public Sprite SelectAchievement;
+    public Sprite CheckBackGround;
+    public Sprite Check;
+    public Sprite Emerald;
 
     public Text Title;
-    public Image Select_Weapon_Item_Image;
-    public Image Select_Chara_Image;
-    public Image Select_Monery_Weapon_Image;
-    public Image Select_Map_Image;
-    public GameObject Select_Weapon_Item_Object;
-    public GameObject Select_Chara_Object;
-    public GameObject Select_Monery_Weapon_Object;
-    public GameObject Select_Map_Object;
-    public Text Select_Descrpition;
-    public Text Select_Effect;
+    public Text SelectDescrpition;
+    public Text SelectEffect;
 
-    private List<GameObject> ListGameObject = new List<GameObject>();
+    public Image SelectWeaponItemImage;
+    public Image SelectCharaImage;
+    public Image SelectMoneyWeaponImage;
+    public Image SelectMapImage;
 
-    private float init_int = 1 / 34.36426f;
+    public GameObject SelectWeaponItemObject;
+    public GameObject SelectCharaObject;
+    public GameObject SelectMoneyWeaponObject;
+    public GameObject SelectMapObject;
 
-    // Start is called before the first frame update
+    private int UnLockCount = 0;
+    private float InitInt = 1 / 34.36426f;
+    private GameObject BeforeGameObject;
+
+    private Json.PlayerData player = Json.instance.Load();
+    private MobDataBase MobDataBase = Json.instance.MobDataBase;
+    private WeaponDataBase WeaponDataBase = Json.instance.WeaponDataBase;
+    private ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
+    private MapDataBase MapDataBase = Json.instance.MapDataBase;
+
     void Start()
     {
-        int unlock = 0;
-        var check_item_id = 1;
-
-        Json.PlayerData player = Json.instance.Load();
-        foreach (var a in player.Achievement)
+        foreach (Json.AchievementData a in player.Achievement)
         {
-            var achievement_object = new GameObject($"Achievement_Id_{a.id}");
-            achievement_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-            achievement_object.AddComponent<RectTransform>();
+            if (a.use == true) UnLockCount++;
 
-            var achievement_select_object = new GameObject($"Achievement_Select_Id_{a.id}");
-            achievement_select_object.AddComponent<RectTransform>().sizeDelta = new Vector2(210, 20);
-            achievement_select_object.transform.localScale = new Vector3(init_int, init_int, init_int);
+            GameObject AchievementObject = CreateAchievementObject(a);
+            GameObject AchievementSelectObject = CreateAchievementSelectObject(a);
+            GameObject AchievementCheckBoxObject = CreateAchievementCheckBoxObject(a);
+            GameObject AchievementCheckObject = CreateAchievementCheckObject(a);
+            GameObject AchievementDescriptionObject = CreateAchievementDescriptionObject(a);
+            GameObject AchievementImageObject = CreateAchievementImageObject(a);
 
-            Image achievement_select_img = achievement_select_object.AddComponent<Image>();
-            achievement_select_img.sprite = select_achievement;
-            achievement_select_img.GetComponent<RectTransform>().position = new Vector3(0.01f, 0, 0);
-            if ( a.id != 1 )
-            {
-                achievement_select_img.color = new Color(0, 0, 0, 0);
-            } else
-            {
-                achievementDescription(a);
-            }
-
-            achievement_object.AddComponent<Button>().onClick.AddListener(() => {
-                GameObject.Find($"Achievement_Select_Id_{check_item_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
-                check_item_id = a.id;
-                achievement_select_img.color = new Color(1, 1, 1, 1);
-                achievementDescription(a);
-            });
-
-            var check_box_object = new GameObject($"Check_Box_{a.id}");
-            check_box_object.AddComponent<RectTransform>().sizeDelta = new Vector2(14, 14);
-            check_box_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-
-            Image check_box_img = check_box_object.AddComponent<Image>();
-            check_box_img.preserveAspect = true;
-            check_box_img.sprite = check_background;
-            check_box_img.GetComponent<RectTransform>().position = new Vector3(-2.7f, 0, 0);
-
-            var check_object = new GameObject($"Check_{a.id}");
-            check_object.AddComponent<RectTransform>().sizeDelta = new Vector2(8, 8);
-            check_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-
-            Image check_img = check_object.AddComponent<Image>();
-            check_img.preserveAspect = true;
-            check_img.sprite = check;
-            check_img.color = a.use == false ? new Color(0, 0, 0, 0) : new Color(1, 1, 1, 1);
-            if (a.use == true)
-            {
-                unlock++;
-            }
-            check_img.GetComponent<RectTransform>().position = new Vector3(-2.7f, 0, 0);
-
-            var description_object = new GameObject($"Description_{a.id}");
-            Text descript = description_object.AddComponent<Text>();
-            descript.text = a.description;
-            descript.fontSize = 50;
-            descript.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-            descript.alignment = TextAnchor.MiddleLeft;
-            description_object.GetComponent<RectTransform>().sizeDelta = new Vector2(992, 116);
-            description_object.transform.localScale = new Vector3(init_int * 0.1662177f, init_int * 0.1662177f, init_int * 0.1662177f);
-
-            var image_object = new GameObject($"Image_{a.id}");
-            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(16, 16);
-            image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-
-            Image img = image_object.AddComponent<Image>();
-            img.preserveAspect = true;
-            img.GetComponent<RectTransform>().position = new Vector3(2.7f, 0, 0);
-            if (a.type == "chara")
-            {
-                Mob mob = MobDataBase.FindMobFromId(a.type_id);
-                img.sprite = mob.GetIcon();
-
-            } else if (a.type == "weapon" || a.type == "money")
-            {
-                Weapon weapon_data = WeaponDataBase.FindWeaponFromId(a.type_id);
-                img.sprite = weapon_data.GetIcon();
-                
-            } else if (a.type == "item")
-            {
-                Item item_data = ItemDataBase.FindItemFromId(a.type_id);
-                img.sprite = item_data.GetIcon();
-
-            }
-            else if (a.type == "map" || a.type == "hyper")
-            {
-                Map map_data = MapDataBase.FindMapFromId(a.type_id);
-                img.sprite = map_data.GetBlockIcon();
-            }
-
-            image_object.transform.SetParent(achievement_object.transform);
+            AchievementImageObject.transform.SetParent(AchievementObject.transform);
             if (a.type == "money")
             {
-                img.GetComponent<RectTransform>().position = new Vector3(2.6f, 0, 0);
-
-                var money_image_object = new GameObject($"Money_Image_{a.id}");
-                money_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(16, 16);
-                money_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-
-                Image money_img = money_image_object.AddComponent<Image>();
-                money_img.preserveAspect = true;
-                money_img.sprite = money;
-                money_img.GetComponent<RectTransform>().position = new Vector3(2.7f, 0, 0);
-                money_image_object.transform.SetParent(achievement_object.transform);
+                GameObject AchievementImageMoneyObject = CreateAchievementImageMoneyObject(a);
+                AchievementImageMoneyObject.transform.SetParent(AchievementImageObject.transform);
             }
 
-            check_object.transform.SetParent(check_box_object.transform);
-            check_box_object.transform.SetParent(achievement_object.transform);
-            description_object.transform.SetParent(achievement_object.transform);
-            achievement_select_object.transform.SetParent(achievement_object.transform);
-            achievement_object.transform.SetParent(parent_object);
-            ListGameObject.Add(achievement_object);
+            AchievementCheckObject.transform.SetParent(AchievementCheckBoxObject.transform);
+            AchievementCheckBoxObject.transform.SetParent(AchievementObject.transform);
+            AchievementDescriptionObject.transform.SetParent(AchievementObject.transform);
+            AchievementSelectObject.transform.SetParent(AchievementObject.transform);
+            AchievementObject.transform.SetParent(this.gameObject.transform);
         };
 
-        Title.text = $"進行度：{ListGameObject.Count}のうち{unlock}完了";
+        Title.text = $"進行度：{player.Achievement.Count}のうち{UnLockCount}完了";
     }
-    
-    public void achievementDescription(Json.AchievementData a)
-    {
-        Select_Weapon_Item_Object.SetActive(false);
-        Select_Chara_Object.SetActive(false);
-        Select_Monery_Weapon_Object.SetActive(false);
-        Select_Map_Object.SetActive(false);
 
-        Select_Descrpition.text = a.description;
-        Select_Effect.text = a.use == false ? "未達成: " : "達成済み: ";
+    private void UpdateSelectImage(GameObject Object)
+    {
+        Music.instance.ClickSound();
+
+        GameObject BeforeObject = BeforeGameObject.transform.Find($"Select").gameObject;
+        Image BeforeObjectImage = BeforeObject.GetComponent<Image>();
+        BeforeObjectImage.color = new Color(0, 0, 0, 0);
+
+        BeforeGameObject = Object;
+        GameObject AfterObject = Object.transform.Find($"Select").gameObject;
+        Image AfterObjectImage = AfterObject.GetComponent<Image>();
+        AfterObjectImage.color = new Color(1, 1, 1, 1);
+    }
+
+    private void UpdateDescription(Json.AchievementData a)
+    {
+        SelectWeaponItemObject.SetActive(false);
+        SelectCharaObject.SetActive(false);
+        SelectMoneyWeaponObject.SetActive(false);
+        SelectMapObject.SetActive(false);
+
+        SelectDescrpition.text = a.description;
+        SelectEffect.text = a.use == false ? "未達成: " : "達成済み: ";
 
         if (a.type == "chara")
         {
-            Select_Chara_Object.SetActive(true);
+            SelectCharaObject.SetActive(true);
             Mob mob = MobDataBase.FindMobFromId(a.type_id);
-            Select_Chara_Image.sprite = mob.GetIcon();
-            Select_Chara_Image.preserveAspect = true;
-            Select_Effect.text += mob.GetName();
+            SelectCharaImage.sprite = mob.GetIcon();
+            SelectEffect.text += mob.GetName();
         }
         else if (a.type == "weapon")
         {
-            Select_Weapon_Item_Object.SetActive(true);
+            SelectWeaponItemObject.SetActive(true);
             Weapon weapon_data = WeaponDataBase.FindWeaponFromId(a.type_id);
-            Select_Weapon_Item_Image.sprite = weapon_data.GetIcon();
-            Select_Weapon_Item_Image.preserveAspect = true;
-            Select_Effect.text += weapon_data.GetName();
+            SelectWeaponItemImage.sprite = weapon_data.GetIcon();
+            SelectEffect.text += weapon_data.GetName();
 
         }
         else if (a.type == "item")
         {
-            Select_Weapon_Item_Object.SetActive(true);
+            SelectWeaponItemObject.SetActive(true);
             Item item_data = ItemDataBase.FindItemFromId(a.type_id);
-            Select_Weapon_Item_Image.sprite = item_data.GetIcon();
-            Select_Weapon_Item_Image.preserveAspect = true;
-            Select_Effect.text += item_data.GetName();
+            SelectWeaponItemImage.sprite = item_data.GetIcon();
+            SelectEffect.text += item_data.GetName();
 
-        } else if (a.type == "money")
+        }
+        else if (a.type == "money")
         {
-            Select_Monery_Weapon_Object.SetActive(true);
+            SelectMoneyWeaponObject.SetActive(true);
             Weapon weapon_data = WeaponDataBase.FindWeaponFromId(a.type_id);
-            Select_Monery_Weapon_Image.sprite = weapon_data.GetIcon();
-            Select_Monery_Weapon_Image.preserveAspect = true;
-            Select_Effect.text += $"金貨500枚獲得";
+            SelectMoneyWeaponImage.sprite = weapon_data.GetIcon();
+            SelectEffect.text += $"金貨500枚獲得";
 
         }
-        else if (a.type == "map")
+        else if (a.type == "map" || a.type == "hyper")
         {
-            Select_Map_Object.SetActive(true);
+            SelectMapObject.SetActive(true);
             Map map_data = MapDataBase.FindMapFromId(a.type_id);
-            Select_Map_Image.sprite = map_data.GetBlockIcon();
-            Select_Map_Image.preserveAspect = true;
-            Select_Effect.text += map_data.GetName();
-
+            SelectMapImage.sprite = map_data.GetBlockIcon();
+            SelectEffect.text += map_data.GetName();
+            if (a.type == "hyper") SelectEffect.text += "「ハイパーモード」";
         }
-        else if (a.type == "hyper")
+    }
+
+    private GameObject CreateAchievementObject(Json.AchievementData a)
+    {
+        GameObject Object = new GameObject($"Achievement_Id_{a.id}");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+        Object.AddComponent<RectTransform>();
+
+        if (a.id == 1)
         {
-            Select_Map_Object.SetActive(true);
-            Map map_data = MapDataBase.FindMapFromId(a.type_id);
-            Select_Map_Image.sprite = map_data.GetBlockIcon();
-            Select_Map_Image.preserveAspect = true;
-            Select_Effect.text += $"{map_data.GetName()}「ハイパーモード」";
-
+            BeforeGameObject = Object;
+            UpdateDescription(a);
         }
+
+        Button ObjectButton = Object.AddComponent<Button>();
+        ObjectButton.onClick.AddListener(() => {
+            UpdateSelectImage(Object);
+            UpdateDescription(a);
+        });
+        return Object;
+    }
+
+    private GameObject CreateAchievementSelectObject(Json.AchievementData a)
+    {
+        GameObject Object = new GameObject("Select");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(210, 20);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.sprite = SelectAchievement;
+        if (a.id != 1) ObjectImage.color = new Color(0, 0, 0, 0);
+
+        RectTransform ObjectImageRectTransform = ObjectImage.GetComponent<RectTransform>();
+        ObjectImageRectTransform.position = new Vector3(0.01f, 0, 0);
+        return Object;
+    }
+
+    private GameObject CreateAchievementCheckBoxObject(Json.AchievementData a)
+    {
+        GameObject Object = new GameObject("Check_Box");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(14, 14);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = CheckBackGround;
+
+        RectTransform ObjectImageRectTransform = ObjectImage.GetComponent<RectTransform>();
+        ObjectImageRectTransform.position = new Vector3(-2.7f, 0, 0);
+        return Object;
+    }
+
+    private GameObject CreateAchievementCheckObject(Json.AchievementData a)
+    {
+        GameObject Object = new GameObject("Check");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(8, 8);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = Check;
+        ObjectImage.color = a.use == false ? new Color(0, 0, 0, 0) : new Color(1, 1, 1, 1);
+
+        RectTransform ObjectImageRectTransform = ObjectImage.GetComponent<RectTransform>();
+        ObjectImageRectTransform.position = new Vector3(-2.7f, 0, 0);
+        return Object;
+    }
+
+    private GameObject CreateAchievementDescriptionObject(Json.AchievementData a)
+    {
+        GameObject Object = new GameObject("Description");
+        Object.transform.localScale = new Vector3(InitInt * 0.1662177f, InitInt * 0.1662177f, InitInt * 0.1662177f);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(992, 116);
+
+        Text ObjectText = Object.AddComponent<Text>();
+        ObjectText.text = a.description;
+        ObjectText.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+        ObjectText.fontSize = 50;
+        ObjectText.alignment = TextAnchor.MiddleLeft;
+        return Object;
+    }
+
+    private GameObject CreateAchievementImageObject(Json.AchievementData a)
+    {
+        GameObject Object = new GameObject("Image");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(16, 16);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        if (a.type == "chara")
+        {
+            Mob mob = MobDataBase.FindMobFromId(a.type_id);
+            ObjectImage.sprite = mob.GetIcon();
+        }
+        else if (a.type == "weapon" || a.type == "money")
+        {
+            Weapon weapon_data = WeaponDataBase.FindWeaponFromId(a.type_id);
+            ObjectImage.sprite = weapon_data.GetIcon();
+        }
+        else if (a.type == "item")
+        {
+            Item item_data = ItemDataBase.FindItemFromId(a.type_id);
+            ObjectImage.sprite = item_data.GetIcon();
+        }
+        else if (a.type == "map" || a.type == "hyper")
+        {
+            Map map_data = MapDataBase.FindMapFromId(a.type_id);
+            ObjectImage.sprite = map_data.GetBlockIcon();
+        }
+
+        RectTransform ObjectImageRectTransform = ObjectImage.GetComponent<RectTransform>();
+        ObjectImageRectTransform.position = a.type == "money" ? new Vector3(2.6f, 0, 0) : new Vector3(2.7f, 0, 0);
+        return Object;
+    }
+
+    private GameObject CreateAchievementImageMoneyObject(Json.AchievementData a)
+    {
+        GameObject Object = new GameObject("Money_Image");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(16, 16);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = Emerald;
+
+        RectTransform ObjectImageRectTransform = ObjectImage.GetComponent<RectTransform>();
+        ObjectImageRectTransform.position = new Vector3(2.7f, 0, 0);
+        return Object;
     }
 }

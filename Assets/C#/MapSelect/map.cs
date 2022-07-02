@@ -1,170 +1,105 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 public class map : MonoBehaviour
 {
-    [SerializeField, Tooltip("親")]
-    Transform parent_object = null;
-
-    [SerializeField]
-    private MapDataBase MapDataBase;//  使用するデータベース
-
     public GameObject MoveSpeed;
     public GameObject EmeraldBonus;
     public GameObject LuckBonus;
 
-    public Sprite select_map;
+    public Sprite SelectMap;
 
-    public GameObject Hyper;
     public Image Check;
-    public Button Submit_button;
+    public Button SubmitButton;
     public Button HyperButton;
+    public GameObject Hyper;
 
-    private int select_map_id;
-    private bool select_map_hyper_mode;
+    private Font TextFont;
+    private float InitInt = 1 / 34.35838f;
+    private GameObject BeforeGameObject;
 
-    private float init_int = 1 / 34.35838f;
-    // Start is called before the first frame update
+    private Json.PlayerData player = Json.instance.Load();
+    private MapDataBase MapDataBase = Json.instance.MapDataBase;
+
     void Start()
     {
-        //Debug.Log(chara.select_chara_id);
-        Json.PlayerData player = Json.instance.Load();
-        select_map_id = player.Latest_Map;
-        select_map_hyper_mode = player.Latest_Map_Hyper;
+        TextFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
-        if (player.Latest_Map_Hyper == false)
-        {
-            Check.color = new Color(0, 0, 0, 0);
-        }
+        if (player.Latest_Map_Hyper == false) Check.color = new Color(0, 0, 0, 0);
 
-        foreach (var m in player.Map)
+        foreach (Json.MapData m in player.Map)
         {
             if (m.use == false) continue;
 
             Map map = MapDataBase.FindMapFromId(m.id);
 
-            var map_object = new GameObject($"Map_{m.id}");
-            map_object.AddComponent<RectTransform>();
-            map_object.transform.localScale = new Vector3(init_int, init_int, init_int);
+            GameObject MapObject = CreateMapObject(map, m);
+            GameObject MapImageObject = CreateMapImageObject();
+            GameObject MapBackgroundObject = CreateMapBackgroundObject();
+            GameObject MapNameObject = CreateNameObject(map);
+            GameObject MapSelectObject = CreateSelectObject(m);
+            GameObject MapDescriptionObject = CreateDescriptionObject(map);
+            GameObject MapTypeObject = CreateTypeObject(map);
 
-            Image map_background_img = map_object.AddComponent<Image>();
-            map_background_img.color = new Color(0, 0, 0, 0);
-            
-            map_object.AddComponent<Button>().onClick.AddListener(() => {
-                GameObject.Find($"Map_{select_map_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
-                GameObject.Find($"Map_Select_Image_{select_map_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
-
-                select_map_id = m.id;
-                MapDescription(map, m);
-            });
-
-            var map_image_object = new GameObject($"Map_Image_{m.id}");
-            map_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-            map_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(70, 45);
-            map_image_object.GetComponent<RectTransform>().position = new Vector3(-init_int * 70, 0, 0);
-
-            Image map_img = map_image_object.AddComponent<Image>();
-
-            var map_name_background_object = new GameObject($"Map_Name_Background_{m.id}");
-            map_name_background_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-            map_name_background_object.AddComponent<RectTransform>().sizeDelta = new Vector2(70, 15);
-            map_name_background_object.GetComponent<RectTransform>().position = new Vector3(-init_int * 70, init_int * 15, 0);
-
-            Image map_name_background_img = map_name_background_object.AddComponent<Image>();
-            map_name_background_img.color = new Color(0, 0, 0, 0.7960784f);
-
-            var map_name_object = new GameObject($"Map_Name_{m.id}");
-            map_name_object.transform.localScale = new Vector3(init_int * 0.0936128f, init_int * 0.0936128f, init_int * 0.0936128f);
-            map_name_object.AddComponent<RectTransform>().sizeDelta = new Vector2(745, 160);
-            map_name_object.GetComponent<RectTransform>().position = new Vector3(-init_int * 70, init_int * 15, 0);
-
-            Text name = map_name_object.AddComponent<Text>();
-            name.text = map.GetName();
-            name.fontSize = 80;
-            name.color = new Color(1, 1, 0, 1);
-            name.alignment = TextAnchor.MiddleCenter;
-            name.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-            var map_select_image_object = new GameObject($"Map_Select_Image_{m.id}");
-            map_select_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-            map_select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(71.5f, 46.5f);
-            map_select_image_object.GetComponent<RectTransform>().position = new Vector3(-init_int * 70, 0, 0);
-
-            Image map_select_img = map_select_image_object.AddComponent<Image>();
-            map_select_img.sprite = select_map;
-            map_select_img.color = player.Latest_Map == m.id ? new Color(1, 1, 1, 1) : new Color(0, 0, 0, 0);
-
-            var map_description_object = new GameObject($"Map_Description_{m.id}");
-            map_description_object.transform.localScale = new Vector3(init_int * 0.09361279f, init_int * 0.09361279f, init_int * 0.09361279f);
-            map_description_object.AddComponent<RectTransform>().sizeDelta = new Vector2(1370, 400);
-            map_description_object.GetComponent<RectTransform>().position = new Vector3(init_int * 35, 0, 0);
-
-            Text description = map_description_object.AddComponent<Text>();
-            description.text = map.GetDescription();
-            description.fontSize = 65;
-            description.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-            var map_type_object = new GameObject($"Map_Type_{m.id}");
-            map_type_object.transform.localScale = new Vector3(init_int * 0.09361279f, init_int * 0.09361279f, init_int * 0.09361279f);
-            map_type_object.AddComponent<RectTransform>().sizeDelta = new Vector2(390, 134);
-            map_type_object.GetComponent<RectTransform>().position = new Vector3(-init_int * 53, -init_int * 22.5f, 0);
-
-            Text type = map_type_object.AddComponent<Text>();
-            type.text = map.GetType();
-            type.fontSize = 100;
-            type.alignment = TextAnchor.MiddleCenter;
-            type.color = new Color(1, 0.75f, 0, 1);
-            type.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-            Outline outline = map_type_object.AddComponent<Outline>();
-            outline.effectColor = new Color(0, 0, 0, 1);
-            outline.effectDistance = new Vector2(3, -3);
+            MapNameObject.transform.SetParent(MapBackgroundObject.transform);
+            MapBackgroundObject.transform.SetParent(MapImageObject.transform);
+            MapImageObject.transform.SetParent(MapObject.transform);
+            MapSelectObject.transform.SetParent(MapObject.transform);
+            MapDescriptionObject.transform.SetParent(MapObject.transform);
+            MapTypeObject.transform.SetParent(MapObject.transform);
+            MapObject.transform.SetParent(this.gameObject.transform);
 
             if (player.Latest_Map == m.id)
             {
-                MapDescription(map, m);
+                BeforeGameObject = MapObject;
+                UpdateDescription(map, m);
             }
-
-            map_name_object.transform.SetParent(map_name_background_object.transform);
-            map_name_background_object.transform.SetParent(map_image_object.transform);
-            map_image_object.transform.SetParent(map_object.transform);
-            map_select_image_object.transform.SetParent(map_object.transform);
-            map_description_object.transform.SetParent(map_object.transform);
-            map_type_object.transform.SetParent(map_object.transform);
-            map_object.transform.SetParent(parent_object);
         }
 
         HyperButton.onClick.AddListener(() => {
-            Check.color = select_map_hyper_mode == false ? new Color(1, 1, 1, 1) : new Color(0, 0, 0, 0);
-            select_map_hyper_mode = select_map_hyper_mode == false;
+            Music.instance.ClickSound();
+            Check.color = player.Latest_Map_Hyper == false ? new Color(1, 1, 1, 1) : new Color(0, 0, 0, 0);
+            player.Latest_Map_Hyper = player.Latest_Map_Hyper == false;
 
-            Map map = MapDataBase.FindMapFromId(select_map_id);
-            var m = player.Map[map.GetId()-1];
-            MapDescription(map, m);
+            Map map = MapDataBase.FindMapFromId(player.Latest_Map);
+            Json.MapData m = player.Map[map.GetId() - 1];
+            UpdateDescription(map, m);
         });
 
-        Submit_button.onClick.AddListener(() => {
-            Map map = MapDataBase.FindMapFromId(select_map_id);
-            var m = player.Map[map.GetId() - 1];
+        SubmitButton.onClick.AddListener(() => {
+            Music.instance.ClickSound();
+            Map map = MapDataBase.FindMapFromId(player.Latest_Map);
+            Json.MapData m = player.Map[map.GetId() - 1];
 
-            player.Latest_Map = select_map_id;
-            if (select_map_hyper_mode == true && m.hyper == true)
-            {
-                player.Latest_Map_Hyper = true;
-            } else
-            {
-                player.Latest_Map_Hyper = false;
-            }
+            player.Latest_Map = map.GetId();
             Json.instance.Save(player);
             SceneManager.LoadSceneAsync("Map");
         });
     }
 
-    public void MapDescription(Map map, Json.MapData m)
+    private void UpdateSelectImage(GameObject Object)
+    {
+        Image BeforeObjectImage = BeforeGameObject.GetComponent<Image>();
+        BeforeObjectImage.color = new Color(0, 0, 0, 0);
+
+        GameObject BeforeImageObject = BeforeGameObject.transform.Find($"SelectImage").gameObject;
+        Image BeforeImageObjectImage = BeforeImageObject.GetComponent<Image>();
+        BeforeImageObjectImage.color = new Color(0, 0, 0, 0);
+
+        BeforeGameObject = Object;
+        Image ObjectImage = Object.GetComponent<Image>();
+        ObjectImage.color = new Color(0.3647059f, 0.3764706f, 0.4117647f, 1);
+
+        GameObject ImageObject = Object.transform.Find($"SelectImage").gameObject;
+        Image ImageObjectImage = ImageObject.GetComponent<Image>();
+        ImageObjectImage.color = new Color(1, 1, 1, 1);
+    }
+
+    public void UpdateDescription(Map map, Json.MapData m)
     {
         void ChangeMoveSpeed(int parameter)
         {
-            if (parameter == 0) return;
             Text value = MoveSpeed.transform.Find("Value").gameObject.GetComponent<Text>();
             value.text = $"{parameter}%";
         }
@@ -202,9 +137,7 @@ public class map : MonoBehaviour
         }
 
         Hyper.SetActive(m.hyper);
-        GameObject.Find($"Map_{map.GetId()}").GetComponent<Image>().color = new Color(0.3647059f, 0.3764706f, 0.4117647f, 1);
-        GameObject.Find($"Map_Select_Image_{map.GetId()}").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        if (select_map_hyper_mode == true && m.hyper == true)
+        if (player.Latest_Map_Hyper == true && m.hyper == true)
         {
             HyperMode Parameter = map.GetHyperParameter();
             ChangeMoveSpeed(Parameter.MoveSpeed);
@@ -218,5 +151,123 @@ public class map : MonoBehaviour
             ChangeEmeraldBonus(Parameter.EmeraldBonus);
             ChangeLuckBonus(Parameter.LuckBonus);
         }
+    }
+
+    private GameObject CreateMapObject(Map map, Json.MapData m)
+    {
+        GameObject Object = new GameObject($"Map_{m.id}");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        Object.AddComponent<RectTransform>();
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.color = player.Latest_Map == m.id ? new Color(0.3647059f, 0.3764706f, 0.4117647f, 1) : new Color(0, 0, 0, 0);
+
+        Button ObjectButton = Object.AddComponent<Button>();
+        ObjectButton.onClick.AddListener(() => {
+            Music.instance.ClickSound();
+
+            player.Latest_Map = m.id;
+            UpdateSelectImage(Object);
+            UpdateDescription(map, m);
+        });
+        return Object;
+    }
+
+    private GameObject CreateMapImageObject()
+    {
+        GameObject Object = new GameObject("Image");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(70, 45);
+        ObjectRectTransform.position = new Vector3(-InitInt * 70, 0, 0);
+
+        Object.AddComponent<Image>();
+        return Object;
+    }
+
+    private GameObject CreateMapBackgroundObject()
+    {
+        GameObject Object = new GameObject("Background");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(70, 15);
+        ObjectRectTransform.position = new Vector3(-InitInt * 70, InitInt * 15, 0);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.color = new Color(0, 0, 0, 0.7960784f);
+        return Object;
+    }
+
+    private GameObject CreateNameObject(Map map)
+    {
+        GameObject Object = new GameObject("Name");
+        Object.transform.localScale = new Vector3(InitInt * 0.0936128f, InitInt * 0.0936128f, InitInt * 0.0936128f);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(745, 160);
+        ObjectRectTransform.position = new Vector3(-InitInt * 70, InitInt * 15, 0);
+
+        Text ObjectText = Object.AddComponent<Text>();
+        ObjectText.text = map.GetName();
+        ObjectText.font = TextFont;
+        ObjectText.fontSize = 80;
+        ObjectText.color = new Color(1, 1, 0, 1);
+        ObjectText.alignment = TextAnchor.MiddleCenter;
+        return Object;
+    }
+
+    private GameObject CreateSelectObject(Json.MapData m)
+    {
+        GameObject Object = new GameObject("SelectImage");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(71.5f, 46.5f);
+        ObjectRectTransform.position = new Vector3(-InitInt * 70, 0, 0);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.sprite = SelectMap;
+        ObjectImage.color = player.Latest_Map == m.id ? new Color(1, 1, 1, 1) : new Color(0, 0, 0, 0);
+        return Object;
+    }
+
+    private GameObject CreateDescriptionObject(Map map)
+    {
+        GameObject Object = new GameObject("Description");
+        Object.transform.localScale = new Vector3(InitInt * 0.09361279f, InitInt * 0.09361279f, InitInt * 0.09361279f);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(1370, 400);
+        ObjectRectTransform.position = new Vector3(InitInt * 35, 0, 0);
+
+        Text ObjectText = Object.AddComponent<Text>();
+        ObjectText.text = map.GetDescription();
+        ObjectText.font = TextFont;
+        ObjectText.fontSize = 65;
+        return Object;
+    }
+    private GameObject CreateTypeObject(Map map)
+    {
+        GameObject Object = new GameObject("Type");
+        Object.transform.localScale = new Vector3(InitInt * 0.09361279f, InitInt * 0.09361279f, InitInt * 0.09361279f);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(390, 134);
+        ObjectRectTransform.position = new Vector3(-InitInt * 53, -InitInt * 22.5f, 0);
+
+        Text ObjectText = Object.AddComponent<Text>();
+        ObjectText.text = map.GetType();
+        ObjectText.font = TextFont;
+        ObjectText.fontSize = 100;
+        ObjectText.alignment = TextAnchor.MiddleCenter;
+        ObjectText.color = new Color(1, 0.75f, 0, 1);
+
+        Outline ObjectOutline = Object.AddComponent<Outline>();
+        ObjectOutline.effectColor = new Color(0, 0, 0, 1);
+        ObjectOutline.effectDistance = new Vector2(3, -3);
+        return Object;
     }
 }

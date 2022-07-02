@@ -92,19 +92,19 @@ public class Json : MonoBehaviour
     }
 
     [SerializeField]
-    private MobDataBase MobDataBase;//  使用するデータベース
+    public MobDataBase MobDataBase;//  使用するデータベース
 
     [SerializeField]
-    private WeaponDataBase WeaponDataBase;//  使用するデータベース
+    public WeaponDataBase WeaponDataBase;//  使用するデータベース
 
     [SerializeField]
-    private ItemDataBase ItemDataBase;//  使用するデータベース
+    public ItemDataBase ItemDataBase;//  使用するデータベース
 
     [SerializeField]
-    private SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
+    public SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
 
     [SerializeField]
-    private MapDataBase MapDataBase;//  使用するデータベース
+    public MapDataBase MapDataBase;//  使用するデータベース
 
     private void Awake()
     {

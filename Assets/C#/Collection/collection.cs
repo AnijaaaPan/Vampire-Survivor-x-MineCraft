@@ -1,292 +1,287 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class collection : MonoBehaviour
 {
-    [SerializeField, Tooltip("親")]
-    Transform parent_object = null;
-
-    [SerializeField]
-    private WeaponDataBase WeaponDataBase;//  使用するデータベース
-
-    [SerializeField]
-    private ItemDataBase ItemDataBase;//  使用するデータベース
-
-    [SerializeField]
-    private SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
-
-    public Sprite background;
-    public Sprite specialitembackground;
-    public Sprite select;
-    public Sprite unknown;
+    public Sprite BackGround;
+    public Sprite SpecialItemBackGround;
+    public Sprite Select;
+    public Sprite Unknown;
 
     public Text Title;
-    public Image Select_Image;
-    public Text Select_Name;
-    public Text Select_Descrpition;
-    public Text Select_Effect;
+    public Text SelectName;
+    public Text SelectDescrpition;
+    public Text SelectEffect;
 
-    private List<GameObject> ListGameObject = new List<GameObject>();
+    public Image SelectImage;
 
-    private float init_int = 1 / 34.35838f;
+    public RectTransform SelectImageRectTransform;
+
+    private int UnLockCount = 0;
+    private int AllCollectionCount = 0;
+    private float InitInt = 1 / 34.35838f;
+    private GameObject BeforeGameObject;
+
+    private Json.PlayerData player = Json.instance.Load();
+    private WeaponDataBase WeaponDataBase = Json.instance.WeaponDataBase;
+    private ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
+    private SpecialItemDataBase SpecialItemDataBase = Json.instance.SpecialItemDataBase;
+
     void Start()
     {
-        int unlock = 0;
-        int check_item_id = 1;
+        AllCollectionCount = player.Weapon.Count + player.Item.Count + player.SpecialItem.Count;
 
-        Json.PlayerData player = Json.instance.Load();
-        foreach (var w in player.Weapon)
+        foreach (Json.WeaponData w in player.Weapon)
         {
+            if (w.use == true) UnLockCount++;
             Weapon weapon = WeaponDataBase.FindWeaponFromId(w.id);
 
-            var weapon_object = new GameObject($"List_{w.id}");
-            Image img = weapon_object.AddComponent<Image>();
-            img.sprite = background;
-            if (w.use == true)
+            GameObject WeaponObject = CreateWeaponObject(w, weapon);
+            GameObject WeaponImageObject = CreateWeaponImageObject(w, weapon);
+            GameObject WeaponSelectObject = CreateWeaponSelectObject(w);
+
+            SetParent(WeaponObject, WeaponImageObject, WeaponSelectObject);
+
+            if (w.id == 1)
             {
-                weapon_object.transform.localScale = new Vector3(init_int, init_int, init_int);
+                BeforeGameObject = WeaponObject;
+                UpdateSelectImage(WeaponObject);
             }
-            else
-            {
-                weapon_object.transform.localScale = new Vector3(init_int * 0.85f, init_int * 0.85f, init_int * 0.85f);
-            };
-
-            var select_image_object = new GameObject($"List_Select_Image_{w.id}");
-            select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(27.5f, 27.5f);
-            select_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-
-            Image select_weapon_img = select_image_object.AddComponent<Image>();
-            select_weapon_img.preserveAspect = true;
-            select_weapon_img.sprite = select;
-            select_weapon_img.color = w.id == 1 ? new Color(1, 1, 1, 1) : new Color(0, 0, 0, 0);
-
-            weapon_object.AddComponent<Button>().onClick.AddListener(() => {
-                GameObject.Find($"List_Select_Image_{check_item_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
-
-                check_item_id = w.id;
-                img.sprite = weaponDescription(weapon, w);
-            });
-
-            var image_object = new GameObject($"List_Image_{w.id}");
-            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(17.5f, 17.5f);
-
-            Image weapon_img = image_object.AddComponent<Image>();
-
-            weapon_img.color = new Color(1, 1, 1, 1);
-            if (w.use == true && w.id == 36)
-            {
-                weapon_img.color = new Color(1, 0, 0, 1);
-            }
-            weapon_img.preserveAspect = true;
-            if (w.use == true)
-            {
-                unlock++;
-                image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-                weapon_img.sprite = weapon.GetIcon();
-            }
-            else
-            {
-                image_object.transform.localScale = new Vector3(init_int * 0.65f, init_int * 0.65f, init_int * 0.65f);
-                weapon_img.sprite = unknown;
-            };
-
-            ListGameObject.Add(weapon_object);
-            image_object.transform.SetParent(weapon_object.transform);
-            select_image_object.transform.SetParent(weapon_object.transform);
-            weapon_object.transform.SetParent(parent_object);
         };
 
-        foreach (var i in player.Item)
+        foreach (Json.ItemData i in player.Item)
         {
+            if (i.use == true) UnLockCount++;
             Item item = ItemDataBase.FindItemFromId(i.id);
-            int i_id = ListGameObject.Count + 1;
 
-            var Item_object = new GameObject($"List_{i_id}");
-            Image img = Item_object.AddComponent<Image>();
-            img.sprite = background;
-            if (i.use == true)
-            {
-                Item_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-            }
-            else
-            {
-                Item_object.transform.localScale = new Vector3(init_int * 0.85f, init_int * 0.85f, init_int * 0.85f);
-            };
+            GameObject ItemObject = CreateItemObject(i, item);
+            GameObject ItemImageObject = CreateItemImageObject(i, item);
+            GameObject ItemSelectObject = CreateItemSelectObject();
 
-            var select_image_object = new GameObject($"List_Select_Image_{i_id}");
-            select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(27.5f, 27.5f);
-            select_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-
-            Image select_Item_img = select_image_object.AddComponent<Image>();
-            select_Item_img.preserveAspect = true;
-            select_Item_img.sprite = select;
-            select_Item_img.color = new Color(0, 0, 0, 0);
-
-            Item_object.AddComponent<Button>().onClick.AddListener(() => {
-                GameObject.Find($"List_Select_Image_{check_item_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
-
-                check_item_id = i_id;
-                img.sprite = ItemDescription(item, i, i_id);
-            });
-
-            var image_object = new GameObject($"List_Image_{i_id}");
-            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(17.5f, 17.5f);
-
-            Image Item_img = image_object.AddComponent<Image>();
-            Item_img.preserveAspect = true;
-            if (i.use == true)
-            {
-                unlock++;
-                image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-                Item_img.sprite = item.GetIcon();
-            }
-            else
-            {
-                image_object.transform.localScale = new Vector3(init_int * 0.65f, init_int * 0.65f, init_int * 0.65f);
-                Item_img.sprite = unknown;
-            };
-
-            ListGameObject.Add(Item_object);
-            image_object.transform.SetParent(Item_object.transform);
-            select_image_object.transform.SetParent(Item_object.transform);
-            Item_object.transform.SetParent(parent_object);
+            SetParent(ItemObject, ItemImageObject, ItemSelectObject);
         }
 
-        foreach (var i in player.SpecialItem)
+        foreach (Json.SpecialItemData i in player.SpecialItem)
         {
+            if (i.use == true) UnLockCount++;
             SpecialItem item = SpecialItemDataBase.FindSpecialItemFromId(i.id);
-            int i_id = ListGameObject.Count + 1;
 
-            var SpecialItem_object = new GameObject($"List_{i_id}");
-            Image img = SpecialItem_object.AddComponent<Image>();
-            img.sprite = specialitembackground;
-            if (i.use == true)
+            GameObject SpecialItemObject = CreateSpecialItemObject(i, item);
+            GameObject SpecialItemImageObject = CreateSpecialItemImageObject(i, item);
+            GameObject SpecialItemSelectObject = CreateItemSelectObject();
+
+            SetParent(SpecialItemObject, SpecialItemImageObject, SpecialItemSelectObject);
+        }
+
+        Title.text = $"コレクション：{AllCollectionCount}のうち{UnLockCount}完了";
+    }
+
+    private void SetParent(GameObject Object, GameObject ImageObject, GameObject SelectObject)
+    {
+        ImageObject.transform.SetParent(Object.transform);
+        SelectObject.transform.SetParent(Object.transform);
+        Object.transform.SetParent(this.gameObject.transform);
+    }
+
+    private void UpdateSelectImage(GameObject Object)
+    {
+        GameObject BeforeObject = BeforeGameObject.transform.Find($"SelectImage").gameObject;
+        Image BeforeObjectImage = BeforeObject.GetComponent<Image>();
+        BeforeObjectImage.color = new Color(0, 0, 0, 0);
+
+        BeforeGameObject = Object;
+        GameObject AfterObject = Object.transform.Find($"SelectImage").gameObject;
+        Image AfterObjectImage = AfterObject.GetComponent<Image>();
+        AfterObjectImage.color = new Color(1, 1, 1, 1);
+    }
+
+    private GameObject CreateWeaponObject(Json.WeaponData w, Weapon weapon)
+    {
+        void UpdateDescription()
+        {
+            if (w.use == true)
             {
-                SpecialItem_object.transform.localScale = new Vector3(init_int, init_int, init_int);
+                SelectImage.sprite = weapon.GetIcon();
+                SelectName.text = weapon.GetName();
+                SelectDescrpition.text = weapon.GetDescription();
+                SelectEffect.text = weapon.GetEffect();
+                SelectImageRectTransform.sizeDelta = new Vector2(35, 35);
             }
             else
             {
-                SpecialItem_object.transform.localScale = new Vector3(init_int * 0.85f, init_int * 0.85f, init_int * 0.85f);
+                SelectImage.sprite = Unknown;
+                SelectName.text = "???";
+                SelectDescrpition.text = "まだ未発見です";
+                SelectEffect.text = "";
+                SelectImageRectTransform.sizeDelta = new Vector2(25, 25);
             };
 
-            var select_image_object = new GameObject($"List_Select_Image_{i_id}");
-            select_image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(27.5f, 27.5f);
-            select_image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
+            SelectImage.color = w.use == true && w.id == 36 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 1);
+        }
+        
+        if (w.id == 1) UpdateDescription();
 
-            Image select_SpecialItem_img = select_image_object.AddComponent<Image>();
-            select_SpecialItem_img.preserveAspect = true;
-            select_SpecialItem_img.sprite = select;
-            select_SpecialItem_img.color = new Color(0, 0, 0, 0);
+        GameObject Object = new GameObject($"List_WeaponId_{w.id}");
+        Object.transform.localScale = w.use == true ? new Vector3(InitInt, InitInt, InitInt) : new Vector3(InitInt * 0.85f, InitInt * 0.85f, InitInt * 0.85f);
 
-            SpecialItem_object.AddComponent<Button>().onClick.AddListener(() => {
-                GameObject.Find($"List_Select_Image_{check_item_id}").GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.sprite = BackGround;
 
-                check_item_id = i_id;
-                img.sprite = SpecialItemDescription(item, i, i_id);
-            });
+        Button ObjectButton = Object.AddComponent<Button>();
+        ObjectButton.onClick.AddListener(() =>
+        {
+            Music.instance.ClickSound();
+            UpdateSelectImage(Object);
+            UpdateDescription();
+        });        
+        return Object;
+    }
 
-            var image_object = new GameObject($"List_Image_{i_id}");
-            image_object.AddComponent<RectTransform>().sizeDelta = new Vector2(17.5f, 17.5f);
+    private GameObject CreateWeaponSelectObject(Json.WeaponData w)
+    {
+        GameObject Object = new GameObject("SelectImage");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
 
-            Image SpecialItem_img = image_object.AddComponent<Image>();
-            SpecialItem_img.preserveAspect = true;
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(27.5f, 27.5f);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = Select;
+        ObjectImage.color = w.id == 1 ? new Color(1, 1, 1, 1) : new Color(0, 0, 0, 0);
+        return Object;
+    }
+
+    private GameObject CreateWeaponImageObject(Json.WeaponData w, Weapon weapon)
+    {
+        GameObject Object = new GameObject("Image");
+        Object.transform.localScale = w.use == true ? new Vector3(InitInt, InitInt, InitInt) : new Vector3(InitInt * 0.65f, InitInt * 0.65f, InitInt * 0.65f);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(17.5f, 17.5f);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = w.use == true ? weapon.GetIcon() : Unknown;
+        ObjectImage.color = w.use == true && w.id == 36 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 1);
+        return Object;
+    }
+
+    private GameObject CreateItemObject(Json.ItemData i, Item item)
+    {
+        void UpdateDescription()
+        {
+            SelectEffect.text = "";
             if (i.use == true)
             {
-                image_object.transform.localScale = new Vector3(init_int, init_int, init_int);
-                SpecialItem_img.sprite = item.GetIcon();
+                SelectImage.sprite = item.GetIcon();
+                SelectName.text = item.GetName();
+                SelectDescrpition.text = item.GetDescription();
+                SelectImageRectTransform.sizeDelta = new Vector2(35, 35);
             }
             else
             {
-                image_object.transform.localScale = new Vector3(init_int * 0.65f, init_int * 0.65f, init_int * 0.65f);
-                SpecialItem_img.sprite = unknown;
+                SelectImage.sprite = Unknown;
+                SelectName.text = "???";
+                SelectDescrpition.text = "まだ未発見です";
+                SelectImageRectTransform.sizeDelta = new Vector2(25, 25);
             };
-
-            ListGameObject.Add(SpecialItem_object);
-            image_object.transform.SetParent(SpecialItem_object.transform);
-            select_image_object.transform.SetParent(SpecialItem_object.transform);
-            SpecialItem_object.transform.SetParent(parent_object);
         }
 
-        GameObject.Find("List_1").GetComponent<Image>().sprite = weaponDescription(WeaponDataBase.FindWeaponFromId(1), player.Weapon[0]);
-        Title.text = $"コレクション：{ListGameObject.Count}のうち{unlock}完了";
+        GameObject Object = new GameObject($"List_ItemId_{i.id}");
+        Object.transform.localScale = i.use == true ? new Vector3(InitInt, InitInt, InitInt) : new Vector3(InitInt * 0.85f, InitInt * 0.85f, InitInt * 0.85f);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.sprite = BackGround;
+
+        Button ObjectButton = Object.AddComponent<Button>();
+        ObjectButton.onClick.AddListener(() =>
+        {
+            Music.instance.ClickSound();
+            UpdateSelectImage(Object);
+            UpdateDescription();
+        });
+        return Object;
     }
 
-    public Sprite weaponDescription(Weapon weapon, Json.WeaponData w)
+    private GameObject CreateItemSelectObject()
     {
-        GameObject.Find($"List_Select_Image_{w.id}").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        Select_Image.preserveAspect = true;
-        if (w.use == true)
-        {
-            Select_Image.sprite = weapon.GetIcon();
-            Select_Name.text = weapon.GetName();
-            Select_Descrpition.text = weapon.GetDescription();
-            Select_Effect.text = weapon.GetEffect();
-            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(35, 35);
-        }
-        else
-        {
-            Select_Image.sprite = unknown;
-            Select_Name.text = "???";
-            Select_Descrpition.text = "まだ未発見です";
-            Select_Effect.text = "";
-            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
-        };
+        GameObject Object = new GameObject("SelectImage");
+        Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
 
-        GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        if (w.use == true && w.id == 36)
-        {
-            GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(1, 0, 0, 1);
-        };
-        return background;
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(27.5f, 27.5f);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = Select;
+        ObjectImage.color = new Color(0, 0, 0, 0);
+        return Object;
     }
 
-    public Sprite ItemDescription(Item item, Json.ItemData i, int i_id)
+    private GameObject CreateItemImageObject(Json.ItemData i, Item item)
     {
-        GameObject.Find($"List_Select_Image_{i_id}").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        Select_Image.preserveAspect = true;
-        Select_Effect.text = "";
-        if (i.use == true)
-        {
-            Select_Image.sprite = item.GetIcon();
-            Select_Name.text = item.GetName();
-            Select_Descrpition.text = item.GetDescription();
-            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(35, 35);
-        }
-        else
-        {
-            Select_Image.sprite = unknown;
-            Select_Name.text = "???";
-            Select_Descrpition.text = "まだ未発見です";
-            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
-        };
+        GameObject Object = new GameObject("Image");
+        Object.transform.localScale = i.use == true ? new Vector3(InitInt, InitInt, InitInt) : new Vector3(InitInt * 0.65f, InitInt * 0.65f, InitInt * 0.65f);
 
-        GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        return background;
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(17.5f, 17.5f);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = i.use == true ? item.GetIcon() : Unknown;
+        return Object;
     }
-    public Sprite SpecialItemDescription(SpecialItem item, Json.SpecialItemData i, int i_id)
-    {
-        GameObject.Find($"List_Select_Image_{i_id}").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        Select_Image.preserveAspect = true;
-        Select_Effect.text = "";
-        if (i.use == true)
-        {
-            Select_Image.sprite = item.GetIcon();
-            Select_Name.text = item.GetName();
-            Select_Descrpition.text = item.GetDescription();
-            Select_Effect.text = item.GetEffect();
-            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(35, 35);
-        }
-        else
-        {
-            Select_Image.sprite = unknown;
-            Select_Name.text = "???";
-            Select_Descrpition.text = "まだ未発見です";
-            Select_Effect.text = "";
-            GameObject.Find("Select_Image").GetComponent<RectTransform>().sizeDelta = new Vector2(25, 25);
-        };
 
-        GameObject.Find($"Select_Image").GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        return specialitembackground;
+    private GameObject CreateSpecialItemObject(Json.SpecialItemData i, SpecialItem item)
+    {
+        void UpdateDescription()
+        {
+            if (i.use == true)
+            {
+                SelectImage.sprite = item.GetIcon();
+                SelectName.text = item.GetName();
+                SelectDescrpition.text = item.GetDescription();
+                SelectEffect.text = item.GetEffect();
+                SelectImageRectTransform.sizeDelta = new Vector2(35, 35);
+            }
+            else
+            {
+                SelectImage.sprite = Unknown;
+                SelectName.text = "???";
+                SelectDescrpition.text = "まだ未発見です";
+                SelectEffect.text = "";
+                SelectImageRectTransform.sizeDelta = new Vector2(25, 25);
+            };
+        }
+
+        GameObject Object = new GameObject($"List_SpecialItemId_{i.id}");
+        Object.transform.localScale = i.use == true ? new Vector3(InitInt, InitInt, InitInt) : new Vector3(InitInt * 0.85f, InitInt * 0.85f, InitInt * 0.85f);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.sprite = SpecialItemBackGround;
+
+        Button ObjectButton = Object.AddComponent<Button>();
+        ObjectButton.onClick.AddListener(() =>
+        {
+            Music.instance.ClickSound();
+            UpdateSelectImage(Object);
+            UpdateDescription();
+        });
+        return Object;
+    }
+
+    private GameObject CreateSpecialItemImageObject(Json.SpecialItemData i, SpecialItem item)
+    {
+        GameObject Object = new GameObject("Image");
+        Object.transform.localScale = i.use == true ? new Vector3(InitInt, InitInt, InitInt) : new Vector3(InitInt * 0.65f, InitInt * 0.65f, InitInt * 0.65f);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(17.5f, 17.5f);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.preserveAspect = true;
+        ObjectImage.sprite = i.use == true ? item.GetIcon() : Unknown;
+        return Object;
     }
 }

@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 5
+  m_ScrollSensitivity: 15
   m_Viewport: {fileID: 730141536}
   m_HorizontalScrollbar: {fileID: 500512147}
   m_VerticalScrollbar: {fileID: 918967597}
@@ -244,7 +244,6 @@ GameObject:
   - component: {fileID: 107961889}
   - component: {fileID: 107961888}
   - component: {fileID: 107961887}
-  - component: {fileID: 107961886}
   - component: {fileID: 107961885}
   m_Layer: 5
   m_Name: Canvas
@@ -265,18 +264,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &107961886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107961884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2024fa9e964072e4bb51d18547fa8119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &107961887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,7 +408,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -495,7 +482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c6fd9f1c8eae0c64dbbb71e7045a4998, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -572,7 +559,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: fae81be19b8b2fe4e972dbaf7d3adfcf, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1433,7 +1420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0022583008, y: 0.000213027}
+  m_AnchoredPosition: {x: 0.0023698807, y: 0.000213027}
   m_SizeDelta: {x: -5.29, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1107364469
@@ -1486,27 +1473,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdd86d4dfb93944fbd860006ab9c533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent_object: {fileID: 1107364468}
   MobDataBase: {fileID: 11400000, guid: 562b800f72d716f4f987138e3b09cc85, type: 2}
   WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
   ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
   SpecialItemDataBase: {fileID: 11400000, guid: 49355435b2c483244809e22388a5765d, type: 2}
   MapDataBase: {fileID: 11400000, guid: 73629f5c5ca6f4d4c9a58b79eddb0674, type: 2}
-  select_achievement: {fileID: 21300000, guid: de727ae74edd2204cb3d572b97a78bae, type: 3}
-  check_background: {fileID: 21300000, guid: 363402d6ad4b7b2489f6b34c7c2966a0, type: 3}
-  check: {fileID: 21300000, guid: 1130819f86b2d174fbaff9dbe803b5f5, type: 3}
-  money: {fileID: 21300000, guid: fae81be19b8b2fe4e972dbaf7d3adfcf, type: 3}
+  SelectAchievement: {fileID: 21300000, guid: de727ae74edd2204cb3d572b97a78bae, type: 3}
+  CheckBackGround: {fileID: 21300000, guid: 363402d6ad4b7b2489f6b34c7c2966a0, type: 3}
+  Check: {fileID: 21300000, guid: 1130819f86b2d174fbaff9dbe803b5f5, type: 3}
+  Emerald: {fileID: 21300000, guid: fae81be19b8b2fe4e972dbaf7d3adfcf, type: 3}
   Title: {fileID: 1016833088}
-  Select_Weapon_Item_Image: {fileID: 1140032072}
-  Select_Chara_Image: {fileID: 1452639828}
-  Select_Monery_Weapon_Image: {fileID: 284212559}
-  Select_Map_Image: {fileID: 1323815816}
-  Select_Weapon_Item_Object: {fileID: 204514164}
-  Select_Chara_Object: {fileID: 1452639826}
-  Select_Monery_Weapon_Object: {fileID: 284212557}
-  Select_Map_Object: {fileID: 1323815814}
-  Select_Descrpition: {fileID: 639318223}
-  Select_Effect: {fileID: 1548085266}
+  SelectDescrpition: {fileID: 639318223}
+  SelectEffect: {fileID: 1548085266}
+  SelectWeaponItemImage: {fileID: 1140032072}
+  SelectCharaImage: {fileID: 1452639828}
+  SelectMoneyWeaponImage: {fileID: 284212559}
+  SelectMapImage: {fileID: 1323815816}
+  SelectWeaponItemObject: {fileID: 204514164}
+  SelectCharaObject: {fileID: 1452639826}
+  SelectMoneyWeaponObject: {fileID: 284212557}
+  SelectMapObject: {fileID: 1323815814}
 --- !u!1 &1140032070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,9 +1550,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c6fd9f1c8eae0c64dbbb71e7045a4998, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1994,9 +1980,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 18fadf8565c321e48ae11059178f4cc8, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2252,9 +2238,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f57cc77aeb54a144cabf7bc7e792307e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

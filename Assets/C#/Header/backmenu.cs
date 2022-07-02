@@ -6,14 +6,20 @@ public class backmenu : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Left ||
+            eventData.button == PointerEventData.InputButton.Right ||
+            eventData.button == PointerEventData.InputButton.Middle)
         {
-            //Debug.Log(name + " Game Object Right Clicked!");
-        }
-        else if (eventData.button == PointerEventData.InputButton.Left)
-        {
+            Music.instance.ClickSound();
             SceneManager.LoadSceneAsync("Title");
         }
     }
 
+    void Update()
+    {
+        if (!Input.GetKeyDown(KeyCode.Escape)) return;
+
+        Music.instance.ClickSound();
+        SceneManager.LoadSceneAsync("Title");
+    }
 }

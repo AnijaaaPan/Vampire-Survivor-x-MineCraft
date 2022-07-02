@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MobDataBase", menuName = "CreateMobDataBase")]//  CreateからCreateMobというメニューを表示し、Mobを作成する
+[CreateAssetMenu(fileName = "MobDataBase", menuName = "CreateMobDataBase")]
 public class MobDataBase : ScriptableObject
 {
-
     [SerializeField]
-    private List<Mob> MobLists = new List<Mob>();//  Mobのリストを新しく生成する
+    private List<Mob> MobLists = new List<Mob>();
 
-    public List<Mob> GetMobLists()//  Mobのリストがあったら、
+    public List<Mob> GetMobLists()
     {
-        return MobLists;//  MobListsに返す
+        return MobLists;
     }
 
     public Mob FindMobFromId(int id)

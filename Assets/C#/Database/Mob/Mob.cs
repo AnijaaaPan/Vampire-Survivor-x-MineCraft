@@ -4,70 +4,78 @@ using UnityEngine;
 [System.Serializable]
 public class Parameter
 {
-    public int effect_id; //効果id
-    public float phase; //n段階上昇させるか
+    public int effect_id; // 効果ID
+    public float phase; // 効果の段階
 }
 
-[CreateAssetMenu(fileName = "Mob", menuName = "CreateMob")]//  CreateからCreateMobというメニューを表示し、Mobを作成する
+[CreateAssetMenu(fileName = "Mob", menuName = "CreateMob")]
 public class Mob: ScriptableObject
 {
     [SerializeField]
-    private int id; //MobのID
+    private int id; // MobのID
 
     [SerializeField]
-    private int weapon_id; //キャラのWeaponのID
+    private int weapon_id; // Mobが使う武器ID
 
     [SerializeField]
-    private string name; //Mobの名前
+    private string name; // Mobの名前
 
     [SerializeField]
-    private string description; //Mobの説明
+    private string description; // Mobの説明
 
     [SerializeField]
-    private bool use; //現在使用できるキャラか否か
+    private bool use; // Mobが使用可能状態か否か
 
     [SerializeField]
-    private bool hidden; //現在条件が満たされてなく隠されているか否か
+    private bool hidden; // Mobが使用できる実績が解除されているか否か
 
     [SerializeField]
-    private List<Parameter> Parameter; //Mobのparameter
+    private List<Parameter> Parameter; // Mobのパラメーター
 
-    public string GetName() //名前を入力したら、
+    public string GetName()
     {
-        return name; // nameに返す
+        return name;
     }
-    public string GetDescription() //説明を入力したら、
+
+    public string GetDescription()
     {
-        return description; // descriptionに返す
+        return description;
     }
-    public int GetId() //IDを入力したら、
+
+    public int GetId()
     {
-        return id; // idに返す
+        return id;
     }
-    public int GetWeaponId() //WeaponIDを入力したら、
+
+    public int GetWeaponId()
     {
-        return weapon_id; // weapon_idに返す
+        return weapon_id;
     }
-    public Sprite GetIcon() //アイコンを入力したら、
+
+    public Sprite GetIcon()
     {
         Sprite[] image = Resources.LoadAll<Sprite>($"Mob/{GetName()}/");
-        return image[0]; // IconList[0]に返す
+        return image[0];
     }
-    public Sprite[] GetIcons() //アイコンリストを入力したら、
+
+    public Sprite[] GetIcons()
     {
         Sprite[] image = Resources.LoadAll<Sprite>($"Mob/{GetName()}/");
-        return image; // imageに返す
+        return image;
     }
-    public bool GetUse() //現在使用できるキャラか否かを入力したら、
+
+    public bool GetUse()
     {
-        return use; // useに返す
+        return use;
     }
-    public bool GetHidden() //現在条件が満たされてなく隠されているか否かを入力したら、
+
+    public bool GetHidden()
     {
-        return hidden; // hiddenに返す
+        return hidden;
     }
-    public List<Parameter> GetParameter() //MOBのステータスパラメータの設定
+
+    public List<Parameter> GetParameter()
     {
-        return Parameter; // Parameterに返す
+        return Parameter;
     }
 }

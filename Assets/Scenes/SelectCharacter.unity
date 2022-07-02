@@ -443,7 +443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &288609720
 Transform:
   m_ObjectHideFlags: 0
@@ -472,7 +472,6 @@ GameObject:
   - component: {fileID: 373694360}
   - component: {fileID: 373694359}
   - component: {fileID: 373694358}
-  - component: {fileID: 373694362}
   - component: {fileID: 373694363}
   m_Layer: 5
   m_Name: Canvas
@@ -565,18 +564,6 @@ RectTransform:
   m_AnchoredPosition: {x: 551, y: 259}
   m_SizeDelta: {x: 1102, y: 518}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &373694362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373694357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2024fa9e964072e4bb51d18547fa8119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &373694363
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3055,19 +3042,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed759fe3d1a78d4b96b1f9fc0ac7a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent_object: {fileID: 2132937292}
-  MobDataBase: {fileID: 11400000, guid: 562b800f72d716f4f987138e3b09cc85, type: 2}
-  WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
-  ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
-  select_chara: {fileID: 21300000, guid: a950f06d5742e6b4b87607a8b3100d6f, type: 3}
-  no_select_chara: {fileID: 21300000, guid: d4930a39df647874e99f9b6a03c5ba3c, type: 3}
-  unlock_chara_weapon: {fileID: 21300000, guid: d5715ed312c94b441aa389ece57d852e, type: 3}
-  Select_Image: {fileID: 528381926}
-  Select_Weapon: {fileID: 1592817411}
-  Select_Name: {fileID: 1112314761}
-  Select_Descrpition: {fileID: 894846014}
-  Unlock_Check: {fileID: 453384584}
-  Submit_button: {fileID: 226306104}
-  Unlock_Cost: {fileID: 288609719}
-  Unlock_Cost_Text: {fileID: 753288259}
-  Effect_list: {fileID: 1116464469}
+  SelectChara: {fileID: 21300000, guid: a950f06d5742e6b4b87607a8b3100d6f, type: 3}
+  UnSelectChara: {fileID: 21300000, guid: d4930a39df647874e99f9b6a03c5ba3c, type: 3}
+  UnLockCharaWeapon: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
+  SelectImage: {fileID: 528381926}
+  SelectWeapon: {fileID: 1592817411}
+  SelectName: {fileID: 1112314761}
+  SelectDescrpition: {fileID: 894846014}
+  UnlockCheck: {fileID: 453384584}
+  UnLockCostText: {fileID: 753288259}
+  SubmitButton: {fileID: 226306104}
+  UnlockCost: {fileID: 288609719}
+  EffectList: {fileID: 1116464469}

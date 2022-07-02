@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MapDataBase", menuName = "CreateMapDataBase")]//  CreateからCreateMapというメニューを表示し、Mapを作成する
+[CreateAssetMenu(fileName = "MapDataBase", menuName = "CreateMapDataBase")]
 public class MapDataBase : ScriptableObject
 {
-
     [SerializeField]
-    private List<Map> MapLists = new List<Map>();//  Mapのリストを新しく生成する
+    private List<Map> MapLists = new List<Map>();
 
-    public List<Map> GetMapLists()//  Mapのリストがあったら、
+    public List<Map> GetMapLists()
     {
-        return MapLists;//  MapListsに返す
+        return MapLists;
     }
 
     public Map FindMapFromId(int id)

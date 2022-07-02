@@ -3,97 +3,115 @@ using UnityEngine;
 [System.Serializable]
 public class MapParameter
 {
-    public int MoveSpeed; //移動速度
-    public int EmeraldBonus; //エメラルドボーナス
-    public int LuckBonus; //ラッキーボーナス
+    public int MoveSpeed; // キャラの移動速度
+    public int EmeraldBonus; // エメラルドボーナス
+    public int LuckBonus; // ラッキーボーナス
 }
 
 [System.Serializable]
 public class HyperMode
 {
-    public int MoveSpeed; //移動速度
-    public int EmeraldBonus; //エメラルドボーナス
-    public int LuckBonus; //ラッキーボーナス
+    public int MoveSpeed; // キャラの移動速度
+    public int EmeraldBonus; // エメラルドボーナス
+    public int LuckBonus; // ラッキーボーナス
 }
 
-[CreateAssetMenu(fileName = "Map", menuName = "CreateMap")]//  CreateからCreateMapというメニューを表示し、Mapを作成する
+[CreateAssetMenu(fileName = "Map", menuName = "CreateMap")]
 public class Map : ScriptableObject
 {
     [SerializeField]
-    private string name; //Mapの名前
+    private string name; // Mapの名前
 
     [SerializeField]
-    private string type; //Mapのタイプ
+    private string type; // Mapのタイプ
 
     [SerializeField]
-    private int id; //MapのID
+    private int id; // MapのID
 
     [SerializeField]
-    private int sizeX; //Mapのx軸の大きさ
+    private int sizeX; // Mapのx軸の大きさ
 
     [SerializeField]
-    private int sizeY; //Mapのy軸の大きさ
+    private int sizeY; // Mapのy軸の大きさ
 
     [SerializeField]
-    private string description; //Mapの説明
+    private string description; // Mapの説明
 
     [SerializeField]
-    private Sprite icon; //Mapのアイコン
+    private Sprite icon; // Mapのアイコン
 
     [SerializeField]
-    private Sprite block_icon; //Mapのブロックアイコン
+    private Sprite block_icon; // Mapのブロックアイコン
 
     [SerializeField]
-    private bool use; //デフォルトから遊べるMAPか否か
+    private bool use; // 遊べるMAPか否か
 
     [SerializeField]
-    private MapParameter MapParameter; //Mapのparameter
+    private AudioClip music; // MAPで流れる音楽
 
     [SerializeField]
-    private HyperMode HyperMode; //MapのHyperMode状態の追加parameter
+    private MapParameter MapParameter; // Mapのparameter
 
-    public string GetName() //名前を入力したら、
+    [SerializeField]
+    private HyperMode HyperMode; // MapのHyperMode状態の追加parameter
+
+    public string GetName()
     {
-        return name; // nameに返す
+        return name;
     }
-    public string GetType() //タイプを入力したら、
+
+    public string GetType()
     {
-        return type; // typeに返す
+        return type;
     }
-    public int GetId() //IDを入力したら、
+
+    public int GetId()
     {
-        return id; // idに返す
+        return id;
     }
-    public int GetSizeX() //Mapのx軸の大きさを入力したら、
+
+    public int GetSizeX()
     {
-        return sizeX; // sizeXに返す
+        return sizeX;
     }
-    public int GetSizeY() //Mapのy軸の大きさを入力したら、
+
+    public int GetSizeY()
     {
-        return sizeY; // sizeYに返す
+        return sizeY;
     }
-    public string GetDescription() //説明を入力したら、
+
+    public string GetDescription()
     {
-        return description; // descriptionに返す
+        return description;
     }
-    public Sprite GetIcon() //アイコンを入力したら、
+
+    public Sprite GetIcon()
     {
-        return icon; // iconに返す
+        return icon;
     }
-    public Sprite GetBlockIcon() //ブロックアイコンを入力したら、
+
+    public Sprite GetBlockIcon()
     {
-        return block_icon; // block_iconに返す
+        return block_icon;
     }
-    public bool GetUse() //デフォルトから遊べるMAPか否かを入力したら、
+
+    public bool GetUse()
     {
-        return use; // useに返す
+        return use;
     }
-    public MapParameter GetParameter() //Mapのparameterの設定
+
+    public AudioClip GetMusic()
     {
-        return MapParameter; // MapParameterに返す
+        return music;
     }
-    public HyperMode GetHyperParameter() //MapのHyperMode状態の追加parameterの設定
+
+    public MapParameter GetParameter()
     {
-        return HyperMode; // HyperModeに返す
+        return MapParameter;
+    }
+
+    public HyperMode GetHyperParameter()
+    {
+        return HyperMode;
     }
 }

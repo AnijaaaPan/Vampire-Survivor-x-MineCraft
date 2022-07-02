@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ItemDataBase", menuName = "CreateItemDataBase")]//  CreateからCreateItemというメニューを表示し、Itemを作成する
+[CreateAssetMenu(fileName = "ItemDataBase", menuName = "CreateItemDataBase")]
 public class ItemDataBase : ScriptableObject
 {
-
     [SerializeField]
-    private List<Item> ItemLists = new List<Item>();//  Itemのリストを新しく生成する
+    private List<Item> ItemLists = new List<Item>();
 
-    public List<Item> GetItemLists()//  Itemのリストがあったら、
+    public List<Item> GetItemLists()
     {
-        return ItemLists;//  ItemListsに返す
+        return ItemLists;
     }
 
     public Item FindItemFromId(int id)

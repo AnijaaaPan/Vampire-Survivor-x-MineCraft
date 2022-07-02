@@ -3,72 +3,79 @@ using UnityEngine;
 [System.Serializable]
 public class WeaponParn
 {
-    public float damage; //Weaponのダメージ量
-    public float range; //Weaponの効果範囲
-    public float atk_spd; //Weaponの攻撃速度
-    public float atk_count;  //Weaponの投射数
-    public float atk_time; //Weaponの持続時間
-    public float cooldown; //Weaponのクールダウン
-    public float penetrate; //Weaponの敵貫通数
+    public float damage; // Weaponのダメージ量
+    public float range; // Weaponの効果範囲
+    public float atk_spd; // Weaponの攻撃速度
+    public float atk_count;  // Weaponの投射数
+    public float atk_time; // Weaponの持続時間
+    public float cooldown; // Weaponのクールダウン
+    public float penetrate; // Weaponの敵貫通数
 }
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "CreateWeapon")]//  CreateからCreateWeaponというメニューを表示し、Weaponを作成する
+[CreateAssetMenu(fileName = "Weapon", menuName = "CreateWeapon")]
 public class Weapon : ScriptableObject
 {
     [SerializeField]
-    private string name; //Weaponの名前
+    private string name; // Weaponの名前
 
     [SerializeField]
-    private string description; //Weaponの説明その1
+    private string description; // Weaponの説明その1
 
     [SerializeField]
-    private string effect; //Weaponの説明その2
+    private string effect; // Weaponの説明その2
 
     [SerializeField]
-    private int id; //WeaponのID
+    private int id; // WeaponのID
 
     [SerializeField]
-    private Sprite icon; //Weaponのアイコン
+    private Sprite icon; // Weaponのアイコン
 
     [SerializeField]
-    private int powerup; //進化先の武器ID
+    private int powerup; // 進化先の武器ID
 
     [SerializeField]
-    private bool default_waepon; //デフォルトで武器が使用可能かどうか
+    private bool default_waepon; // デフォルトで武器が使用可能かどうか
 
     [SerializeField]
-    private WeaponParn parameter; //Weaponのデフォルト攻撃力
+    private WeaponParn parameter; // Weaponのデフォルト攻撃力
 
-    public string GetName() //名前を入力したら、
+    public string GetName()
     {
-        return name; // nameに返す
+        return name;
     }
-    public string GetDescription() //説明その1を入力したら、
+
+    public string GetDescription()
     {
-        return description; // descriptionに返す
+        return description;
     }
-    public string GetEffect() //説明その2を入力したら、
+
+    public string GetEffect()
     {
-        return effect; // effectに返す
+        return effect;
     }
-    public int GetId() //IDを入力したら、
+
+    public int GetId()
     {
-        return id; // idに返す
+        return id;
     }
-    public Sprite GetIcon() //アイコンを入力したら、
+
+    public Sprite GetIcon()
     {
-        return icon; // iconに返す
+        return icon;
     }
-    public int GetPowerup() //進化先の武器IDを入力したら、
+
+    public int GetPowerup()
     {
-        return powerup; // powerupに返す 進化先がない場合は0を返す
+        return powerup;
     }
-    public bool GetDefault() //デフォルトで武器が使用可能かどうかを入力したら、
+
+    public bool GetDefault()
     {
-        return default_waepon; // default_waeponに返す
+        return default_waepon;
     }
-    public WeaponParn GetParameter() //デフォルトパラメーターを入力したら、
+
+    public WeaponParn GetParameter()
     {
-        return parameter; // parameterに返す
+        return parameter;
     }
 }

@@ -1,41 +1,45 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpecialItem", menuName = "CreateSpecialItem")]//  CreateからCreateSpecialItemというメニューを表示し、SpecialItemを作成する
+[CreateAssetMenu(fileName = "SpecialItem", menuName = "CreateSpecialItem")]
 public class SpecialItem : ScriptableObject
 {
     [SerializeField]
-    private string name; //SpecialItemの名前
+    private string name; // SpecialItemの名前
 
     [SerializeField]
-    private string description; //SpecialItemの説明その1
+    private string description; // SpecialItemの説明その1
 
     [SerializeField]
-    private string effect; //SpecialItemの説明その2
+    private string effect; // SpecialItemの説明その2
 
     [SerializeField]
-    private int id; //SpecialItemのID
+    private int id; // SpecialItemのID
 
     [SerializeField]
-    private Sprite icon; //SpecialItemのアイコン
+    private Sprite icon; // SpecialItemのアイコン
 
-    public string GetName() //名前を入力したら、
+    public string GetName()
     {
-        return name; // nameに返す
+        return name;
     }
-    public string GetDescription() //説明その1を入力したら、
+
+    public string GetDescription()
     {
-        return description; // descriptionに返す
+        return description;
     }
-    public string GetEffect() //説明その2を入力したら、
+
+    public string GetEffect()
     {
-        return effect; // effectに返す
+        return effect;
     }
-    public int GetId() //IDを入力したら、
+
+    public int GetId()
     {
-        return id; // idに返す
+        return id;
     }
-    public Sprite GetIcon() //アイコンを入力したら、
+
+    public Sprite GetIcon()
     {
-        return icon; // iconに返す
+        return icon;
     }
 }

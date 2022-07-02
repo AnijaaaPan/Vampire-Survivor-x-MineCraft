@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 [System.Serializable]
 class PlayMapInfo
@@ -23,19 +20,17 @@ public class MoveMapBackGround : MonoBehaviour
     public GameObject Chara;
     public GameObject Grid;
 
-    [SerializeField]
-    private MapDataBase MapDataBase;//  使用するデータベース
+    private PlayMapInfo PlayMapInfo = new PlayMapInfo();
+    private GameObject LeftTopMap;
+    private GameObject RightTopMap;
+    private GameObject LeftLowMap;
+    private GameObject RightLowMap;
 
-    PlayMapInfo PlayMapInfo = new PlayMapInfo();
-    GameObject LeftTopMap;
-    GameObject RightTopMap;
-    GameObject LeftLowMap;
-    GameObject RightLowMap;
+    private Json.PlayerData player = Json.instance.Load();
+    private MapDataBase MapDataBase = Json.instance.MapDataBase;
 
-    // Start is called before the first frame update
     void Start()
     {
-        Json.PlayerData player = Json.instance.Load();
         Map map = MapDataBase.FindMapFromId(player.Latest_Map);
         GameObject SelectMap = Grid.transform.Find($"map_{player.Latest_Map}").gameObject;
 
@@ -56,7 +51,6 @@ public class MoveMapBackGround : MonoBehaviour
         PlayMapInfo.RightLowMap = RightLowMap;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float getAbsX = Mathf.Abs(Chara.transform.position.x % PlayMapInfo.initX);
@@ -82,7 +76,7 @@ public class MoveMapBackGround : MonoBehaviour
         }
     }
 
-    void SetInstantiateObject(GameObject SelectMap)
+    private void SetInstantiateObject(GameObject SelectMap)
     {
         SelectMap.SetActive(true);
 
@@ -104,14 +98,13 @@ public class MoveMapBackGround : MonoBehaviour
         SelectMap.SetActive(false);
     }
 
-    void SetParentObject(GameObject Object)
+    private void SetParentObject(GameObject Object)
     {
         if (!Object) return;
         Object.transform.SetParent(this.gameObject.transform);
     }
 
-
-    void UpdateBackGroundMap()
+    private void UpdateBackGroundMap()
     {
         float getFloorX = Mathf.Floor(Chara.transform.position.x / PlayMapInfo.initX);
         float getFloorY = Mathf.Floor(Chara.transform.position.y / PlayMapInfo.initY);
@@ -158,7 +151,7 @@ public class MoveMapBackGround : MonoBehaviour
         PlayMapInfo.RightLowMap = RightLowMap;
     }
 
-    void SetMapPosition(GameObject Object, Vector3 position)
+    private void SetMapPosition(GameObject Object, Vector3 position)
     {
         if (!Object) return;
         Object.transform.position = position;

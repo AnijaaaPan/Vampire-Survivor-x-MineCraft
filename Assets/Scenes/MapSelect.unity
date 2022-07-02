@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 20229103}
   - component: {fileID: 20229102}
   - component: {fileID: 20229101}
-  - component: {fileID: 20229100}
   - component: {fileID: 20229099}
   m_Layer: 5
   m_Name: Canvas
@@ -156,18 +155,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &20229100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20229098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2024fa9e964072e4bb51d18547fa8119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &20229101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3625,16 +3612,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe4262fac67bd74f968be279d8cbba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent_object: {fileID: 2074938258}
-  MapDataBase: {fileID: 11400000, guid: 73629f5c5ca6f4d4c9a58b79eddb0674, type: 2}
   MoveSpeed: {fileID: 1271992018}
   EmeraldBonus: {fileID: 424846364}
   LuckBonus: {fileID: 24000186}
-  select_map: {fileID: 21300000, guid: e1592639edd61714fad0735ceb8fceb4, type: 3}
-  Hyper: {fileID: 1899452363}
+  SelectMap: {fileID: 21300000, guid: e1592639edd61714fad0735ceb8fceb4, type: 3}
   Check: {fileID: 2057491820}
-  Submit_button: {fileID: 779489610}
+  SubmitButton: {fileID: 779489610}
   HyperButton: {fileID: 813112607}
+  Hyper: {fileID: 1899452363}
 --- !u!114 &2074938260
 MonoBehaviour:
   m_ObjectHideFlags: 0

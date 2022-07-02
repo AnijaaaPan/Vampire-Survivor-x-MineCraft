@@ -6,7 +6,7 @@ public class MousePointerTitle : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public Sprite normal;
     public Sprite hover;
 
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {

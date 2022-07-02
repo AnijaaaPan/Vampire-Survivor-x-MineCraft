@@ -183,7 +183,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -877,19 +877,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f407b1009fdd246bec02bb4d919780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent_object: {fileID: 494837831}
   WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
   ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
   SpecialItemDataBase: {fileID: 11400000, guid: 49355435b2c483244809e22388a5765d, type: 2}
-  background: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
-  specialitembackground: {fileID: 21300000, guid: 5abfd4cbc93c40c458dec37d9987e45a, type: 3}
-  select: {fileID: 21300000, guid: 1ed1086ca5582b348a87b566e51a0cbd, type: 3}
-  unknown: {fileID: 21300000, guid: d5715ed312c94b441aa389ece57d852e, type: 3}
+  BackGround: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
+  SpecialItemBackGround: {fileID: 21300000, guid: 5abfd4cbc93c40c458dec37d9987e45a, type: 3}
+  Select: {fileID: 21300000, guid: 1ed1086ca5582b348a87b566e51a0cbd, type: 3}
+  Unknown: {fileID: 21300000, guid: d5715ed312c94b441aa389ece57d852e, type: 3}
   Title: {fileID: 1076141489}
-  Select_Image: {fileID: 808265835}
-  Select_Name: {fileID: 1647145870}
-  Select_Descrpition: {fileID: 811444642}
-  Select_Effect: {fileID: 1073433293}
+  SelectName: {fileID: 1647145870}
+  SelectDescrpition: {fileID: 811444642}
+  SelectEffect: {fileID: 1073433293}
+  SelectImage: {fileID: 808265835}
+  SelectImageRectTransform: {fileID: 808265834}
 --- !u!1 &551574983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,9 +1221,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c6fd9f1c8eae0c64dbbb71e7045a4998, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1730,7 +1730,6 @@ GameObject:
   - component: {fileID: 1562289471}
   - component: {fileID: 1562289470}
   - component: {fileID: 1562289469}
-  - component: {fileID: 1562289468}
   - component: {fileID: 1562289467}
   m_Layer: 5
   m_Name: Canvas
@@ -1751,18 +1750,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1562289468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562289466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2024fa9e964072e4bb51d18547fa8119, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1562289469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2068,7 +2055,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 5
+  m_ScrollSensitivity: 15
   m_Viewport: {fileID: 551574984}
   m_HorizontalScrollbar: {fileID: 347036438}
   m_VerticalScrollbar: {fileID: 1931065907}

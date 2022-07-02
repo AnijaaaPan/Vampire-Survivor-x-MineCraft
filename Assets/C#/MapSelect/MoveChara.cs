@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 
 public class MoveChara : MonoBehaviour
@@ -8,33 +7,32 @@ public class MoveChara : MonoBehaviour
     public GameObject CharaFront;
     public GameObject CharaBack;
 
-    [SerializeField]
-    private MobDataBase MobDataBase; // 使用するデータベース
+    private Transform CharaTransform;
+    private Transform FrontCharaTransform;
+    private Transform BackCharaTransform;
+    private Transform CameraTransform;
 
-    Transform CharaTransform;
-    Transform FrontCharaTransform;
-    Transform BackCharaTransform;
-    Transform CameraTransform;
+    private float MoveSpeed = 0.014f;
 
-    float MoveSpeed = 0.014f;
+    private Image CharaImage;
+    private Image CharaBackImageFront;
+    private Image CharaBackImageBack;
+    private Sprite[] CharaImageList;
 
-    Image CharaImage;
-    Image CharaBackImageFront;
-    Image CharaBackImageBack;
-    Sprite[] CharaImageList;
+    private int CharaImagePageIndex = 0;
+    private int CharaImageListCount;
 
-    int CharaImagePageIndex = 0;
-    int CharaImageListCount;
+    private bool isClickScreen = false;
+    private Vector3 ClickStartPosition;
+    private Vector3 ClickEndPosition;
 
-    bool isClickScreen = false;
-    Vector3 ClickStartPosition;
-    Vector3 ClickEndPosition;
+    private List<bool?> LatestPlayerVector = new List<bool?>() { null, null };
 
-    List<bool?> LatestPlayerVector = new List<bool?>() { null, null };
+    private Json.PlayerData player = Json.instance.Load();
+    private MobDataBase MobDataBase = Json.instance.MobDataBase;
 
     void Start()
     {
-        Json.PlayerData player = Json.instance.Load();
         Mob mob = MobDataBase.FindMobFromId(player.Latest_Chara);
 
         CharaTransform = this.gameObject.transform;
@@ -69,7 +67,7 @@ public class MoveChara : MonoBehaviour
         UpdateObjectCoordinate(MathMoveDistanceX, MathMoveDistanceY);
     }
 
-    List<float> PushMouseButton()
+    private List<float> PushMouseButton()
     {
         if (!isClickScreen)
         {
@@ -87,17 +85,17 @@ public class MoveChara : MonoBehaviour
         return new List<float>() { MoveSpeed * cos, MoveSpeed * sin };
     }
 
-    bool isPushMouseButton()
+    private bool isPushMouseButton()
     {
         return Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2);
     }
 
-    float GetRadian(float x, float y, float x2, float y2)
+    private float GetRadian(float x, float y, float x2, float y2)
     {
         return Mathf.Atan2(y2 - y, x2 - x);
     }
 
-    void GetLatestPlayerVector()
+    private void GetLatestPlayerVector()
     {
         isClickScreen = false;
         if (!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow) &&
@@ -125,7 +123,7 @@ public class MoveChara : MonoBehaviour
         };
     }
 
-    void UpdateCharaImagePage(float MathMoveDistanceX, float MathMoveDistanceY)
+    private void UpdateCharaImagePage(float MathMoveDistanceX, float MathMoveDistanceY)
     {
         if (!isPushMouseButton() && LatestPlayerVector[0] == null && LatestPlayerVector[1] == null || 
             isPushMouseButton() && MathMoveDistanceX == 0 && MathMoveDistanceY == 0)
@@ -143,7 +141,7 @@ public class MoveChara : MonoBehaviour
         CharaBackImageBack.GetComponent<Image>().sprite = CharaImage.sprite;
     }
 
-    void UpdateObjectCoordinate(float MathMoveDistanceX, float MathMoveDistanceY)
+    private void UpdateObjectCoordinate(float MathMoveDistanceX, float MathMoveDistanceY)
     {
         if (LatestPlayerVector[0] == null && LatestPlayerVector[1] == null && !isPushMouseButton())
         {

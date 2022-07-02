@@ -13,11 +13,9 @@ public class QuitGame : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            //Debug.Log(name + " Game Object Right Clicked!");
-        }
-        else if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left ||
+            eventData.button == PointerEventData.InputButton.Right ||
+            eventData.button == PointerEventData.InputButton.Middle)
         {
             Quit();
         }
