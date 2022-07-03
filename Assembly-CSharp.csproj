@@ -56,30 +56,33 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\C#\MapSelect\MoveMapBackGround.cs" />
-    <Compile Include="Assets\C#\Database\Map\MapDataBase.cs" />
-    <Compile Include="Assets\C#\Json.cs" />
-    <Compile Include="Assets\C#\QuitGame\QuitGame.cs" />
-    <Compile Include="Assets\C#\Collection\collection.cs" />
-    <Compile Include="Assets\C#\Database\Item\Item.cs" />
-    <Compile Include="Assets\C#\Database\Item\Special\SpecialItemDataBase.cs" />
-    <Compile Include="Assets\C#\MapSelect\map.cs" />
-    <Compile Include="Assets\C#\SelectCharacter\chara.cs" />
-    <Compile Include="Assets\C#\Title\MousePointerTitle.cs" />
-    <Compile Include="Assets\C#\Database\Mob\MobDataBase.cs" />
-    <Compile Include="Assets\C#\Database\Item\ItemDataBase.cs" />
-    <Compile Include="Assets\C#\Powerup\powerup.cs" />
-    <Compile Include="Assets\C#\Database\Weapon\Weapon.cs" />
-    <Compile Include="Assets\C#\Music.cs" />
-    <Compile Include="Assets\C#\Achievement\achievement.cs" />
-    <Compile Include="Assets\C#\MapSelect\MoveChara.cs" />
-    <Compile Include="Assets\C#\Database\Mob\Mob.cs" />
-    <Compile Include="Assets\C#\Header\backmenu.cs" />
-    <Compile Include="Assets\C#\Title\Move_Scene.cs" />
-    <Compile Include="Assets\C#\Database\Weapon\WeaponDataBase.cs" />
-    <Compile Include="Assets\C#\Database\Map\Map.cs" />
-    <Compile Include="Assets\C#\Database\Item\Special\SpecialItem.cs" />
-    <Compile Include="Assets\C#\Header\CountMoney.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\MoveMapBackGround.cs" />
+    <Compile Include="Assets\Scripts\Database\Map\MapDataBase.cs" />
+    <Compile Include="Assets\Scripts\DontDestroy\Json.cs" />
+    <Compile Include="Assets\Scripts\Initialize.cs" />
+    <Compile Include="Assets\Scripts\QuitGame\QuitGame.cs" />
+    <Compile Include="Assets\Scripts\Collection\collection.cs" />
+    <Compile Include="Assets\Scripts\Database\Item\Item.cs" />
+    <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItemDataBase.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\map.cs" />
+    <Compile Include="Assets\Scripts\SelectCharacter\chara.cs" />
+    <Compile Include="Assets\Scripts\Title\MousePointerTitle.cs" />
+    <Compile Include="Assets\Scripts\Database\Mob\MobDataBase.cs" />
+    <Compile Include="Assets\Scripts\Database\Item\ItemDataBase.cs" />
+    <Compile Include="Assets\Scripts\Powerup\powerup.cs" />
+    <Compile Include="Assets\Scripts\Database\Weapon\Weapon.cs" />
+    <Compile Include="Assets\Scripts\DontDestroy\Music.cs" />
+    <Compile Include="Assets\Scripts\Achievement\achievement.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\MoveChara.cs" />
+    <Compile Include="Assets\Scripts\Database\Mob\Mob.cs" />
+    <Compile Include="Assets\Scripts\Header\backmenu.cs" />
+    <Compile Include="Assets\Scripts\Title\Move_Scene.cs" />
+    <Compile Include="Assets\Scripts\Database\Weapon\WeaponDataBase.cs" />
+    <Compile Include="Assets\Scripts\Database\Map\Map.cs" />
+    <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItem.cs" />
+    <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
+    <Compile Include="Assets\Scripts\UI\UIGradient.cs" />
+    <Compile Include="Assets\Scripts\UI\UIGradientUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
