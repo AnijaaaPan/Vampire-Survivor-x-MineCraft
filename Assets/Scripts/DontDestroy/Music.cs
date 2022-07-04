@@ -8,7 +8,9 @@ public class Music : MonoBehaviour
     public List<AudioClip> audioClipList;
     public AudioClip click;
 
+    private Json.PlayerData player;
     private AudioSource audioSource;
+
     private void Awake()
     {
         if (instance == null)
@@ -24,13 +26,23 @@ public class Music : MonoBehaviour
 
     void Start()
     {
+        player = Json.instance.Load();
         audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        if (player.SoundMusic != audioSource.volume)
+        {
+            audioSource.volume = player.SoundMusic;
+        }
         if (audioSource.isPlaying) return;
         PlayRandomMusic();
+    }
+
+    public void UpdatePlayerJson()
+    {
+        player = Json.instance.Load();
     }
 
     private void PlayRandomMusic()
@@ -48,7 +60,7 @@ public class Music : MonoBehaviour
 
     public void ClickSound()
     {
-        audioSource.PlayOneShot(click);
+        audioSource.PlayOneShot(click, player.SoundEffect);
     }
 
     internal static T GetRandom<T>(IList<T> Params)

@@ -15,8 +15,8 @@ public class Json : MonoBehaviour
         public int Latest_Chara;
         public int Latest_Map;
         public bool Latest_Map_Hyper;
-        public int Sound;
-        public int Music;
+        public float SoundEffect;
+        public float SoundMusic;
         public bool Flash;
         public bool JoyStick;
         public bool Damage;
@@ -133,8 +133,8 @@ public class Json : MonoBehaviour
             player.Latest_Chara = 0;
             player.Latest_Map = 1;
             player.Latest_Map_Hyper = false;
-            player.Sound = 100;
-            player.Music = 100;
+            player.SoundEffect = 1f;
+            player.SoundMusic = 1f;
             player.Flash = true;
             player.JoyStick = false;
             player.Damage = true;
