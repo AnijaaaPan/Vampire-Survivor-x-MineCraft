@@ -6,6 +6,7 @@ public class MoveChara : MonoBehaviour
 {
     public GameObject CharaFront;
     public GameObject CharaBack;
+    public GameObject isMap4;
 
     private Transform CharaTransform;
     private Transform FrontCharaTransform;
@@ -33,6 +34,7 @@ public class MoveChara : MonoBehaviour
     void Start()
     {
         Mob mob = MobDataBase.FindMobFromId(player.Latest_Chara);
+        if (player.Latest_Map != 4) Destroy(isMap4);
 
         CharaTransform = this.gameObject.transform;
         FrontCharaTransform = CharaFront.transform;
@@ -176,6 +178,10 @@ public class MoveChara : MonoBehaviour
         float MoveY = CharaTransform.position.y + MathMoveDistanceY;
 
         CharaTransform.position = new Vector3(MoveX, MoveY, 0);
+        if (player.Latest_Map == 4)
+        {
+            isMap4.transform.position = new Vector3(MoveX, MoveY, 0);
+        }
         FrontCharaTransform.position = new Vector3(MoveX - MathMoveDistanceX * 5, MoveY - MathMoveDistanceY * 5);
         BackCharaTransform.position = new Vector3(MoveX - MathMoveDistanceX * 10, MoveY - MathMoveDistanceY * 10);
     }

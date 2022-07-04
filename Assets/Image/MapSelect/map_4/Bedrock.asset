@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bedrock
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 6b27202640aadd24088a55d1e3021b19, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2, g: 0.25, b: 0.35, a: 1}
   m_Transform:
     e00: 1
     e01: 0
