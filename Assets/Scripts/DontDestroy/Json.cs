@@ -20,6 +20,7 @@ public class Json : MonoBehaviour
         public bool Flash;
         public bool JoyStick;
         public bool Damage;
+        public bool FullScreen;
         public List<CharacterData> Character;
         public List<WeaponData> Weapon;
         public List<ItemData> Item;
@@ -138,6 +139,7 @@ public class Json : MonoBehaviour
             player.Flash = true;
             player.JoyStick = false;
             player.Damage = true;
+            player.FullScreen = false;
             player.PowerUp.allcost = 0;
             player.PowerUp.allcount = 0;
             player.PowerUp.poweruplist = new List<PowerUpList>();

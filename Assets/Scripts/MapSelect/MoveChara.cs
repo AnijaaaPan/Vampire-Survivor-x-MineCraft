@@ -7,6 +7,7 @@ public class MoveChara : MonoBehaviour
     public GameObject CharaFront;
     public GameObject CharaBack;
     public GameObject isMap4;
+    public GameObject JoyStick;
 
     private Transform CharaTransform;
     private Transform FrontCharaTransform;
@@ -21,6 +22,7 @@ public class MoveChara : MonoBehaviour
 
     private int CharaImagePageIndex = 0;
     private int CharaImageListCount;
+    private const float JoiStickRadiusOfMovement = 1.5f;
 
     private bool isClickScreen = false;
     private Vector3 ClickStartPosition;
@@ -60,6 +62,7 @@ public class MoveChara : MonoBehaviour
         }
         else
         {
+            JoyStick.SetActive(false);
             GetLatestPlayerVector();
         }
 
@@ -73,8 +76,13 @@ public class MoveChara : MonoBehaviour
         {
             isClickScreen = true;
             ClickStartPosition = Input.mousePosition;
-        }
 
+            player = Json.instance.Load();
+            JoyStick.SetActive(player.JoyStick);
+
+            UpdateJoiStick();
+        }
+                
         ClickEndPosition = Input.mousePosition;
         if (ClickStartPosition.x == ClickEndPosition.x && ClickStartPosition.y == ClickEndPosition.y) return new List<float>() { 0, 0 };
 
@@ -82,17 +90,41 @@ public class MoveChara : MonoBehaviour
         float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
         float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
+        if (player.JoyStick)
+        {
+            Vector3 ClickJoyStickStartPosition = Camera.main.ScreenToWorldPoint(ClickStartPosition);
+            Vector3 ClickJoyStickEndPosition = Camera.main.ScreenToWorldPoint(ClickEndPosition);
+            float MoveAbsX = ClickJoyStickEndPosition.x - ClickJoyStickStartPosition.x;
+            float MoveAbsY = ClickJoyStickEndPosition.y - ClickJoyStickStartPosition.y;
+            if (Mathf.Abs(MoveAbsX) > JoiStickRadiusOfMovement || Mathf.Abs(MoveAbsY) > JoiStickRadiusOfMovement)
+            {
+                UpdateJoiStick(cos * JoiStickRadiusOfMovement, sin * JoiStickRadiusOfMovement);
+            } else
+            {
+                UpdateJoiStick(MoveAbsX, MoveAbsY);
+            }            
+        }
+
         return new List<float>() { MoveSpeed * cos, MoveSpeed * sin };
     }
 
-    private bool isPushMouseButton()
+    private void UpdateJoiStick(float cos = 0, float sin = 0)
     {
-        return Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2);
+        Vector3 ClickJoyStickPosition = Camera.main.ScreenToWorldPoint(ClickStartPosition);
+        JoyStick.transform.position = new Vector3(ClickJoyStickPosition.x, ClickJoyStickPosition.y);
+
+        GameObject JoyStickHandle = JoyStick.transform.Find("Handle").gameObject;
+        JoyStickHandle.transform.position = new Vector3(JoyStick.transform.position.x + cos, JoyStick.transform.position.y + sin);
     }
 
     private float GetRadian(float x, float y, float x2, float y2)
     {
         return Mathf.Atan2(y2 - y, x2 - x);
+    }
+
+    private bool isPushMouseButton()
+    {
+        return Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2);
     }
 
     private void GetLatestPlayerVector()
@@ -131,11 +163,14 @@ public class MoveChara : MonoBehaviour
             CharaImagePageIndex = 0;
         }
         else
+        {
             CharaImagePageIndex++;
             if (Mathf.FloorToInt(CharaImagePageIndex / 4) > CharaImageListCount)
             {
                 CharaImagePageIndex = 0;
             }
+        }
+            
         CharaImage.sprite = CharaImageList[Mathf.FloorToInt(CharaImagePageIndex / 4)];
         CharaBackImageFront.GetComponent<Image>().sprite = CharaImage.sprite;
         CharaBackImageBack.GetComponent<Image>().sprite = CharaImage.sprite;

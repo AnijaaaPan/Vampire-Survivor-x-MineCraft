@@ -8,8 +8,10 @@ public class Music : MonoBehaviour
     public List<AudioClip> audioClipList;
     public AudioClip click;
 
+    private AudioSource[] audioSource;
+    private AudioSource SoundEffectSource;
+    private AudioSource SoundMusicSource;
     private Json.PlayerData player;
-    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -26,41 +28,47 @@ public class Music : MonoBehaviour
 
     void Start()
     {
+        audioSource = gameObject.GetComponents<AudioSource>();
+        SoundMusicSource = audioSource[0];
+        SoundEffectSource = audioSource[1];
+
         player = Json.instance.Load();
-        audioSource = gameObject.GetComponent<AudioSource>();
+        SoundEffectSource.volume = player.SoundEffect;
+        SoundMusicSource.volume = player.SoundMusic;
     }
 
     void Update()
     {
-        if (player.SoundMusic != audioSource.volume)
-        {
-            audioSource.volume = player.SoundMusic;
-        }
-        if (audioSource.isPlaying) return;
+        if (audioSource[0].isPlaying) return;
         PlayRandomMusic();
     }
 
-    public void UpdatePlayerJson()
+    public void UpdateSoundMusic(float volume)
     {
-        player = Json.instance.Load();
+        SoundMusicSource.volume = volume;
     }
 
-    private void PlayRandomMusic()
+    public void UpdateSoundEffect(float volume)
     {
-        audioSource.clip = GetRandom(audioClipList);
-        audioSource.Play();
+        SoundEffectSource.volume = volume;
     }
 
     public void PlayMusic(AudioClip music)
     {
-        audioSource.loop = true;
-        audioSource.clip = music;
-        audioSource.Play();
+        SoundMusicSource.loop = true;
+        SoundMusicSource.clip = music;
+        SoundMusicSource.Play();
     }
 
     public void ClickSound()
     {
-        audioSource.PlayOneShot(click, player.SoundEffect);
+        SoundEffectSource.PlayOneShot(click);
+    }
+
+    private void PlayRandomMusic()
+    {
+        SoundMusicSource.clip = GetRandom(audioClipList);
+        SoundMusicSource.Play();
     }
 
     internal static T GetRandom<T>(IList<T> Params)
