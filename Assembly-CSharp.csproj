@@ -58,10 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\MapSelect\MoveMapBackGround.cs" />
     <Compile Include="Assets\Scripts\Database\Map\MapDataBase.cs" />
+    <Compile Include="Assets\Scripts\Database\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\DontDestroy\Json.cs" />
     <Compile Include="Assets\Scripts\Initialize.cs" />
     <Compile Include="Assets\Scripts\QuitGame\QuitGame.cs" />
     <Compile Include="Assets\Scripts\Collection\collection.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\CountTimer.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Item.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItemDataBase.cs" />
     <Compile Include="Assets\Scripts\UI\UIGradient.cs" />
@@ -80,12 +82,13 @@
     <Compile Include="Assets\Scripts\UI\UIGradientUtils.cs" />
     <Compile Include="Assets\Scripts\Header\backmenu.cs" />
     <Compile Include="Assets\Scripts\UI\RotAmimation.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\SpawnEnemy.cs" />
     <Compile Include="Assets\Scripts\Title\Move_Scene.cs" />
     <Compile Include="Assets\Scripts\Database\Weapon\WeaponDataBase.cs" />
     <Compile Include="Assets\Scripts\Database\Map\Map.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItem.cs" />
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
-    <Compile Include="Assets\Scripts\Database\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\EnemyMoveToChara.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

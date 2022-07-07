@@ -15,8 +15,6 @@ MonoBehaviour:
   name: "\u72C2\u4E71\u306E\u68EE"
   type: Stage 1
   id: 1
-  sizeX: 64
-  sizeY: 64
   description: "\u57CE\u306F\u507D\u7269\u3060\u304C\u3001\u3053\u3053\u3067\u306F\u30BF\u30C0\u3067\u30B9\u30C6\u30FC\u30AD\u304C 
     \u624B\u306B\u5165\u308B\u306E\u3067\u826F\u3044\u3068\u3057\u3088\u3046\u3002"
   icon: {fileID: 0}
@@ -24,10 +22,107 @@ MonoBehaviour:
   use: 1
   music: {fileID: 8300000, guid: 74589bbabc078964ebc3487b1434ab04, type: 3}
   MapParameter:
-    MoveSpeed: 0
-    EmeraldBonus: 0
+    StartingSpawns: 5
+    MoveSpeed: 1
+    EnemyMoveSpeed: 1
+    ProjectileSpeed: 1
+    EmeraldBonus: 1
     LuckBonus: 0
+    EnemyMinimum: 1
   HyperMode:
-    MoveSpeed: 75
-    EmeraldBonus: 50
+    StartingSpawns: 20
+    MoveSpeed: 1.75
+    EnemyMoveSpeed: 1.75
+    ProjectileSpeed: 1.25
+    EmeraldBonus: 1.5
     LuckBonus: 0
+    EnemyMinimum: 1.25
+  EnemySpawn:
+    North: 1
+    South: 1
+    West: 1
+    East: 1
+  Stageitems: []
+  StageEnemys:
+  - phase: 0
+    Enemies:
+    - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
+    EnemyCount: 10
+    SpawnInterval: 1
+    BossEnemys: []
+    Events: []
+  - phase: 1
+    Enemies:
+    - {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+    - {fileID: 11400000, guid: 227f12894417f2f4498596fe9ebaf278, type: 2}
+    EnemyCount: 30
+    SpawnInterval: 1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+      Treasure: 1
+    Events: []
+  - phase: 2
+    Enemies:
+    - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
+    - {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+    EnemyCount: 50
+    SpawnInterval: 0.5
+    BossEnemys: []
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 7
+      Chance: 1
+      MaxRepeats: 2
+      Delay: 5
+  - phase: 3
+    Enemies:
+    - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
+    - {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+    EnemyCount: 50
+    SpawnInterval: 0.5
+    BossEnemys: []
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 7
+      Chance: 1
+      MaxRepeats: 2
+      Delay: 5
+  - phase: 4
+    Enemies:
+    - {fileID: 11400000, guid: e1b9379402c68ad43827688da34a54ae, type: 2}
+    - {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+    EnemyCount: 30
+    SpawnInterval: 1
+    BossEnemys: []
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 7
+      Chance: 0.1
+      MaxRepeats: 1
+      Delay: 5
+  - phase: 5
+    Enemies:
+    - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
+    EnemyCount: 30
+    SpawnInterval: 1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
+      Treasure: 1
+    Events:
+    - Type: Wall
+      AmountPer: 100
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 7
+      Chance: 1
+      MaxRepeats: 1
+      Delay: 30

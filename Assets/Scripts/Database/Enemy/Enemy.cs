@@ -1,78 +1,97 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-
-[System.Serializable]
-public class Appearances
-{
-    public Map Stage; // どのステージで出現するか
-    public int Minute; // n分目に出現するか
-    public string Type; // 出現条件のタイプ
-}
 
 [CreateAssetMenu(fileName = "Enemy", menuName = "CreateEnemy")]
 public class Enemy : ScriptableObject
 {
     [SerializeField]
-    private int ID; // EnemyのID
+    private int id; // EnemyのID
 
     [SerializeField]
-    private string Name; // Enemyの名前
+    private string name; // Enemyの名前
 
     [SerializeField]
-    private int MaxHealth; // EnemyのMax体力
+    private int max_health; // EnemyのMax体力
 
     [SerializeField]
-    private string Type; // Enemyのタイプ
+    private bool playerlevel; // 敵の体力はプレイヤーのレベルによって変化するか否か
 
     [SerializeField]
-    private int DropXP; // Enemyがドロップする経験値量
+    private float exp; // Enemyがドロップする経験値量
 
     [SerializeField]
-    private int DefaultDamage; // Enemyの基礎攻撃力
+    private float damage; // Enemyの基礎攻撃力
 
     [SerializeField]
-    private int MoveSpeed; // Enemyの移動速度(キャラの基本は100)
+    private float speed; // Enemyの移動速度(キャラの基本は100)
 
     [SerializeField]
-    private int MaxKnockback; // Enemyがノックバックする回数
+    private float KnockBack; // Enemyがノックバックする回数
 
     [SerializeField]
-    private List<Appearances> Appearances; // Enemyのステージ情報
+    private float MaxKnockBack; // EnemyがノックバックするMAX回数
+    
+    [SerializeField]
+    private int UpdateCharaImagePage; // 何フレームごとに画像を変更するか
+
+    [SerializeField]
+    private Color Color = new Color(1, 1, 1); // 敵の色の変更
+
+    [SerializeField]
+    private Vector3 localScale; // 敵のサイズの変更
+
+    public int GetId()
+    {
+        return id;
+    }
 
     public string GetName()
     {
-        return Name;
+        return name;
     }
 
-    public int GetMaxHealth()
+    public int GetMaxHealth(int PlayerLv)
     {
-        return MaxHealth;
+        return playerlevel == true ? max_health * PlayerLv : max_health;
     }
 
-    public string GetType()
+    public float GetExp()
     {
-        return Type;
+        return exp;
     }
 
-    public int GetDropXP()
+    public float GetDamage()
     {
-        return DropXP;
+        return damage;
     }
 
-    public int GetDefaultDamage()
+    public float GetSpeed()
     {
-        return DefaultDamage;
+        return speed;
     }
 
-    public int GetMoveSpeed()
+    public float GetKnockBack()
     {
-        return MoveSpeed;
+        return KnockBack;
     }
 
-    public int GetMaxKnockback()
+    public float GetMaxKnockBack()
     {
-        return MaxKnockback;
+        return MaxKnockBack;
+    }
+
+    public Color GetColor()
+    {
+        return Color;
+    }
+
+    public Vector3 GetLocalScale()
+    {
+        return localScale;
+    }
+
+    public int GetUpdateCharaImagePage()
+    {
+        return UpdateCharaImagePage;
     }
 
     public Sprite GetIcon()
@@ -85,10 +104,5 @@ public class Enemy : ScriptableObject
     {
         Sprite[] image = Resources.LoadAll<Sprite>($"Enemy/{GetName()}/");
         return image;
-    }
-
-    public List<Appearances> GetAppearances()
-    {
-        return Appearances;
     }
 }

@@ -98,13 +98,13 @@ public class map : MonoBehaviour
 
     public void UpdateDescription(Map map, Json.MapData m)
     {
-        void ChangeMoveSpeed(int parameter)
+        void ChangeMoveSpeed(float parameter)
         {
             Text value = MoveSpeed.transform.Find("Value").gameObject.GetComponent<Text>();
             value.text = $"{parameter}%";
         }
 
-        void ChangeEmeraldBonus(int parameter)
+        void ChangeEmeraldBonus(float parameter)
         {
             Text title = EmeraldBonus.transform.Find("Title").gameObject.GetComponent<Text>();
             Text value = EmeraldBonus.transform.Find("Value").gameObject.GetComponent<Text>();
@@ -120,7 +120,7 @@ public class map : MonoBehaviour
             };
         }
 
-        void ChangeLuckBonus(int parameter)
+        void ChangeLuckBonus(float parameter)
         {
             Text title = LuckBonus.transform.Find("Title").gameObject.GetComponent<Text>();
             Text value = LuckBonus.transform.Find("Value").gameObject.GetComponent<Text>();

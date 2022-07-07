@@ -8,10 +8,12 @@ public class MoveChara : MonoBehaviour
     public GameObject CharaBack;
     public GameObject isMap4;
     public GameObject JoyStick;
+    public GameObject MoveWithChara;
 
     private Transform CharaTransform;
     private Transform FrontCharaTransform;
     private Transform BackCharaTransform;
+    private Transform MoveWithCharaTransform;
 
     private float MoveSpeed = 0.014f;
 
@@ -41,10 +43,12 @@ public class MoveChara : MonoBehaviour
         CharaTransform = this.gameObject.transform;
         FrontCharaTransform = CharaFront.transform;
         BackCharaTransform = CharaBack.transform;
+        MoveWithCharaTransform = MoveWithChara.transform;
 
         CharaImage = this.gameObject.GetComponent<Image>();
         CharaBackImageFront = CharaFront.GetComponent<Image>();
         CharaBackImageBack = CharaBack.GetComponent<Image>();
+
         CharaImageList = mob.GetIcons();
         CharaImageListCount = CharaImageList.Length - 1;
     }
@@ -116,7 +120,7 @@ public class MoveChara : MonoBehaviour
         GameObject JoyStickHandle = JoyStick.transform.Find("Handle").gameObject;
         JoyStickHandle.transform.position = new Vector3(JoyStick.transform.position.x + cos, JoyStick.transform.position.y + sin);
     }
-
+    
     private float GetRadian(float x, float y, float x2, float y2)
     {
         return Mathf.Atan2(y2 - y, x2 - x);
@@ -212,7 +216,8 @@ public class MoveChara : MonoBehaviour
         float MoveX = CharaTransform.position.x + MathMoveDistanceX;
         float MoveY = CharaTransform.position.y + MathMoveDistanceY;
 
-        CharaTransform.position = new Vector3(MoveX, MoveY, 0);
+        CharaTransform.position = new Vector3(MoveX, MoveY);
+        MoveWithCharaTransform.position = CharaTransform.position;
         if (player.Latest_Map == 4)
         {
             isMap4.transform.position = new Vector3(MoveX, MoveY, 0);

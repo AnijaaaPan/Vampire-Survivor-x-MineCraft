@@ -22,10 +22,25 @@ MonoBehaviour:
   use: 0
   music: {fileID: 8300000, guid: 3f2407ebd76f5054287786aa112253ac, type: 3}
   MapParameter:
+    StartingSpawns: 0
     MoveSpeed: 25
+    EnemyMoveSpeed: 0
+    ProjectileSpeed: 0
     EmeraldBonus: 20
     LuckBonus: 0
+    EnemyMinimum: 0
   HyperMode:
+    StartingSpawns: 0
     MoveSpeed: 90
+    EnemyMoveSpeed: 0
+    ProjectileSpeed: 0
     EmeraldBonus: 70
     LuckBonus: 10
+    EnemyMinimum: 0
+  EnemySpawn:
+    North: 1
+    South: 1
+    West: 1
+    East: 1
+  Stageitems: []
+  StageEnemys: []
