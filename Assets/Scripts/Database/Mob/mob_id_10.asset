@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: mob_id_10
   m_EditorClassIdentifier: 
   id: 10
-  weapon_id: 9
+  weapon: {fileID: 11400000, guid: f99d64d08b3ca7f49a481ab4dbf4ae79, type: 2}
   name: Krochi
   description: "\u30B9\u30BF\u30FC\u30C8\u6642Revival\u30921\u3064\u8FFD\u52A0  Lv33\u3067Revival\u3092\u66F4\u306B\u8FFD\u52A0
     (Revival\u3092\u30D1\u30EF\u30FC\u30A2\u30C3\u30D7\u3055\u305B\u3066\u3044\u308C\u3070\u6B8B\u6A5F3\u306B\u306A\u308B)"
-  icon: {fileID: 21300000, guid: 07bd4cf872ab9ec43ba5481de35e2ff9, type: 3}
   use: 0
   hidden: 1
   Parameter:
-  - effect_id: 10
+  - item: {fileID: 11400000, guid: 1d00eca5839da8144b03adff126b3af6, type: 2}
     phase: 3
-  - effect_id: 16
+  - item: {fileID: 11400000, guid: fc625d3c78f0aeb45812b134a6080142, type: 2}
     phase: 1

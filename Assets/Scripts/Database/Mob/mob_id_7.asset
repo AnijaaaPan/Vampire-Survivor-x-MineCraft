@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: mob_id_7
   m_EditorClassIdentifier: 
   id: 7
-  weapon_id: 15
+  weapon: {fileID: 11400000, guid: 251d9c62b621d7c47af3f4fd59be8136, type: 2}
   name: Poe
   description: "\u30A2\u30A4\u30C6\u30E0\u53D6\u5F97\u8DDD\u96E2\u304C25%UP  \u6700\u5927HP
     -30"
-  icon: {fileID: 21300000, guid: 07bd4cf872ab9ec43ba5481de35e2ff9, type: 3}
   use: 0
   hidden: 1
   Parameter:
-  - effect_id: 3
+  - item: {fileID: 11400000, guid: 9913763ba9722e344b5dd877fd7b2de0, type: 2}
     phase: -3
-  - effect_id: 11
+  - item: {fileID: 11400000, guid: bd5670d7aa0a1c546a87c093baf36663, type: 2}
     phase: 2.5

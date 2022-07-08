@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: mob_id_5
   m_EditorClassIdentifier: 
   id: 5
-  weapon_id: 21
+  weapon: {fileID: 11400000, guid: c38a838d20ed57449af383417e112ed0, type: 2}
   name: Porta
   description: "\u653B\u6483\u7BC4\u56F2\u304C30%UP  Lv.1\u306E\u9593\u3001\u30AF\u30FC\u30EB\u30C0\u30A6\u30F3\u304C(90%,60%,30%\u306E\u3044\u3065\u308C\u304B)\u77ED\u7E2E"
-  icon: {fileID: 21300000, guid: 07bd4cf872ab9ec43ba5481de35e2ff9, type: 3}
   use: 0
   hidden: 1
   Parameter:
-  - effect_id: 6
+  - item: {fileID: 11400000, guid: 65639a731190a4749a3e3c70cbceafc7, type: 2}
     phase: 3
-  - effect_id: 5
+  - item: {fileID: 11400000, guid: cfa32cab295ecb649b2be4a38f0f3f59, type: 2}
     phase: -9

@@ -16,8 +16,9 @@ MonoBehaviour:
   description: "\u88AB\u30C0\u30E1\u30FC\u30B8\u30921\u8EFD\u6E1B"
   id: 2
   icon: {fileID: 21300000, guid: 8a3d1018e6d0204478346e76923756b5, type: 3}
-  powerup: 19
+  weapon:
+  - {fileID: 11400000, guid: c91218539b01a7b4dae69276b79c694f, type: 2}
   cost: 200
   count: 3
   default_item: 1
-  cant_use_waepon: 
+  CantUse: []

@@ -31,7 +31,7 @@ public class Weapon : ScriptableObject
     private Sprite icon; // Weaponのアイコン
 
     [SerializeField]
-    private int powerup; // 進化先の武器ID
+    private Weapon weapon; // 進化先の武器ID
 
     [SerializeField]
     private bool default_waepon; // デフォルトで武器が使用可能かどうか
@@ -64,9 +64,9 @@ public class Weapon : ScriptableObject
         return icon;
     }
 
-    public int GetPowerup()
+    public Weapon GetWeapon()
     {
-        return powerup;
+        return weapon;
     }
 
     public bool GetDefault()

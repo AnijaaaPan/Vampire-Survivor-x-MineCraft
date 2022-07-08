@@ -30,7 +30,6 @@ public class chara : MonoBehaviour
 
     private Json.PlayerData player = Json.instance.Load();
     private MobDataBase MobDataBase = Json.instance.MobDataBase;
-    private WeaponDataBase WeaponDataBase = Json.instance.WeaponDataBase;
     private ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
 
     void Start()
@@ -58,7 +57,7 @@ public class chara : MonoBehaviour
             if (c.hidden == true) continue;
 
             Mob mob = MobDataBase.FindMobFromId(c.id);
-            Weapon weapon = WeaponDataBase.FindWeaponFromId(mob.GetWeaponId());
+            Weapon weapon = mob.GetWeapon();
 
             GameObject CharaObject = CreateCharaObject(mob, c, weapon);
             GameObject CharaImageObject = CreateCharaImageObject(mob, c);
@@ -132,7 +131,7 @@ public class chara : MonoBehaviour
                 return result < 0 ? $"{result}" : $"+{result}";
             }
 
-            Parameter data = mob.GetParameter().Find(par => item_data.GetId() == par.effect_id);
+            Parameter data = mob.GetParameter().Find(par => item_data.GetId() == par.item.GetId());
             Json.PowerUpList poweroup_data = player.PowerUp.poweruplist.Find(data => data.id == item_data.GetId());
             float ParameterPhase = data == null ? 0 : data.phase;
             int powerupcount = (int)ParameterPhase + item_data.GetCount() - poweroup_data.powerupcount;

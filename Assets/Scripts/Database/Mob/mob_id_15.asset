@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: mob_id_15
   m_EditorClassIdentifier: 
   id: 15
-  weapon_id: 35
+  weapon: {fileID: 11400000, guid: eb23a30668523f54480bc61f82eb5a96, type: 2}
   name: Concetta
   description: "\u30EC\u30D9\u30EB\u304C1\u4E0A\u304C\u308B\u6BCE\u306B\u52B9\u679C\u7BC4\u56F2\u304C+1%\u4E0A\u6607\u3059\u308B"
-  icon: {fileID: 21300000, guid: 07bd4cf872ab9ec43ba5481de35e2ff9, type: 3}
   use: 0
   hidden: 1
   Parameter:
-  - effect_id: 10
+  - item: {fileID: 11400000, guid: 1d00eca5839da8144b03adff126b3af6, type: 2}
     phase: 2
-  - effect_id: 15
+  - item: {fileID: 11400000, guid: 79aa878f7c718ff4a9af1e39cea7f66b, type: 2}
     phase: 1

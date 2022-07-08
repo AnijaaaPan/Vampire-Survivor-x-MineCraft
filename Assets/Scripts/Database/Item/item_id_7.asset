@@ -16,8 +16,21 @@ MonoBehaviour:
   description: "\u6295\u64F2\u901F\u5EA6\u304C10%\u4E0A\u6607"
   id: 7
   icon: {fileID: 21300000, guid: 5db41b890d14e174682fe1ec9a7a2314, type: 3}
-  powerup: 5
+  weapon:
+  - {fileID: 11400000, guid: 994e1f1c86be7c342bffd4a942bbbd7a, type: 2}
   cost: 300
   count: 2
   default_item: 0
-  cant_use_waepon: 01000000020000000f000000100000001100000012000000150000001600000017000000180000002500000026000000
+  CantUse:
+  - {fileID: 11400000, guid: 8ffb25043ade91d48b167a546bcb9624, type: 2}
+  - {fileID: 11400000, guid: d2726f61465c2b44cb31b7219a9d7db3, type: 2}
+  - {fileID: 11400000, guid: 251d9c62b621d7c47af3f4fd59be8136, type: 2}
+  - {fileID: 11400000, guid: 8dab2b0fa5516d54e9ef663102903339, type: 2}
+  - {fileID: 11400000, guid: 8d64094013e9afe45a4dfcc7527487ce, type: 2}
+  - {fileID: 11400000, guid: 399b279133156c54b9c6e42276ffa301, type: 2}
+  - {fileID: 11400000, guid: c38a838d20ed57449af383417e112ed0, type: 2}
+  - {fileID: 11400000, guid: 62eb9d1482c90c242b7c249226f1520b, type: 2}
+  - {fileID: 11400000, guid: 95fe9f5000c89eb43a2a8d0201069b3c, type: 2}
+  - {fileID: 11400000, guid: 29923c8f3183f4f41b9ac1186b364e99, type: 2}
+  - {fileID: 11400000, guid: 41a24499143958e4a8db5235fc2cc4fc, type: 2}
+  - {fileID: 11400000, guid: 166015ddde965a64ca812d5149639714, type: 2}

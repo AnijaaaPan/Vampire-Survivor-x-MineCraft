@@ -13,18 +13,17 @@ MonoBehaviour:
   m_Name: mob_id_11
   m_EditorClassIdentifier: 
   id: 11
-  weapon_id: 23
+  weapon: {fileID: 11400000, guid: 95fe9f5000c89eb43a2a8d0201069b3c, type: 2}
   name: Christine
   description: "\u30B9\u30C6\u30FC\u30B8\u958B\u59CB\u30671\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7"
-  icon: {fileID: 21300000, guid: 07bd4cf872ab9ec43ba5481de35e2ff9, type: 3}
   use: 0
   hidden: 1
   Parameter:
-  - effect_id: 3
+  - item: {fileID: 11400000, guid: 9913763ba9722e344b5dd877fd7b2de0, type: 2}
     phase: -5
-  - effect_id: 10
+  - item: {fileID: 11400000, guid: 1d00eca5839da8144b03adff126b3af6, type: 2}
     phase: 3
-  - effect_id: 1
+  - item: {fileID: 11400000, guid: 2192aa3348a1e924180c88adc46e5d64, type: 2}
     phase: -3.5
-  - effect_id: 5
+  - item: {fileID: 11400000, guid: cfa32cab295ecb649b2be4a38f0f3f59, type: 2}
     phase: -2.5

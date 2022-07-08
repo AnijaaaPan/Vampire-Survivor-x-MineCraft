@@ -4,8 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class Parameter
 {
-    public int effect_id; // 効果ID
-    public float phase; // 効果の段階
+    public Item item; // アイテムID
+    public float phase; // アイテムの段階
 }
 
 [CreateAssetMenu(fileName = "Mob", menuName = "CreateMob")]
@@ -15,7 +15,7 @@ public class Mob: ScriptableObject
     private int id; // MobのID
 
     [SerializeField]
-    private int weapon_id; // Mobが使う武器ID
+    private Weapon weapon; // Mobが使う武器ID
 
     [SerializeField]
     private string name; // Mobの名前
@@ -47,9 +47,9 @@ public class Mob: ScriptableObject
         return id;
     }
 
-    public int GetWeaponId()
+    public Weapon GetWeapon()
     {
-        return weapon_id;
+        return weapon;
     }
 
     public Sprite GetIcon()

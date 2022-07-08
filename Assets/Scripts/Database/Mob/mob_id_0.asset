@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: mob_id_0
   m_EditorClassIdentifier: 
   id: 0
-  weapon_id: 1
+  weapon: {fileID: 11400000, guid: 8ffb25043ade91d48b167a546bcb9624, type: 2}
   name: Antonio
   description: "10\u30EC\u30D9\u30EB\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8\u304C10%\u30A2\u30C3\u30D7(\u4E0A\u9650:50%)\u3002"
   use: 1
   hidden: 0
   Parameter:
-  - effect_id: 2
+  - item: {fileID: 11400000, guid: ba94601d5b54b1048b3a00c5cb4ba631, type: 2}
     phase: 1
-  - effect_id: 3
+  - item: {fileID: 11400000, guid: 9913763ba9722e344b5dd877fd7b2de0, type: 2}
     phase: 2

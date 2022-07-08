@@ -1118,8 +1118,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.8465, y: -3.6601}
-  m_SizeDelta: {x: 76.9521, y: 94.017}
+  m_AnchoredPosition: {x: -2.9316, y: -3.6601}
+  m_SizeDelta: {x: 89.4195, y: 94.017}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &528381926
 MonoBehaviour:
@@ -1141,9 +1141,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f57cc77aeb54a144cabf7bc7e792307e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1399,7 +1399,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2456,9 +2456,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d5715ed312c94b441aa389ece57d852e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3044,7 +3044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelectChara: {fileID: 21300000, guid: a950f06d5742e6b4b87607a8b3100d6f, type: 3}
   UnSelectChara: {fileID: 21300000, guid: d4930a39df647874e99f9b6a03c5ba3c, type: 3}
-  UnLockCharaWeapon: {fileID: 21300000, guid: e7e0024a14fce494e83bd187a09d1727, type: 3}
+  UnLockCharaWeapon: {fileID: 21300000, guid: d5715ed312c94b441aa389ece57d852e, type: 3}
   SelectImage: {fileID: 528381926}
   SelectWeapon: {fileID: 1592817411}
   SelectName: {fileID: 1112314761}

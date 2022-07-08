@@ -17,7 +17,7 @@ public class Item : ScriptableObject
     private Sprite icon; // Itemのアイコン
 
     [SerializeField]
-    private int powerup; // 進化先の武器ID
+    private List<Weapon> weapon; // 進化先の武器ID
 
     [SerializeField]
     private int cost; // パワーアップするために必要なコスト
@@ -29,7 +29,7 @@ public class Item : ScriptableObject
     private bool default_item; // デフォルトでアイテムが使用可能かどうか
 
     [SerializeField]
-    private List<int> cant_use_waepon; // 無効武器
+    private List<Weapon> CantUse; // 無効武器
 
     public string GetName()
     {
@@ -51,9 +51,9 @@ public class Item : ScriptableObject
         return icon;
     }
 
-    public int GetPowerup()
+    public List<Weapon> GetPowerup()
     {
-        return powerup;
+        return weapon;
     }
 
     public int GetCost()
@@ -69,5 +69,10 @@ public class Item : ScriptableObject
     public bool GetDefault()
     {
         return default_item;
+    }
+
+    public List<Weapon> GetCantUse()
+    {
+        return CantUse;
     }
 }

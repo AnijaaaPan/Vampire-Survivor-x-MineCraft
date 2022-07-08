@@ -31,7 +31,7 @@ public class Enemy : ScriptableObject
     private float MaxKnockBack; // EnemyがノックバックするMAX回数
     
     [SerializeField]
-    private int UpdateCharaImagePage; // 何フレームごとに画像を変更するか
+    private int UpdateImagePage; // 何フレームごとに画像を変更するか
 
     [SerializeField]
     private Color Color = new Color(1, 1, 1); // 敵の色の変更
@@ -89,9 +89,9 @@ public class Enemy : ScriptableObject
         return localScale;
     }
 
-    public int GetUpdateCharaImagePage()
+    public int GetUpdateImagePage()
     {
-        return UpdateCharaImagePage;
+        return UpdateImagePage;
     }
 
     public Sprite GetIcon()

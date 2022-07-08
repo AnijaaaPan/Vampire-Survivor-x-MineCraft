@@ -16,9 +16,4 @@ public class MapDataBase : ScriptableObject
     {
         return MapLists.Find(mob => mob.GetId() == id);
     }
-
-    public Map FindMapFromName(string name)
-    {
-        return MapLists.Find(mob => mob.GetName() == name);
-    }
 }
