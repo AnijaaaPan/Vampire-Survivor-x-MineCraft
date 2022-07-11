@@ -89,6 +89,9 @@
     <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItem.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\EnemyMoveToChara.cs" />
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Status\PlayerStatus.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Status\Status.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Status\ItemStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
