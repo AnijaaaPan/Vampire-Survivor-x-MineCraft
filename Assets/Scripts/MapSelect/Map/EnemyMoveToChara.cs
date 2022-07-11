@@ -33,11 +33,32 @@ public class EnemyMoveToChara : MonoBehaviour
     {
         UpdateCharaImagePage();
         UpdateObjectCoordinate();
+        TeleportToDestination();
     }
 
     private float GetRadian(float x, float y, float x2, float y2)
     {
         return Mathf.Atan2(y2 - y, x2 - x);
+    }
+
+    private void TeleportToDestination()
+    {
+        string SpawnPlace = "";
+        float DistanceX = EnemyTransform.position.x - CharaTransform.position.x;
+        float DistanceY = EnemyTransform.position.y - CharaTransform.position.y;
+
+        if (DistanceY > 8) SpawnPlace = "South";
+        if (DistanceY < -8) SpawnPlace = "North";
+        if (DistanceX > 13) SpawnPlace = "West";
+        if (DistanceX < -13) SpawnPlace = "East";
+        if (SpawnPlace == "") return;
+
+        SpawnRange GetSpawn = SpawnEnemy.instance.GetSpawn(SpawnPlace);
+
+        float ReSpawnX = Chara.transform.position.x + Random.Range(GetSpawn.LeftX, GetSpawn.RightX);
+        float ReSpawnY = Chara.transform.position.y + Random.Range(GetSpawn.DownY, GetSpawn.UpY);
+
+        EnemyTransform.position = new Vector3(ReSpawnX, ReSpawnY, 0);
     }
 
     private void UpdateCharaImagePage()
@@ -69,6 +90,6 @@ public class EnemyMoveToChara : MonoBehaviour
         float MoveX = EnemyTransform.position.x - MathMoveDistanceX;
         float MoveY = EnemyTransform.position.y - MathMoveDistanceY;
 
-        EnemyTransform.position = new Vector3(MoveX, MoveY, 1);
+        EnemyTransform.position = new Vector3(MoveX, MoveY, 0);
     }
 }

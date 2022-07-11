@@ -7,7 +7,7 @@
     "SoundEffect": 0.0,
     "SoundMusic": 0.0,
     "Flash": true,
-    "JoyStick": false,
+    "JoyStick": true,
     "Damage": true,
     "FullScreen": false,
     "Character": [

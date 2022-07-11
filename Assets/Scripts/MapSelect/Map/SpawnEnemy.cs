@@ -15,6 +15,8 @@ public class SpawnRange
 
 public class SpawnEnemy : MonoBehaviour
 {
+    static public SpawnEnemy instance;
+
     public GameObject Chara;
     public GameObject MoveWithChara;
 
@@ -25,6 +27,11 @@ public class SpawnEnemy : MonoBehaviour
     private Map Map;
     private StageEnemys StageEnemys;
     private List<SpawnRange> SpawnRanges = new List<SpawnRange>();
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -43,6 +50,7 @@ public class SpawnEnemy : MonoBehaviour
         {
             phase = Timer.Minute;
             StageEnemys = Map.GetStageEnemys().Find(m => m.phase == phase);
+            Spawn(StageEnemys.EnemyCount);
         }
     }
 
@@ -71,11 +79,16 @@ public class SpawnEnemy : MonoBehaviour
     {
         for (int i = 0; i < SpawnCountLimit; i++)
         {
-            CteateEnemy();
+            CreateEnemy();
         }
     }
 
-    private void CteateEnemy()
+    public SpawnRange GetSpawn(string type)
+    {
+        return SpawnRanges.Find(s => s.type == type);
+    }
+
+    private void CreateEnemy()
     {
         Enemy SelectEnemy = GetRandom(StageEnemys.Enemies);
 
