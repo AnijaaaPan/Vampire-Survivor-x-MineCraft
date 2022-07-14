@@ -133,7 +133,7 @@ public class collection : MonoBehaviour
             Music.instance.ClickSound();
             UpdateSelectImage(Object);
             UpdateDescription();
-        });        
+        });
         return Object;
     }
 

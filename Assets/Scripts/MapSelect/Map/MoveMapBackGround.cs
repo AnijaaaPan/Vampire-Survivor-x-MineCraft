@@ -51,6 +51,8 @@ public class MoveMapBackGround : MonoBehaviour
 
     void Update()
     {
+        if (!isPlaying.instance.isPlay()) return;
+
         float getAbsX = Mathf.Abs(Chara.transform.position.x % MapSize);
         if (Chara.transform.position.x < 0)
         {

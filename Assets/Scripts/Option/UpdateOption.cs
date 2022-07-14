@@ -53,6 +53,8 @@ public class UpdateOption : MonoBehaviour
 
     private void PushButton(GameObject Object, string OptionType)
     {
+        if (Object == null) return;
+
         GameObject ObjectCheckBox = Object.transform.Find("Check").gameObject;
         Image ObjectImage = ObjectCheckBox.GetComponent<Image>();
         ChangeImage(OptionType, ObjectImage);

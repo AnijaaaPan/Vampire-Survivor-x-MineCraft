@@ -65,6 +65,11 @@ public class Music : MonoBehaviour
         SoundEffectSource.PlayOneShot(click);
     }
 
+    public void SoundEffect(AudioClip sound)
+    {
+        SoundEffectSource.PlayOneShot(sound);
+    }
+
     private void PlayRandomMusic()
     {
         SoundMusicSource.clip = GetRandom(audioClipList);

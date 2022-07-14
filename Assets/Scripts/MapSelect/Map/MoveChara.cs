@@ -55,6 +55,8 @@ public class MoveChara : MonoBehaviour
 
     void Update()
     {
+        if (!isPlaying.instance.isPlay()) return;
+
         float MathMoveDistanceX = 0;
         float MathMoveDistanceY = 0;
 

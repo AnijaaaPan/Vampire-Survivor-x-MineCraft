@@ -33,6 +33,8 @@ public class CountTimer : MonoBehaviour
 
     private void SecondCountUp()
     {
+        if (!isPlaying.instance.isPlay()) return;
+
         Timer.AllSecond++;
         Timer.Second = Timer.AllSecond % 60;
         Timer.Minute = (int) Mathf.Floor(Timer.AllSecond / 60);
