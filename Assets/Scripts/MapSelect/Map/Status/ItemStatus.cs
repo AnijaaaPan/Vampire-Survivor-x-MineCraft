@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 
 public class ItemData
@@ -60,26 +59,6 @@ public class ItemStatus : MonoBehaviour
             ParameterEffectObject.transform.SetParent(ParameterObject.transform);
             ParameterObject.transform.SetParent(EffectList.transform);
         };
-
-        StartCoroutine("Interval");
-    }
-
-    IEnumerator Interval()
-    {
-        int index = 1;
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-
-            if (IsPlaying.instance.isPlay())
-            {
-                Item item = ItemDataBase.FindItemFromId(index);
-                if (!item) break;
-
-                AddItemDataList(item);
-                index++;
-            };
-        }
     }
 
     public List<ItemData> GetStatusList()

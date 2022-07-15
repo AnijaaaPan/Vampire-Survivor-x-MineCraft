@@ -24,6 +24,8 @@ public class SpawnEnemy : MonoBehaviour
     private readonly MapDataBase MapDataBase = Json.instance.MapDataBase;
 
     private int phase = 0;
+    private int EnemyCount = 1;
+
     private Map Map;
     private StageEnemys StageEnemys;
     private List<SpawnRange> SpawnRanges = new List<SpawnRange>();
@@ -68,12 +70,14 @@ public class SpawnEnemy : MonoBehaviour
 
     private void InitSpawnRange(string type, int LeftX, int RightX, int DownY, int UpY)
     {
-        SpawnRange SpawnRange = new SpawnRange();
-        SpawnRange.type = type;
-        SpawnRange.LeftX = LeftX;
-        SpawnRange.RightX = RightX;
-        SpawnRange.DownY = DownY;
-        SpawnRange.UpY = UpY;
+        SpawnRange SpawnRange = new SpawnRange
+        {
+            type = type,
+            LeftX = LeftX,
+            RightX = RightX,
+            DownY = DownY,
+            UpY = UpY
+        };
         SpawnRanges.Add(SpawnRange);
     }
 
@@ -100,7 +104,7 @@ public class SpawnEnemy : MonoBehaviour
         float SpawnX = MoveWithChara.transform.position.x + Random.Range(GetSpawn.LeftX, GetSpawn.RightX);
         float SpawnY = MoveWithChara.transform.position.y + Random.Range(GetSpawn.DownY, GetSpawn.UpY);
 
-        GameObject Object = new GameObject("Enemy");
+        GameObject Object = new GameObject($"Enemy_{EnemyCount}");
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
         ObjectRectTransform.sizeDelta = new Vector2(1.25f, 1.25f);
@@ -123,6 +127,9 @@ public class SpawnEnemy : MonoBehaviour
         CircleCollider2DObject.radius = 0.5f;
 
         Object.transform.SetParent(this.gameObject.transform);
+
+        EnemyStatus.instance.AddEenmyDataList(EnemyCount, SelectEnemy, Object);
+        EnemyCount++;
     }
 
     IEnumerator SpawnInterval()

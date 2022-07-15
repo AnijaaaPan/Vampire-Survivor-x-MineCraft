@@ -37,7 +37,7 @@ public class Enemy : ScriptableObject
     private Color Color = new Color(1, 1, 1); // 敵の色の変更
 
     [SerializeField]
-    private Vector3 localScale; // 敵のサイズの変更
+    private Vector3 localScale = new Vector3(1, 1, 1); // 敵のサイズの変更
 
     public int GetId()
     {
