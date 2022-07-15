@@ -15,7 +15,7 @@ public class MoveChara : MonoBehaviour
     private Transform BackCharaTransform;
     private Transform MoveWithCharaTransform;
 
-    private float MoveSpeed = 0.014f;
+    private readonly static float MoveSpeed = 0.014f;
 
     private Image CharaImage;
     private Image CharaBackImageFront;
@@ -30,10 +30,10 @@ public class MoveChara : MonoBehaviour
     private Vector3 ClickStartPosition;
     private Vector3 ClickEndPosition;
 
-    private List<bool?> LatestPlayerVector = new List<bool?>() { null, null };
+    private readonly List<bool?> LatestPlayerVector = new List<bool?>() { null, null };
 
     private Json.PlayerData player = Json.instance.Load();
-    private MobDataBase MobDataBase = Json.instance.MobDataBase;
+    private readonly MobDataBase MobDataBase = Json.instance.MobDataBase;
 
     void Start()
     {
@@ -55,7 +55,7 @@ public class MoveChara : MonoBehaviour
 
     void Update()
     {
-        if (!isPlaying.instance.isPlay()) return;
+        if (!IsPlaying.instance.isPlay()) return;
 
         float MathMoveDistanceX = 0;
         float MathMoveDistanceY = 0;
@@ -110,7 +110,6 @@ public class MoveChara : MonoBehaviour
                 UpdateJoiStick(MoveAbsX, MoveAbsY);
             }            
         }
-
         return new List<float>() { MoveSpeed * cos, MoveSpeed * sin };
     }
 

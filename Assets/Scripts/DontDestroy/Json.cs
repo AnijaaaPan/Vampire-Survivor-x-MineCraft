@@ -92,25 +92,16 @@ public class Json : MonoBehaviour
         public bool hyper;
     }
 
-    [SerializeField]
-    public MobDataBase MobDataBase;//  使用するデータベース
-
-    [SerializeField]
-    public WeaponDataBase WeaponDataBase;//  使用するデータベース
-
-    [SerializeField]
-    public ItemDataBase ItemDataBase;//  使用するデータベース
-
-    [SerializeField]
-    public SpecialItemDataBase SpecialItemDataBase;//  使用するデータベース
-
-    [SerializeField]
-    public MapDataBase MapDataBase;//  使用するデータベース
+    public MobDataBase MobDataBase;
+    public WeaponDataBase WeaponDataBase;
+    public ItemDataBase ItemDataBase;
+    public SpecialItemDataBase SpecialItemDataBase;
+    public MapDataBase MapDataBase;
 
     private void Awake()
     {
         datapath = Application.dataPath + "/json/Player.json";
-        //初めに保存先を計算する　Application.dataPathで今開いているUnityプロジェクトのAssetsフォルダ直下を指定して、後ろに保存名を書く
+
         if (instance == null)
         {
             instance = this;
@@ -122,11 +113,9 @@ public class Json : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     public void Start()
     {
         PlayerData player = Load();
-        //Debug.Log(JsonUtility.ToJson(player, true));
         if (player.FirstTime == false)
         {
             player.FirstTime = true;
@@ -157,20 +146,19 @@ public class Json : MonoBehaviour
     {
         void SaveFunction(Mob mob)
         {
-            CharacterData character = new CharacterData();
-            character.id = mob.GetId();
-            character.use = mob.GetUse();
-            character.hidden = mob.GetHidden();
+            CharacterData character = new CharacterData
+            {
+                id = mob.GetId(),
+                use = mob.GetUse(),
+                hidden = mob.GetHidden()
+            };
             player.Character.Add(character);
         };
 
         for (int i = 0; i < MobDataBase.GetMobLists().Count; i++)//  Mobのリストの数の分だけ繰り返す処理
         {
             Mob mob = MobDataBase.FindMobFromId(i);
-            if (player.Character.Count == i)
-            {
-                SaveFunction(mob);
-            };
+            if (player.Character.Count == i) SaveFunction(mob);
         };
         return player;
     }
@@ -179,20 +167,18 @@ public class Json : MonoBehaviour
     {
         void SaveFunction(Weapon weapon_data)
         {
-            WeaponData weapon = new WeaponData();
-            weapon.id = weapon_data.GetId();
-            weapon.use = weapon_data.GetDefault();
+            WeaponData weapon = new WeaponData
+            {
+                id = weapon_data.GetId(),
+                use = weapon_data.GetDefault()
+            };
             player.Weapon.Add(weapon);
         };
 
         for (int i = 1; i < WeaponDataBase.GetWeaponLists().Count + 1; i++)//  Mobのリストの数の分だけ繰り返す処理
         {
             Weapon weapon_data = WeaponDataBase.FindWeaponFromId(i);
-            if (player.Weapon.Count == i - 1)
-            {
-                SaveFunction(weapon_data);
-            };
-
+            if (player.Weapon.Count == i - 1) SaveFunction(weapon_data);
         };
         return player;
     }
@@ -201,24 +187,25 @@ public class Json : MonoBehaviour
     {
         void SaveFunction(Item item_data)
         {
-            ItemData item = new ItemData();
-            item.id = item_data.GetId();
-            item.use = item_data.GetDefault();
+            ItemData item = new ItemData
+            {
+                id = item_data.GetId(),
+                use = item_data.GetDefault()
+            };
             player.Item.Add(item);
 
-            PowerUpList special_item = new PowerUpList();
-            special_item.id = item_data.GetId();
-            special_item.powerupcount = item_data.GetCount();
+            PowerUpList special_item = new PowerUpList
+            {
+                id = item_data.GetId(),
+                powerupcount = item_data.GetCount()
+            };
             player.PowerUp.poweruplist.Add(special_item);
         };
 
         for (int i = 1; i < ItemDataBase.GetItemLists().Count + 1; i++)//  Mobのリストの数の分だけ繰り返す処理
         {
             Item item_data = ItemDataBase.FindItemFromId(i);
-            if (player.Item.Count == i - 1)
-            {
-                SaveFunction(item_data);
-            };
+            if (player.Item.Count == i - 1) SaveFunction(item_data);
         };
         return player;
     }
@@ -227,20 +214,18 @@ public class Json : MonoBehaviour
     {
         void SaveFunction(SpecialItem item_data)
         {
-            SpecialItemData item = new SpecialItemData();
-            item.id = item_data.GetId();
-            item.use = false;
+            SpecialItemData item = new SpecialItemData
+            {
+                id = item_data.GetId(),
+                use = false
+            };
             player.SpecialItem.Add(item);
         };
 
         for (int i = 1; i < SpecialItemDataBase.GetSpecialItemLists().Count + 1; i++)//  Mobのリストの数の分だけ繰り返す処理
         {
             SpecialItem item_data = SpecialItemDataBase.FindSpecialItemFromId(i);
-            if (player.SpecialItem.Count == i - 1)
-            {
-                SaveFunction(item_data);
-            };
-
+            if (player.SpecialItem.Count == i - 1) SaveFunction(item_data);
         };
         return player;
     }
@@ -249,16 +234,17 @@ public class Json : MonoBehaviour
     {
         void SaveFunction(int id, string description, string type, int type_id)
         {
-            if (player.Achievement.Count == id - 1)
+            if (player.Achievement.Count != id - 1) return;
+
+            AchievementData achievement = new AchievementData
             {
-                AchievementData achievement = new AchievementData();
-                achievement.id = id;
-                achievement.description = description;
-                achievement.type = type;
-                achievement.type_id = type_id;
-                achievement.use = false;
-                player.Achievement.Add(achievement);
-            }
+                id = id,
+                description = description,
+                type = type,
+                type_id = type_id,
+                use = false
+            };
+            player.Achievement.Add(achievement);
         };
 
         SaveFunction(1, "レベル5に到達", "item", 10);
@@ -335,38 +321,37 @@ public class Json : MonoBehaviour
     {
         void SaveFunction(Map map_data)
         {
-            MapData map = new MapData();
-            map.id = map_data.GetId();
-            map.use = map_data.GetUse();
-            map.hyper = false;
+            MapData map = new MapData
+            {
+                id = map_data.GetId(),
+                use = map_data.GetUse(),
+                hyper = false
+            };
             player.Map.Add(map);
         };
 
         for (int i = 1; i < MapDataBase.GetMapLists().Count + 1; i++)//  Mobのリストの数の分だけ繰り返す処理
         {
             Map item_data = MapDataBase.FindMapFromId(i);
-            if (player.Map.Count == i - 1)
-            {
-                SaveFunction(item_data);
-            };
+            if (player.Map.Count == i - 1) SaveFunction(item_data);
         };
         return player;
     }
 
     public PlayerData Load()
     {
-        StreamReader reader = new StreamReader(datapath); //受け取ったパスのファイルを読み込む
-        string datastr = reader.ReadToEnd();//ファイルの中身をすべて読み込む
-        reader.Close();//ファイルを閉じる
+        StreamReader reader = new StreamReader(datapath);
+        string datastr = reader.ReadToEnd();
+        reader.Close();
         return JsonUtility.FromJson<PlayerData>(datastr);
     }
 
     public void Save(PlayerData player)
     {
-        string jsonstr = JsonUtility.ToJson(player, true);//受け取ったPlayerDataをJSONに変換
-        StreamWriter writer = new StreamWriter(datapath, false);//初めに指定したデータの保存先を開く
-        writer.WriteLine(jsonstr);//JSONデータを書き込み
-        writer.Flush();//バッファをクリアする
-        writer.Close();//ファイルをクローズする
+        string jsonstr = JsonUtility.ToJson(player, true);
+        StreamWriter writer = new StreamWriter(datapath, false);
+        writer.WriteLine(jsonstr);
+        writer.Flush();
+        writer.Close();
     }
 }

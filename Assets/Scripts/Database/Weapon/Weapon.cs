@@ -37,6 +37,9 @@ public class Weapon : ScriptableObject
     private bool default_waepon; // デフォルトで武器が使用可能かどうか
 
     [SerializeField]
+    private int play_count; // プレイ中にパワーアップ出来る回数
+
+    [SerializeField]
     private WeaponParn parameter; // Weaponのデフォルト攻撃力
 
     public string GetName()
@@ -73,6 +76,11 @@ public class Weapon : ScriptableObject
     {
         return default_waepon;
     }
+    public int GetPlayCount()
+    {
+        return play_count;
+    }
+
 
     public WeaponParn GetParameter()
     {

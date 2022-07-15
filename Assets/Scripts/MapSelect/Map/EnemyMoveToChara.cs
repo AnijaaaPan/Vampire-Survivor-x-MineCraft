@@ -31,7 +31,7 @@ public class EnemyMoveToChara : MonoBehaviour
 
     void Update()
     {
-        if (!isPlaying.instance.isPlay()) return;
+        if (!IsPlaying.instance.isPlay()) return;
 
         UpdateCharaImagePage();
         UpdateObjectCoordinate();

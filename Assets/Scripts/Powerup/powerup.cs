@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class powerup : MonoBehaviour
+public class PowerUp : MonoBehaviour
 {
     public Sprite BackGround;
     public Sprite BackGroundSelect;
@@ -20,11 +20,11 @@ public class powerup : MonoBehaviour
     public Image SelectWeapon;
     public Button SellPowerUp;
 
-    private float InitInt = 1 / 34.35838f;
+    private readonly static float InitInt = 1 / 34.35838f;
     private GameObject BeforeGameObject;
 
-    private Json.PlayerData player = Json.instance.Load();
-    private ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
+    private readonly Json.PlayerData player = Json.instance.Load();
+    private readonly ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
 
     void Start()
     {
@@ -90,9 +90,11 @@ public class powerup : MonoBehaviour
             for (int i = 1; i < ItemDataBase.GetItemLists().Count + 1; i++)
             {
                 Item ItemData = ItemDataBase.FindItemFromId(i);
-                Json.PowerUpList initPowerUp = new Json.PowerUpList();
-                initPowerUp.id = ItemData.GetId();
-                initPowerUp.powerupcount = ItemData.GetCount();
+                Json.PowerUpList initPowerUp = new Json.PowerUpList
+                {
+                    id = ItemData.GetId(),
+                    powerupcount = ItemData.GetCount()
+                };
                 player.PowerUp.poweruplist[i - 1] = initPowerUp;
             };
 

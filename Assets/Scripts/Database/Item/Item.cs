@@ -26,6 +26,9 @@ public class Item : ScriptableObject
     private int count; // パワーアップ出来る回数
 
     [SerializeField]
+    private int play_count; // プレイ中にパワーアップ出来る回数
+
+    [SerializeField]
     private bool default_item; // デフォルトでアイテムが使用可能かどうか
 
     [SerializeField]
@@ -64,6 +67,11 @@ public class Item : ScriptableObject
     public int GetCount()
     {
         return count;
+    }
+
+    public int GetPlayCount()
+    {
+        return play_count;
     }
 
     public bool GetDefault()

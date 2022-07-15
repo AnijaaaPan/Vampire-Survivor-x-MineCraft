@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class achievement : MonoBehaviour
+public class Achievement : MonoBehaviour
 {
     public Sprite SelectAchievement;
     public Sprite CheckBackGround;
@@ -23,14 +23,14 @@ public class achievement : MonoBehaviour
     public GameObject SelectMapObject;
 
     private int UnLockCount = 0;
-    private float InitInt = 1 / 34.36426f;
+    private readonly static float InitInt = 1 / 34.36426f;
     private GameObject BeforeGameObject;
 
-    private Json.PlayerData player = Json.instance.Load();
-    private MobDataBase MobDataBase = Json.instance.MobDataBase;
-    private WeaponDataBase WeaponDataBase = Json.instance.WeaponDataBase;
-    private ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
-    private MapDataBase MapDataBase = Json.instance.MapDataBase;
+    private readonly Json.PlayerData player = Json.instance.Load();
+    private readonly MobDataBase MobDataBase = Json.instance.MobDataBase;
+    private readonly WeaponDataBase WeaponDataBase = Json.instance.WeaponDataBase;
+    private readonly ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
+    private readonly MapDataBase MapDataBase = Json.instance.MapDataBase;
 
     void Start()
     {

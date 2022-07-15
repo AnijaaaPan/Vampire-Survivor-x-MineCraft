@@ -17,8 +17,9 @@ MonoBehaviour:
   effect: "\u6301\u7D9A\u6642\u9593\u3092\u7121\u8996\u3059\u308B\u3002"
   id: 41
   icon: {fileID: 21300000, guid: 3415fdf3446ebe54e85c8001d40e01aa, type: 3}
-  powerup: 0
+  weapon: {fileID: 0}
   default_waepon: 0
+  play_count: 8
   parameter:
     damage: 10
     range: 0.6

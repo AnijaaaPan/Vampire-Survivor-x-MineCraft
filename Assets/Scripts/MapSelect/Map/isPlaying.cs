@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class isPlaying : MonoBehaviour
+public class IsPlaying : MonoBehaviour
 {
-    static public isPlaying instance;
+    static public IsPlaying instance;
     private bool isPlayGame = true;
 
     private void Awake()

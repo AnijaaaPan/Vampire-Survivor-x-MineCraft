@@ -6,9 +6,10 @@ public class Setting : MonoBehaviour
 {
     public GameObject Option;
     public GameObject SetOption;
-    public GameObject JoyStick;
+
     public Button EndGame;
     public Button ContinueGame;
+    public Button StopButton;
 
     private bool isOpen = false;
 
@@ -22,8 +23,12 @@ public class Setting : MonoBehaviour
 
         ContinueGame.onClick.AddListener(() =>
         {
-            Music.instance.ClickSound();
             CloseOption();
+        });
+
+        StopButton.onClick.AddListener(() =>
+        {
+            OpenOption();
         });
     }
 
@@ -40,25 +45,46 @@ public class Setting : MonoBehaviour
         }
     }
 
+    private void ChangeStopButtonCanvas()
+    {
+        GameObject Object = StopButton.gameObject;
+        if (isOpen)
+        {
+            Canvas ObjectCanvas = Object.GetComponent<Canvas>();
+            if (ObjectCanvas) Destroy(ObjectCanvas);
+
+        } else
+        {
+            Canvas ObjectCanvas = Object.AddComponent<Canvas>();
+            ObjectCanvas.overrideSorting = true;
+            ObjectCanvas.sortingOrder = -2;
+        }
+    }
+
     private void OpenOption()
     {
         Music.instance.ClickSound();
+        ChangeStopButtonCanvas();
+        ItemStatus.instance.UpdatePlayerEffect();
+        ItemStatus.instance.UpdateOptionItemBar();
+        WeaponStatus.instance.UpdateOptionWeaponBar();
+
         isOpen = true;
-        isPlaying.instance.Stop();
+        IsPlaying.instance.Stop();
 
         Option.SetActive(true);
         SetOption.SetActive(true);
-        JoyStick.SetActive(false);
     }
 
     private void CloseOption()
     {
         Music.instance.ClickSound();
+        ChangeStopButtonCanvas();
+
         isOpen = false;
-        isPlaying.instance.reStart();
+        IsPlaying.instance.reStart();
 
         Option.SetActive(false);
         SetOption.SetActive(false);
-        JoyStick.SetActive(true);
     }
 }

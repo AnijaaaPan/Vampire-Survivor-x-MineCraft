@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class collection : MonoBehaviour
+public class Collection : MonoBehaviour
 {
     public Sprite BackGround;
     public Sprite SpecialItemBackGround;
@@ -19,13 +19,13 @@ public class collection : MonoBehaviour
 
     private int UnLockCount = 0;
     private int AllCollectionCount = 0;
-    private float InitInt = 1 / 34.35838f;
+    private readonly static float InitInt = 1 / 34.35838f;
     private GameObject BeforeGameObject;
 
-    private Json.PlayerData player = Json.instance.Load();
-    private WeaponDataBase WeaponDataBase = Json.instance.WeaponDataBase;
-    private ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
-    private SpecialItemDataBase SpecialItemDataBase = Json.instance.SpecialItemDataBase;
+    private readonly Json.PlayerData player = Json.instance.Load();
+    private readonly WeaponDataBase WeaponDataBase = Json.instance.WeaponDataBase;
+    private readonly ItemDataBase ItemDataBase = Json.instance.ItemDataBase;
+    private readonly SpecialItemDataBase SpecialItemDataBase = Json.instance.SpecialItemDataBase;
 
     void Start()
     {

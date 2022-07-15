@@ -14,7 +14,7 @@ public class UpdateOption : MonoBehaviour
     public GameObject ButtonDamage;
     public GameObject ButtonFullScreen;
 
-    private Json.PlayerData player = Json.instance.Load();
+    private readonly Json.PlayerData player = Json.instance.Load();
 
     void Start()
     {

@@ -14,7 +14,7 @@ public class CountTimer : MonoBehaviour
 {
     static public CountTimer instance;
 
-    private float sleep = 1f;
+    private readonly float sleep = 1f;
     private Timer Timer = new Timer();
 
     private void Awake()
@@ -33,7 +33,7 @@ public class CountTimer : MonoBehaviour
 
     private void SecondCountUp()
     {
-        if (!isPlaying.instance.isPlay()) return;
+        if (!IsPlaying.instance.isPlay()) return;
 
         Timer.AllSecond++;
         Timer.Second = Timer.AllSecond % 60;

@@ -20,5 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca25af60c2a181f488feeec2d2158e58, type: 2}
   cost: 1666
   count: 5
+  play_count: 4
   default_item: 0
   CantUse: []

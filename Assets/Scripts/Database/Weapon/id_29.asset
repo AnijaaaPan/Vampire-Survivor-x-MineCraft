@@ -19,6 +19,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 4f8bb961e8171fd40b1ca037d6d791d1, type: 3}
   weapon: {fileID: 11400000, guid: dd865618923154f4f888bc391de32fad, type: 2}
   default_waepon: 0
+  play_count: 8
   parameter:
     damage: 5
     range: 1

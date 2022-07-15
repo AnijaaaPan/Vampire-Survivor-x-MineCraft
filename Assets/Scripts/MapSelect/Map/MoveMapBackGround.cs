@@ -24,8 +24,8 @@ public class MoveMapBackGround : MonoBehaviour
     private GameObject LeftLowMap;
     private GameObject RightLowMap;
 
-    private Json.PlayerData player = Json.instance.Load();
-    private MapDataBase MapDataBase = Json.instance.MapDataBase;
+    private readonly Json.PlayerData player = Json.instance.Load();
+    private readonly MapDataBase MapDataBase = Json.instance.MapDataBase;
     private const int MapSize = 64;
 
     void Start()
@@ -51,7 +51,7 @@ public class MoveMapBackGround : MonoBehaviour
 
     void Update()
     {
-        if (!isPlaying.instance.isPlay()) return;
+        if (!IsPlaying.instance.isPlay()) return;
 
         float getAbsX = Mathf.Abs(Chara.transform.position.x % MapSize);
         if (Chara.transform.position.x < 0)

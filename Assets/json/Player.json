@@ -1,11 +1,11 @@
 {
     "FirstTime": true,
-    "Money": 0,
+    "Money": 683671,
     "Latest_Chara": 0,
     "Latest_Map": 1,
     "Latest_Map_Hyper": false,
     "SoundEffect": 1.0,
-    "SoundMusic": 0.0,
+    "SoundMusic": 1.0,
     "Flash": true,
     "JoyStick": true,
     "Damage": true,
@@ -349,72 +349,72 @@
         }
     ],
     "PowerUp": {
-        "allcost": 0,
-        "allcount": 0,
+        "allcost": 316329,
+        "allcount": 48,
         "poweruplist": [
             {
                 "id": 1,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 2,
-                "powerupcount": 3
+                "powerupcount": 0
             },
             {
                 "id": 3,
-                "powerupcount": 3
+                "powerupcount": 0
             },
             {
                 "id": 4,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 5,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 6,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 7,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 8,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 9,
-                "powerupcount": 1
+                "powerupcount": 0
             },
             {
                 "id": 10,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 11,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 12,
-                "powerupcount": 3
+                "powerupcount": 0
             },
             {
                 "id": 13,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 14,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 15,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 16,
-                "powerupcount": 1
+                "powerupcount": 0
             }
         ]
     },

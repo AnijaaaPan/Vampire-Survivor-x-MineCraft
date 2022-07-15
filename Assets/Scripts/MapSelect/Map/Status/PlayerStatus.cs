@@ -28,7 +28,7 @@ public class PlayerStatus : MonoBehaviour
 
     public AudioClip LvUp;
 
-    private static float MaxPercentEXP = 21.469f;
+    private readonly static float MaxPercentEXP = 21.469f;
     private PlayerData PlayerData = new PlayerData();
 
     private void Awake()

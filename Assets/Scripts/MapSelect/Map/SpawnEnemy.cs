@@ -20,8 +20,8 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject Chara;
     public GameObject MoveWithChara;
 
-    private Json.PlayerData player = Json.instance.Load();
-    private MapDataBase MapDataBase = Json.instance.MapDataBase;
+    private readonly Json.PlayerData player = Json.instance.Load();
+    private readonly MapDataBase MapDataBase = Json.instance.MapDataBase;
 
     private int phase = 0;
     private Map Map;
@@ -45,7 +45,7 @@ public class SpawnEnemy : MonoBehaviour
 
     void Update()
     {
-        if (!isPlaying.instance.isPlay()) return;
+        if (!IsPlaying.instance.isPlay()) return;
 
         Timer Timer = CountTimer.instance.GetTimer();
         if (Timer.Minute != phase)
@@ -79,7 +79,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Spawn(int SpawnCountLimit = 1)
     {
-        if (!isPlaying.instance.isPlay()) return;
+        if (!IsPlaying.instance.isPlay()) return;
 
         for (int i = 0; i < SpawnCountLimit; i++)
         {
