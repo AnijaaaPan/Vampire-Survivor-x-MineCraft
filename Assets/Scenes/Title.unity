@@ -381,7 +381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 197286469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82822e676107774c9913edb51619869, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f7495435eb3d44fa30185e4840fbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: SelectCharacter
@@ -402,11 +402,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 197286469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643d79adc9c7cb34d835309f2847283a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 21300000, guid: bc41467caa4920946818e563138289c3, type: 3}
-  hover: {fileID: 21300000, guid: 4a30ea15590ef08438e38caa00719973, type: 3}
 --- !u!212 &197286475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -620,11 +618,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 275549108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643d79adc9c7cb34d835309f2847283a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 21300000, guid: f85ad1f13631e2542a99d4d3123b213b, type: 3}
-  hover: {fileID: 21300000, guid: 1dd3ca125d370b3448a2d200c2d8ba86, type: 3}
 --- !u!212 &275549114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -685,7 +681,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 275549108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82822e676107774c9913edb51619869, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f7495435eb3d44fa30185e4840fbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Option
@@ -1001,11 +997,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 755744010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643d79adc9c7cb34d835309f2847283a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 21300000, guid: c9062e1055e5aea49b2ed25bbc606e14, type: 3}
-  hover: {fileID: 21300000, guid: 3db31690ccdad2c48ac0c5199d083dc1, type: 3}
 --- !u!212 &755744016
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1170,11 +1164,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 945792480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643d79adc9c7cb34d835309f2847283a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 21300000, guid: 69425bf2d19d011499ea92d061021d91, type: 3}
-  hover: {fileID: 21300000, guid: 0598172e4afad024195759ddbbf0b759, type: 3}
 --- !u!114 &945792484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,7 +1220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 945792480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82822e676107774c9913edb51619869, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f7495435eb3d44fa30185e4840fbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Collection
@@ -1568,14 +1560,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipList:
-  - {fileID: 8300000, guid: 56e91fc75ea2e364eafa38aad14b41ae, type: 3}
+  - {fileID: 8300000, guid: 1fd2df2aed0fd934cbdc6207ec34e846, type: 3}
   - {fileID: 8300000, guid: 57a4bb7c05209984188253adb9452724, type: 3}
-  - {fileID: 8300000, guid: f57916963927d174784d656c495d9857, type: 3}
-  - {fileID: 8300000, guid: 8aa7bd1dfa3196347a24a1aeddc72146, type: 3}
-  - {fileID: 8300000, guid: 64581aac5e47d7d4e92e10a14350409a, type: 3}
-  - {fileID: 8300000, guid: a01c5b5128b570e40a4ef9324a2deadb, type: 3}
-  - {fileID: 8300000, guid: a9a627d8a0f121b42a58d4a0a147f72a, type: 3}
-  click: {fileID: 8300000, guid: 45985c519fe7ff0409affd42fff193bd, type: 3}
+  - {fileID: 8300000, guid: b17296fb7c9e5d343ae6b1bfa163ea24, type: 3}
+  - {fileID: 8300000, guid: 7d636be7649afbf43af7340b423c4bdd, type: 3}
+  - {fileID: 8300000, guid: 8f6e854746de12544baff3ad5d564abb, type: 3}
+  - {fileID: 8300000, guid: 343274ac5042f56439f8ba67749c15ed, type: 3}
+  - {fileID: 8300000, guid: 720a4dc7a8b1e754a8c7e550158159e1, type: 3}
+  click: {fileID: 8300000, guid: 42658ee514357ce4cb846364ff009012, type: 3}
 --- !u!82 &1443812010
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1848,7 +1840,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525586548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82822e676107774c9913edb51619869, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f7495435eb3d44fa30185e4840fbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Powerup
@@ -1869,11 +1861,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525586548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643d79adc9c7cb34d835309f2847283a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 21300000, guid: 1498be17e43451041a64bb5e80d94d75, type: 3}
-  hover: {fileID: 21300000, guid: 43b82546cbc9d9242be74c4042003b73, type: 3}
 --- !u!212 &1525586554
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2086,11 +2076,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606374707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643d79adc9c7cb34d835309f2847283a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 21300000, guid: 5f9ec3339295e0b4bbe8e5115e4085ca, type: 3}
-  hover: {fileID: 21300000, guid: 48368ad1a8a58cc48a9b531e76b24c05, type: 3}
 --- !u!114 &1606374712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,7 +2132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606374707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82822e676107774c9913edb51619869, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f7495435eb3d44fa30185e4840fbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Achievement

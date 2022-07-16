@@ -19,7 +19,7 @@ public class Enemy : ScriptableObject
     private float exp; // Enemyがドロップする経験値量
 
     [SerializeField]
-    private float damage; // Enemyの基礎攻撃力
+    private int damage; // Enemyの基礎攻撃力
 
     [SerializeField]
     private float speed; // Enemyの移動速度(キャラの基本は100)
@@ -59,7 +59,7 @@ public class Enemy : ScriptableObject
         return exp;
     }
 
-    public float GetDamage()
+    public int GetDamage()
     {
         return damage;
     }

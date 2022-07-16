@@ -22,11 +22,11 @@ public class SelectCharacter : MonoBehaviour
     public GameObject UnlockCost;
     public GameObject EffectList;
 
+    private Font TextFont;
+    private GameObject BeforeGameObject;
     private readonly static float InitInt = 1 / 34.35838f;
     private readonly static float ParameterInitInt = 1 / 1.625f;
     private readonly static List<int> ParameterList = new List<int> { 3, 4, 2, 10, 1, 7, 8, 6, 5, 9, 16, 11, 12, 13, 14, 15 };
-    private Font TextFont;
-    private GameObject BeforeGameObject;
 
     private readonly Json.PlayerData player = Json.instance.Load();
     private readonly MobDataBase MobDataBase = Json.instance.MobDataBase;

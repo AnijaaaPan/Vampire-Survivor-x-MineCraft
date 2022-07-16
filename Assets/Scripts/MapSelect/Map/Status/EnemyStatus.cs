@@ -36,7 +36,7 @@ public class EnemyStatus : MonoBehaviour
 
     void Start()
     {
-        // StartCoroutine("Interval");
+        //StartCoroutine("Interval");
     }
 
     IEnumerator Interval()
@@ -140,7 +140,13 @@ public class EnemyStatus : MonoBehaviour
         if (EnemyData.hp <= 0)
         {
             PlayerStatus.instance.UpdateDefeatCount();
-            Destroy(EnemyData.Object);
+
+            Destroy(GetComponent<EnemyMoveToChara>());
+            Destroy(GetComponent<Rigidbody2D>());
+            Destroy(GetComponent<CircleCollider2D>());
+            EnemyData.Object.AddComponent<KillMob>();
+
+            AllEnemyDataList.Find(e => e.enemy == EnemyData.enemy).DefeatCount++;
             EnemyDataList.Remove(EnemyData);
         }
     }

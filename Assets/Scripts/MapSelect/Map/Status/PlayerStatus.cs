@@ -20,13 +20,18 @@ public class PlayerStatus : MonoBehaviour
     public Text EmeraldCount;
     public Text LvCount;
     public RectTransform ExpBar;
+
+    public GameObject Chara;
     public GameObject HeartsBar;
+    public GameObject DamageEffects;
 
     public Sprite FullHp;
     public Sprite HalfHp;
     public Sprite NoHp;
+    public Sprite DamageEffectImage;
 
     public AudioClip LvUp;
+    public AudioClip PlayerDamage;
 
     private readonly static float MaxPercentEXP = 21.469f;
     private PlayerData PlayerData = new PlayerData();
@@ -80,6 +85,30 @@ public class PlayerStatus : MonoBehaviour
 
         }
         UpdateHpBar();
+        DisplayDamageEffect(GrantHP);
+    }
+
+    private void DisplayDamageEffect(int damage)
+    {
+        if (damage >= 0) return;
+
+        RectTransform EnemyDataObjectRectTransform = Chara.GetComponent<RectTransform>();
+        float EnemyX = EnemyDataObjectRectTransform.anchoredPosition.x;
+        float EnemyY = EnemyDataObjectRectTransform.anchoredPosition.y;
+
+        GameObject Object = new GameObject("DamageEffect");
+        Object.transform.SetParent(DamageEffects.transform);
+
+        RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.sizeDelta = new Vector2(2, 2);
+        ObjectRectTransform.anchoredPosition = new Vector3(EnemyX, EnemyY, 0);
+
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.sprite = DamageEffectImage;
+        ObjectImage.color = new Color(1, 0, 0, 1);
+
+        Object.AddComponent<DamageEffect>();
+        Music.instance.SoundEffect(PlayerDamage);
     }
 
     private GameObject GetHeartObject(int id)
