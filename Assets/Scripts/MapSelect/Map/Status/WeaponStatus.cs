@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class WeaponData
+public class WeaponData : IData
 {
-    public int id;
+    public int id { get; set; }
+    public int phase { get; set; }
+    public string type { get; set; }
+
     public Weapon weapon;
-    public int phase;
 }
 
 public class WeaponStatus : MonoBehaviour
@@ -57,6 +59,7 @@ public class WeaponStatus : MonoBehaviour
         {
             id = WeaponDataList.Count,
             phase = 1,
+            type = "weapon",
             weapon = weapon
         };
 
@@ -68,10 +71,10 @@ public class WeaponStatus : MonoBehaviour
         ObjectImage.color = new Color(1, 1, 1, 1);
     }
 
-    public void UpdateWeaponPhase(int id)
+    public void UpdateWeaponPhase(Weapon weapon)
     {
 
-        WeaponData WeaponData = WeaponDataList.Find(i => i.weapon.GetId() == id);
+        WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase++;
     }
 

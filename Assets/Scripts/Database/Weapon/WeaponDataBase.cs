@@ -16,4 +16,9 @@ public class WeaponDataBase : ScriptableObject
     {
         return WeaponLists.Find(Weapon => Weapon.GetId() == id);
     }
+
+    public Weapon FindWeaponFromName(string name)
+    {
+        return WeaponLists.Find(Weapon => Weapon.GetName() == name);
+    }
 }

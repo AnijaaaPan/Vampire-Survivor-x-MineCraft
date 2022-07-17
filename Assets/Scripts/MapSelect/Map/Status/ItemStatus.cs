@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class ItemData
+public class ItemData : IData
 {
-    public int id;
+    public int id { get; set; }
+    public int phase { get; set; }
+    public string type { get; set; }
+
     public Item item;
-    public int phase;
 }
 
 public class ItemStatus : MonoBehaviour
@@ -89,6 +91,7 @@ public class ItemStatus : MonoBehaviour
         {
             id = ItemDataList.Count,
             phase = 1,
+            type = "item",
             item = item
         };
 
@@ -100,10 +103,10 @@ public class ItemStatus : MonoBehaviour
         ObjectImage.color = new Color(1, 1, 1, 1);
     }
 
-    public void UpdateItemPhase(int id)
+    public void UpdateItemPhase(Item item)
     {
 
-        ItemData ItemData = ItemDataList.Find(i => i.item.GetId() == id);
+        ItemData ItemData = ItemDataList.Find(i => i.item == item);
         ItemData.phase++;
     }
 

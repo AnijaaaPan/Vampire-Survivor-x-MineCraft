@@ -20,6 +20,8 @@ public class VacuumItem : MonoBehaviour
 
     void LateUpdate()
     {
+        if (!IsPlaying.instance.isPlay()) return;
+
         UpdateObjectCoordinate();
     }
 

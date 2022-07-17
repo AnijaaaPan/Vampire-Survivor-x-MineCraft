@@ -21,6 +21,8 @@ public class ExpStatus : MonoBehaviour
     public GameObject Chara;
     public GameObject ExpOrbList;
 
+    public AudioClip GetExpSound;
+
     private int CountDisplay;
     private int MaxCountDisplay = 400;
     private ExpData LatestMaxExpData;
@@ -69,6 +71,8 @@ public class ExpStatus : MonoBehaviour
 
     public void GetExpOrb(GameObject Object)
     {
+        Music.instance.SoundEffect(GetExpSound);
+
         ExpData ExpData = ExpDataList.Find(e => e.Object == Object);
         int GetExp = Mathf.FloorToInt(ExpData.EXP);
         PlayerStatus.instance.UpdateExpStatus(GetExp);
@@ -111,7 +115,7 @@ public class ExpStatus : MonoBehaviour
         return ExpOrb_Lv3;
     }
 
-    public static bool Probability(float fPercent)
+    public bool Probability(float fPercent)
     {
         float fProbabilityRate = UnityEngine.Random.value * 100.0f;
 

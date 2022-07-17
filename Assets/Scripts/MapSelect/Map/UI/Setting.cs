@@ -4,14 +4,22 @@ using UnityEngine.SceneManagement;
 
 public class Setting : MonoBehaviour
 {
+    static public Setting instance;
+
     public GameObject Option;
     public GameObject SetOption;
+    public GameObject LevelUpOption;
 
     public Button EndGame;
     public Button ContinueGame;
     public Button StopButton;
 
     private bool isOpen = false;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -23,45 +31,48 @@ public class Setting : MonoBehaviour
 
         ContinueGame.onClick.AddListener(() =>
         {
-            CloseOption();
+            CloseOption(SetOption);
         });
 
         StopButton.onClick.AddListener(() =>
         {
-            OpenOption();
+            OpenOption(SetOption);
         });
     }
 
     void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Escape)) return;
+        if (!Input.GetKeyDown(KeyCode.Escape) || LevelUpOption.activeSelf) return;
 
         if (!isOpen)
         {
-            OpenOption();
+            OpenOption(SetOption);
         } else
         {
-            CloseOption();
+            CloseOption(SetOption);
         }
     }
 
     private void ChangeStopButtonCanvas()
     {
         GameObject Object = StopButton.gameObject;
+        Canvas ObjectCanvas = Object.GetComponent<Canvas>();
         if (isOpen)
         {
-            Canvas ObjectCanvas = Object.GetComponent<Canvas>();
             if (ObjectCanvas) Destroy(ObjectCanvas);
 
         } else
         {
-            Canvas ObjectCanvas = Object.AddComponent<Canvas>();
+            if (!ObjectCanvas)
+            {
+                ObjectCanvas = Object.AddComponent<Canvas>();
+            }
             ObjectCanvas.overrideSorting = true;
             ObjectCanvas.sortingOrder = -2;
         }
     }
 
-    private void OpenOption()
+    public void OpenOption(GameObject SelectObject)
     {
         Music.instance.ClickSound();
         ChangeStopButtonCanvas();
@@ -73,10 +84,10 @@ public class Setting : MonoBehaviour
         IsPlaying.instance.Stop();
 
         Option.SetActive(true);
-        SetOption.SetActive(true);
+        SelectObject.SetActive(true);
     }
 
-    private void CloseOption()
+    public void CloseOption(GameObject SelectObject)
     {
         Music.instance.ClickSound();
         ChangeStopButtonCanvas();
@@ -85,6 +96,6 @@ public class Setting : MonoBehaviour
         IsPlaying.instance.reStart();
 
         Option.SetActive(false);
-        SetOption.SetActive(false);
+        SelectObject.SetActive(false);
     }
 }

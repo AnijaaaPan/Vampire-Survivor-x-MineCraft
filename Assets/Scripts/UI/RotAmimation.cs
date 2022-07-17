@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class RotAmimation : MonoBehaviour
 {
-
 	public float angle = 1;
 	public bool is_rot = true;
 
