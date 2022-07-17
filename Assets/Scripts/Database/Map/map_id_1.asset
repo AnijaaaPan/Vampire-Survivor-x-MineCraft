@@ -20,7 +20,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   block_icon: {fileID: 21300000, guid: 18fadf8565c321e48ae11059178f4cc8, type: 3}
   use: 1
-  music: {fileID: 8300000, guid: 74589bbabc078964ebc3487b1434ab04, type: 3}
+  music: {fileID: 8300000, guid: 049b4818f1284534ea706398fa9c9e80, type: 3}
   MapParameter:
     StartingSpawns: 5
     MoveSpeed: 1

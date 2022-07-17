@@ -36,7 +36,7 @@ public class EnemyStatus : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine("Interval");
+        StartCoroutine("Interval");
     }
 
     IEnumerator Interval()
@@ -141,10 +141,11 @@ public class EnemyStatus : MonoBehaviour
         {
             PlayerStatus.instance.UpdateDefeatCount();
 
-            Destroy(GetComponent<EnemyMoveToChara>());
-            Destroy(GetComponent<Rigidbody2D>());
-            Destroy(GetComponent<CircleCollider2D>());
+            Destroy(EnemyData.Object.GetComponent<EnemyMoveToChara>());
+            Destroy(EnemyData.Object.GetComponent<Rigidbody2D>());
+            Destroy(EnemyData.Object.GetComponent<CircleCollider2D>());
             EnemyData.Object.AddComponent<KillMob>();
+            ExpStatus.instance.CreateExpObject(EnemyData.Object, EnemyData.enemy.GetExp());
 
             AllEnemyDataList.Find(e => e.enemy == EnemyData.enemy).DefeatCount++;
             EnemyDataList.Remove(EnemyData);

@@ -80,12 +80,13 @@ public class PlayerStatus : MonoBehaviour
         PlayerData.HP += GrantHP;
         if (PlayerData.HP >= PlayerData.MaxHP) PlayerData.HP = PlayerData.MaxHP;
 
+        UpdateHpBar();
+        DisplayDamageEffect(GrantHP);
+
         if (PlayerData.HP <= 0)
         {
 
         }
-        UpdateHpBar();
-        DisplayDamageEffect(GrantHP);
     }
 
     private void DisplayDamageEffect(int damage)
@@ -128,7 +129,7 @@ public class PlayerStatus : MonoBehaviour
         int HpPercentage = 100 * PlayerData.HP / PlayerData.MaxHP;
         int TensPlace = Mathf.FloorToInt(HpPercentage / 10);
         int OnesPlace = HpPercentage % 10;
-        for (int i = 9; i >= 1; i--)
+        for (int i = 9; i >= 0; i--)
         {
             GameObject HeartObject = GetHeartObject(i);
             Image ObjectImage = HeartObject.GetComponent<Image>();

@@ -27,6 +27,7 @@ public class MoveMapBackGround : MonoBehaviour
     private readonly Json.PlayerData player = Json.instance.Load();
     private readonly MapDataBase MapDataBase = Json.instance.MapDataBase;
     private const int MapSize = 64;
+    private const int HalfMapSize = 32;
 
     void Start()
     {
@@ -58,14 +59,15 @@ public class MoveMapBackGround : MonoBehaviour
         {
             getAbsX = MapSize - getAbsX;
         }
+
         float getAbsY = Mathf.Abs(Chara.transform.position.y % MapSize);
         if (Chara.transform.position.y < 0)
         {
             getAbsY = MapSize - getAbsY;
         }
 
-        int getMapXId = (int)Mathf.Floor(getAbsX / (MapSize / 2));
-        int getMapYId = (int)Mathf.Floor(getAbsY / (MapSize / 2));
+        int getMapXId = (int)Mathf.Floor(getAbsX / HalfMapSize);
+        int getMapYId = (int)Mathf.Floor(getAbsY / HalfMapSize);
 
         if (PlayMapInfo.MapXId != getAbsX || PlayMapInfo.MapYId != getAbsY)
         {
@@ -108,7 +110,6 @@ public class MoveMapBackGround : MonoBehaviour
     {
         float getFloorX = Mathf.Floor(Chara.transform.position.x / MapSize);
         float getFloorY = Mathf.Floor(Chara.transform.position.y / MapSize);
-
         float getNowX = getFloorX * MapSize;
         float getNowY = getFloorY * MapSize;
         float setX = getNowX + MapSize;
