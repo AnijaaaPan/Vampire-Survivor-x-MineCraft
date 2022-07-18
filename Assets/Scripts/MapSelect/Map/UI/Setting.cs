@@ -9,6 +9,7 @@ public class Setting : MonoBehaviour
     public GameObject Option;
     public GameObject SetOption;
     public GameObject LevelUpOption;
+    public GameObject Death;
 
     public Button EndGame;
     public Button ContinueGame;
@@ -42,7 +43,9 @@ public class Setting : MonoBehaviour
 
     void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Escape) || LevelUpOption.activeSelf) return;
+        if (!Input.GetKeyDown(KeyCode.Escape) ||
+            LevelUpOption.activeSelf ||
+            Death.activeSelf) return;
 
         if (!isOpen)
         {
@@ -53,7 +56,7 @@ public class Setting : MonoBehaviour
         }
     }
 
-    private void ChangeStopButtonCanvas()
+    public void ChangeStopButtonCanvas()
     {
         GameObject Object = StopButton.gameObject;
         Canvas ObjectCanvas = Object.GetComponent<Canvas>();

@@ -36,7 +36,7 @@ public class EnemyStatus : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(nameof(Interval));
+        //StartCoroutine(nameof(Interval));
     }
 
     IEnumerator Interval()

@@ -42,7 +42,8 @@ public class SpawnEnemy : MonoBehaviour
 
         InitSpawnSetActive();
         Spawn(StageEnemys.EnemyCount);
-        StartCoroutine("SpawnInterval");
+
+        StartCoroutine(nameof(SpawnInterval));
     }
 
     void Update()

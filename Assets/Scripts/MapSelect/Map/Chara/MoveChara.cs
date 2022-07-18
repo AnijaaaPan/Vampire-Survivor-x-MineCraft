@@ -251,6 +251,12 @@ public class MoveChara : MonoBehaviour
 
     private void DamageCharaFromEnemy()
     {
+        if (CharaImage.color == new Color(1, 1, 0, 1))
+        {
+            CharaInvincibleImage();
+            return;
+        }
+
         ChangeCharaImageColor();
         if (!isOnCollision) return;
 
@@ -268,5 +274,11 @@ public class MoveChara : MonoBehaviour
         CharaImage.color = isOnCollision ? new Color(1, 0, 0, 1) : newÅ@Color(1, 1, 1, 1);
         CharaBackImageFront.GetComponent<Image>().color = isOnCollision ? new Color(1, 0, 0, 0.75f) : new Color(1, 1, 1, 0.75f);
         CharaBackImageBack.GetComponent<Image>().color = isOnCollision ? new Color(1, 0, 0, 0.5f) : new Color(1, 1, 1, 0.5f);
+    }
+
+    private void CharaInvincibleImage()
+    {
+        CharaBackImageFront.GetComponent<Image>().color = new Color(1, 1, 0, 0.75f);
+        CharaBackImageBack.GetComponent<Image>().color = new Color(1, 1, 0, 0.5f);
     }
 }

@@ -39,6 +39,7 @@ public class Music : MonoBehaviour
 
     void Update()
     {
+        if (Setting.instance) return;
         if (audioSource[0].isPlaying) return;
         PlayRandomMusic();
     }
@@ -51,6 +52,16 @@ public class Music : MonoBehaviour
     public void UpdateSoundEffect(float volume)
     {
         SoundEffectSource.volume = volume;
+    }
+
+    public void PauseMusic()
+    {
+        SoundMusicSource.Pause();
+    }
+
+    public void UnPauseMusic()
+    {
+        SoundMusicSource.UnPause();
     }
 
     public void PlayMusic(AudioClip music)
@@ -70,7 +81,7 @@ public class Music : MonoBehaviour
         SoundEffectSource.PlayOneShot(sound);
     }
 
-    private void PlayRandomMusic()
+    public void PlayRandomMusic()
     {
         SoundMusicSource.clip = GetRandom(audioClipList);
         SoundMusicSource.Play();

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerData
@@ -13,6 +12,7 @@ public class PlayerData
     public int ALLEXP = 0;
     public int EXP = 0;
     public int Lv = 1;
+    public int DeathCount = 0;
 }
 
 public interface IData
@@ -46,6 +46,8 @@ public class PlayerStatus : MonoBehaviour
     public GameObject LvUpSlotList;
     public GameObject OptionLevelUpObject;
     public GameObject Slot4Text;
+    public GameObject OptionObject;
+    public GameObject GameOver;
 
     public Image Option;
 
@@ -55,6 +57,7 @@ public class PlayerStatus : MonoBehaviour
     public Sprite DamageEffectImage;
     public Sprite SpecialItemId3;
     public Sprite SpecialItemId9;
+    public List<Sprite> Angels;
 
     public AudioClip LvUp;
     public AudioClip PlayerDamage;
@@ -122,6 +125,11 @@ public class PlayerStatus : MonoBehaviour
         LvCount.text = PlayerData.Lv.ToString();
     }
 
+    public void UpdateDeathCount()
+    {
+        PlayerData.DeathCount++;
+    }
+
     public void UpdateHpStatus(int GrantHP)
     {
         PlayerData.HP += GrantHP;
@@ -132,7 +140,10 @@ public class PlayerStatus : MonoBehaviour
 
         if (PlayerData.HP <= 0)
         {
-
+            PlayerDeath PlayerDeath = Chara.AddComponent<PlayerDeath>();
+            PlayerDeath.GameOver = GameOver;
+            PlayerDeath.PlayerData = PlayerData;
+            PlayerDeath.Angels = Angels;
         }
     }
 
@@ -166,7 +177,7 @@ public class PlayerStatus : MonoBehaviour
 
     private Sprite ReturnHeartImage(int OnesPlace, int TensPlace, int i)
     {
-        if (TensPlace == 10) return FullHp;
+        if (TensPlace == 10 || i < TensPlace) return FullHp;
         if (TensPlace != i || OnesPlace == 0) return NoHp;
         return OnesPlace <= 5 ? HalfHp : FullHp;
     }
@@ -182,12 +193,6 @@ public class PlayerStatus : MonoBehaviour
             Image ObjectImage = HeartObject.GetComponent<Image>();
             Sprite sprite = ReturnHeartImage(OnesPlace, TensPlace, i);
             ObjectImage.sprite = sprite;
-
-            if (GrantHP <= 0)
-            {
-                if (sprite != NoHp) break;
-                if (OnesPlace == 0 && TensPlace == i) break;
-            };
         }
     }
 
@@ -412,14 +417,12 @@ public class PlayerStatus : MonoBehaviour
 
     private IDataObject CheckIDataType(List<IData> PowerUpDataList)
     {
-        if (PowerUpDataList.Count == 0) return NewItemData();
-
         IDataObject NewIDataObject;
-
-        List<IDataObject> CheckIDataObjectList = new List<IDataObject>();
 
         while (true)
         {
+            if (PowerUpDataList.Count == 0) return NewItemData();
+
             IData GetRandomIData = GetRandom(PowerUpDataList);
             if (GetRandomIData.type == "item")
             {
@@ -434,11 +437,9 @@ public class PlayerStatus : MonoBehaviour
                 NewIDataObject = CreateIDataObject(Weapon.GetIcon(), GetRandomIData.type, Weapon.GetName(), $"ƒŒƒxƒ‹F{WeaponData.phase + 1}", Weapon.GetDescription());
             }
 
-            CheckIDataObjectList.Add(NewIDataObject);
             if (IDataObjectList.Any(d => d.Name == NewIDataObject.Name && d.Type == NewIDataObject.Type)) {
-                if (CheckIDataObjectList.Count != PowerUpDataList.Count) continue;
-
-                return NewItemData();
+                PowerUpDataList.Remove(GetRandomIData);
+                continue;
             };
             return NewIDataObject;
         }
