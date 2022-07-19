@@ -218,7 +218,6 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateExpStatus(int GrantEXP)
     {
-        GrantEXP += 10000;
         PlayerData.ALLEXP += GrantEXP;
         PlayerData.EXP += GrantEXP;
     }

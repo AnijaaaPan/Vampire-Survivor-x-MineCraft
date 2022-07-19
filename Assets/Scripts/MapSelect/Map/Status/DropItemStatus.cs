@@ -32,7 +32,7 @@ public class DropItemStatus : MonoBehaviour
         ChestLv3 = Resources.LoadAll<Sprite>($"Box/EnderChest/");
     }
 
-    public void CreateTresure(GameObject EnemyObject, Treasure Treasure)
+    public void CreateTresure(GameObject EnemyObject, List<string> Treasure)
     {
         int TreasureLv = RandomSelectChest();
         Sprite[] GetChestImageList = GetChestImages(TreasureLv);

@@ -7,7 +7,7 @@ public class GetDropTreasureBox : MonoBehaviour
 {
     public Sprite Emerald;
     public Sprite[] ChestImages;
-    public Treasure Treasure;
+    public List<string> Treasure;
     public int TreasureLv;
 
     public GameObject Option;
@@ -162,9 +162,9 @@ public class GetDropTreasureBox : MonoBehaviour
 
     private Sprite LotterySlot(int index)
     {
-        string type = Treasure.Rewards[index - 1];
+        string type = Treasure[index - 1];
         if (type == "Evolution") return EvolutionWeapon();
-        if (type == "Upgrade_Weapon") return UpgradeWeapon();
+        if (type == "UpgradeWeapon") return UpgradeWeapon();
         return UpgradeAny();
     }
 
@@ -177,7 +177,9 @@ public class GetDropTreasureBox : MonoBehaviour
         WeaponData EvolutionWeaponData = WeaponDataList.Find(w => w.weapon.GetPlayCount() == w.phase && MaxPowerUpItemList.Any(i => i.item.GetPowerup().Any(iw => iw == w.weapon)));
         if (EvolutionWeaponData == null) return UpgradeAny();
 
-        return WeaponStatus.instance.EvolutionWeapon(EvolutionWeaponData.weapon);
+        Sprite Image = WeaponStatus.instance.EvolutionWeapon(EvolutionWeaponData.weapon);
+        WeaponStatus.instance.UpdateOptionWeaponBar();
+        return Image;
     }
 
     private Sprite UpgradeWeapon()

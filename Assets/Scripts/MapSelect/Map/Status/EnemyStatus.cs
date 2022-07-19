@@ -11,7 +11,7 @@ public class EnemyData
     public int hp;
     public bool Stop = false;
     public GameObject Object;
-    public Treasure Treasure = null;
+    public List<string> Treasure;
 }
 
 public class AllEnemyData
@@ -35,12 +35,7 @@ public class EnemyStatus : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        StartCoroutine(nameof(Interval));
-    }
-
-    IEnumerator Interval()
+    IEnumerator Start()
     {
         while (true)
         {
@@ -64,8 +59,10 @@ public class EnemyStatus : MonoBehaviour
         return AllEnemyDataList;
     }
 
-    public void AddEenmyDataList(int id, Enemy enemy, GameObject EnemyObject, Treasure Treasure = null)
+    public void AddEenmyDataList(int id, Enemy enemy, GameObject EnemyObject, List<string> Treasure = null)
     {
+        if (Treasure == null) Treasure = new List<string>();
+
         RegistrationEnemy(enemy);
         int PlayerLv = PlayerStatus.instance.GetStatus().Lv;
 
@@ -80,6 +77,15 @@ public class EnemyStatus : MonoBehaviour
         };
 
         EnemyDataList.Add(EnemyData);
+    }
+
+    public void RemoveObjectData(GameObject EnemyObject)
+    {
+        EnemyData EnemyData = EnemyDataList.Find(e => e.Object == EnemyObject);
+        if (EnemyData == null) return;
+
+        Destroy(EnemyData.Object);
+        EnemyDataList.Remove(EnemyData);
     }
 
     private void RegistrationEnemy(Enemy enemy)
@@ -148,7 +154,7 @@ public class EnemyStatus : MonoBehaviour
             Destroy(EnemyData.Object.GetComponent<CircleCollider2D>());
             EnemyData.Object.AddComponent<KillMob>();
             ExpStatus.instance.CreateExpObject(EnemyData.Object, EnemyData.enemy.GetExp());
-            if (EnemyData.Treasure != null)
+            if (EnemyData.Treasure.Count != 0)
             {
                 DropItemStatus.instance.CreateTresure(EnemyData.Object, EnemyData.Treasure);
             }

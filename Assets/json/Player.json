@@ -1,11 +1,11 @@
 {
     "FirstTime": true,
-    "Money": 989500,
+    "Money": 0,
     "Latest_Chara": 0,
     "Latest_Map": 1,
     "Latest_Map_Hyper": false,
-    "SoundEffect": 0.10098070651292801,
-    "SoundMusic": 0.1770390123128891,
+    "SoundEffect": 0.07758449763059616,
+    "SoundMusic": 0.11632432788610459,
     "Flash": true,
     "JoyStick": true,
     "Damage": true,
@@ -28,7 +28,7 @@
         },
         {
             "id": 3,
-            "use": true,
+            "use": false,
             "hidden": false
         },
         {
@@ -349,8 +349,8 @@
         }
     ],
     "PowerUp": {
-        "allcost": 10000,
-        "allcount": 1,
+        "allcost": 0,
+        "allcount": 0,
         "poweruplist": [
             {
                 "id": 1,
@@ -414,7 +414,7 @@
             },
             {
                 "id": 16,
-                "powerupcount": 0
+                "powerupcount": 1
             }
         ]
     },

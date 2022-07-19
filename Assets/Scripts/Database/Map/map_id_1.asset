@@ -59,15 +59,12 @@ MonoBehaviour:
     SpawnInterval: 1
     BossEnemys:
     - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
-      isDropTreasure: 1
       Treasure:
-        Evolution: 1
-        Rewards:
-        - Evolution
-        - Upgrade_Any
-        - Upgrade_Any
-        - Upgrade_Any
-        - Upgrade_Any
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
     Events: []
   - phase: 2
     Enemies:
@@ -81,8 +78,8 @@ MonoBehaviour:
       AmountPer: 50
       EventEnemy:
         Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
-        MoveSpeed: 7
-      Chance: 1
+        MoveSpeed: 3.5
+      Chance: 100
       MaxRepeats: 2
       Delay: 5
   - phase: 3
@@ -97,8 +94,8 @@ MonoBehaviour:
       AmountPer: 50
       EventEnemy:
         Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
-        MoveSpeed: 7
-      Chance: 1
+        MoveSpeed: 3.5
+      Chance: 10
       MaxRepeats: 2
       Delay: 5
   - phase: 4
@@ -113,8 +110,8 @@ MonoBehaviour:
       AmountPer: 50
       EventEnemy:
         Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
-        MoveSpeed: 7
-      Chance: 0.1
+        MoveSpeed: 3.5
+      Chance: 10
       MaxRepeats: 1
       Delay: 5
   - phase: 5
@@ -124,16 +121,13 @@ MonoBehaviour:
     SpawnInterval: 1
     BossEnemys:
     - Enemy: {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
-      isDropTreasure: 0
-      Treasure:
-        Evolution: 0
-        Rewards: []
+      Treasure: []
     Events:
     - Type: Wall
       AmountPer: 100
       EventEnemy:
         Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
-        MoveSpeed: 7
+        MoveSpeed: 0.25
       Chance: 1
       MaxRepeats: 1
       Delay: 30

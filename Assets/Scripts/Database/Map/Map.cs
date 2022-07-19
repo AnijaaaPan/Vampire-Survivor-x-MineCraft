@@ -35,18 +35,10 @@ public class Stageitems
 }
 
 [System.Serializable]
-public class Treasure
-{
-    public bool Evolution; // i‰»o—ˆ‚é” ‚©”Û‚©
-    public List<string> Rewards;
-}
-
-[System.Serializable]
 public class BossEnemys
 {
     public Enemy Enemy; // ‚Ç‚Ì“G‚ªƒ{ƒX‚Æ‚µ‚Ä“oê‚·‚é‚©
-    public bool isDropTreasure; // ‚»‚Ì“G‚Í•ó” ‚ğ—‚Æ‚·‚©”Û‚©
-    public Treasure Treasure; // ‚»‚Ì“G‚Í•ó” ‚ğ—‚Æ‚·‚©”Û‚©
+    public List<string> Treasure; // ‚»‚Ì“G‚©‚ç—‚¿‚é•ó” ‚Ì’†g
 }
 
 [System.Serializable]

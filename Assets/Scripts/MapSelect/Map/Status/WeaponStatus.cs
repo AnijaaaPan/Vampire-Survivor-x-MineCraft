@@ -9,8 +9,6 @@ public class WeaponData : IData
     public string type { get; set; }
 
     public Weapon weapon;
-
-    public GameObject Object;
 }
 
 public class WeaponStatus : MonoBehaviour
@@ -65,14 +63,14 @@ public class WeaponStatus : MonoBehaviour
             weapon = weapon
         };
 
+        WeaponDataList.Add(WeaponData);
+
         GameObject Object = GetWeaponObject(WeaponData.id);
-        WeaponData.Object = Object;
 
         Image ObjectImage = Object.GetComponent<Image>();
         ObjectImage.sprite = weapon.GetIcon();
         ObjectImage.color = new Color(1, 1, 1, 1);
 
-        WeaponDataList.Add(WeaponData);
     }
 
     public void UpdateWeaponPhase(Weapon weapon)
@@ -87,10 +85,7 @@ public class WeaponStatus : MonoBehaviour
         WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase = 1;
         WeaponData.weapon = weapon.GetWeapon();
-
-        Image ObjectImage = WeaponData.Object.GetComponent<Image>();
-        ObjectImage.sprite = WeaponData.weapon.GetIcon();
-        return ObjectImage.sprite;
+        return WeaponData.weapon.GetIcon();
     }
 
     private GameObject GetWeaponObject(int id)
@@ -107,6 +102,9 @@ public class WeaponStatus : MonoBehaviour
         for (int i = 0; i < WeaponDataList.Count; i++)
         {
             WeaponData WeaponData = WeaponDataList[i];
+            GameObject Object = GetWeaponObject(WeaponData.id);
+            Image ObjectImage = Object.GetComponent<Image>();
+            ObjectImage.sprite = WeaponData.weapon.GetIcon();
 
             if (OptionWeaponBar.transform.Find($"Weapon_{WeaponData.id}") == null)
             {
@@ -140,6 +138,10 @@ public class WeaponStatus : MonoBehaviour
     private void UpdateBarWeaponObject(WeaponData WeaponData)
     {
         GameObject Object = OptionWeaponBar.transform.Find($"Weapon_{WeaponData.id}").gameObject;
+        GameObject WeaponObject = Object.transform.Find("Weapon").transform.Find("weapon").gameObject;
+
+        Image ObjectImage = WeaponObject.GetComponent<Image>();
+        ObjectImage.sprite = WeaponData.weapon.GetIcon();
         UpdateSlotObject(WeaponData, Object);
     }
 
@@ -154,14 +156,27 @@ public class WeaponStatus : MonoBehaviour
 
     private void UpdateSlotObject(WeaponData WeaponData, GameObject Object)
     {
+        int GetPlayCount = WeaponData.weapon.GetPlayCount();
+
         GameObject SlotListObject = Object.transform.Find("Phase").transform.Find("SlotList").gameObject;
-        for (int i = 1; i < WeaponData.weapon.GetPlayCount(); i++)
+        for (int i = 1; i < GetPlayCount; i++)
         {
             if (SlotListObject.transform.Find($"slot_{i}") == null) CreateSlotObject(SlotListObject, i);
 
             GameObject SlotObject = SlotListObject.transform.Find($"slot_{i}").gameObject;
             Image SlotObjectImage = SlotObject.GetComponent<Image>();
             SlotObjectImage.sprite = i < WeaponData.phase ? PowerUp : UnPowerUp;
+        }
+
+        int childCount = SlotListObject.transform.childCount;
+        if (childCount == GetPlayCount) return;
+
+        for (int i = 0; i < childCount; i++)
+        {
+            if (i < GetPlayCount) continue;
+
+            GameObject SlotObject = SlotListObject.transform.Find($"slot_{i}").gameObject;
+            Destroy(SlotObject);
         }
     }
 }
