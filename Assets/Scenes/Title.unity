@@ -300,8 +300,8 @@ GameObject:
   - component: {fileID: 197286471}
   - component: {fileID: 197286475}
   - component: {fileID: 197286476}
-  - component: {fileID: 197286474}
   - component: {fileID: 197286472}
+  - component: {fileID: 197286477}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -393,18 +393,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197286469}
   m_CullTransparentMesh: 1
---- !u!114 &197286474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197286469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &197286475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -486,6 +474,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &197286477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197286469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a76a01004658c247b2a4a7f072638bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: bc41467caa4920946818e563138289c3, type: 3}
+  hover: {fileID: 21300000, guid: 4a30ea15590ef08438e38caa00719973, type: 3}
 --- !u!1 &275549108
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,8 +501,8 @@ GameObject:
   - component: {fileID: 275549110}
   - component: {fileID: 275549114}
   - component: {fileID: 275549111}
-  - component: {fileID: 275549113}
   - component: {fileID: 275549115}
+  - component: {fileID: 275549113}
   m_Layer: 5
   m_Name: Option
   m_TagString: Untagged
@@ -618,9 +620,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 275549108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a76a01004658c247b2a4a7f072638bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: f85ad1f13631e2542a99d4d3123b213b, type: 3}
+  hover: {fileID: 21300000, guid: 1dd3ca125d370b3448a2d200c2d8ba86, type: 3}
 --- !u!212 &275549114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -878,8 +882,8 @@ GameObject:
   - component: {fileID: 755744012}
   - component: {fileID: 755744016}
   - component: {fileID: 755744013}
-  - component: {fileID: 755744015}
   - component: {fileID: 755744017}
+  - component: {fileID: 755744015}
   m_Layer: 5
   m_Name: QuitGame
   m_TagString: Untagged
@@ -997,9 +1001,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 755744010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a76a01004658c247b2a4a7f072638bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: c9062e1055e5aea49b2ed25bbc606e14, type: 3}
+  hover: {fileID: 21300000, guid: 3db31690ccdad2c48ac0c5199d083dc1, type: 3}
 --- !u!212 &755744016
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1076,8 +1082,8 @@ GameObject:
   - component: {fileID: 945792484}
   - component: {fileID: 945792482}
   - component: {fileID: 945792487}
-  - component: {fileID: 945792483}
   - component: {fileID: 945792485}
+  - component: {fileID: 945792483}
   m_Layer: 5
   m_Name: collection
   m_TagString: Untagged
@@ -1164,9 +1170,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 945792480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a76a01004658c247b2a4a7f072638bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: 69425bf2d19d011499ea92d061021d91, type: 3}
+  hover: {fileID: 21300000, guid: 0598172e4afad024195759ddbbf0b759, type: 3}
 --- !u!114 &945792484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1759,8 +1767,8 @@ GameObject:
   - component: {fileID: 1525586550}
   - component: {fileID: 1525586554}
   - component: {fileID: 1525586555}
-  - component: {fileID: 1525586553}
   - component: {fileID: 1525586551}
+  - component: {fileID: 1525586553}
   m_Layer: 5
   m_Name: PowerUp
   m_TagString: Untagged
@@ -1861,9 +1869,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525586548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a76a01004658c247b2a4a7f072638bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: 1498be17e43451041a64bb5e80d94d75, type: 3}
+  hover: {fileID: 21300000, guid: 43b82546cbc9d9242be74c4042003b73, type: 3}
 --- !u!212 &1525586554
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1958,8 +1968,8 @@ GameObject:
   - component: {fileID: 1606374712}
   - component: {fileID: 1606374709}
   - component: {fileID: 1606374710}
-  - component: {fileID: 1606374711}
   - component: {fileID: 1606374713}
+  - component: {fileID: 1606374711}
   m_Layer: 5
   m_Name: achievement
   m_TagString: Untagged
@@ -2076,9 +2086,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606374707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3de289fc5cadfd409191a1ea669b61b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a76a01004658c247b2a4a7f072638bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normal: {fileID: 21300000, guid: 5f9ec3339295e0b4bbe8e5115e4085ca, type: 3}
+  hover: {fileID: 21300000, guid: 48368ad1a8a58cc48a9b531e76b24c05, type: 3}
 --- !u!114 &1606374712
 MonoBehaviour:
   m_ObjectHideFlags: 0

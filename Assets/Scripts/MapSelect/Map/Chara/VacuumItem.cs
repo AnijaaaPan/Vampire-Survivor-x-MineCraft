@@ -64,7 +64,7 @@ public class VacuumItem : MonoBehaviour
         }
 
         float MoveX = ObjectTransform.position.x - MathMoveDistanceX;
-        float MoveY = ObjectTransform.position.y - MathMoveDistanceY;        
+        float MoveY = ObjectTransform.position.y - MathMoveDistanceY;
         ObjectTransform.position = new Vector3(MoveX, MoveY, 0);
     }
 }

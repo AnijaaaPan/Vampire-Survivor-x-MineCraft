@@ -40,7 +40,7 @@ public class PlayerDeath : MonoBehaviour
     {
         IsPlaying.instance.Stop();
         Music.instance.PauseMusic();
-        Setting.instance.ChangeStopButtonCanvas();
+        Setting.instance.StopButtonCanvasAdd();
 
         EndGame = GameOver.transform.Find("EndButton").gameObject;
         Revive = GameOver.transform.Find("ReviveButton").gameObject;
@@ -72,13 +72,14 @@ public class PlayerDeath : MonoBehaviour
         {
             ClickEndButton();
 
-        } else
+        }
+        else
         {
             ClickReviveButton();
         }
     }
 
-        void Update()
+    void Update()
     {
         if (GameOver.activeSelf || IsRevive) return;
 
@@ -162,7 +163,7 @@ public class PlayerDeath : MonoBehaviour
         GameOver.SetActive(false);
 
         Music.instance.UnPauseMusic();
-        Setting.instance.ChangeStopButtonCanvas();
+        Setting.instance.StopButtonCanvasRemove();
         IsPlaying.instance.reStart();
 
         PlayerStatus.instance.UpdateHpStatus(PlayerData.MaxHP / 2);

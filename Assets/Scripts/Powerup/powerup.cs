@@ -66,7 +66,7 @@ public class PowerUp : MonoBehaviour
             Json.instance.Save(player);
 
             MoneyRemain.text = player.Money.ToString();
-            GameObject ItemObject = GameObject.Find($"Item_{ItemData.GetId()}");            
+            GameObject ItemObject = GameObject.Find($"Item_{ItemData.GetId()}");
             if (PowerUpData.powerupcount == 0)
             {
                 Image ImageObject = ItemObject.GetComponent<Image>();
@@ -143,7 +143,7 @@ public class PowerUp : MonoBehaviour
 
         Image ObjectImage = Object.AddComponent<Image>();
         ObjectImage.sprite = ItemData.GetId() == 1 ? BackGroundSelect : BackGround;
-        
+
         if (PowerUpData.powerupcount == 0) ObjectImage.color = new Color(1, 1, 0.6f, 1);
 
         Button ObjectButton = Object.AddComponent<Button>();

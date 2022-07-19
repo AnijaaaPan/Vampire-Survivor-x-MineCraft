@@ -32,10 +32,11 @@ public class KillMob : MonoBehaviour
         {
             EnemyImage.sprite = KillImageList[index];
 
-        } else
+        }
+        else
         {
             Destroy(gameObject);
         }
-        
+
     }
 }

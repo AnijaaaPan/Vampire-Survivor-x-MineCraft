@@ -91,7 +91,8 @@ public class ExpStatus : MonoBehaviour
             EXP = EXP,
         };
 
-        if (CountDisplay == MaxCountDisplay) {
+        if (CountDisplay == MaxCountDisplay)
+        {
             LatestMaxExpData = ExpData;
         };
 

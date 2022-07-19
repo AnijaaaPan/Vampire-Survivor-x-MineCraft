@@ -59,7 +59,15 @@ MonoBehaviour:
     SpawnInterval: 1
     BossEnemys:
     - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
-      Treasure: 1
+      isDropTreasure: 1
+      Treasure:
+        Evolution: 1
+        Rewards:
+        - Evolution
+        - Upgrade_Any
+        - Upgrade_Any
+        - Upgrade_Any
+        - Upgrade_Any
     Events: []
   - phase: 2
     Enemies:
@@ -116,7 +124,10 @@ MonoBehaviour:
     SpawnInterval: 1
     BossEnemys:
     - Enemy: {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
-      Treasure: 1
+      isDropTreasure: 0
+      Treasure:
+        Evolution: 0
+        Rewards: []
     Events:
     - Type: Wall
       AmountPer: 100

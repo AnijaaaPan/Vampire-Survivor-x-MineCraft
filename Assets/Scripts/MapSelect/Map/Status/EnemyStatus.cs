@@ -11,6 +11,7 @@ public class EnemyData
     public int hp;
     public bool Stop = false;
     public GameObject Object;
+    public Treasure Treasure = null;
 }
 
 public class AllEnemyData
@@ -36,7 +37,7 @@ public class EnemyStatus : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(nameof(Interval));
+        StartCoroutine(nameof(Interval));
     }
 
     IEnumerator Interval()
@@ -47,7 +48,7 @@ public class EnemyStatus : MonoBehaviour
             for (int i = 0; i < EnemyDataList.Count; i++)
             {
                 EnemyData EnemyData = EnemyDataList[i];
-                int value = Random.Range(1, 100);
+                int value = Random.Range(1, 1000);
                 UpdateEenmyDataHp(EnemyData.id, value);
             }
         }
@@ -63,7 +64,7 @@ public class EnemyStatus : MonoBehaviour
         return AllEnemyDataList;
     }
 
-    public void AddEenmyDataList(int id, Enemy enemy, GameObject EnemyObject)
+    public void AddEenmyDataList(int id, Enemy enemy, GameObject EnemyObject, Treasure Treasure = null)
     {
         RegistrationEnemy(enemy);
         int PlayerLv = PlayerStatus.instance.GetStatus().Lv;
@@ -74,7 +75,8 @@ public class EnemyStatus : MonoBehaviour
             enemy = enemy,
             hp = enemy.GetMaxHealth(PlayerLv),
             Stop = false,
-            Object = EnemyObject
+            Object = EnemyObject,
+            Treasure = Treasure
         };
 
         EnemyDataList.Add(EnemyData);
@@ -146,6 +148,10 @@ public class EnemyStatus : MonoBehaviour
             Destroy(EnemyData.Object.GetComponent<CircleCollider2D>());
             EnemyData.Object.AddComponent<KillMob>();
             ExpStatus.instance.CreateExpObject(EnemyData.Object, EnemyData.enemy.GetExp());
+            if (EnemyData.Treasure != null)
+            {
+                DropItemStatus.instance.CreateTresure(EnemyData.Object, EnemyData.Treasure);
+            }
 
             AllEnemyDataList.Find(e => e.enemy == EnemyData.enemy).DefeatCount++;
             EnemyDataList.Remove(EnemyData);

@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\CountTimer.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\ItemStatus.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Item.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Chara\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItemDataBase.cs" />
     <Compile Include="Assets\Scripts\MapSelect\MapSelect.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\FallExpList.cs" />
@@ -85,8 +86,11 @@
     <Compile Include="Assets\Scripts\DontDestroy\Music.cs" />
     <Compile Include="Assets\Scripts\Title\Move_Scene.cs" />
     <Compile Include="Assets\Scripts\Achievement\Achievement.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Status\DropItemStatus.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\MoveChara.cs" />
     <Compile Include="Assets\Scripts\Database\Mob\Mob.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\RotateToDropItem.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\RotateArrow.cs" />
     <Compile Include="Assets\Scripts\UI\RotAmimation.cs" />
     <Compile Include="Assets\Scripts\Title\MousePointerTitle.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\ExpStatus.cs" />
@@ -99,11 +103,12 @@
     <Compile Include="Assets\Scripts\Database\Map\Map.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItem.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\FallExp.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\GetDropTreasureBox.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Enemy\EnemyMoveToChara.cs" />
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\EnemyStatus.cs" />
-    <Compile Include="Assets\Scripts\MapSelect\Map\Chara\PlayerDeath.cs" />
+    <Compile Include="Assets\Scripts\UI\ScaleBigSmall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Font\damNum-export.xml" />

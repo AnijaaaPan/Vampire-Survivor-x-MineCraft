@@ -37,7 +37,7 @@ public class CountTimer : MonoBehaviour
 
         Timer.AllSecond++;
         Timer.Second = Timer.AllSecond % 60;
-        Timer.Minute = (int) Mathf.Floor(Timer.AllSecond / 60);
+        Timer.Minute = (int)Mathf.Floor(Timer.AllSecond / 60);
         UpdateTimerText();
     }
 

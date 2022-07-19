@@ -9,7 +9,7 @@ public class Parameter
 }
 
 [CreateAssetMenu(fileName = "Mob", menuName = "CreateMob")]
-public class Mob: ScriptableObject
+public class Mob : ScriptableObject
 {
     [SerializeField]
     private int id; // Mob‚ÌID

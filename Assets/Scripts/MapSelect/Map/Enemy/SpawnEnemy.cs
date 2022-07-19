@@ -46,6 +46,24 @@ public class SpawnEnemy : MonoBehaviour
         StartCoroutine(nameof(SpawnInterval));
     }
 
+    IEnumerator SpawnInterval()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(StageEnemys.SpawnInterval);
+
+            int NowMonsterCount = StageEnemys.EnemyCount - EnemyStatus.instance.GetEnemyDataList().Count;
+            if (NowMonsterCount > 0)
+            {
+                Spawn(Mathf.Abs(NowMonsterCount));
+            }
+            else
+            {
+                Spawn();
+            }
+        }
+    }
+
     void Update()
     {
         if (!IsPlaying.instance.isPlay()) return;
@@ -56,6 +74,9 @@ public class SpawnEnemy : MonoBehaviour
             phase = Timer.Minute;
             StageEnemys = Map.GetStageEnemys().Find(m => m.phase == phase);
             Spawn(StageEnemys.EnemyCount);
+
+            List<BossEnemys> BossEnemys = StageEnemys.BossEnemys;
+            if (BossEnemys.Count != 0) CreateBossEnemys(BossEnemys);
         }
     }
 
@@ -97,27 +118,23 @@ public class SpawnEnemy : MonoBehaviour
         return SpawnRanges.Find(s => s.type == type);
     }
 
-    private void CreateEnemy()
+    private GameObject CreateEnemyObject(Enemy Enemy)
     {
-        Enemy SelectEnemy = GetRandom(StageEnemys.Enemies);
-
         SpawnRange GetSpawn = GetRandom(SpawnRanges);
         float SpawnX = MoveWithChara.transform.position.x + Random.Range(GetSpawn.LeftX, GetSpawn.RightX);
         float SpawnY = MoveWithChara.transform.position.y + Random.Range(GetSpawn.DownY, GetSpawn.UpY);
 
+        float LocalScale = Enemy.GetLocalScale();
+
         GameObject Object = new GameObject($"Enemy_{EnemyCount}");
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
-        ObjectRectTransform.sizeDelta = new Vector2(1.25f, 1.25f);
+        ObjectRectTransform.sizeDelta = new Vector2(1.25f * LocalScale, 1.25f * LocalScale);
         ObjectRectTransform.position = new Vector3(SpawnX, SpawnY, 0);
 
-        EnemyMoveToChara EnemyMoveToChara = Object.AddComponent<EnemyMoveToChara>();
-        EnemyMoveToChara.Chara = Chara;
-        EnemyMoveToChara.Enemy = SelectEnemy;
-
         Image ImageObject = Object.AddComponent<Image>();
-        ImageObject.color = SelectEnemy.GetColor();
-        ImageObject.sprite = SelectEnemy.GetIcon();
+        ImageObject.color = Enemy.GetColor();
+        ImageObject.sprite = Enemy.GetIcon();
         ImageObject.preserveAspect = true;
 
         Rigidbody2D Rigidbody2DObject = Object.AddComponent<Rigidbody2D>();
@@ -125,28 +142,40 @@ public class SpawnEnemy : MonoBehaviour
         Rigidbody2DObject.gravityScale = 0;
 
         CircleCollider2D CircleCollider2DObject = Object.AddComponent<CircleCollider2D>();
-        CircleCollider2DObject.radius = 0.5f;
+        CircleCollider2DObject.radius = 0.5f * LocalScale;
 
         Object.transform.SetParent(this.gameObject.transform);
+        return Object;
+    }
 
-        EnemyStatus.instance.AddEenmyDataList(EnemyCount, SelectEnemy, Object);
+    private void CreateEnemy()
+    {
+        Enemy Enemy = GetRandom(StageEnemys.Enemies);
+        GameObject Object = CreateEnemyObject(Enemy);
+
+        EnemyMoveToChara EnemyMoveToChara = Object.AddComponent<EnemyMoveToChara>();
+        EnemyMoveToChara.Chara = Chara;
+        EnemyMoveToChara.Enemy = Enemy;
+
+        EnemyStatus.instance.AddEenmyDataList(EnemyCount, Enemy, Object);
         EnemyCount++;
     }
 
-    IEnumerator SpawnInterval()
+    private void CreateBossEnemys(List<BossEnemys> BossEnemys)
     {
-        while (true)
+        for (int i = 0; i < BossEnemys.Count; i++)
         {
-            yield return new WaitForSeconds(StageEnemys.SpawnInterval);
+            BossEnemys BossEnemy = BossEnemys[i];
 
-            int NowMonsterCount = StageEnemys.EnemyCount - EnemyStatus.instance.GetEnemyDataList().Count;
-            if (NowMonsterCount > 0)
-            {
-                Spawn(Mathf.Abs(NowMonsterCount));
-            } else
-            {
-                Spawn();
-            }
+            Enemy Enemy = BossEnemy.Enemy;
+            GameObject Object = CreateEnemyObject(Enemy);
+
+            EnemyMoveToChara EnemyMoveToChara = Object.AddComponent<EnemyMoveToChara>();
+            EnemyMoveToChara.Chara = Chara;
+            EnemyMoveToChara.Enemy = Enemy;
+
+            EnemyStatus.instance.AddEenmyDataList(EnemyCount, Enemy, Object, BossEnemy.Treasure);
+            EnemyCount++;
         }
     }
 

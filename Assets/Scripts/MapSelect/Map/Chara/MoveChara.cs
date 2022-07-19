@@ -92,7 +92,7 @@ public class MoveChara : MonoBehaviour
 
             UpdateJoiStick();
         }
-                
+
         ClickEndPosition = Input.mousePosition;
         if (ClickStartPosition.x == ClickEndPosition.x && ClickStartPosition.y == ClickEndPosition.y) return new List<float>() { 0, 0 };
 
@@ -109,10 +109,11 @@ public class MoveChara : MonoBehaviour
             if (Mathf.Abs(MoveAbsX) > JoiStickRadiusOfMovement || Mathf.Abs(MoveAbsY) > JoiStickRadiusOfMovement)
             {
                 UpdateJoiStick(cos * JoiStickRadiusOfMovement, sin * JoiStickRadiusOfMovement);
-            } else
+            }
+            else
             {
                 UpdateJoiStick(MoveAbsX, MoveAbsY);
-            }            
+            }
         }
         return new List<float>() { MoveSpeed * cos, MoveSpeed * sin };
     }
@@ -125,7 +126,7 @@ public class MoveChara : MonoBehaviour
         GameObject JoyStickHandle = JoyStick.transform.Find("Handle").gameObject;
         JoyStickHandle.transform.position = new Vector3(JoyStick.transform.position.x + cos, JoyStick.transform.position.y + sin);
     }
-    
+
     private float GetRadian(float x, float y, float x2, float y2)
     {
         return Mathf.Atan2(y2 - y, x2 - x);
@@ -166,7 +167,7 @@ public class MoveChara : MonoBehaviour
 
     private void UpdateCharaImagePage(float MathMoveDistanceX, float MathMoveDistanceY)
     {
-        if (!isPushMouseButton() && LatestPlayerVector[0] == null && LatestPlayerVector[1] == null || 
+        if (!isPushMouseButton() && LatestPlayerVector[0] == null && LatestPlayerVector[1] == null ||
             isPushMouseButton() && MathMoveDistanceX == 0 && MathMoveDistanceY == 0)
         {
             CharaImagePageIndex = 0;
@@ -179,7 +180,7 @@ public class MoveChara : MonoBehaviour
                 CharaImagePageIndex = 0;
             }
         }
-            
+
         CharaImage.sprite = CharaImageList[Mathf.FloorToInt(CharaImagePageIndex / 4)];
         CharaBackImageFront.GetComponent<Image>().sprite = CharaImage.sprite;
         CharaBackImageBack.GetComponent<Image>().sprite = CharaImage.sprite;
@@ -271,7 +272,7 @@ public class MoveChara : MonoBehaviour
 
     private void ChangeCharaImageColor()
     {
-        CharaImage.color = isOnCollision ? new Color(1, 0, 0, 1) : newÅ@Color(1, 1, 1, 1);
+        CharaImage.color = isOnCollision ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 1);
         CharaBackImageFront.GetComponent<Image>().color = isOnCollision ? new Color(1, 0, 0, 0.75f) : new Color(1, 1, 1, 0.75f);
         CharaBackImageBack.GetComponent<Image>().color = isOnCollision ? new Color(1, 0, 0, 0.5f) : new Color(1, 1, 1, 0.5f);
     }

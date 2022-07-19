@@ -23,4 +23,4 @@ MonoBehaviour:
   MaxKnockBack: 3
   UpdateImagePage: 8
   Color: {r: 1, g: 1, b: 1, a: 1}
-  localScale: {x: 0, y: 0, z: 0}
+  localScale: 1.5

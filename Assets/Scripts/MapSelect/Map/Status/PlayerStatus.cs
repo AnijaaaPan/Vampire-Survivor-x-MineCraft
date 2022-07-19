@@ -72,6 +72,7 @@ public class PlayerStatus : MonoBehaviour
 
     private PlayerData PlayerData = new PlayerData();
     private List<IDataObject> IDataObjectList = new List<IDataObject>();
+    private List<IData> PowerUpDataList = new List<IData>();
 
     private void Awake()
     {
@@ -230,7 +231,7 @@ public class PlayerStatus : MonoBehaviour
         return -MaxPercentEXP + Parsentage * MaxPercentEXP;
     }
 
-    private void  PlayerLvUP(int NeedExp)
+    private void PlayerLvUP(int NeedExp)
     {
         Music.instance.SoundEffect(LvUp);
         UpdateLvCount();
@@ -255,7 +256,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (index != 4) return true;
 
-        float ChanceForth = (1 / ItemStatus.instance.GetAllStatusPhase(12)) * 100;
+        float ChanceForth = (1 / (ItemStatus.instance.GetAllStatusPhase(12) + 1)) * 100;
         bool DiscplaySlot = ExpStatus.instance.Probability(ChanceForth);
 
         Object.SetActive(DiscplaySlot);
@@ -346,9 +347,9 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    private IDataObject? GetSlotItem(int index)
+    private IDataObject GetSlotItem(int index)
     {
-        List<IData> PowerUpDataList = new List<IData>();
+        PowerUpDataList = new List<IData>();
 
         List<ItemData> ItemDataList = ItemStatus.instance.GetStatusList();
         List<WeaponData> WeaponDataList = WeaponStatus.instance.GetStatusList();
@@ -365,7 +366,8 @@ public class PlayerStatus : MonoBehaviour
         int WeaponMax = CanUseWeaponList.Count >= 6 ? 6 : CanUseWeaponList.Count;
         int RemainSlotCount = ItemMax + WeaponMax - (MaxPowerUpItemList.Count + MaxPowerUpWeaponList.Count);
 
-        if (RemainSlotCount == 0) {
+        if (RemainSlotCount == 0)
+        {
             if (index >= 3) return null;
             GameObject Object = GetLvUPSlotObject(index);
             Object.SetActive(true);
@@ -375,15 +377,14 @@ public class PlayerStatus : MonoBehaviour
         }
 
         if (RemainSlotCount < index) return null;
-
-        if (3 >= RemainSlotCount || ItemDataList.Count >= ItemMax && WeaponDataList.Count >= WeaponMax) return CheckIDataType(PowerUpDataList);
+        if (3 >= RemainSlotCount) return CheckIDataType();
 
         int LvPhase = PlayerData.Lv % 2 == 0 ? 2 : 1;
         int Luck = ItemStatus.instance.GetAllStatusPhase(12) + 1;
         Luck = (1 / Luck) * 100;
         float ChanceOwnItem = 100 - Luck + 30 * LvPhase;
 
-        if (ExpStatus.instance.Probability(ChanceOwnItem)) return CheckIDataType(PowerUpDataList);
+        if (ExpStatus.instance.Probability(ChanceOwnItem)) return CheckIDataType();
 
         return NewItemData();
     }
@@ -391,22 +392,24 @@ public class PlayerStatus : MonoBehaviour
     private IDataObject NewItemData()
     {
         IDataObject NewIDataObject;
+        List<int> IndexList = new List<int>();
 
         while (true)
         {
+            if (IndexList.Count == CanUseWeaponList.Count + CanUseItemList.Count) return CheckIDataType();
+
             int index = Random.Range(0, CanUseWeaponList.Count + CanUseItemList.Count);
+            IndexList.Add(index);
             if (index < CanUseWeaponList.Count)
             {
                 Weapon weapon = WeaponDataBase.FindWeaponFromId(CanUseWeaponList[index].id);
                 if (WeaponStatus.instance.GetStatusList().Any(w => w.weapon == weapon)) continue;
-
                 NewIDataObject = CreateIDataObject(weapon.GetIcon(), "weapon", weapon.GetName(), "NEW!", weapon.GetDescription());
             }
             else
             {
                 Item item = ItemDataBase.FindItemFromId(CanUseItemList[index - CanUseWeaponList.Count].id);
                 if (ItemStatus.instance.GetStatusList().Any(w => w.item == item)) continue;
-
                 NewIDataObject = CreateIDataObject(item.GetIcon(), "item", item.GetName(), "NEW!", item.GetDescription());
             }
 
@@ -415,30 +418,32 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    private IDataObject CheckIDataType(List<IData> PowerUpDataList)
+    private IDataObject CheckIDataType()
     {
         IDataObject NewIDataObject;
+        List<IData> CheckPowerUpDataList = PowerUpDataList;
 
         while (true)
         {
-            if (PowerUpDataList.Count == 0) return NewItemData();
+            if (CheckPowerUpDataList.Count == 0) return NewItemData();
 
             IData GetRandomIData = GetRandom(PowerUpDataList);
             if (GetRandomIData.type == "item")
             {
-                ItemData ItemData = (ItemData) GetRandomIData;
+                ItemData ItemData = (ItemData)GetRandomIData;
                 Item Item = ItemData.item;
                 NewIDataObject = CreateIDataObject(Item.GetIcon(), GetRandomIData.type, Item.GetName(), $"レベル：{ItemData.phase + 1}", Item.GetDescription());
             }
             else
             {
-                WeaponData WeaponData = (WeaponData) GetRandomIData;
+                WeaponData WeaponData = (WeaponData)GetRandomIData;
                 Weapon Weapon = WeaponData.weapon;
                 NewIDataObject = CreateIDataObject(Weapon.GetIcon(), GetRandomIData.type, Weapon.GetName(), $"レベル：{WeaponData.phase + 1}", Weapon.GetDescription());
             }
 
-            if (IDataObjectList.Any(d => d.Name == NewIDataObject.Name && d.Type == NewIDataObject.Type)) {
-                PowerUpDataList.Remove(GetRandomIData);
+            if (IDataObjectList.Any(d => d.Name == NewIDataObject.Name && d.Type == NewIDataObject.Type))
+            {
+                CheckPowerUpDataList.Remove(GetRandomIData);
                 continue;
             };
             return NewIDataObject;

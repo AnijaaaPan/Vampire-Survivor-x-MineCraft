@@ -144,7 +144,8 @@ public class ItemStatus : MonoBehaviour
             {
                 CreateBarItemObject(ItemData);
 
-            } else
+            }
+            else
             {
                 UpdateBarItemObject(ItemData);
             }
@@ -190,7 +191,7 @@ public class ItemStatus : MonoBehaviour
         for (int i = 1; i < ItemData.item.GetPlayCount(); i++)
         {
             if (SlotListObject.transform.Find($"slot_{i}") == null) CreateSlotObject(SlotListObject, i);
-            
+
             GameObject SlotObject = SlotListObject.transform.Find($"slot_{i}").gameObject;
             Image SlotObjectImage = SlotObject.GetComponent<Image>();
             SlotObjectImage.sprite = i < ItemData.phase ? PowerUp : UnPowerUp;

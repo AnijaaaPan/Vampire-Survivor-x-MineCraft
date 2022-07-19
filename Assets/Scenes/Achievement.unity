@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 76333442}
   - component: {fileID: 76333445}
-  - component: {fileID: 76333444}
   - component: {fileID: 76333443}
   m_Layer: 0
   m_Name: Scroll View
@@ -194,36 +193,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &76333444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76333441}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &76333445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -880,7 +849,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1237759248}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9761759
+  m_Size: 0.99999475
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1420,7 +1389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0023698807, y: 0.000213027}
+  m_AnchoredPosition: {x: 0.0019569397, y: 0.000213027}
   m_SizeDelta: {x: -5.29, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1107364469
@@ -1473,11 +1442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdd86d4dfb93944fbd860006ab9c533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MobDataBase: {fileID: 11400000, guid: 562b800f72d716f4f987138e3b09cc85, type: 2}
-  WeaponDataBase: {fileID: 11400000, guid: 30799523c1e1da44f87db6b06e77276c, type: 2}
-  ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
-  SpecialItemDataBase: {fileID: 11400000, guid: 49355435b2c483244809e22388a5765d, type: 2}
-  MapDataBase: {fileID: 11400000, guid: 73629f5c5ca6f4d4c9a58b79eddb0674, type: 2}
   SelectAchievement: {fileID: 21300000, guid: de727ae74edd2204cb3d572b97a78bae, type: 3}
   CheckBackGround: {fileID: 21300000, guid: 363402d6ad4b7b2489f6b34c7c2966a0, type: 3}
   Check: {fileID: 21300000, guid: 1130819f86b2d174fbaff9dbe803b5f5, type: 3}

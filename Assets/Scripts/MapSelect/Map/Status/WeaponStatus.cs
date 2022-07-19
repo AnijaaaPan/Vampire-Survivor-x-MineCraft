@@ -9,6 +9,8 @@ public class WeaponData : IData
     public string type { get; set; }
 
     public Weapon weapon;
+
+    public GameObject Object;
 }
 
 public class WeaponStatus : MonoBehaviour
@@ -63,12 +65,14 @@ public class WeaponStatus : MonoBehaviour
             weapon = weapon
         };
 
-        WeaponDataList.Add(WeaponData);
-
         GameObject Object = GetWeaponObject(WeaponData.id);
+        WeaponData.Object = Object;
+
         Image ObjectImage = Object.GetComponent<Image>();
         ObjectImage.sprite = weapon.GetIcon();
         ObjectImage.color = new Color(1, 1, 1, 1);
+
+        WeaponDataList.Add(WeaponData);
     }
 
     public void UpdateWeaponPhase(Weapon weapon)
@@ -76,6 +80,17 @@ public class WeaponStatus : MonoBehaviour
 
         WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase++;
+    }
+
+    public Sprite EvolutionWeapon(Weapon weapon)
+    {
+        WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
+        WeaponData.phase = 1;
+        WeaponData.weapon = weapon.GetWeapon();
+
+        Image ObjectImage = WeaponData.Object.GetComponent<Image>();
+        ObjectImage.sprite = WeaponData.weapon.GetIcon();
+        return ObjectImage.sprite;
     }
 
     private GameObject GetWeaponObject(int id)

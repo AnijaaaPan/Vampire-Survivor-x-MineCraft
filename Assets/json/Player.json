@@ -1,6 +1,6 @@
 {
     "FirstTime": true,
-    "Money": 990000,
+    "Money": 989500,
     "Latest_Chara": 0,
     "Latest_Map": 1,
     "Latest_Map_Hyper": false,
@@ -28,7 +28,7 @@
         },
         {
             "id": 3,
-            "use": false,
+            "use": true,
             "hidden": false
         },
         {

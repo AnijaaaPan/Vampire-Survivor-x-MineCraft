@@ -3,12 +3,13 @@ using UnityEngine.EventSystems;
 
 public class QuitGame : MonoBehaviour, IPointerClickHandler
 {
-    void Quit() {
-        #if UNITY_EDITOR
-          UnityEditor.EditorApplication.isPlaying = false;
-        #elif UNITY_STANDALONE
+    void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
           UnityEngine.Application.Quit();
-        #endif
+#endif
     }
 
     public void OnPointerClick(PointerEventData eventData)

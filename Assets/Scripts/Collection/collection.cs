@@ -118,7 +118,7 @@ public class Collection : MonoBehaviour
 
             SelectImage.color = w.use == true && w.id == 36 ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 1);
         }
-        
+
         if (w.id == 1) UpdateDescription();
 
         GameObject Object = new GameObject($"List_WeaponId_{w.id}");

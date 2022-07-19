@@ -10,6 +10,7 @@ public class Setting : MonoBehaviour
     public GameObject SetOption;
     public GameObject LevelUpOption;
     public GameObject Death;
+    public GameObject TreasureSlot;
 
     public Button EndGame;
     public Button ContinueGame;
@@ -45,40 +46,40 @@ public class Setting : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.Escape) ||
             LevelUpOption.activeSelf ||
-            Death.activeSelf) return;
+            Death.activeSelf ||
+            TreasureSlot.activeSelf) return;
 
         if (!isOpen)
         {
             OpenOption(SetOption);
-        } else
+        }
+        else
         {
             CloseOption(SetOption);
         }
     }
 
-    public void ChangeStopButtonCanvas()
+    public void StopButtonCanvasAdd()
     {
-        GameObject Object = StopButton.gameObject;
-        Canvas ObjectCanvas = Object.GetComponent<Canvas>();
-        if (isOpen)
+        Canvas ObjectCanvas = StopButton.gameObject.GetComponent<Canvas>();
+        if (!ObjectCanvas)
         {
-            if (ObjectCanvas) Destroy(ObjectCanvas);
-
-        } else
-        {
-            if (!ObjectCanvas)
-            {
-                ObjectCanvas = Object.AddComponent<Canvas>();
-            }
-            ObjectCanvas.overrideSorting = true;
-            ObjectCanvas.sortingOrder = -2;
+            ObjectCanvas = StopButton.gameObject.AddComponent<Canvas>();
         }
+        ObjectCanvas.overrideSorting = true;
+        ObjectCanvas.sortingOrder = -2;
+    }
+
+    public void StopButtonCanvasRemove()
+    {
+        Canvas ObjectCanvas = StopButton.gameObject.GetComponent<Canvas>();
+        if (ObjectCanvas) Destroy(ObjectCanvas);
     }
 
     public void OpenOption(GameObject SelectObject)
     {
         Music.instance.ClickSound();
-        ChangeStopButtonCanvas();
+        StopButtonCanvasAdd();
         ItemStatus.instance.UpdatePlayerEffect();
         ItemStatus.instance.UpdateOptionItemBar();
         WeaponStatus.instance.UpdateOptionWeaponBar();
@@ -93,7 +94,7 @@ public class Setting : MonoBehaviour
     public void CloseOption(GameObject SelectObject)
     {
         Music.instance.ClickSound();
-        ChangeStopButtonCanvas();
+        StopButtonCanvasRemove();
 
         isOpen = false;
         IsPlaying.instance.reStart();

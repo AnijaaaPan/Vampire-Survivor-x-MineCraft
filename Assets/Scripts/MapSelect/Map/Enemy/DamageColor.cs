@@ -38,7 +38,8 @@ public class DamageColor : MonoBehaviour
         {
             transform.position += Vector3.up * 0.3f * Time.deltaTime;
             transform.localScale += new Vector3(0.075f * Time.deltaTime, 0.075f * Time.deltaTime);
-        } else
+        }
+        else
         {
             transform.position += Vector3.down * 0.125f * Time.deltaTime;
             transform.localScale -= new Vector3(0.05f * Time.deltaTime, 0.05f * Time.deltaTime);
