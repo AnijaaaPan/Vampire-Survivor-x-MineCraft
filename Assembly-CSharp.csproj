@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\UpDown.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\MoveMapBackGround.cs" />
     <Compile Include="Assets\Scripts\Database\Map\MapDataBase.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\WeaponStatus.cs" />
@@ -71,7 +72,10 @@
     <Compile Include="Assets\Scripts\Database\Item\Item.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Special\SpecialItemDataBase.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\GetDropItem.cs" />
     <Compile Include="Assets\Scripts\MapSelect\MapSelect.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\UI\RisingObjectList.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\UI\RisingExp.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\FallExpList.cs" />
     <Compile Include="Assets\Scripts\Option\UpdateOption.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Rainbow.cs" />
@@ -93,6 +97,7 @@
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\RotateArrow.cs" />
     <Compile Include="Assets\Scripts\UI\RotAmimation.cs" />
     <Compile Include="Assets\Scripts\Title\MousePointerTitle.cs" />
+    <Compile Include="Assets\Scripts\UI\ScaleBigSmall.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\ExpStatus.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Enemy\KillMob.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\IsPlaying.cs" />
@@ -108,7 +113,6 @@
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\EnemyStatus.cs" />
-    <Compile Include="Assets\Scripts\UI\ScaleBigSmall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Font\damNum-export.xml" />

@@ -101,6 +101,8 @@ public class ItemStatus : MonoBehaviour
         Image ObjectImage = Object.GetComponent<Image>();
         ObjectImage.sprite = item.GetIcon();
         ObjectImage.color = new Color(1, 1, 1, 1);
+
+        CheckFieldItemCount(ItemData, item);
     }
 
     public void UpdateItemPhase(Item item)
@@ -108,8 +110,25 @@ public class ItemStatus : MonoBehaviour
 
         ItemData ItemData = ItemDataList.Find(i => i.item == item);
         ItemData.phase++;
+
+        CheckFieldItemCount(ItemData, item);
     }
 
+    private void CheckFieldItemCount(ItemData ItemData, Item item)
+    {
+        List<GameObject> DropItemObjects = DropItemStatus.instance.GetDropItemObjects().FindAll(g => g && g.name == $"DropItem_{item.GetId()}");
+        if (DropItemObjects.Count == 0) return;
+
+        int RemainCount = ItemData.item.GetPlayCount() - ItemData.phase - 1;
+        for (int i = 0; i < DropItemObjects.Count; i++)
+        {
+            if (RemainCount >= i) continue;
+
+            GameObject DropItemObject = DropItemObjects[i];
+            Destroy(DropItemObject.transform.parent.gameObject);
+            DropItemStatus.instance.RemoveDropItemObjects(DropItemObject);
+        }
+    }
     private GameObject CreateItemObject(int id)
     {
         GameObject ItemObject = Instantiate(InitItemObject);

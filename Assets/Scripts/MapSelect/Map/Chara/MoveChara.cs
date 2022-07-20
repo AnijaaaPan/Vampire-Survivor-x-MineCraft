@@ -15,7 +15,8 @@ public class MoveChara : MonoBehaviour
     private Transform BackCharaTransform;
     private Transform MoveWithCharaTransform;
 
-    private readonly static float MoveSpeed = 0.014f;
+    // private readonly static float MoveSpeed = 0.014f;
+    private readonly static float MoveSpeed = 0.07f;
 
     private Image CharaImage;
     private Image CharaBackImageFront;
@@ -234,18 +235,21 @@ public class MoveChara : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        return;
         if (!collision.gameObject.name.Contains("Enemy_")) return;
         enemy = EnemyStatus.instance.GetEnemyDataList().Find(e => e.Object == collision.gameObject).enemy;
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
+        return;
         if (!collision.gameObject.name.Contains("Enemy_")) return;
         isOnCollision = true;
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
+        return;
         if (!collision.gameObject.name.Contains("Enemy_")) return;
         isOnCollision = false;
     }

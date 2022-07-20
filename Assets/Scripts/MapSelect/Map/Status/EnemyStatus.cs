@@ -37,6 +37,8 @@ public class EnemyStatus : MonoBehaviour
 
     IEnumerator Start()
     {
+        // yield break;
+
         while (true)
         {
             yield return new WaitForSeconds(1);

@@ -136,7 +136,7 @@ public class PlayerStatus : MonoBehaviour
         PlayerData.HP += GrantHP;
         if (PlayerData.HP >= PlayerData.MaxHP) PlayerData.HP = PlayerData.MaxHP;
 
-        UpdateHpBar(GrantHP);
+        UpdateHpBar();
         DisplayDamageEffect(GrantHP);
 
         if (PlayerData.HP <= 0)
@@ -183,7 +183,7 @@ public class PlayerStatus : MonoBehaviour
         return OnesPlace <= 5 ? HalfHp : FullHp;
     }
 
-    private void UpdateHpBar(int GrantHP)
+    private void UpdateHpBar()
     {
         int HpPercentage = 100 * PlayerData.HP / PlayerData.MaxHP;
         int TensPlace = Mathf.FloorToInt(HpPercentage / 10);
@@ -218,6 +218,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateExpStatus(int GrantEXP)
     {
+        GrantEXP += 10000;
         PlayerData.ALLEXP += GrantEXP;
         PlayerData.EXP += GrantEXP;
     }
@@ -255,7 +256,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if (index != 4) return true;
 
-        float ChanceForth = (1 / (ItemStatus.instance.GetAllStatusPhase(12) + 1)) * 100;
+        float ChanceForth = (1f - 1f / (ItemStatus.instance.GetAllStatusPhase(12) + 1f)) * 100;
         bool DiscplaySlot = ExpStatus.instance.Probability(ChanceForth);
 
         Object.SetActive(DiscplaySlot);
@@ -266,9 +267,10 @@ public class PlayerStatus : MonoBehaviour
     private void LvUPSlotButton(int index)
     {
         GameObject Object = GetLvUPSlotObject(index);
-        if (!FourthSlotChance(index, Object)) return;
+        bool TrueFalse = FourthSlotChance(index, Object);
+        if (!TrueFalse) return;
 
-        IDataObject IDataObject = GetSlotItem(index);
+        IDataObject IDataObject = GetSlotItem(index, TrueFalse);
         if (IDataObject == null)
         {
             Slot4Text.SetActive(false);
@@ -346,7 +348,16 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    private IDataObject GetSlotItem(int index)
+    public void GetDropItem(Item item)
+    {
+        Json.ItemData ItemData = new Json.ItemData();
+        ItemData.id = item.GetId();
+        ItemData.use = true;
+
+        CanUseItemList.Add(ItemData);
+    }
+
+    private IDataObject GetSlotItem(int index, bool TrueFalse)
     {
         PowerUpDataList = new List<IData>();
 
@@ -361,22 +372,21 @@ public class PlayerStatus : MonoBehaviour
         List<ItemData> MaxPowerUpItemList = ItemDataList.FindAll(i => i.item.GetPlayCount() == i.phase);
         List<WeaponData> MaxPowerUpWeaponList = WeaponDataList.FindAll(i => i.weapon.GetPlayCount() == i.phase);
 
-        int ItemMax = CanUseItemList.Count >= 6 ? 6 : CanUseItemList.Count;
-        int WeaponMax = CanUseWeaponList.Count >= 6 ? 6 : CanUseWeaponList.Count;
-        int RemainSlotCount = ItemMax + WeaponMax - (MaxPowerUpItemList.Count + MaxPowerUpWeaponList.Count);
-
+        int RemainSlotCount = CanUseItemList.Count + CanUseWeaponList.Count - (MaxPowerUpItemList.Count + MaxPowerUpWeaponList.Count);
         if (RemainSlotCount == 0)
         {
             if (index >= 3) return null;
-            GameObject Object = GetLvUPSlotObject(index);
-            Object.SetActive(true);
+            GetLvUPSlotObject(index).SetActive(true);
 
             if (index == 1) return CreateIDataObject(SpecialItemId3, "special", "エメラルド原石", "", "エメラルドの合計に25個追加。");
             if (index == 2) return CreateIDataObject(SpecialItemId9, "special", "ステーキ", "", "ライフを30回復する。");
         }
 
         if (RemainSlotCount < index) return null;
-        if (3 >= RemainSlotCount) return CheckIDataType();
+        GetLvUPSlotObject(index).SetActive(true);
+
+        int CheckInt = TrueFalse ? 4 : 3;
+        if (CheckInt >= RemainSlotCount) return CheckIDataType();
 
         int LvPhase = PlayerData.Lv % 2 == 0 ? 2 : 1;
         int Luck = ItemStatus.instance.GetAllStatusPhase(12) + 1;

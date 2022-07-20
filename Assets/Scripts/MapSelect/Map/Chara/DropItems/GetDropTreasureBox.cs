@@ -44,26 +44,6 @@ public class GetDropTreasureBox : MonoBehaviour
 
         BoxImage = TreasureSlot.transform.Find("BoxImage").GetComponent<Image>();
         CountChestImages = ChestImages.Length;
-
-        DoneButton = TreasureSlot.transform.Find("DoneButton").GetComponent<Button>();
-        DoneButton.onClick.RemoveAllListeners();
-        DoneButton.onClick.AddListener(() =>
-        {
-            Setting.instance.StopButtonCanvasRemove();
-            IsPlaying.instance.reStart();
-
-            PlayerStatus.instance.UpdateEmeraldCount(EmeraldCount);
-
-            EffectBackGround.SetActive(true);
-            OptionImage.color = new Color(0, 0, 0, 0.75f);
-
-            WeaponItemBar.SetActive(true);
-            TreasureSlot.SetActive(false);
-            Option.SetActive(false);
-            isOpen = false;
-
-            Destroy(gameObject);
-        });
     }
 
     void Update()
@@ -96,8 +76,28 @@ public class GetDropTreasureBox : MonoBehaviour
         OptionImage = Option.GetComponent<Image>();
         OptionImage.color = new Color(0, 0, 0, 0);
 
-        EffectBackGround = Option.transform.Find("effect_background ").gameObject;
+        EffectBackGround = Option.transform.Find("effect_background").gameObject;
         EffectBackGround.SetActive(false);
+
+        DoneButton = TreasureSlot.transform.Find("DoneButton").GetComponent<Button>();
+        DoneButton.onClick.RemoveAllListeners();
+        DoneButton.onClick.AddListener(() =>
+        {
+            Setting.instance.StopButtonCanvasRemove();
+            IsPlaying.instance.reStart();
+
+            PlayerStatus.instance.UpdateEmeraldCount(EmeraldCount);
+
+            EffectBackGround.SetActive(true);
+            OptionImage.color = new Color(0, 0, 0, 0.75f);
+
+            WeaponItemBar.SetActive(true);
+            TreasureSlot.SetActive(false);
+            Option.SetActive(false);
+            isOpen = false;
+
+            Destroy(gameObject);
+        });
     }
 
     private void ChangeSlotColor()
@@ -201,7 +201,6 @@ public class GetDropTreasureBox : MonoBehaviour
 
         PowerUpDataList.AddRange(CanPowerUpItemList.Cast<IData>().ToList());
         PowerUpDataList.AddRange(CanPowerUpWeaponList.Cast<IData>().ToList());
-
         if (PowerUpDataList.Count == 0)
         {
             PlayerStatus.instance.UpdateEmeraldCount(25);

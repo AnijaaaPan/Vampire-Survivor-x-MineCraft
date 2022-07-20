@@ -30,7 +30,7 @@ public class RotateToDropItem : MonoBehaviour
 
     void Update()
     {
-        UpdateArrouPotision();
+        UpdateArrowPotision();
         DisplayArrow();
     }
 
@@ -40,6 +40,7 @@ public class RotateToDropItem : MonoBehaviour
         Object.transform.SetParent(this.transform);
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+        ObjectRectTransform.anchoredPosition = new Vector3(0, 0, 0);
         ObjectRectTransform.sizeDelta = new Vector2(0.5f, 0.5f);
 
         Image ObjectImage = Object.AddComponent<Image>();
@@ -55,14 +56,14 @@ public class RotateToDropItem : MonoBehaviour
         return Mathf.Atan2(y2 - y, x2 - x);
     }
 
-    private void UpdateArrouPotision()
+    private void UpdateArrowPotision()
     {
         float Radian = GetRadian(Chara.transform.position.x, Chara.transform.position.y, DropItem.transform.position.x, DropItem.transform.position.y) * (180 / Mathf.PI);
         float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
         float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
         float MoveX = Chara.transform.position.x + cos * 10f;
-        float MoveY = Chara.transform.position.y + sin * 5.5f;
+        float MoveY = Chara.transform.position.y + sin * 5f;
         transform.position = new Vector3(MoveX, MoveY, 0);
         transform.localEulerAngles = new Vector3(0, 0, Radian);
         if (DropItemImageObject)
