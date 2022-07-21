@@ -33,6 +33,8 @@ public class GetDropTreasureBox : MonoBehaviour
     private int CountChestImages;
     private int EmeraldCount = 0;
 
+    private readonly SpecialItemDataBase SpecialItemDataBase = Json.instance.SpecialItemDataBase;
+
     void Start()
     {
         Slots = TreasureSlot.transform.Find("Viewport").transform.Find("Slots").gameObject;
@@ -67,6 +69,8 @@ public class GetDropTreasureBox : MonoBehaviour
 
         IsPlaying.instance.Stop();
         Setting.instance.StopButtonCanvasAdd();
+        int SpecialItemCcount = SpecialItemDataBase.GetSpecialItemLists().Count;
+        DropItemStatus.instance.DropItemCountUp(SpecialItemCcount + TreasureLv, ChestImages[0]);
 
         isOpen = true;
         Option.SetActive(true);

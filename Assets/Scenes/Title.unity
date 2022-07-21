@@ -1555,6 +1555,7 @@ MonoBehaviour:
   ItemDataBase: {fileID: 11400000, guid: 4bfb2a9c518da7743a8bfae9b648eeb6, type: 2}
   SpecialItemDataBase: {fileID: 11400000, guid: 49355435b2c483244809e22388a5765d, type: 2}
   MapDataBase: {fileID: 11400000, guid: 73629f5c5ca6f4d4c9a58b79eddb0674, type: 2}
+  EnemyDataBase: {fileID: 11400000, guid: 81adb3bcc607be6459c45ec9c8e44809, type: 2}
 --- !u!114 &1443812009
 MonoBehaviour:
   m_ObjectHideFlags: 0

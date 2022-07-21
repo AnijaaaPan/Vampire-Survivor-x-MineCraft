@@ -48,7 +48,7 @@ public class ExpStatus : MonoBehaviour
         float EnemyX = EnemyDataObjectRectTransform.anchoredPosition.x;
         float EnemyY = EnemyDataObjectRectTransform.anchoredPosition.y;
 
-        GameObject Object = new GameObject("DamageEffect");
+        GameObject Object = new GameObject("DropExp");
         Object.transform.SetParent(ExpOrbList.transform);
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();

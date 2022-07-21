@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class EnemyMoveToChara : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class EnemyMoveToChara : MonoBehaviour
     private Image EnemyImage;
     private Sprite[] EnemyImageList;
 
+    private bool isFireFritta = false;
+    private bool isTheWorld = false;
+
     void Start()
     {
         CharaTransform = Chara.transform;
@@ -35,10 +39,12 @@ public class EnemyMoveToChara : MonoBehaviour
         EnemyImagePageIndex = Random.Range(0, EnemyImageListCount);
 
         MathDistance();
+        StartCoroutine(OnFireFritta());
     }
 
     void Update()
     {
+        isTheWorld = PlayerStatus.instance.GetStatus().StopClockTime != 0;
         if (!IsPlaying.instance.isPlay()) return;
 
         UpdateCharaImagePage();
@@ -72,6 +78,9 @@ public class EnemyMoveToChara : MonoBehaviour
 
     private void UpdateCharaImagePage()
     {
+        EnemyImage.color = isTheWorld ? Color.blue : Color.white;
+        if (isTheWorld) return;
+
         EnemyImagePageIndex++;
         if (Mathf.FloorToInt(EnemyImagePageIndex / Enemy.GetUpdateImagePage()) > EnemyImageListCount)
         {
@@ -95,11 +104,52 @@ public class EnemyMoveToChara : MonoBehaviour
 
     private void MoveToCharaVector()
     {
+        if (isTheWorld) return;
+
         int PlayerVectorLeftRight = MathMoveDistanceX < 0 ? -1 : 1;
         EnemyTransform.localScale = new Vector3(PlayerVectorLeftRight, 1, 1);
 
         float MoveX = EnemyTransform.position.x - MathMoveDistanceX;
         float MoveY = EnemyTransform.position.y - MathMoveDistanceY;
         EnemyTransform.position = new Vector3(MoveX, MoveY, 0);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name != "FireFromPlayer") return;
+        isFireFritta = true;
+        DamageFromFireFritta();
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name != "FireFromPlayer") return;
+        isFireFritta = true;
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name != "FireFromPlayer") return;
+        isFireFritta = false;
+    }
+
+    private IEnumerator OnFireFritta()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (isFireFritta && IsPlaying.instance.isPlay()) DamageFromFireFritta();
+            isFireFritta = false;
+        }
+    }
+    
+    private void DamageFromFireFritta()
+    {
+        EnemyData EnemyData = EnemyStatus.instance.GetEnemyDataList().Find(e => e.Object == gameObject);
+        if (EnemyData == null) return;
+
+        int value = Random.Range(20, 40);
+        EnemyStatus.instance.UpdateEenmyDataHp(EnemyData.id, value);
     }
 }

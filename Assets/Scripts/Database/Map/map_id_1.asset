@@ -37,6 +37,7 @@ MonoBehaviour:
     EmeraldBonus: 1.5
     LuckBonus: 0
     EnemyMinimum: 1.25
+  LightSourceChance: 10
   EnemySpawn:
     North: 1
     South: 1
@@ -79,26 +80,6 @@ MonoBehaviour:
     y: -218.5
     item: {fileID: 11400000, guid: 00406268eb019c647b6fea645e9f8dae, type: 2}
     Chance: 10
-  - x: 1
-    y: 1
-    item: {fileID: 11400000, guid: 65639a731190a4749a3e3c70cbceafc7, type: 2}
-    Chance: 100
-  - x: 2
-    y: 2
-    item: {fileID: 11400000, guid: 7cfd42ed99cf158449e069187b4696bb, type: 2}
-    Chance: 100
-  - x: 3
-    y: 3
-    item: {fileID: 11400000, guid: 60cde76c1fe99f147818c57c75cd011a, type: 2}
-    Chance: 100
-  - x: 4
-    y: 4
-    item: {fileID: 11400000, guid: 9204870ee553f4d48bf16d8e4b21a17c, type: 2}
-    Chance: 100
-  - x: 5
-    y: 5
-    item: {fileID: 11400000, guid: cfa32cab295ecb649b2be4a38f0f3f59, type: 2}
-    Chance: 100
   StageEnemys:
   - phase: 0
     Enemies:
@@ -114,20 +95,6 @@ MonoBehaviour:
     EnemyCount: 30
     SpawnInterval: 1
     BossEnemys:
-    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
-      Treasure:
-      - Evolution
-      - UpgradeAny
-      - UpgradeAny
-      - UpgradeAny
-      - UpgradeAny
-    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
-      Treasure:
-      - Evolution
-      - UpgradeAny
-      - UpgradeAny
-      - UpgradeAny
-      - UpgradeAny
     - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
       Treasure:
       - Evolution

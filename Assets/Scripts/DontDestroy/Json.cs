@@ -14,6 +14,7 @@ public class Json : MonoBehaviour
         public int Money;
         public int Latest_Chara;
         public int Latest_Map;
+        public int GrantHP;
         public bool Latest_Map_Hyper;
         public float SoundEffect;
         public float SoundMusic;
@@ -28,6 +29,7 @@ public class Json : MonoBehaviour
         public List<SpecialItemData> SpecialItem;
         public List<AchievementData> Achievement;
         public List<MapData> Map;
+        public List<DefeatEnemyData> Enemy;
     }
 
     [System.Serializable]
@@ -92,11 +94,19 @@ public class Json : MonoBehaviour
         public bool hyper;
     }
 
+    [System.Serializable]
+    public class DefeatEnemyData
+    {
+        public int id;
+        public int count = 0;
+    }
+
     public MobDataBase MobDataBase;
     public WeaponDataBase WeaponDataBase;
     public ItemDataBase ItemDataBase;
     public SpecialItemDataBase SpecialItemDataBase;
     public MapDataBase MapDataBase;
+    public EnemyDataBase EnemyDataBase;
 
     private void Awake()
     {
@@ -122,6 +132,7 @@ public class Json : MonoBehaviour
             player.Money = 0;
             player.Latest_Chara = 0;
             player.Latest_Map = 1;
+            player.GrantHP = 0;
             player.Latest_Map_Hyper = false;
             player.SoundEffect = 1f;
             player.SoundMusic = 1f;
@@ -139,6 +150,7 @@ public class Json : MonoBehaviour
         player = SaveSpecialItems(player);
         player = SaveAchievements(player);
         player = SaveMaps(player);
+        player = SaveEnemys(player);
         Save(player);
     }
 
@@ -284,10 +296,10 @@ public class Json : MonoBehaviour
         SaveFunction(35, "懐中時計を入手", "weapon", 37);
         SaveFunction(36, "コマンド・ブロックを入手", "weapon", 9);
         SaveFunction(37, "強欲を入手", "item", 14);
-        SaveFunction(38, "狂乱の森にて、棺を見つけて開ける", "chara", 12);
-        SaveFunction(39, "象眼の図書館にて、棺を見つけて開ける", "chara", 13);
-        SaveFunction(40, "酪農場にて、棺を見つけて開ける", "chara", 14);
-        SaveFunction(41, "Gallo Towerにて、棺を見つけて開ける", "chara", 15);
+        SaveFunction(38, "狂乱の森をクリアする", "chara", 12);
+        SaveFunction(39, "象眼の図書館をクリアする", "chara", 13);
+        SaveFunction(40, "酪農場をクリアする", "chara", 14);
+        SaveFunction(41, "Gallo Towerをクリアする", "chara", 15);
         SaveFunction(42, "TESTを合計3000体倒す", "chara", 16);
         SaveFunction(43, "TESTを合計3000体倒す", "chara", 17);
         SaveFunction(44, "TESTを合計3000体倒す", "chara", 18);
@@ -334,6 +346,26 @@ public class Json : MonoBehaviour
         {
             Map item_data = MapDataBase.FindMapFromId(i);
             if (player.Map.Count == i - 1) SaveFunction(item_data);
+        };
+        return player;
+    }
+
+    public PlayerData SaveEnemys(PlayerData player)
+    {
+        void SaveFunction(Enemy enemy_data)
+        {
+            DefeatEnemyData enemy = new DefeatEnemyData
+            {
+                id = enemy_data.GetId(),
+                count = 0
+            };
+            player.Enemy.Add(enemy);
+        };
+
+        for (int i = 1; i < EnemyDataBase.GetEnemyLists().Count + 1; i++)//  Mobのリストの数の分だけ繰り返す処理
+        {
+            Enemy enemy_data = EnemyDataBase.FindEnemyFromId(i);
+            if (player.Enemy.Count == i - 1) SaveFunction(enemy_data);
         };
         return player;
     }

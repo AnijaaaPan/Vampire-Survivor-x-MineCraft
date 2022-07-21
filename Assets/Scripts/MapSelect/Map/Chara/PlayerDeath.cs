@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerDeath : MonoBehaviour
 {
     public GameObject GameOver;
+    public GameObject GameResult;
     public PlayerData PlayerData;
     public List<Sprite> Angels;
 
@@ -14,7 +14,7 @@ public class PlayerDeath : MonoBehaviour
 
     private RectTransform RectTransformChara;
 
-    private GameObject EndGame;
+    private GameObject EndGameObject;
     private GameObject Revive;
     private GameObject Angel;
     private GameObject Continuing;
@@ -42,13 +42,13 @@ public class PlayerDeath : MonoBehaviour
         Music.instance.PauseMusic();
         Setting.instance.StopButtonCanvasAdd();
 
-        EndGame = GameOver.transform.Find("EndButton").gameObject;
+        EndGameObject = GameOver.transform.Find("EndButton").gameObject;
         Revive = GameOver.transform.Find("ReviveButton").gameObject;
 
-        EndGameButton = EndGame.GetComponent<Button>();
+        EndGameButton = EndGameObject.GetComponent<Button>();
         ReviveButton = Revive.GetComponent<Button>();
 
-        EndGame.SetActive(false);
+        EndGameObject.SetActive(false);
         Revive.SetActive(false);
 
         Angel = GameOver.transform.Find("Angel").gameObject;
@@ -67,11 +67,9 @@ public class PlayerDeath : MonoBehaviour
 
         int DeathCount = PlayerData.DeathCount;
         int RemainReviveCount = ItemStatus.instance.GetAllStatusPhase(16) - DeathCount;
-
         if (RemainReviveCount == 0)
         {
             ClickEndButton();
-
         }
         else
         {
@@ -81,7 +79,7 @@ public class PlayerDeath : MonoBehaviour
 
     void Update()
     {
-        if (GameOver.activeSelf || IsRevive) return;
+        if (GameOver.activeSelf || IsRevive || GameResult.activeSelf) return;
 
         Height -= DeathSpeed;
         CharaPosition.y -= HalfDeathSpeed;
@@ -95,15 +93,11 @@ public class PlayerDeath : MonoBehaviour
 
     private void ClickEndButton()
     {
-        EndGame.SetActive(true);
+        EndGameObject.SetActive(true);
         EndGameButton.onClick.RemoveAllListeners();
         EndGameButton.onClick.AddListener(() =>
         {
-            EndGameButton.onClick.RemoveAllListeners();
-
-            SceneManager.LoadSceneAsync("Title");
-            Music.instance.UnPauseMusic();
-            Music.instance.PlayRandomMusic();
+            EndGame.instance.ShowGameResult();
         });
     }
 
@@ -121,7 +115,7 @@ public class PlayerDeath : MonoBehaviour
         });
     }
 
-    IEnumerator ContinuingGame()
+    private IEnumerator ContinuingGame()
     {
         yield return new WaitForSeconds(ReviveSpeed);
         AngelImage.sprite = Angels[1];

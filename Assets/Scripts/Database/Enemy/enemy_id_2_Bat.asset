@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f585612d169f845a31ad0bbc2631ee, type: 3}
   m_Name: enemy_id_2_Bat
   m_EditorClassIdentifier: 
-  id: 1
+  id: 2
   name: bat
   max_health: 1
   playerlevel: 0

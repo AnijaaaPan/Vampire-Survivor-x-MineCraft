@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Setting : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class Setting : MonoBehaviour
     public GameObject Death;
     public GameObject TreasureSlot;
 
-    public Button EndGame;
+    public Button EndGameButton;
     public Button ContinueGame;
     public Button StopButton;
 
@@ -25,10 +24,10 @@ public class Setting : MonoBehaviour
 
     void Start()
     {
-        EndGame.onClick.AddListener(() =>
+        EndGameButton.onClick.AddListener(() =>
         {
             Music.instance.ClickSound();
-            SceneManager.LoadSceneAsync("Title");
+            EndGame.instance.ShowGameResult();
         });
 
         ContinueGame.onClick.AddListener(() =>

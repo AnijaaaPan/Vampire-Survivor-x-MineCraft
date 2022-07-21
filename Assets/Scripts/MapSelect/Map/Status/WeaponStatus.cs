@@ -11,6 +11,15 @@ public class WeaponData : IData
     public Weapon weapon;
 }
 
+public class AllWeaponData
+{
+    public Weapon weapon;
+    public int Phase;
+    public float Damage;
+    public string SetTime;
+    public int SetSecoundTime;
+}
+
 public class WeaponStatus : MonoBehaviour
 {
     static public WeaponStatus instance;
@@ -28,6 +37,7 @@ public class WeaponStatus : MonoBehaviour
     private readonly Json.PlayerData player = Json.instance.Load();
     private readonly MobDataBase MobDataBase = Json.instance.MobDataBase;
     private List<WeaponData> WeaponDataList = new List<WeaponData>();
+    private List<AllWeaponData> AllWeaponDataList = new List<AllWeaponData>();
 
     private Mob mob;
 
@@ -45,6 +55,11 @@ public class WeaponStatus : MonoBehaviour
     public List<WeaponData> GetStatusList()
     {
         return WeaponDataList;
+    }
+
+    public List<AllWeaponData> GetAllStatusList()
+    {
+        return AllWeaponDataList;
     }
 
     public int GetStatusPhase(int id)
@@ -65,12 +80,36 @@ public class WeaponStatus : MonoBehaviour
 
         WeaponDataList.Add(WeaponData);
 
+        AddAllWeaponDataList(weapon);
+
         GameObject Object = GetWeaponObject(WeaponData.id);
 
         Image ObjectImage = Object.GetComponent<Image>();
         ObjectImage.sprite = weapon.GetIcon();
         ObjectImage.color = new Color(1, 1, 1, 1);
+    }
 
+    private void AddAllWeaponDataList(Weapon weapon)
+    {
+        Timer Timer = CountTimer.instance.GetTimer();
+
+        string SecondText = Timer.Second.ToString().PadLeft(2, '0');
+
+        AllWeaponData AllWeaponData = new AllWeaponData
+        {
+            weapon = weapon,
+            Phase = 1,
+            Damage = 0,
+            SetTime = $"{Timer.Minute}:{SecondText}",
+            SetSecoundTime = Timer.AllSecond
+        };
+
+        AllWeaponDataList.Add(AllWeaponData);
+    }
+
+    public void WeaponDamage(Weapon weapon, float damage) {
+        AllWeaponData AllWeaponData = AllWeaponDataList.Find(i => i.weapon == weapon);
+        AllWeaponData.Damage += damage;
     }
 
     public void UpdateWeaponPhase(Weapon weapon)
@@ -78,6 +117,9 @@ public class WeaponStatus : MonoBehaviour
 
         WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase++;
+
+        AllWeaponData AllWeaponData = AllWeaponDataList.Find(i => i.weapon == weapon);
+        AllWeaponData.Phase++;
     }
 
     public Sprite EvolutionWeapon(Weapon weapon)
@@ -85,6 +127,8 @@ public class WeaponStatus : MonoBehaviour
         WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase = 1;
         WeaponData.weapon = weapon.GetWeapon();
+
+        AddAllWeaponDataList(WeaponData.weapon);
         return WeaponData.weapon.GetIcon();
     }
 

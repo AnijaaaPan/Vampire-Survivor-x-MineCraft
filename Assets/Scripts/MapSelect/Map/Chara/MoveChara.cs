@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class MoveChara : MonoBehaviour
@@ -9,14 +10,16 @@ public class MoveChara : MonoBehaviour
     public GameObject isMap4;
     public GameObject JoyStick;
     public GameObject MoveWithChara;
+    public GameObject FireFrittaList;
+
+    public Sprite FireFromPlayerImage;
 
     private Transform CharaTransform;
     private Transform FrontCharaTransform;
     private Transform BackCharaTransform;
     private Transform MoveWithCharaTransform;
 
-    // private readonly static float MoveSpeed = 0.014f;
-    private readonly static float MoveSpeed = 0.07f;
+    private readonly static float MoveSpeed = 0.014f;
 
     private Image CharaImage;
     private Image CharaBackImageFront;
@@ -26,6 +29,7 @@ public class MoveChara : MonoBehaviour
     private int CharaImagePageIndex = 0;
     private int CharaImageListCount;
     private const float JoiStickRadiusOfMovement = 1.5f;
+    private float LatestRadian = 0;
 
     private bool isClickScreen = false;
     private Vector3 ClickStartPosition;
@@ -55,6 +59,17 @@ public class MoveChara : MonoBehaviour
 
         CharaImageList = mob.GetIcons();
         CharaImageListCount = CharaImageList.Length - 1;
+        StartCoroutine(ChangeisOnCollision());
+        StartCoroutine(OnFireFritta());
+    }
+
+    private IEnumerator ChangeisOnCollision()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            isOnCollision = false;
+        }
     }
 
     void Update()
@@ -98,6 +113,7 @@ public class MoveChara : MonoBehaviour
         if (ClickStartPosition.x == ClickEndPosition.x && ClickStartPosition.y == ClickEndPosition.y) return new List<float>() { 0, 0 };
 
         float Radian = GetRadian(ClickStartPosition.x, ClickStartPosition.y, ClickEndPosition.x, ClickEndPosition.y) * (180 / Mathf.PI);
+        LatestRadian = Radian;
         float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
         float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
@@ -149,19 +165,23 @@ public class MoveChara : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
+            LatestRadian = 0;
             LatestPlayerVector[0] = true;
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
+            LatestRadian = 180;
             LatestPlayerVector[0] = false;
         };
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
+            LatestRadian = 90;
             LatestPlayerVector[1] = true;
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
+            LatestRadian = -90;
             LatestPlayerVector[1] = false;
         };
     }
@@ -235,27 +255,29 @@ public class MoveChara : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        return;
         if (!collision.gameObject.name.Contains("Enemy_")) return;
-        enemy = EnemyStatus.instance.GetEnemyDataList().Find(e => e.Object == collision.gameObject).enemy;
+
+        EnemyData EnemyData = EnemyStatus.instance.GetEnemyDataList().Find(e => e.Object == collision.gameObject);
+        if (EnemyData == null) return;
+
+        enemy = EnemyData.enemy;
     }
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        return;
         if (!collision.gameObject.name.Contains("Enemy_")) return;
         isOnCollision = true;
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        return;
         if (!collision.gameObject.name.Contains("Enemy_")) return;
         isOnCollision = false;
     }
 
     private void DamageCharaFromEnemy()
     {
+        if (PlayerStatus.instance.GetStatus().StopClockTime != 0) return;
         if (CharaImage.color == new Color(1, 1, 0, 1))
         {
             CharaInvincibleImage();
@@ -285,5 +307,36 @@ public class MoveChara : MonoBehaviour
     {
         CharaBackImageFront.GetComponent<Image>().color = new Color(1, 1, 0, 0.75f);
         CharaBackImageBack.GetComponent<Image>().color = new Color(1, 1, 0, 0.5f);
+    }
+
+    // ブレイズ・パウダーを取得した時の処理
+
+    private IEnumerator OnFireFritta()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.025f);
+
+            if (PlayerStatus.instance.GetStatus().FireFrittaTime != 0 && IsPlaying.instance.isPlay()) {
+                GameObject Object = new GameObject("FireFromPlayer");
+                Object.transform.position = new Vector3(CharaTransform.position.x, CharaTransform.position.y, 0);
+                Object.transform.SetParent(FireFrittaList.transform);
+
+                RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
+                ObjectRectTransform.sizeDelta = new Vector2(0.25f, 0.25f);
+
+                Image ImageObject = Object.AddComponent<Image>();
+                ImageObject.sprite = FireFromPlayerImage;
+                ImageObject.preserveAspect = true;
+
+                CircleCollider2D CircleCollider2DObject = Object.AddComponent<CircleCollider2D>();
+                CircleCollider2DObject.radius = 0.125f;
+                CircleCollider2DObject.isTrigger = true;
+
+                FireFritta ObjectFireFritta = Object.AddComponent<FireFritta>();
+                ObjectFireFritta.LatestRadian = LatestRadian;
+                ObjectFireFritta.MoveSpeed = MoveSpeed;
+            };
+        }
     }
 }

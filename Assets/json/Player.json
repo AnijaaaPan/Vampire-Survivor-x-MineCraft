@@ -3,11 +3,12 @@
     "Money": 0,
     "Latest_Chara": 0,
     "Latest_Map": 1,
+    "GrantHP": -116,
     "Latest_Map_Hyper": false,
-    "SoundEffect": 0.07758449763059616,
-    "SoundMusic": 0.11632432788610459,
+    "SoundEffect": 0.03939070925116539,
+    "SoundMusic": 0.09018710255622864,
     "Flash": true,
-    "JoyStick": true,
+    "JoyStick": false,
     "Damage": true,
     "FullScreen": false,
     "Character": [
@@ -731,28 +732,28 @@
         {
             "id": 38,
             "type": "chara",
-            "description": "狂乱の森にて、棺を見つけて開ける",
+            "description": "狂乱の森をクリアする",
             "type_id": 12,
             "use": false
         },
         {
             "id": 39,
             "type": "chara",
-            "description": "象眼の図書館にて、棺を見つけて開ける",
+            "description": "象眼の図書館をクリアする",
             "type_id": 13,
             "use": false
         },
         {
             "id": 40,
             "type": "chara",
-            "description": "酪農場にて、棺を見つけて開ける",
+            "description": "酪農場をクリアする",
             "type_id": 14,
             "use": false
         },
         {
             "id": 41,
             "type": "chara",
-            "description": "Gallo Towerにて、棺を見つけて開ける",
+            "description": "Gallo Towerをクリアする",
             "type_id": 15,
             "use": false
         },
@@ -959,6 +960,40 @@
             "id": 4,
             "use": false,
             "hyper": false
+        }
+    ],
+    "Enemy": [
+        {
+            "id": 1,
+            "count": 0
+        },
+        {
+            "id": 2,
+            "count": 0
+        },
+        {
+            "id": 3,
+            "count": 0
+        },
+        {
+            "id": 4,
+            "count": 0
+        },
+        {
+            "id": 5,
+            "count": 0
+        },
+        {
+            "id": 6,
+            "count": 0
+        },
+        {
+            "id": 7,
+            "count": 0
+        },
+        {
+            "id": 8,
+            "count": 0
         }
     ]
 }

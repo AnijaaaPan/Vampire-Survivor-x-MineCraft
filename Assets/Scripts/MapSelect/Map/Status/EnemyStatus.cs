@@ -37,7 +37,7 @@ public class EnemyStatus : MonoBehaviour
 
     IEnumerator Start()
     {
-        // yield break;
+        yield break;
 
         while (true)
         {
@@ -103,6 +103,12 @@ public class EnemyStatus : MonoBehaviour
         AllEnemyDataList.Add(AllEnemyData);
     }
 
+    private void CountUpEnemyDefeatCount(Enemy enemy)
+    {
+        AllEnemyData AllEnemyData = AllEnemyDataList.Find(e => e.enemy == enemy);
+        AllEnemyData.DefeatCount++;
+    }
+
     private Color DamageColor(int damage)
     {
         if (1 <= damage && damage < 25) return new Color(1, 1, 1, 1);
@@ -150,6 +156,7 @@ public class EnemyStatus : MonoBehaviour
         if (EnemyData.hp <= 0)
         {
             PlayerStatus.instance.UpdateDefeatCount();
+            CountUpEnemyDefeatCount(EnemyData.enemy);
 
             Destroy(EnemyData.Object.GetComponent<EnemyMoveToChara>());
             Destroy(EnemyData.Object.GetComponent<Rigidbody2D>());

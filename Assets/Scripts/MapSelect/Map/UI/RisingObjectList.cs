@@ -77,6 +77,7 @@ public class RisingObjectList : MonoBehaviour
         Object.AddComponent<RisingExp>();
         RotAmimation ObjectRotAmimation = Object.AddComponent<RotAmimation>();
         ObjectRotAmimation.angle = 10;
+        ObjectRotAmimation.isImportant = true;
     }
 
     public void DestroyChildren()

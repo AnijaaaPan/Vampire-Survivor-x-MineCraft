@@ -163,6 +163,11 @@ public class SpawnEnemy : MonoBehaviour
         EnemyCount++;
     }
 
+    public SpawnRange GetRandomSpawnRange()
+    {
+        return GetRandom(SpawnRanges);
+    }
+
     private void CreateBossEnemys(List<BossEnemys> BossEnemys)
     {
         for (int i = 0; i < BossEnemys.Count; i++)

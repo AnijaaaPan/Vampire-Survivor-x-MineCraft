@@ -113,6 +113,9 @@ public class Map : ScriptableObject
     private HyperMode HyperMode; // MapのHyperMode状態の追加parameter
 
     [SerializeField]
+    private float LightSourceChance; // 光源がスポーンする確率
+
+    [SerializeField]
     private EnemySpawn EnemySpawn; // 敵がスポーンする場所
 
     [SerializeField]
@@ -159,6 +162,11 @@ public class Map : ScriptableObject
     public AudioClip GetMusic()
     {
         return music;
+    }
+
+    public float GetLightSourceChance()
+    {
+        return LightSourceChance;
     }
 
     public MapParameter GetParameter()

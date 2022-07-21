@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerData
@@ -13,6 +14,9 @@ public class PlayerData
     public int EXP = 0;
     public int Lv = 1;
     public int DeathCount = 0;
+    public int FireFrittaTime = 0;
+    public int StopClockTime = 0;
+    public int OnExpVacuum = 0;
 }
 
 public interface IData
@@ -48,6 +52,8 @@ public class PlayerStatus : MonoBehaviour
     public GameObject Slot4Text;
     public GameObject OptionObject;
     public GameObject GameOver;
+    public GameObject GameResult;
+    public GameObject GetSpecialItemObject7;
 
     public Image Option;
 
@@ -84,6 +90,10 @@ public class PlayerStatus : MonoBehaviour
         InitStatus();
         CanUseWeaponList = player.Weapon.FindAll(w => w.use);
         CanUseItemList = player.Item.FindAll(i => i.use);
+
+        StartCoroutine(RunFireFritta());
+        StartCoroutine(RunTheWorld());
+        StartCoroutine(RunExpVacuum());
     }
 
     void Update()
@@ -143,8 +153,13 @@ public class PlayerStatus : MonoBehaviour
         {
             PlayerDeath PlayerDeath = Chara.AddComponent<PlayerDeath>();
             PlayerDeath.GameOver = GameOver;
+            PlayerDeath.GameResult = GameResult;
             PlayerDeath.PlayerData = PlayerData;
             PlayerDeath.Angels = Angels;
+        } else
+        {
+            player.GrantHP += GrantHP;
+            Json.instance.Save(player);
         }
     }
 
@@ -218,7 +233,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateExpStatus(int GrantEXP)
     {
-        GrantEXP += 10000;
+        // GrantEXP += 10000;
         PlayerData.ALLEXP += GrantEXP;
         PlayerData.EXP += GrantEXP;
     }
@@ -474,5 +489,54 @@ public class PlayerStatus : MonoBehaviour
     internal static T GetRandom<T>(IList<T> Params)
     {
         return Params[Random.Range(0, Params.Count)];
+    }
+
+    public void SetFireFritta()
+    {
+        PlayerData.FireFrittaTime = 10;
+    }
+
+    private IEnumerator RunFireFritta()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (PlayerData.FireFrittaTime != 0 && IsPlaying.instance.isPlay())
+            {
+                PlayerData.FireFrittaTime--;
+            }
+        }
+    }
+
+    public void SetTheWorld()
+    {
+        PlayerData.StopClockTime = 10;
+    }
+
+    private IEnumerator RunTheWorld()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (PlayerData.StopClockTime != 0 && IsPlaying.instance.isPlay())
+            {
+                PlayerData.StopClockTime--;
+            }
+            GetSpecialItemObject7.SetActive(PlayerData.StopClockTime != 0);
+        }
+    }
+
+    public void SetExpVacuum()
+    {
+        PlayerData.OnExpVacuum = 1;
+    }
+
+    private IEnumerator RunExpVacuum()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            PlayerData.OnExpVacuum = 0;
+        }
     }
 }
