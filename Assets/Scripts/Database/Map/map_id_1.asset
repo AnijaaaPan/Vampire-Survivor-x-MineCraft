@@ -106,6 +106,7 @@ MonoBehaviour:
   - phase: 2
     Enemies:
     - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
+    - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
     - {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
     EnemyCount: 50
     SpawnInterval: 0.5
@@ -121,11 +122,17 @@ MonoBehaviour:
       Delay: 5
   - phase: 3
     Enemies:
-    - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
-    - {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
-    EnemyCount: 50
-    SpawnInterval: 0.5
-    BossEnemys: []
+    - {fileID: 11400000, guid: e1b9379402c68ad43827688da34a54ae, type: 2}
+    EnemyCount: 40
+    SpawnInterval: 0.25
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+      Treasure:
+      - UpgradeWeapon
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
     Events:
     - Type: Swarm
       AmountPer: 50
@@ -133,7 +140,7 @@ MonoBehaviour:
         Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
         MoveSpeed: 3.5
       Chance: 10
-      MaxRepeats: 2
+      MaxRepeats: 1
       Delay: 5
   - phase: 4
     Enemies:
@@ -154,17 +161,463 @@ MonoBehaviour:
   - phase: 5
     Enemies:
     - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
-    EnemyCount: 30
+    EnemyCount: 10
     SpawnInterval: 1
     BossEnemys:
     - Enemy: {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
+      Treasure:
+      - UpgradeWeapon
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Wall
+      AmountPer: 100
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 7562e1ed3d310d644a5d0c20b645d040, type: 2}
+        MoveSpeed: 0.25
+      Chance: 100
+      MaxRepeats: 0
+      Delay: 60
+  - phase: 6
+    Enemies:
+    - {fileID: 11400000, guid: 227f12894417f2f4498596fe9ebaf278, type: 2}
+    - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
+    EnemyCount: 20
+    SpawnInterval: 0.5
+    BossEnemys: []
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 10
+      MaxRepeats: 1
+      Delay: 5
+  - phase: 7
+    Enemies:
+    - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
+    - {fileID: 11400000, guid: 9f8b28a792a4c8541b2efa11244775f3, type: 2}
+    - {fileID: 11400000, guid: bff8cc66d48f7374795c6a7b512ee9f3, type: 2}
+    EnemyCount: 80
+    SpawnInterval: 0.5
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+      Treasure:
+      - UpgradeWeapon
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 80
+      MaxRepeats: 5
+      Delay: 5
+  - phase: 8
+    Enemies:
+    - {fileID: 11400000, guid: 227f12894417f2f4498596fe9ebaf278, type: 2}
+    EnemyCount: 100
+    SpawnInterval: 1.5
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
       Treasure: []
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 80
+      MaxRepeats: 2
+      Delay: 15
+  - phase: 9
+    Enemies:
+    - {fileID: 11400000, guid: 7e7a041e477047b4f86eb861a843bdce, type: 2}
+    - {fileID: 11400000, guid: 227f12894417f2f4498596fe9ebaf278, type: 2}
+    EnemyCount: 30
+    SpawnInterval: 0.5
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 4570a3e501d6bdb448d719f2952e2e21, type: 2}
+      Treasure:
+      - UpgradeWeapon
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 70
+      MaxRepeats: 2
+      Delay: 15
+  - phase: 10
+    Enemies:
+    - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
+    - {fileID: 11400000, guid: bff8cc66d48f7374795c6a7b512ee9f3, type: 2}
+    EnemyCount: 10
+    SpawnInterval: 0.5
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeWeapon
+      - UpgradeWeapon
     Events:
     - Type: Wall
       AmountPer: 100
       EventEnemy:
         Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
         MoveSpeed: 0.25
-      Chance: 1
+      Chance: 100
+      MaxRepeats: 0
+      Delay: 60
+  - phase: 11
+    Enemies:
+    - {fileID: 11400000, guid: e1b9379402c68ad43827688da34a54ae, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys: []
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 10
       MaxRepeats: 1
-      Delay: 30
+      Delay: 5
+  - phase: 12
+    Enemies:
+    - {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+    - {fileID: 11400000, guid: 149a0e3a5e4b2dd4d81899d0551e09fd, type: 2}
+    - {fileID: 11400000, guid: e1b9379402c68ad43827688da34a54ae, type: 2}
+    EnemyCount: 20
+    SpawnInterval: 0.25
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 80
+      MaxRepeats: 5
+      Delay: 5
+  - phase: 13
+    Enemies:
+    - {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+    - {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+    - {fileID: 11400000, guid: 149a0e3a5e4b2dd4d81899d0551e09fd, type: 2}
+    EnemyCount: 150
+    SpawnInterval: 0.5
+    BossEnemys: []
+    Events:
+    - Type: Swarm
+      AmountPer: 20
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+        MoveSpeed: 0.25
+      Chance: 70
+      MaxRepeats: 20
+      Delay: 1.2
+    - Type: Swarm
+      AmountPer: 20
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+        MoveSpeed: 0.25
+      Chance: 70
+      MaxRepeats: 20
+      Delay: 2.3
+  - phase: 14
+    Enemies:
+    - {fileID: 11400000, guid: 7e7a041e477047b4f86eb861a843bdce, type: 2}
+    - {fileID: 11400000, guid: 149a0e3a5e4b2dd4d81899d0551e09fd, type: 2}
+    EnemyCount: 20
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 4570a3e501d6bdb448d719f2952e2e21, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events: []
+  - phase: 15
+    Enemies:
+    - {fileID: 11400000, guid: 149a0e3a5e4b2dd4d81899d0551e09fd, type: 2}
+    - {fileID: 11400000, guid: 7e7a041e477047b4f86eb861a843bdce, type: 2}
+    - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
+    EnemyCount: 100
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 149a0e3a5e4b2dd4d81899d0551e09fd, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Wall
+      AmountPer: 100
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 50
+      MaxRepeats: 0
+      Delay: 60
+  - phase: 16
+    Enemies:
+    - {fileID: 11400000, guid: 7324d60273a08e540b99e07a6e80d7d9, type: 2}
+    - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
+    - {fileID: 11400000, guid: bff8cc66d48f7374795c6a7b512ee9f3, type: 2}
+    EnemyCount: 100
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events: []
+  - phase: 17
+    Enemies:
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    EnemyCount: 20
+    SpawnInterval: 1
+    BossEnemys: []
+    Events: []
+  - phase: 18
+    Enemies:
+    - {fileID: 11400000, guid: bff8cc66d48f7374795c6a7b512ee9f3, type: 2}
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    EnemyCount: 60
+    SpawnInterval: 0.5
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 4570a3e501d6bdb448d719f2952e2e21, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events: []
+  - phase: 19
+    Enemies:
+    - {fileID: 11400000, guid: bff8cc66d48f7374795c6a7b512ee9f3, type: 2}
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    EnemyCount: 100
+    SpawnInterval: 0.5
+    BossEnemys: []
+    Events: []
+  - phase: 20
+    Enemies:
+    - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
+    - {fileID: 11400000, guid: 7e7a041e477047b4f86eb861a843bdce, type: 2}
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    EnemyCount: 100
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 3.5
+      Chance: 70
+      MaxRepeats: 20
+      Delay: 1.2
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 3.5
+      Chance: 70
+      MaxRepeats: 20
+      Delay: 2.3
+  - phase: 21
+    Enemies:
+    - {fileID: 11400000, guid: 7562e1ed3d310d644a5d0c20b645d040, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 4f144ed81966a5543a8cc5978482d6c7, type: 2}
+      Treasure: []
+    Events: []
+  - phase: 22
+    Enemies:
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    - {fileID: 11400000, guid: 7562e1ed3d310d644a5d0c20b645d040, type: 2}
+    EnemyCount: 200
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events: []
+  - phase: 23
+    Enemies:
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    - {fileID: 11400000, guid: 7562e1ed3d310d644a5d0c20b645d040, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 4570a3e501d6bdb448d719f2952e2e21, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events: []
+  - phase: 24
+    Enemies:
+    - {fileID: 11400000, guid: 7562e1ed3d310d644a5d0c20b645d040, type: 2}
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 4f144ed81966a5543a8cc5978482d6c7, type: 2}
+      Treasure: []
+    Events: []
+  - phase: 25
+    Enemies:
+    - {fileID: 11400000, guid: 4f144ed81966a5543a8cc5978482d6c7, type: 2}
+    EnemyCount: 100
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 4f144ed81966a5543a8cc5978482d6c7, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Wall
+      AmountPer: 100
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 0.25
+      Chance: 100
+      MaxRepeats: 5
+      Delay: 10
+  - phase: 26
+    Enemies:
+    - {fileID: 11400000, guid: 7562e1ed3d310d644a5d0c20b645d040, type: 2}
+    - {fileID: 11400000, guid: 4f144ed81966a5543a8cc5978482d6c7, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys: []
+    Events: []
+  - phase: 27
+    Enemies:
+    - {fileID: 11400000, guid: bff8cc66d48f7374795c6a7b512ee9f3, type: 2}
+    - {fileID: 11400000, guid: c1f20dfccac6a554abeba4b2f73c3c7d, type: 2}
+    - {fileID: 11400000, guid: 99c93c408e72b0f428aea8067f19d848, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Swarm
+      AmountPer: 20
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+        MoveSpeed: 3.5
+      Chance: 20
+      MaxRepeats: 13
+      Delay: 3
+    - Type: Swarm
+      AmountPer: 20
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 611a6dacc5cef0848a02ba3656d1735b, type: 2}
+        MoveSpeed: 3.5
+      Chance: 20
+      MaxRepeats: 13
+      Delay: 3
+  - phase: 28
+    Enemies:
+    - {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+    - {fileID: 11400000, guid: 7e7a041e477047b4f86eb861a843bdce, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys: []
+    Events: []
+  - phase: 29
+    Enemies:
+    - {fileID: 11400000, guid: 4570a3e501d6bdb448d719f2952e2e21, type: 2}
+    - {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+    EnemyCount: 300
+    SpawnInterval: 0.1
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: 3ba52dade968fc742946b9ab80e956bd, type: 2}
+      Treasure:
+      - Evolution
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+      - UpgradeAny
+    Events:
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 3.5
+      Chance: 100
+      MaxRepeats: 13
+      Delay: 3
+    - Type: Swarm
+      AmountPer: 50
+      EventEnemy:
+        Enemy: {fileID: 11400000, guid: 84006a2057110ed4e8fd123a2fd5d32e, type: 2}
+        MoveSpeed: 3.5
+      Chance: 100
+      MaxRepeats: 13
+      Delay: 3
+  - phase: 30
+    Enemies:
+    - {fileID: 11400000, guid: bb4b6774de7d85147b64eb8135a986b1, type: 2}
+    EnemyCount: 1
+    SpawnInterval: 60
+    BossEnemys: []
+    Events: []

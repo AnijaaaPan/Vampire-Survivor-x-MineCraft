@@ -50,6 +50,9 @@ public class SpawnEnemy : MonoBehaviour
     {
         while (true)
         {
+            Timer Timer = CountTimer.instance.GetTimer();
+            if (Timer.Minute >= 30) yield break;
+
             yield return new WaitForSeconds(StageEnemys.SpawnInterval);
 
             int NowMonsterCount = StageEnemys.EnemyCount - EnemyStatus.instance.GetEnemyDataList().Count;
@@ -78,14 +81,12 @@ public class SpawnEnemy : MonoBehaviour
             List<BossEnemys> BossEnemys = StageEnemys.BossEnemys;
             if (BossEnemys.Count != 0) CreateBossEnemys(BossEnemys);
             if (StageEnemys.Events.Count != 0) StartEvent(StageEnemys.Events);
-
         }
     }
 
     private void InitSpawnSetActive()
     {
         EnemySpawn EnemySpawn = Map.GetEnemySpawn();
-
         if (EnemySpawn.North) InitSpawnRange("North", -13, 13, 6, 8);
         if (EnemySpawn.South) InitSpawnRange("South", -13, 13, -8, -6);
         if (EnemySpawn.West) InitSpawnRange("West", -13, -11, -8, 8);

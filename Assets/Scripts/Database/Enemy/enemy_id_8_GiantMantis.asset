@@ -18,9 +18,9 @@ MonoBehaviour:
   playerlevel: 0
   exp: 3
   damage: 10
-  speed: 1
+  speed: 0.8
   KnockBack: 0
   MaxKnockBack: 3
-  UpdateImagePage: 8
+  UpdateImagePage: 15
   Color: {r: 1, g: 1, b: 1, a: 1}
   localScale: 1.5

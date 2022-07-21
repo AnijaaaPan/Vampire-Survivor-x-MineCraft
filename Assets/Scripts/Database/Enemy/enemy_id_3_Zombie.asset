@@ -19,8 +19,8 @@ MonoBehaviour:
   exp: 1
   damage: 10
   speed: 1
-  KnockBack: 0.6
+  KnockBack: 0.8
   MaxKnockBack: 3
   UpdateImagePage: 6
   Color: {r: 1, g: 1, b: 1, a: 1}
-  localScale: {x: 1, y: 1, z: 1}
+  localScale: 1

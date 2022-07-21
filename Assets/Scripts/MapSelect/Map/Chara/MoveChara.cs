@@ -19,7 +19,8 @@ public class MoveChara : MonoBehaviour
     private Transform BackCharaTransform;
     private Transform MoveWithCharaTransform;
 
-    private readonly static float MoveSpeed = 0.014f;
+    // private readonly static float MoveSpeed = 0.014f;
+    private readonly static float MoveSpeed = 0.07f;
 
     private Image CharaImage;
     private Image CharaBackImageFront;
