@@ -6,11 +6,13 @@ public class Weapon2 : MonoBehaviour
     public Weapon weapon;
     public RectTransform Chara;
 
-    public GameObject Weapon2List;
-    public GameObject InitWeapon2;
+    private GameObject InitWeaponAttack;
 
     IEnumerator Start()
     {
+        InitWeaponAttack = transform.Find("InitWeaponAttack").gameObject;
+        StartCoroutine(RepeatWeapon());
+
         while (true)
         {
             float WeaponCoolDown = ReturnWeaponCoolDown();
@@ -27,11 +29,14 @@ public class Weapon2 : MonoBehaviour
 
         while (WeaponCount < AttackCount)
         {
+            if (IsPlaying.instance.isPlay())
+            {
+                CreateWeapon(WeaponCount);
+                WeaponCount++;
+            }
+
             float AttackSpeed = ReturnAttackSpeed();
             yield return new WaitForSeconds(AttackSpeed);
-
-            CreateWeapon(WeaponCount);
-            WeaponCount++;
         }
     }
 
@@ -39,11 +44,10 @@ public class Weapon2 : MonoBehaviour
     {
         float AttackSize = ReturnAttackSize();
 
-        GameObject Object = Instantiate(InitWeapon2);
-        Object.name = "AttackWeapon2";
-        Object.transform.SetParent(Weapon2List.transform);
+        GameObject Object = Instantiate(InitWeaponAttack);
+        Object.name = $"AttackWeapon{weapon.GetId()}";
+        Object.transform.SetParent(transform);
 
-        Object.SetActive(true);
         float WeaponX = 2 * Chara.localScale.x * -1;
         if (WeaponCount != 0 && WeaponCount % 1 == 0) {
             WeaponX *= -1;
@@ -54,6 +58,10 @@ public class Weapon2 : MonoBehaviour
         ObjectRectTransform.position = new Vector3(Chara.position.x + WeaponX, WeaponY, 0);
         if (WeaponCount != 0 && WeaponCount % 1 == 0) Object.transform.Rotate(0, 0, 180);
         ObjectRectTransform.transform.localScale = new Vector3(AttackSize * Chara.localScale.x * -1, AttackSize, 0);
+
+        AttackWeapon2 ObjectAttackWeapon2 = Object.GetComponent<AttackWeapon2>();
+        ObjectAttackWeapon2.weapon = weapon;
+        Object.SetActive(true);
     }
 
     private float ReturnWeaponCoolDown()

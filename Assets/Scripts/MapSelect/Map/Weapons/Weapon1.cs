@@ -6,11 +6,13 @@ public class Weapon1 : MonoBehaviour
     public Weapon weapon;
     public RectTransform Chara;
 
-    public GameObject Weapon1List;
-    public GameObject InitWeapon1;
+    private GameObject InitWeaponAttack;
 
     IEnumerator Start()
     {
+        InitWeaponAttack = transform.Find("InitWeaponAttack").gameObject;
+        StartCoroutine(RepeatWeapon());
+
         while (true)
         {
             float WeaponCoolDown = ReturnWeaponCoolDown();
@@ -23,16 +25,19 @@ public class Weapon1 : MonoBehaviour
     private IEnumerator RepeatWeapon()
     {
         int WeaponCount = 0;
-        int WeaponPhase = WeaponStatus.instance.GetStatusPhase(1);
+        int WeaponPhase = WeaponStatus.instance.GetStatusPhase(weapon.GetId());
         int AttackCount = ReturnAttackCount(WeaponPhase);
 
         while (WeaponCount < AttackCount)
         {
+            if (IsPlaying.instance.isPlay())
+            {
+                CreateWeapon(WeaponCount, WeaponPhase);
+                WeaponCount++;
+            }
+
             float AttackSpeed = ReturnAttackSpeed();
             yield return new WaitForSeconds(AttackSpeed);
-
-            CreateWeapon(WeaponCount, WeaponPhase);
-            WeaponCount++;
         }
     }
 
@@ -40,11 +45,10 @@ public class Weapon1 : MonoBehaviour
     {
         float AttackSize = ReturnAttackSize(WeaponPhase);
 
-        GameObject Object = Instantiate(InitWeapon1);
-        Object.name = "AttackWeapon1";
-        Object.transform.SetParent(Weapon1List.transform);
+        GameObject Object = Instantiate(InitWeaponAttack);
+        Object.name = $"AttackWeapon{weapon.GetId()}";
+        Object.transform.SetParent(transform);
 
-        Object.SetActive(true);
         float WeaponX = 2 * Chara.localScale.x * -1;
         if (WeaponCount != 0 && WeaponCount % 1 == 0) {
             WeaponX *= -1;
@@ -55,6 +59,10 @@ public class Weapon1 : MonoBehaviour
         ObjectRectTransform.position = new Vector3(Chara.position.x + WeaponX, WeaponY, 0);
         if (WeaponCount != 0 && WeaponCount % 1 == 0) Object.transform.Rotate(0, 0, 180);
         ObjectRectTransform.transform.localScale = new Vector3(AttackSize * Chara.localScale.x * -1, AttackSize, 0);
+
+        AttackWeapon1 ObjectAttackWeapon1 = Object.GetComponent<AttackWeapon1>();
+        ObjectAttackWeapon1.weapon = weapon;
+        Object.SetActive(true);
     }
 
     private float ReturnWeaponCoolDown()

@@ -64,10 +64,13 @@
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DamageEffect.cs" />
     <Compile Include="Assets\Scripts\DontDestroy\Json.cs" />
     <Compile Include="Assets\Scripts\Initialize.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon1.cs" />
     <Compile Include="Assets\Scripts\QuitGame\QuitGame.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\LightSource.cs" />
     <Compile Include="Assets\Scripts\Collection\Collection.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon2.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Enemy\DamageColor.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\Weapon1.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\CountTimer.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\ItemStatus.cs" />
     <Compile Include="Assets\Scripts\Database\Item\Item.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\RisingObjectList.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\RisingExp.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\FallExpList.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\Weapon2.cs" />
     <Compile Include="Assets\Scripts\Option\UpdateOption.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Rainbow.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\PlayerStatus.cs" />
@@ -117,10 +121,10 @@
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\EnemyStatus.cs" />
-    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\Weapon1.cs" />
-    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon1.cs" />
-    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\Weapon2.cs" />
-    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon2.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\Weapon3.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\Weapon4.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon3.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon4.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Font\damNum-export.xml" />
