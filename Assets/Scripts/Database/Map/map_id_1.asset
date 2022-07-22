@@ -615,9 +615,10 @@ MonoBehaviour:
       MaxRepeats: 13
       Delay: 3
   - phase: 30
-    Enemies:
-    - {fileID: 11400000, guid: bb4b6774de7d85147b64eb8135a986b1, type: 2}
-    EnemyCount: 1
+    Enemies: []
+    EnemyCount: 0
     SpawnInterval: 60
-    BossEnemys: []
+    BossEnemys:
+    - Enemy: {fileID: 11400000, guid: bb4b6774de7d85147b64eb8135a986b1, type: 2}
+      Treasure: []
     Events: []

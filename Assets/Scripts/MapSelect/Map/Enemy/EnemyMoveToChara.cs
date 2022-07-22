@@ -27,6 +27,15 @@ public class EnemyMoveToChara : MonoBehaviour
     private bool isFireFritta = false;
     private bool isTheWorld = false;
 
+    private Map Map;
+    private readonly Json.PlayerData player = Json.instance.Load();
+    private readonly MapDataBase MapDataBase = Json.instance.MapDataBase;
+
+    private void Awake()
+    {
+        Map = MapDataBase.FindMapFromId(player.Latest_Map);
+    }
+
     void Start()
     {
         CharaTransform = Chara.transform;
@@ -64,10 +73,11 @@ public class EnemyMoveToChara : MonoBehaviour
         float DistanceX = EnemyTransform.position.x - CharaTransform.position.x;
         float DistanceY = EnemyTransform.position.y - CharaTransform.position.y;
 
-        if (DistanceY > 8) SpawnPlace = "South";
-        if (DistanceY < -8) SpawnPlace = "North";
-        if (DistanceX > 13) SpawnPlace = "West";
-        if (DistanceX < -13) SpawnPlace = "East";
+        EnemySpawn EnemySpawn = Map.GetEnemySpawn();
+        if (DistanceY > 8 && EnemySpawn.North) SpawnPlace = "South";
+        if (DistanceY < -8 && EnemySpawn.South) SpawnPlace = "North";
+        if (DistanceX > 13 && EnemySpawn.East) SpawnPlace = "West";
+        if (DistanceX < -13 && EnemySpawn.West) SpawnPlace = "East";
         if (SpawnPlace == "") return;
 
         SpawnRange GetSpawn = SpawnEnemy.instance.GetSpawn(SpawnPlace);

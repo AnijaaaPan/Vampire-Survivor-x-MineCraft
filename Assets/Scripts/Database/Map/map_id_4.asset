@@ -37,10 +37,19 @@ MonoBehaviour:
     EmeraldBonus: 80
     LuckBonus: 10
     EnemyMinimum: 0
+  LightSourceChance: 0
   EnemySpawn:
     North: 1
     South: 1
     West: 0
     East: 0
-  Stageitems: []
+  Stageitems:
+  - x: 14.5
+    y: -307.5
+    item: {fileID: 11400000, guid: 60cde76c1fe99f147818c57c75cd011a, type: 2}
+    Chance: 100
+  - x: 14.5
+    y: 332.5
+    item: {fileID: 11400000, guid: 7cfd42ed99cf158449e069187b4696bb, type: 2}
+    Chance: 100
   StageEnemys: []

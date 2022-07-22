@@ -33,16 +33,15 @@ public class SpawnEnemy : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        Map = MapDataBase.FindMapFromId(player.Latest_Map);
+        StageEnemys = Map.GetStageEnemys().Find(m => m.phase == phase);
+        InitSpawnSetActive();
     }
 
     void Start()
     {
-        Map = MapDataBase.FindMapFromId(player.Latest_Map);
-        StageEnemys = Map.GetStageEnemys().Find(m => m.phase == phase);
-
-        InitSpawnSetActive();
         Spawn(StageEnemys.EnemyCount);
-
         StartCoroutine(nameof(SpawnInterval));
     }
 
