@@ -12,12 +12,11 @@ public class Weapon3 : MonoBehaviour
     {
         InitWeaponAttack = transform.Find("InitWeaponAttack").gameObject;
 
-        int WeaponPhase = WeaponStatus.instance.GetStatusPhase(weapon.GetId());
-        StartCoroutine(RepeatWeapon(WeaponPhase));
+        StartCoroutine(RepeatWeapon());
 
         while (true)
         {
-            WeaponPhase = WeaponStatus.instance.GetStatusPhase(weapon.GetId());
+            int WeaponPhase = WeaponStatus.instance.GetStatusPhase(weapon.GetId());
             float WeaponCoolDown = ReturnWeaponCoolDown(WeaponPhase);
             yield return new WaitForSeconds(WeaponCoolDown);
 
@@ -25,7 +24,7 @@ public class Weapon3 : MonoBehaviour
         }
     }
 
-    private IEnumerator RepeatWeapon(int WeaponPhase)
+    private IEnumerator RepeatWeapon(int WeaponPhase = 1)
     {
         int WeaponCount = 0;
         int AttackCount = ReturnAttackCount(WeaponPhase);
@@ -55,7 +54,7 @@ public class Weapon3 : MonoBehaviour
         ObjectRectTransform.position = new Vector3(Chara.position.x, Chara.position.y, 0);
         ObjectRectTransform.transform.localScale = new Vector3(AttackSize, AttackSize, 0);
 
-        AttackWeapon3 ObjectAttackWeapon3 = Object.GetComponent<AttackWeapon3>();
+        AttackWeapon3 ObjectAttackWeapon3 = Object.AddComponent<AttackWeapon3>();
         ObjectAttackWeapon3.weapon = weapon;
         ObjectAttackWeapon3.Chara = Chara;
         Object.SetActive(true);
@@ -71,7 +70,7 @@ public class Weapon3 : MonoBehaviour
 
     private float ReturnAttackSpeed()
     {
-        float CoolDown = ItemStatus.instance.GetAllStatusPhase(7) * 0.1f;
+        float CoolDown = ItemStatus.instance.GetAllStatusPhase(7) * 0.05f;
         float WeaponCoolDown = weapon.GetParameter().atk_spd;
         return WeaponCoolDown - WeaponCoolDown * CoolDown;
     }
@@ -89,7 +88,7 @@ public class Weapon3 : MonoBehaviour
     private float ReturnAttackSize()
     {
         float AttackSize = weapon.GetParameter().range;
-        AttackSize += ItemStatus.instance.GetAllStatusPhase(6);
+        AttackSize += 0.1f * ItemStatus.instance.GetAllStatusPhase(6);
         return AttackSize;
     }
 }

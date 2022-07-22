@@ -60,7 +60,7 @@ public class Weapon1 : MonoBehaviour
         if (WeaponCount != 0 && WeaponCount % 1 == 0) Object.transform.Rotate(0, 0, 180);
         ObjectRectTransform.transform.localScale = new Vector3(AttackSize * Chara.localScale.x * -1, AttackSize, 0);
 
-        AttackWeapon1 ObjectAttackWeapon1 = Object.GetComponent<AttackWeapon1>();
+        AttackWeapon1 ObjectAttackWeapon1 = Object.AddComponent<AttackWeapon1>();
         ObjectAttackWeapon1.weapon = weapon;
         Object.SetActive(true);
     }
@@ -74,7 +74,7 @@ public class Weapon1 : MonoBehaviour
 
     private float ReturnAttackSpeed()
     {
-        float CoolDown = ItemStatus.instance.GetAllStatusPhase(7) * 0.005f;
+        float CoolDown = ItemStatus.instance.GetAllStatusPhase(7) * 0.05f;
         float WeaponCoolDown = weapon.GetParameter().atk_spd;
         return WeaponCoolDown - WeaponCoolDown * CoolDown;
     }
@@ -90,7 +90,7 @@ public class Weapon1 : MonoBehaviour
     private float ReturnAttackSize(int WeaponPhase)
     {
         float AttackSize = weapon.GetParameter().range;
-        AttackSize += ItemStatus.instance.GetAllStatusPhase(6);
+        AttackSize += 0.1f * ItemStatus.instance.GetAllStatusPhase(6);
         if (WeaponPhase >= 4) AttackSize += 0.1f;
         if (WeaponPhase >= 6) AttackSize += 0.1f;
         return AttackSize;

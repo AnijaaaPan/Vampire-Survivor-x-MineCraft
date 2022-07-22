@@ -35,7 +35,7 @@ public class AttackWeapon1 : MonoBehaviour
     private int GetWeaponDamage()
     {
         int DefaultDamage = (int)weapon.GetParameter().damage;
-        int WeaponPhase = WeaponStatus.instance.GetStatusPhase(1);
+        int WeaponPhase = WeaponStatus.instance.GetStatusPhase(weapon.GetId());
 
         if (WeaponPhase >= 3) DefaultDamage += 5;
         if (WeaponPhase >= 4) DefaultDamage += 5;

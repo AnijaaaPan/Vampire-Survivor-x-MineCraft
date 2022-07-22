@@ -9,7 +9,7 @@ public class WeaponParn
     public float atk_count;  // Weaponの投射数
     public float atk_time; // Weaponの持続時間
     public float cooldown; // Weaponのクールダウン
-    public float penetrate; // Weaponの敵貫通数
+    public int penetrate; // Weaponの敵貫通数
 }
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "CreateWeapon")]

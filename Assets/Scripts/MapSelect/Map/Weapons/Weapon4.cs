@@ -52,7 +52,7 @@ public class Weapon4 : MonoBehaviour
         ObjectRectTransform.position = new Vector3(Chara.position.x, Chara.position.y, 0);
         ObjectRectTransform.transform.localScale = new Vector3(AttackSize, AttackSize, 0);
 
-        AttackWeapon4 ObjectAttackWeapon4 = Object.GetComponent<AttackWeapon4>();
+        AttackWeapon4 ObjectAttackWeapon4 = Object.AddComponent<AttackWeapon4>();
         ObjectAttackWeapon4.weapon = weapon;
         ObjectAttackWeapon4.Chara = Chara;
         Object.SetActive(true);
@@ -75,7 +75,7 @@ public class Weapon4 : MonoBehaviour
     private float ReturnAttackSize()
     {
         float AttackSize = weapon.GetParameter().range;
-        AttackSize += ItemStatus.instance.GetAllStatusPhase(6);
+        AttackSize += 0.1f * ItemStatus.instance.GetAllStatusPhase(6);
         return AttackSize;
     }
 }

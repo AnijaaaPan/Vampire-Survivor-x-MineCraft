@@ -7,6 +7,7 @@ public class AttackWeapon4 : MonoBehaviour
     public RectTransform Chara;
 
     private float Radian;
+    private int Penetrate = 0;
 
     void Start()
     {
@@ -42,6 +43,10 @@ public class AttackWeapon4 : MonoBehaviour
 
         int Damage = GetWeaponDamage();
         EnemyStatus.instance.UpdateEenmyDataHp(EnemyData.id, Damage);
+
+        Penetrate++;
+        int WeaponPenetrate = GetWeaponPenetrate();
+        if (WeaponPenetrate != -1 && WeaponPenetrate == Penetrate) Destroy(gameObject);
     }
 
     private void CheckMostNearEnemy()
@@ -76,5 +81,11 @@ public class AttackWeapon4 : MonoBehaviour
     {
         int DefaultDamage = (int)weapon.GetParameter().damage;
         return Random.Range(DefaultDamage, DefaultDamage + 10);
+    }
+
+    private int GetWeaponPenetrate()
+    {
+        int DefaultPenetrate = (int)weapon.GetParameter().penetrate;
+        return DefaultPenetrate;
     }
 }

@@ -7,6 +7,7 @@ public class AttackWeapon3 : MonoBehaviour
     public RectTransform Chara;
 
     private float Radian;
+    private int Penetrate = 0;
 
     void Start()
     {
@@ -40,11 +41,14 @@ public class AttackWeapon3 : MonoBehaviour
         EnemyData EnemyData = EnemyStatus.instance.GetEnemyDataList().Find(e => e.Object == collision.gameObject);
         if (EnemyData == null) return;
 
-        int Damage = GetWeaponDamage();
+        int WeaponPhase = WeaponStatus.instance.GetStatusPhase(weapon.GetId());
+
+        int Damage = GetWeaponDamage(WeaponPhase);
         EnemyStatus.instance.UpdateEenmyDataHp(EnemyData.id, Damage);
 
-        int WeaponPhase = WeaponStatus.instance.GetStatusPhase(weapon.GetId());
-        if (WeaponPhase <= 7) Destroy(gameObject);
+        Penetrate++;
+        int WeaponPenetrate = GetWeaponPenetrate(WeaponPhase);
+        if (WeaponPenetrate == Penetrate) Destroy(gameObject);
     }
 
     private void CheckMostNearEnemy()
@@ -75,9 +79,19 @@ public class AttackWeapon3 : MonoBehaviour
         return Mathf.Atan2(y2 - y, x2 - x);
     }
 
-    private int GetWeaponDamage()
+    private int GetWeaponDamage(int WeaponPhase)
     {
         int DefaultDamage = (int)weapon.GetParameter().damage;
+        if (WeaponPhase >= 5) DefaultDamage += 10;
+        if (WeaponPhase >= 8) DefaultDamage += 10;
+
         return Random.Range(DefaultDamage, DefaultDamage + 10);
+    }
+
+    private int GetWeaponPenetrate(int WeaponPhase)
+    {
+        int DefaultPenetrate = (int)weapon.GetParameter().penetrate;
+        if (WeaponPhase >= 7) DefaultPenetrate += 1;
+        return DefaultPenetrate;
     }
 }
