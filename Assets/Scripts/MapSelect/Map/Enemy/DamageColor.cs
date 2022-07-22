@@ -16,6 +16,8 @@ public class DamageColor : MonoBehaviour
 
     void LateUpdate()
     {
+        if (!IsPlaying.instance.isPlay()) return;
+
         UpdatePositionObject();
 
         Text.color = Color.Lerp(Text.color, new Color(0f, 0f, 0f, 0f), 2f * Time.deltaTime);

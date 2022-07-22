@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,22 +32,6 @@ public class EnemyStatus : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    IEnumerator Start()
-    {
-        yield break;
-
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            for (int i = 0; i < EnemyDataList.Count; i++)
-            {
-                EnemyData EnemyData = EnemyDataList[i];
-                int value = Random.Range(1, 1000);
-                UpdateEenmyDataHp(EnemyData.id, value);
-            }
-        }
     }
 
     public List<EnemyData> GetEnemyDataList()
@@ -150,8 +133,9 @@ public class EnemyStatus : MonoBehaviour
     public void UpdateEenmyDataHp(int id, int damage)
     {
         EnemyData EnemyData = EnemyDataList.Find(e => e.id == id);
-        EnemyData.hp -= damage;
+        damage += Random.Range(0, 10);
 
+        EnemyData.hp -= damage;
         DisplayDamage(damage, EnemyData);
         if (EnemyData.hp <= 0)
         {
@@ -172,4 +156,5 @@ public class EnemyStatus : MonoBehaviour
             EnemyDataList.Remove(EnemyData);
         }
     }
+
 }

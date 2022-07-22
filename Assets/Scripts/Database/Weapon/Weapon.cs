@@ -76,11 +76,11 @@ public class Weapon : ScriptableObject
     {
         return default_waepon;
     }
+
     public int GetPlayCount()
     {
         return play_count;
     }
-
 
     public WeaponParn GetParameter()
     {
