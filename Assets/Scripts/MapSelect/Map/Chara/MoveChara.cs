@@ -19,8 +19,7 @@ public class MoveChara : MonoBehaviour
     private Transform BackCharaTransform;
     private Transform MoveWithCharaTransform;
 
-    // private readonly static float MoveSpeed = 0.014f;
-    private readonly static float MoveSpeed = 0.07f;
+    private readonly static float MoveSpeed = 0.014f;
 
     private Image CharaImage;
     private Image CharaBackImageFront;
@@ -278,6 +277,7 @@ public class MoveChara : MonoBehaviour
 
     private void DamageCharaFromEnemy()
     {
+        return;
         if (PlayerStatus.instance.GetStatus().StopClockTime != 0) return;
         if (CharaImage.color == new Color(1, 1, 0, 1))
         {

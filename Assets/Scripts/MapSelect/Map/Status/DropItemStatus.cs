@@ -279,6 +279,9 @@ public class DropItemStatus : MonoBehaviour
         ImageObject.sprite = LightSourceImage;
         ImageObject.preserveAspect = true;
 
+        Rigidbody2D Rigidbody2DObject = Object.AddComponent<Rigidbody2D>();
+        Rigidbody2DObject.gravityScale = 0;
+
         CircleCollider2D CircleCollider2DObject = Object.AddComponent<CircleCollider2D>();
         CircleCollider2DObject.radius = 0.5f;
         CircleCollider2DObject.isTrigger = true;

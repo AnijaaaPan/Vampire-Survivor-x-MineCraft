@@ -11,10 +11,10 @@ public class LightSource : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.name.Contains("CharaImage")) return;
+        if (!collision.gameObject.name.Contains("AttackWeapon")) return;
 
         DropItemStatus.instance.RemoveLightSourceData(gameObject);
-        if (!ExpStatus.instance.Probability(100)) return;
+        if (!ExpStatus.instance.Probability(50)) return;
 
         RectTransform RectTransform = gameObject.GetComponent<RectTransform>();
 
