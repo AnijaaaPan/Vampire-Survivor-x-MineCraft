@@ -168,15 +168,13 @@ public class PlayerStatus : MonoBehaviour
         if (damage >= 0) return;
 
         RectTransform EnemyDataObjectRectTransform = Chara.GetComponent<RectTransform>();
-        float EnemyX = EnemyDataObjectRectTransform.anchoredPosition.x;
-        float EnemyY = EnemyDataObjectRectTransform.anchoredPosition.y;
 
         GameObject Object = new GameObject("DamageEffect");
         Object.transform.SetParent(DamageEffects.transform);
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
         ObjectRectTransform.sizeDelta = new Vector2(2, 2);
-        ObjectRectTransform.anchoredPosition = new Vector3(EnemyX, EnemyY, 0);
+        ObjectRectTransform.position = EnemyDataObjectRectTransform.position;
 
         Image ObjectImage = Object.AddComponent<Image>();
         ObjectImage.sprite = DamageEffectImage;

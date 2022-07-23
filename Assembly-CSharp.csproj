@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DamageEffect.cs" />
     <Compile Include="Assets\Scripts\DontDestroy\Json.cs" />
     <Compile Include="Assets\Scripts\Initialize.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon16.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon1_2.cs" />
     <Compile Include="Assets\Scripts\QuitGame\QuitGame.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\LightSource.cs" />
@@ -139,7 +140,7 @@
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\EnemyStatus.cs" />
-    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon16.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon17_18.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Font\damNum-export.xml" />

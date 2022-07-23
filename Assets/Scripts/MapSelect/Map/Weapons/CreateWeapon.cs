@@ -26,6 +26,10 @@ public class CreateWeapon : MonoBehaviour
     // WeaponID: 13, 14
     private float ID13_14_Radian;
 
+    // WeaponID: 17, 18
+    public GameObject InitAttackZone;
+    private int AttackCount = 0;
+
     IEnumerator Start()
     {
         WeaponID = weapon.GetId();
@@ -72,14 +76,24 @@ public class CreateWeapon : MonoBehaviour
     {
         GameObject Object = Instantiate(InitWeaponAttack);
 
-        if (WeaponID == 1 || WeaponID == 2) Object = CreateWeaponID1_2(Object, WeaponCount);
-        if (WeaponID == 3 || WeaponID == 4) Object = CreateWeaponID3_4(Object);
-        if (WeaponID == 5 || WeaponID == 6) Object = CreateWeaponID5_6(Object);
-        if (WeaponID == 7) Object = CreateWeaponID7(Object);
-        if (WeaponID == 8) Object = CreateWeaponID8(Object, WeaponCount);
-        if (WeaponID == 9 || WeaponID == 10) Object = CreateWeaponID9_10(Object);
-        if (WeaponID == 11 || WeaponID == 12) Object = CreateWeaponID11_12(Object, WeaponCount);
-        if (WeaponID == 13 || WeaponID == 14) Object = CreateWeaponID13_14(Object);
+        if (WeaponID == 1 || WeaponID == 2) 
+            Object = CreateWeaponID1_2(Object, WeaponCount);
+        else if (WeaponID == 3 || WeaponID == 4) 
+            Object = CreateWeaponID3_4(Object);
+        else if (WeaponID == 5 || WeaponID == 6) 
+            Object = CreateWeaponID5_6(Object);
+        else if (WeaponID == 7) 
+            Object = CreateWeaponID7(Object);
+        else if (WeaponID == 8) 
+            Object = CreateWeaponID8(Object, WeaponCount);
+        else if (WeaponID == 9 || WeaponID == 10) 
+            Object = CreateWeaponID9_10(Object);
+        else if (WeaponID == 11 || WeaponID == 12) 
+            Object = CreateWeaponID11_12(Object, WeaponCount);
+        else if (WeaponID == 13 || WeaponID == 14) 
+            Object = CreateWeaponID13_14(Object);
+        else if (WeaponID == 17 || WeaponID == 18)
+            Object = CreateWeaponID17_18(Object);
 
         Vector3 ObjectScale = Object.transform.localScale;
         Object.name = $"AttackWeapon{weapon.GetId()}";
@@ -210,13 +224,41 @@ public class CreateWeapon : MonoBehaviour
         return Object;
     }
 
-    private GameObject CreateWeaponID15_16(GameObject Object)
+    private GameObject CreateWeaponID17_18(GameObject Object)
     {
-        RectTransform ObjectRectTransform = Object.GetComponent<RectTransform>();
-        ObjectRectTransform.position = new Vector3(Chara.position.x, Chara.position.y, 0);
+        float DropPointX;
+        float DropPointY;
+        float WeaponSpawnX = Random.Range(Chara.transform.position.x - 10f, Chara.transform.position.x + 10f);
+        float WeaponSpawnY = Chara.transform.position.y + 6.15f;
 
-        AttackWeapon15_16 ObjectAttackWeapon15_16 = Object.AddComponent<AttackWeapon15_16>();
-        ObjectAttackWeapon15_16.Chara = Chara;
+        if (WeaponID == 17)
+        {
+            DropPointX = Random.Range(Chara.transform.position.x - 10f, Chara.transform.position.x + 10f);
+            DropPointY = Random.Range(Chara.transform.position.y - 5.5f, Chara.transform.position.y + 5.5f);
+        } else
+        {
+            float Radian = AttackCount * 30;
+
+            float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
+            float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
+
+            DropPointX = Chara.transform.position.x + cos * 10f;
+            DropPointY = Chara.transform.position.y + sin * 5f;
+
+            AttackCount++;
+        }
+
+        float ID17_18_Radian = GetRadian(WeaponSpawnX, WeaponSpawnY, DropPointX, DropPointY) * (180 / Mathf.PI);
+
+        RectTransform ObjectRectTransform = Object.GetComponent<RectTransform>();
+        ObjectRectTransform.position = new Vector3(WeaponSpawnX, WeaponSpawnY, 0);
+
+        AttackWeapon17_18 ObjectAttackWeapon17_18 = Object.AddComponent<AttackWeapon17_18>();
+        ObjectAttackWeapon17_18.Chara = Chara;
+        ObjectAttackWeapon17_18.weapon = weapon;
+        ObjectAttackWeapon17_18.Radian = ID17_18_Radian;
+        ObjectAttackWeapon17_18.DropPoint = new Vector2(DropPointX, DropPointY);
+        ObjectAttackWeapon17_18.WeaponParn = WeaponParn;
         return Object;
     }
 

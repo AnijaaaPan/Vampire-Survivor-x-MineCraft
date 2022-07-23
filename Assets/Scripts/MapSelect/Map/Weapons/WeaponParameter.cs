@@ -35,7 +35,7 @@ public class WeaponParameter : MonoBehaviour
 
         // 武器の大きさ
         int ItemRange = ItemStatus.instance.GetAllStatusPhase(6);
-        UpdateWeaponParn.range += ItemRange * 0.1f;
+        UpdateWeaponParn.range += UpdateWeaponParn.range * ItemRange * 0.1f;
 
         // 武器の攻撃速度
         int ItemAttackSpeed = ItemStatus.instance.GetAllStatusPhase(7);
@@ -47,7 +47,7 @@ public class WeaponParameter : MonoBehaviour
 
         // 武器の持続時間
         int ItemAttackTime = ItemStatus.instance.GetAllStatusPhase(8);
-        UpdateWeaponParn.atk_time += ItemAttackTime * 0.1f;
+        UpdateWeaponParn.atk_time += UpdateWeaponParn.atk_time * ItemAttackTime * 0.1f;
 
         // 武器のクールダウン
         int ItemCoolTime = ItemStatus.instance.GetAllStatusPhase(5);
@@ -68,6 +68,7 @@ public class WeaponParameter : MonoBehaviour
         else if (WeaponID == 11) return UpdateWeaponID11(WeaponLv, DefaultWeaponParn);
         else if (WeaponID == 13) return UpdateWeaponID13(WeaponLv, DefaultWeaponParn);
         else if (WeaponID == 15) return UpdateWeaponID15(WeaponLv, DefaultWeaponParn);
+        else if (WeaponID == 17) return UpdateWeaponID17(WeaponLv, DefaultWeaponParn);
         return DefaultWeaponParn;
     }
 
@@ -351,6 +352,46 @@ public class WeaponParameter : MonoBehaviour
         {
             DefaultWeaponParn.range += 0.2f;
             DefaultWeaponParn.damage += 1;
+        }
+        return DefaultWeaponParn;
+    }
+    
+    private WeaponParn UpdateWeaponID17(int WeaponLv, WeaponParn DefaultWeaponParn)
+    {
+        if (WeaponLv >= 2)
+        {
+            DefaultWeaponParn.range += 0.2f;
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 3)
+        {
+            DefaultWeaponParn.atk_time += 0.5f;
+            DefaultWeaponParn.damage += 10;
+        }
+        if (WeaponLv >= 4)
+        {
+            DefaultWeaponParn.range += 0.2f;
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 5)
+        {
+            DefaultWeaponParn.atk_time += 0.3f;
+            DefaultWeaponParn.damage += 10;
+        }
+        if (WeaponLv >= 6)
+        {
+            DefaultWeaponParn.range += 0.2f;
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 7)
+        {
+            DefaultWeaponParn.atk_time += 0.3f;
+            DefaultWeaponParn.damage += 10;
+        }
+        if (WeaponLv >= 8)
+        {
+            DefaultWeaponParn.range += 0.2f;
+            DefaultWeaponParn.damage += 5;
         }
         return DefaultWeaponParn;
     }
