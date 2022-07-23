@@ -13,7 +13,7 @@ public class AttackWeapon1_2 : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
 
-            ObjectImage.color = new Color(ObjectImage.color.r, ObjectImage.color.b, ObjectImage.color.a, ColorA);
+            ObjectImage.color = new Color(ObjectImage.color.r, ObjectImage.color.g, ObjectImage.color.b, ColorA);
             ColorA -= 0.3f;
             if (ColorA <= 0) Destroy(gameObject);
         }

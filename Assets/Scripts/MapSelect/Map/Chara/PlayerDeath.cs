@@ -19,7 +19,7 @@ public class PlayerDeath : MonoBehaviour
     private GameObject Angel;
     private GameObject Continuing;
 
-    private SpriteRenderer CharaImage;
+    private Image CharaImage;
     private Image AngelImage;
     private Image ContinuingImage;
 
@@ -54,7 +54,7 @@ public class PlayerDeath : MonoBehaviour
         Angel = GameOver.transform.Find("Angel").gameObject;
         Continuing = GameOver.transform.Find("Continuing").gameObject;
 
-        CharaImage = GetComponent<SpriteRenderer>();
+        CharaImage = GetComponent<Image>();
         AngelImage = Angel.GetComponent<Image>();
         ContinuingImage = Continuing.GetComponent<Image>();
 
@@ -84,7 +84,7 @@ public class PlayerDeath : MonoBehaviour
         Height -= DeathSpeed;
         CharaPosition.y -= HalfDeathSpeed;
         RectTransformChara.anchoredPosition = CharaPosition;
-        RectTransformChara.transform.localScale = new Vector3(0.325f, Height * 0.325f);
+        RectTransformChara.sizeDelta = new Vector2(1.5f, Height);
         if (Height <= 0.05f)
         {
             GameOver.SetActive(true);
@@ -150,7 +150,7 @@ public class PlayerDeath : MonoBehaviour
     private void ReviveGame()
     {
         RectTransformChara.anchoredPosition = InitCharaPosition;
-        RectTransformChara.transform.localScale = new Vector3(0.325f, 0.325f);
+        RectTransformChara.sizeDelta = new Vector2(1.5f, Height);
 
         CharaBoxCollider2D.size = new Vector2(0.635f, 1);
 

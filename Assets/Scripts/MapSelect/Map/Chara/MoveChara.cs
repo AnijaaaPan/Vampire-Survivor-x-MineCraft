@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class MoveChara : MonoBehaviour
 {
+    public GameObject CharaFront;
+    public GameObject CharaBack;
     public GameObject isMap4;
     public GameObject JoyStick;
     public GameObject MoveWithChara;
@@ -13,11 +15,15 @@ public class MoveChara : MonoBehaviour
     public Sprite FireFromPlayerImage;
 
     private Transform CharaTransform;
+    private Transform FrontCharaTransform;
+    private Transform BackCharaTransform;
     private Transform MoveWithCharaTransform;
 
     private readonly static float MoveSpeed = 0.056f;
 
-    private SpriteRenderer CharaImage;
+    private Image CharaImage;
+    private Image CharaBackImageFront;
+    private Image CharaBackImageBack;
     private Sprite[] CharaImageList;
 
     private int CharaImagePageIndex = 0;
@@ -42,10 +48,14 @@ public class MoveChara : MonoBehaviour
         Mob mob = MobDataBase.FindMobFromId(player.Latest_Chara);
         if (player.Latest_Map != 4) Destroy(isMap4);
 
-        CharaTransform = this.gameObject.transform;
+        CharaTransform = transform;
+        FrontCharaTransform = CharaFront.transform;
+        BackCharaTransform = CharaBack.transform;
         MoveWithCharaTransform = MoveWithChara.transform;
 
-        CharaImage = GetComponent<SpriteRenderer>();
+        CharaImage = GetComponent<Image>();
+        CharaBackImageFront = CharaFront.GetComponent<Image>();
+        CharaBackImageBack = CharaBack.GetComponent<Image>();
 
         CharaImageList = mob.GetIcons();
         CharaImageListCount = CharaImageList.Length - 1;
@@ -193,15 +203,24 @@ public class MoveChara : MonoBehaviour
         }
 
         CharaImage.sprite = CharaImageList[Mathf.FloorToInt(CharaImagePageIndex)];
+        CharaBackImageFront.GetComponent<Image>().sprite = CharaImage.sprite;
+        CharaBackImageBack.GetComponent<Image>().sprite = CharaImage.sprite;
     }
 
     private void UpdateObjectCoordinate(float MathMoveDistanceX, float MathMoveDistanceY)
     {
+        if (LatestPlayerVector[0] == null && LatestPlayerVector[1] == null && !isPushMouseButton())
+        {
+            FrontCharaTransform.position = new Vector3(CharaTransform.position.x, CharaTransform.position.y);
+            BackCharaTransform.position = new Vector3(CharaTransform.position.x, CharaTransform.position.y);
+        };
 
         if (LatestPlayerVector[0] != null || isPushMouseButton() && MathMoveDistanceX != 0 && MathMoveDistanceY != 0)
         {
             int PlayerVectorLeftRight = LatestPlayerVector[0] == true || MathMoveDistanceX > 0 ? -1 : 1;
-            CharaTransform.localScale = new Vector3(PlayerVectorLeftRight * 0.325f, 1 * 0.325f, 1);
+            CharaTransform.localScale = new Vector3(PlayerVectorLeftRight, 1, 1);
+            FrontCharaTransform.localScale = new Vector3(PlayerVectorLeftRight, 1, 1);
+            BackCharaTransform.localScale = new Vector3(PlayerVectorLeftRight, 1, 1);
         }
 
         if (LatestPlayerVector[0] != null)
@@ -230,6 +249,8 @@ public class MoveChara : MonoBehaviour
         {
             isMap4.transform.position = new Vector3(MoveX, MoveY, 0);
         }
+        FrontCharaTransform.position = new Vector3(MoveX - MathMoveDistanceX * 1.25f, MoveY - MathMoveDistanceY * 1.25f);
+        BackCharaTransform.position = new Vector3(MoveX - MathMoveDistanceX * 2.5f, MoveY - MathMoveDistanceY * 2.5f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -257,7 +278,11 @@ public class MoveChara : MonoBehaviour
     private void DamageCharaFromEnemy()
     {
         if (PlayerStatus.instance.GetStatus().StopClockTime != 0) return;
-        if (CharaImage.color == new Color(1, 1, 0, 1)) return;
+        if (CharaImage.color == new Color(1, 1, 0, 1))
+        {
+            CharaInvincibleImage();
+            return;
+        }
 
         ChangeCharaImageColor();
         if (!isOnCollision) return;
@@ -274,6 +299,14 @@ public class MoveChara : MonoBehaviour
     private void ChangeCharaImageColor()
     {
         CharaImage.color = isOnCollision ? new Color(1, 0, 0, 1) : new Color(1, 1, 1, 1);
+        CharaBackImageFront.GetComponent<Image>().color = isOnCollision ? new Color(1, 0, 0, 0.75f) : new Color(1, 1, 1, 0.75f);
+        CharaBackImageBack.GetComponent<Image>().color = isOnCollision ? new Color(1, 0, 0, 0.5f) : new Color(1, 1, 1, 0.5f);
+    }
+
+    private void CharaInvincibleImage()
+    {
+        CharaBackImageFront.GetComponent<Image>().color = new Color(1, 1, 0, 0.75f);
+        CharaBackImageBack.GetComponent<Image>().color = new Color(1, 1, 0, 0.5f);
     }
 
     // ブレイズ・パウダーを取得した時の処理

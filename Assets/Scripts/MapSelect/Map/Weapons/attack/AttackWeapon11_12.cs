@@ -34,7 +34,7 @@ public class AttackWeapon11_12: MonoBehaviour
         float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
         float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
-        transform.position = new Vector3(Chara.transform.position.x + cos * 3f * WeaponParn.range, Chara.transform.position.y + sin * 3f * WeaponParn.range);
+        transform.position = new Vector3(Chara.transform.position.x + cos * 2.5f * WeaponParn.range, Chara.position.y - 0.475f + sin * 2.5f * WeaponParn.range);
 
         Radian -= 3.75f;
     }

@@ -22,7 +22,7 @@ MonoBehaviour:
   play_count: 1
   parameter:
     damage: 20
-    range: 3
+    range: 2
     atk_spd: 1
     atk_count: 1
     atk_time: 0

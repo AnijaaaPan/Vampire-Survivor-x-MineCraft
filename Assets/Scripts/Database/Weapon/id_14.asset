@@ -23,8 +23,8 @@ MonoBehaviour:
   parameter:
     damage: 100
     range: 1
-    atk_spd: 1
-    atk_count: 2
+    atk_spd: 0.05
+    atk_count: 3
     atk_time: 0
     cooldown: 3
     penetrate: -1

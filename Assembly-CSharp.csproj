@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scripts\Database\Mob\Mob.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\RotateToDropItem.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Chara\DropItems\RotateArrow.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon13_14.cs" />
     <Compile Include="Assets\AfterImageEffect2D\Scripts\DynamicAfterImageEffect2DPlayer.cs" />
     <Compile Include="Assets\Scripts\UI\RotAmimation.cs" />
     <Compile Include="Assets\Scripts\Title\MousePointerTitle.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Assets\Scripts\Header\BackMenu.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon7.cs" />
     <Compile Include="Assets\Scripts\UI\UIGradient.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon15_16.cs" />
     <Compile Include="Assets\AfterImageEffect2D\Scripts\DynamicAfterImageEffect2D.cs" />
     <Compile Include="Assets\AfterImageEffect2D\Scripts\AfterImageEffect2DBase.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Enemy\SpawnEnemy.cs" />
@@ -137,6 +139,7 @@
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\EnemyStatus.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon16.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Font\damNum-export.xml" />

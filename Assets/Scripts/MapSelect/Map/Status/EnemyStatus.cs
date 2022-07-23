@@ -133,7 +133,7 @@ public class EnemyStatus : MonoBehaviour
     public void UpdateEenmyDataHp(int id, int damage)
     {
         EnemyData EnemyData = EnemyDataList.Find(e => e.id == id);
-        damage += Random.Range(0, 10);
+        damage += Random.Range(0, 5);
 
         EnemyData.hp -= damage;
         DisplayDamage(damage, EnemyData);

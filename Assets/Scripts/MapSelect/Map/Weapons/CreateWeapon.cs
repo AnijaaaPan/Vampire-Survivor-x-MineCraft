@@ -11,17 +11,20 @@ public class CreateWeapon : MonoBehaviour
     private GameObject InitWeaponAttack;
     private WeaponParn WeaponParn;
 
+    private int WeaponID;
+
     // WeaponID: 5, 6
     public List<Sprite> ID5_6_Images;
 
     private Vector3 BeforePosition = new Vector3();
     private float ID5_6_Radian;
 
-    // WeaponID: 12
+    // WeaponID: 11, 12
     public List<Sprite> ID12_Images;
-    public float ID11_12_Radian;
+    private float ID11_12_Radian;
 
-    private int WeaponID;
+    // WeaponID: 13, 14
+    private float ID13_14_Radian;
 
     IEnumerator Start()
     {
@@ -49,6 +52,7 @@ public class CreateWeapon : MonoBehaviour
     {
         WeaponParn = WeaponParameter.instance.GetWeaponParameter(weapon);
         if (WeaponID == 12) WeaponParn.atk_count *= 3;
+        if (WeaponID == 13 || WeaponID == 14) ID13_14_Radian = Random.Range(-180f, 180f);
 
         int WeaponCount = 1;
         while (WeaponCount <= WeaponParn.atk_count)
@@ -75,6 +79,7 @@ public class CreateWeapon : MonoBehaviour
         if (WeaponID == 8) Object = CreateWeaponID8(Object, WeaponCount);
         if (WeaponID == 9 || WeaponID == 10) Object = CreateWeaponID9_10(Object);
         if (WeaponID == 11 || WeaponID == 12) Object = CreateWeaponID11_12(Object, WeaponCount);
+        if (WeaponID == 13 || WeaponID == 14) Object = CreateWeaponID13_14(Object);
 
         Vector3 ObjectScale = Object.transform.localScale;
         Object.name = $"AttackWeapon{weapon.GetId()}";
@@ -192,6 +197,27 @@ public class CreateWeapon : MonoBehaviour
     private void UpdateWeaponID11_12()
     {
         ID11_12_Radian -= 3.75f;
+    }
+
+    private GameObject CreateWeaponID13_14(GameObject Object)
+    {
+        RectTransform ObjectRectTransform = Object.GetComponent<RectTransform>();
+        ObjectRectTransform.position = new Vector3(Chara.position.x, Chara.position.y, 0);
+
+        AttackWeapon13_14 ObjectAttackWeapon13_14 = Object.AddComponent<AttackWeapon13_14>();
+        ObjectAttackWeapon13_14.Chara = Chara;
+        ObjectAttackWeapon13_14.Radian = ID13_14_Radian;
+        return Object;
+    }
+
+    private GameObject CreateWeaponID15_16(GameObject Object)
+    {
+        RectTransform ObjectRectTransform = Object.GetComponent<RectTransform>();
+        ObjectRectTransform.position = new Vector3(Chara.position.x, Chara.position.y, 0);
+
+        AttackWeapon15_16 ObjectAttackWeapon15_16 = Object.AddComponent<AttackWeapon15_16>();
+        ObjectAttackWeapon15_16.Chara = Chara;
+        return Object;
     }
 
     internal static T GetRandom<T>(IList<T> Params)

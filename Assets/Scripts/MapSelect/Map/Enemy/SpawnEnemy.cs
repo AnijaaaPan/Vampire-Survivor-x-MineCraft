@@ -127,7 +127,7 @@ public class SpawnEnemy : MonoBehaviour
         GameObject Object = new GameObject($"Enemy_{EnemyCount}");
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
-        ObjectRectTransform.sizeDelta = new Vector2(1.25f * LocalScale, 1.25f * LocalScale);
+        ObjectRectTransform.sizeDelta = new Vector2(LocalScale, LocalScale);
         ObjectRectTransform.position = new Vector3(SpawnX, SpawnY, 0);
 
         Image ImageObject = Object.AddComponent<Image>();
