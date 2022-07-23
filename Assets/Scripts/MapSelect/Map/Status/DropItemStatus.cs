@@ -142,7 +142,7 @@ public class DropItemStatus : MonoBehaviour
 
         Rainbow ObjectRainbow = Object.AddComponent<Rainbow>();
         ObjectRainbow.a = 0.5f;
-        ObjectRainbow.light = 0.5f;
+        ObjectRainbow.light = 0.25f;
 
         CircleCollider2D ObjectCircleCollider2D = Object.AddComponent<CircleCollider2D>();
         ObjectCircleCollider2D.radius = 0.4f;

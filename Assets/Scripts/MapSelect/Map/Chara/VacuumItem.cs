@@ -65,7 +65,7 @@ public class VacuumItem : MonoBehaviour
 
         float MathMoveDistanceX = 4.5f * Time.deltaTime * cos;
         float MathMoveDistanceY = 4.5f * Time.deltaTime * sin;
-        if (Counter <= 45)
+        if (Counter <= 10)
         {
             MathMoveDistanceX = -MathMoveDistanceX;
             MathMoveDistanceY = -MathMoveDistanceY;

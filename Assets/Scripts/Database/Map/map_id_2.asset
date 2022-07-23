@@ -76,9 +76,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7e8e99059cb7d1042aacab19d8c6fbb0, type: 2}
     EnemyCount: 80
     SpawnInterval: 30
-    BossEnemys:
-    - Enemy: {fileID: 0}
-      Treasure: []
+    BossEnemys: []
     Events: []
   - phase: 2
     Enemies:

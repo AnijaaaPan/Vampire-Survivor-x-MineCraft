@@ -27,11 +27,9 @@ public class KillMob : MonoBehaviour
     private void UpdateImagePage()
     {
         KillImagePageIndex++;
-        int index = Mathf.FloorToInt(KillImagePageIndex / 4);
-        if (index <= KillImageListCount)
+        if (KillImagePageIndex <= KillImageListCount)
         {
-            EnemyImage.sprite = KillImageList[index];
-
+            EnemyImage.sprite = KillImageList[KillImagePageIndex];
         }
         else
         {

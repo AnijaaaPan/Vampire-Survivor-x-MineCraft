@@ -24,7 +24,7 @@ public class DamageEffect : MonoBehaviour
     private void UpdateImagePage()
     {
         ImagePageIndex++;
-        int index = Mathf.FloorToInt(ImagePageIndex / 10);
+        int index = Mathf.FloorToInt(ImagePageIndex / 2.5f);
         if (index <= ImageListCount)
         {
             EnemyImage.sprite = DamageEffectImages[index];

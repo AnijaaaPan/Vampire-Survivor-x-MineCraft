@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UpDown : MonoBehaviour
 {
-    public float speed = 0.015f;
+    public float speed = 0.06f;
     public RectTransform ObjectRectTransform;
 
     void Update()

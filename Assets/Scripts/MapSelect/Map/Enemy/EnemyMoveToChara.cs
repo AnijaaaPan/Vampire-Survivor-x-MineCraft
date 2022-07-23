@@ -16,7 +16,7 @@ public class EnemyMoveToChara : MonoBehaviour
     private float MathMoveDistanceX = 0;
     private float MathMoveDistanceY = 0;
 
-    private static float MoveSpeed = 0.007f;
+    private static float MoveSpeed = 0.028f;
 
     private Transform CharaTransform;
     private Transform EnemyTransform;

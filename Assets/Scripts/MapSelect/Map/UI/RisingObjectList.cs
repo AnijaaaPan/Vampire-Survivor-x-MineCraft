@@ -32,7 +32,7 @@ public class RisingObjectList : MonoBehaviour
         SpawnBottomY = Chara.transform.position.y - 8;
         SpawnTopY = Chara.transform.position.y - 6;
 
-        for (int i = 0; i <= 10; i++)
+        for (int i = 0; i <= 15; i++)
         {
             CraeteRisingExpObject();
         }

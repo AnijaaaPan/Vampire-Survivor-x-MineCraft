@@ -21,6 +21,6 @@ MonoBehaviour:
   speed: 1.8
   KnockBack: 1
   MaxKnockBack: 3
-  UpdateImagePage: 15
+  UpdateImagePage: 4
   Color: {r: 1, g: 1, b: 1, a: 1}
   localScale: 1.25

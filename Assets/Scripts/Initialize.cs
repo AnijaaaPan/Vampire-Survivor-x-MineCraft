@@ -10,6 +10,7 @@ public class Initialize : MonoBehaviour
     {
         if (!SceneManager.GetSceneByName(InitializeSceneName).IsValid())
         {
+            Application.targetFrameRate = 60; //FPSÇ60Ç…ê›íË 
             SceneManager.LoadScene(InitializeSceneName);
         }
     }

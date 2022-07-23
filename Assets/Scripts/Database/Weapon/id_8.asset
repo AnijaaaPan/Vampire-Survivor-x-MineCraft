@@ -23,7 +23,7 @@ MonoBehaviour:
   parameter:
     damage: 60
     range: 1.2
-    atk_spd: 0.8
+    atk_spd: 0.075
     atk_count: 9
     atk_time: 0
     cooldown: 4
