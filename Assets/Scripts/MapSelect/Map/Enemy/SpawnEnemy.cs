@@ -75,7 +75,7 @@ public class SpawnEnemy : MonoBehaviour
         {
             phase = Timer.Minute;
             StageEnemys = Map.GetStageEnemys().Find(m => m.phase == phase);
-            Spawn(StageEnemys.EnemyCount);
+            if (StageEnemys.EnemyCount != 0) Spawn(StageEnemys.EnemyCount);
 
             List<BossEnemys> BossEnemys = StageEnemys.BossEnemys;
             if (BossEnemys.Count != 0) CreateBossEnemys(BossEnemys);

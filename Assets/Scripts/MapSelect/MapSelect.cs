@@ -30,6 +30,8 @@ public class MapSelect : MonoBehaviour
 
         foreach (Json.MapData m in player.Map)
         {
+            if (m.use == false) break;
+
             Map map = MapDataBase.FindMapFromId(m.id);
 
             GameObject MapObject = CreateMapObject(map, m);

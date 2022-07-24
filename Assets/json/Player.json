@@ -1,14 +1,14 @@
 {
     "FirstTime": true,
-    "Money": 695087,
+    "Money": 26,
     "Latest_Chara": 0,
     "Latest_Map": 1,
-    "GrantHP": 1741,
+    "GrantHP": -97,
     "Latest_Map_Hyper": false,
-    "SoundEffect": 0.08035892993211746,
-    "SoundMusic": 0.060663431882858279,
+    "SoundEffect": 0.0,
+    "SoundMusic": 0.0,
     "Flash": true,
-    "JoyStick": true,
+    "JoyStick": false,
     "Damage": true,
     "FullScreen": false,
     "Character": [
@@ -302,15 +302,15 @@
         },
         {
             "id": 5,
-            "use": false
+            "use": true
         },
         {
             "id": 6,
-            "use": false
+            "use": true
         },
         {
             "id": 7,
-            "use": false
+            "use": true
         },
         {
             "id": 8,
@@ -318,11 +318,11 @@
         },
         {
             "id": 9,
-            "use": false
+            "use": true
         },
         {
             "id": 10,
-            "use": false
+            "use": true
         },
         {
             "id": 11,
@@ -334,7 +334,7 @@
         },
         {
             "id": 13,
-            "use": false
+            "use": true
         },
         {
             "id": 14,
@@ -350,72 +350,72 @@
         }
     ],
     "PowerUp": {
-        "allcost": 304913,
-        "allcount": 48,
+        "allcost": 0,
+        "allcount": 0,
         "poweruplist": [
             {
                 "id": 1,
-                "powerupcount": 0
+                "powerupcount": 5
             },
             {
                 "id": 2,
-                "powerupcount": 0
+                "powerupcount": 3
             },
             {
                 "id": 3,
-                "powerupcount": 0
+                "powerupcount": 3
             },
             {
                 "id": 4,
-                "powerupcount": 0
+                "powerupcount": 5
             },
             {
                 "id": 5,
-                "powerupcount": 0
+                "powerupcount": 2
             },
             {
                 "id": 6,
-                "powerupcount": 0
+                "powerupcount": 2
             },
             {
                 "id": 7,
-                "powerupcount": 0
+                "powerupcount": 2
             },
             {
                 "id": 8,
-                "powerupcount": 0
+                "powerupcount": 2
             },
             {
                 "id": 9,
-                "powerupcount": 0
+                "powerupcount": 1
             },
             {
                 "id": 10,
-                "powerupcount": 0
+                "powerupcount": 2
             },
             {
                 "id": 11,
-                "powerupcount": 0
+                "powerupcount": 2
             },
             {
                 "id": 12,
-                "powerupcount": 0
+                "powerupcount": 3
             },
             {
                 "id": 13,
-                "powerupcount": 0
+                "powerupcount": 5
             },
             {
                 "id": 14,
-                "powerupcount": 0
+                "powerupcount": 5
             },
             {
                 "id": 15,
-                "powerupcount": 0
+                "powerupcount": 5
             },
             {
                 "id": 16,
-                "powerupcount": 0
+                "powerupcount": 1
             }
         ]
     },
@@ -475,21 +475,21 @@
             "type": "item",
             "description": "レベル5に到達",
             "type_id": 10,
-            "use": false
+            "use": true
         },
         {
             "id": 2,
             "type": "item",
             "description": "レベル10に到達",
             "type_id": 13,
-            "use": false
+            "use": true
         },
         {
             "id": 3,
             "type": "map",
             "description": "狂乱の森でレベル20に到達",
             "type_id": 2,
-            "use": false
+            "use": true
         },
         {
             "id": 4,
@@ -510,7 +510,7 @@
             "type": "item",
             "description": "いずれかのキャラクターで1分間生存",
             "type_id": 3,
-            "use": false
+            "use": true
         },
         {
             "id": 7,
@@ -601,14 +601,14 @@
             "type": "item",
             "description": "本のLvを4に",
             "type_id": 7,
-            "use": false
+            "use": true
         },
         {
             "id": 20,
             "type": "item",
             "description": "ポーションのLvを4に",
             "type_id": 6,
-            "use": false
+            "use": true
         },
         {
             "id": 21,
@@ -629,7 +629,7 @@
             "type": "item",
             "description": "松明のLvを7に",
             "type_id": 9,
-            "use": false
+            "use": true
         },
         {
             "id": 24,
@@ -664,7 +664,7 @@
             "type": "item",
             "description": "1度に6種類の武器を所持",
             "type_id": 5,
-            "use": false
+            "use": true
         },
         {
             "id": 29,
@@ -760,28 +760,28 @@
         {
             "id": 42,
             "type": "chara",
-            "description": "TESTを合計3000体倒す",
+            "description": "Skeletonを合計3000体倒す",
             "type_id": 16,
             "use": false
         },
         {
             "id": 43,
             "type": "chara",
-            "description": "TESTを合計3000体倒す",
+            "description": "LionHeadを合計3000体倒す",
             "type_id": 17,
             "use": false
         },
         {
             "id": 44,
             "type": "chara",
-            "description": "TESTを合計3000体倒す",
+            "description": "Milk Elementalsを合計3000体倒す",
             "type_id": 18,
             "use": false
         },
         {
             "id": 45,
             "type": "chara",
-            "description": "TESTを合計3000体倒す",
+            "description": "Dragon Shrimpsを合計3000体倒す",
             "type_id": 19,
             "use": false
         },
@@ -802,28 +802,28 @@
         {
             "id": 48,
             "type": "hyper",
-            "description": "狂乱の森に出現するTESTを撃破",
+            "description": "狂乱の森に出現する25分ボスを撃破",
             "type_id": 1,
             "use": false
         },
         {
             "id": 49,
             "type": "hyper",
-            "description": "象眼の図書館に出現するTESTを撃破",
+            "description": "象眼の図書館に出現する25分ボスを撃破",
             "type_id": 2,
             "use": false
         },
         {
             "id": 50,
             "type": "hyper",
-            "description": "酪農場に出現するTESTを撃破",
+            "description": "酪農場に出現する25分ボスを撃破",
             "type_id": 3,
             "use": false
         },
         {
             "id": 51,
             "type": "hyper",
-            "description": "Gallo Towerに出現するTESTを撃破",
+            "description": "Gallo Towerに出現する25分ボスを撃破",
             "type_id": 4,
             "use": false
         },
@@ -948,7 +948,7 @@
         },
         {
             "id": 2,
-            "use": false,
+            "use": true,
             "hyper": false
         },
         {
@@ -965,15 +965,15 @@
     "Enemy": [
         {
             "id": 1,
-            "count": 0
+            "count": 1218
         },
         {
             "id": 2,
-            "count": 0
+            "count": 126
         },
         {
             "id": 3,
-            "count": 0
+            "count": 124
         },
         {
             "id": 4,
@@ -1105,6 +1105,238 @@
         },
         {
             "id": 36,
+            "count": 0
+        },
+        {
+            "id": 37,
+            "count": 0
+        },
+        {
+            "id": 38,
+            "count": 0
+        },
+        {
+            "id": 39,
+            "count": 0
+        },
+        {
+            "id": 40,
+            "count": 0
+        },
+        {
+            "id": 41,
+            "count": 0
+        },
+        {
+            "id": 42,
+            "count": 0
+        },
+        {
+            "id": 43,
+            "count": 0
+        },
+        {
+            "id": 44,
+            "count": 0
+        },
+        {
+            "id": 45,
+            "count": 0
+        },
+        {
+            "id": 46,
+            "count": 0
+        },
+        {
+            "id": 47,
+            "count": 0
+        },
+        {
+            "id": 48,
+            "count": 0
+        },
+        {
+            "id": 49,
+            "count": 0
+        },
+        {
+            "id": 50,
+            "count": 0
+        },
+        {
+            "id": 51,
+            "count": 0
+        },
+        {
+            "id": 52,
+            "count": 0
+        },
+        {
+            "id": 53,
+            "count": 0
+        },
+        {
+            "id": 54,
+            "count": 0
+        },
+        {
+            "id": 55,
+            "count": 0
+        },
+        {
+            "id": 56,
+            "count": 0
+        },
+        {
+            "id": 57,
+            "count": 0
+        },
+        {
+            "id": 58,
+            "count": 0
+        },
+        {
+            "id": 59,
+            "count": 0
+        },
+        {
+            "id": 60,
+            "count": 0
+        },
+        {
+            "id": 61,
+            "count": 0
+        },
+        {
+            "id": 62,
+            "count": 0
+        },
+        {
+            "id": 63,
+            "count": 0
+        },
+        {
+            "id": 64,
+            "count": 0
+        },
+        {
+            "id": 65,
+            "count": 0
+        },
+        {
+            "id": 66,
+            "count": 0
+        },
+        {
+            "id": 67,
+            "count": 0
+        },
+        {
+            "id": 68,
+            "count": 0
+        },
+        {
+            "id": 69,
+            "count": 0
+        },
+        {
+            "id": 70,
+            "count": 0
+        },
+        {
+            "id": 71,
+            "count": 0
+        },
+        {
+            "id": 72,
+            "count": 0
+        },
+        {
+            "id": 73,
+            "count": 0
+        },
+        {
+            "id": 74,
+            "count": 0
+        },
+        {
+            "id": 75,
+            "count": 0
+        },
+        {
+            "id": 76,
+            "count": 0
+        },
+        {
+            "id": 77,
+            "count": 0
+        },
+        {
+            "id": 78,
+            "count": 0
+        },
+        {
+            "id": 79,
+            "count": 0
+        },
+        {
+            "id": 80,
+            "count": 0
+        },
+        {
+            "id": 81,
+            "count": 0
+        },
+        {
+            "id": 82,
+            "count": 0
+        },
+        {
+            "id": 83,
+            "count": 0
+        },
+        {
+            "id": 84,
+            "count": 0
+        },
+        {
+            "id": 85,
+            "count": 0
+        },
+        {
+            "id": 86,
+            "count": 0
+        },
+        {
+            "id": 87,
+            "count": 0
+        },
+        {
+            "id": 88,
+            "count": 0
+        },
+        {
+            "id": 89,
+            "count": 0
+        },
+        {
+            "id": 90,
+            "count": 0
+        },
+        {
+            "id": 91,
+            "count": 0
+        },
+        {
+            "id": 92,
+            "count": 0
+        },
+        {
+            "id": 93,
+            "count": 0
+        },
+        {
+            "id": 94,
             "count": 0
         }
     ]

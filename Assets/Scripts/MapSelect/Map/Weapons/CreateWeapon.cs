@@ -36,6 +36,7 @@ public class CreateWeapon : MonoBehaviour
     IEnumerator Start()
     {
         WeaponID = weapon.GetId();
+        WeaponParn = WeaponParameter.instance.GetWeaponParameter(weapon);
 
         InitWeaponAttack = transform.Find("InitWeaponAttack").gameObject;
         while (true)
@@ -156,6 +157,7 @@ public class CreateWeapon : MonoBehaviour
 
         AttackWeapon5_6 ObjectAttackWeapon5_6 = Object.AddComponent<AttackWeapon5_6>();
         ObjectAttackWeapon5_6.Chara = Chara;
+        ObjectAttackWeapon5_6.WeaponParn = WeaponParn;
         ObjectAttackWeapon5_6.Radian = ID5_6_Radian;
         return Object;
     }

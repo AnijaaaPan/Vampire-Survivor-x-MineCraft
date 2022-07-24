@@ -550,7 +550,7 @@ MonoBehaviour:
   - phase: 30
     Enemies: []
     EnemyCount: 0
-    SpawnInterval: 60
+    SpawnInterval: 0
     BossEnemys:
     - Enemy: {fileID: 11400000, guid: bb4b6774de7d85147b64eb8135a986b1, type: 2}
       Treasure: []

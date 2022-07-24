@@ -30,6 +30,7 @@ public class WeaponStatus : MonoBehaviour
     public GameObject OptionWeaponBar;
     public GameObject OptionInitWeaponObject;
     public GameObject OptionslotObject;
+    public GameObject PlayerWeaponList;
 
     public Sprite PowerUp;
     public Sprite UnPowerUp;
@@ -77,6 +78,8 @@ public class WeaponStatus : MonoBehaviour
             type = "weapon",
             weapon = weapon
         };
+
+        PlayerWeaponList.transform.Find($"weapon_{weapon.GetId()}").gameObject.SetActive(true);
 
         WeaponDataList.Add(WeaponData);
 
@@ -126,7 +129,9 @@ public class WeaponStatus : MonoBehaviour
     {
         WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase = 1;
+        PlayerWeaponList.transform.Find($"weapon_{WeaponData.weapon.GetId()}").gameObject.SetActive(false);
         WeaponData.weapon = weapon.GetWeapon();
+        PlayerWeaponList.transform.Find($"weapon_{weapon.GetId()}").gameObject.SetActive(true);
 
         AddAllWeaponDataList(WeaponData.weapon);
         return WeaponData.weapon.GetIcon();

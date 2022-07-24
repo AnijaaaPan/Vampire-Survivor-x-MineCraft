@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f585612d169f845a31ad0bbc2631ee, type: 3}
   m_Name: enemy_id_64_CockatriceBoss
   m_EditorClassIdentifier: 
-  id: 63
+  id: 64
   name: turtle
   max_health: 200
   playerlevel: 1

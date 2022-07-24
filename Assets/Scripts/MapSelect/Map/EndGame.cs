@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +32,15 @@ public class EndGame : MonoBehaviour
     public Text CharaName;
 
     public Button EndGameButton;
+
+    public Enemy Skelton;
+    public Enemy LionHead;
+    public Enemy MilkElementals;
+    public Enemy DragonShrimps;
+    public Enemy Map1Boss;
+    public Enemy Map2Boss;
+    public Enemy Map3Boss;
+    public Enemy Map4Boss;
 
     private Map Map;
     private Mob Mob;
@@ -74,6 +84,8 @@ public class EndGame : MonoBehaviour
         SetPowerUpBar();
         SetCharaPowerUpBar();
         SetDropItemBar();
+        CountUpDefeatEnemy();
+        UnlockAchievement();
 
         EndGameButton.onClick.AddListener(() =>
         {
@@ -326,14 +338,25 @@ public class EndGame : MonoBehaviour
         for (int i = 0; i < DropItemCount.DropItemCountData.Count; i++)
         {
             DropItemCountData DropItemCountData = DropItemCount.DropItemCountData[i];
-            GameObject Object = CreateDropItemBarObject(DropItemCountData.sprite, DropItemCountData.Count);
+            CreateDropItemBarObject(DropItemCountData.sprite, DropItemCountData.Count);
         }
+    }
+
+    private void CountUpDefeatEnemy()
+    {
+        List<AllEnemyData> GetAllEnemyDataList = EnemyStatus.instance.GetAllEnemyDataList();
+        GetAllEnemyDataList.ForEach(enemy =>
+        {
+            player.Enemy.Find(e => e.id == enemy.enemy.GetId()).count += enemy.DefeatCount;
+        });
     }
 
     private void UnlockAchievement()
     {
         DropItemCount DropItemCount = DropItemStatus.instance.GetDropItemCount();
         List<DropItemCountData> DropItemList = DropItemCount.DropItemCountData;
+
+        List<AllEnemyData> GetAllEnemyDataList = EnemyStatus.instance.GetAllEnemyDataList();
 
         int ReturnDropItemCount(int id)
         {
@@ -344,9 +367,23 @@ public class EndGame : MonoBehaviour
         void UnlockFunction(string Type, int id)
         {
             if (Type == "item") player.Item.Find(i => i.id == id).use = true;
-            if (Type == "weapon") player.Weapon.Find(w => w.id == id).use = true;
-            if (Type == "chara") player.Character.Find(c => c.id == id).use = true;
+            if (Type == "weapon" || Type == "money")
+            {
+                if (Type == "moeny" && player.Weapon.Find(w => w.id == id).use == false)
+                {
+                    player.Money += 500;
+                }
+                player.Weapon.Find(w => w.id == id).use = true;
+            }
+            if (Type == "chara")
+            {
+                player.Character.Find(c => c.id == id).use = true;
+                player.Character.Find(c => c.id == id).hidden = false;
+            }
             if (Type == "map") player.Map.Find(m => m.id == id).use = true;
+            if (Type == "hyper") player.Map.Find(m => m.id == id).hyper = true;
+
+            player.Achievement.Find(a => a.type == Type && a.type_id == id).use = true;
         }
 
         if (PlayerData.Lv >= 5) UnlockFunction("item", 10);
@@ -390,32 +427,33 @@ public class EndGame : MonoBehaviour
         if (player.Latest_Map == 2 && Timer.Minute >= 30) UnlockFunction("chara", 13);
         if (player.Latest_Map == 3 && Timer.Minute >= 30) UnlockFunction("chara", 14);
         if (player.Latest_Map == 4 && Timer.Minute >= 30) UnlockFunction("chara", 15);
+        if (player.Enemy.Find(e => e.id == Skelton.GetId()).count >= 3000) UnlockFunction("chara", 16);
+        if (player.Enemy.Find(e => e.id == LionHead.GetId()).count >= 3000) UnlockFunction("chara", 17);
+        if (player.Enemy.Find(e => e.id == MilkElementals.GetId()).count >= 3000) UnlockFunction("chara", 18);
+        if (player.Enemy.Find(e => e.id == DragonShrimps.GetId()).count >= 3000) UnlockFunction("chara", 19);
+        if (player.Enemy.Sum(e => e.count) >= 5000) UnlockFunction("weapon", 21);
+        if (player.Enemy.Sum(e => e.count) >= 10000) UnlockFunction("chara", 10);
+        if (Timer.Minute >= 25 && GetAllEnemyDataList.Any(e => e.enemy == Map1Boss)) UnlockFunction("hyper", 1);
+        if (Timer.Minute >= 25 && GetAllEnemyDataList.Any(e => e.enemy == Map2Boss)) UnlockFunction("hyper", 2);
+        if (Timer.Minute >= 25 && GetAllEnemyDataList.Any(e => e.enemy == Map3Boss)) UnlockFunction("hyper", 3);
+        if (Timer.Minute >= 25 && GetAllEnemyDataList.Any(e => e.enemy == Map4Boss)) UnlockFunction("hyper", 4);
+        if (WeaponStatus.instance.GetStatusPhase(2) != 0) UnlockFunction("money", 2);
+        if (WeaponStatus.instance.GetStatusPhase(4) != 0) UnlockFunction("money", 4);
+        if (WeaponStatus.instance.GetStatusPhase(6) != 0) UnlockFunction("money", 6);
+        if (WeaponStatus.instance.GetStatusPhase(18) != 0) UnlockFunction("money", 18);
+        if (WeaponStatus.instance.GetStatusPhase(22) != 0) UnlockFunction("money", 22);
+        if (WeaponStatus.instance.GetStatusPhase(12) != 0) UnlockFunction("money", 12);
+        if (WeaponStatus.instance.GetStatusPhase(10) != 0) UnlockFunction("money", 10);
+        if (WeaponStatus.instance.GetStatusPhase(14) != 0) UnlockFunction("money", 14);
+        if (WeaponStatus.instance.GetStatusPhase(16) != 0) UnlockFunction("money", 16);
+        if (WeaponStatus.instance.GetStatusPhase(20) != 0) UnlockFunction("money", 20);
+        if (WeaponStatus.instance.GetStatusPhase(24) != 0) UnlockFunction("money", 24);
+        if (WeaponStatus.instance.GetStatusPhase(27) != 0) UnlockFunction("money", 27);
+        if (WeaponStatus.instance.GetStatusPhase(30) != 0) UnlockFunction("money", 30);
+        if (WeaponStatus.instance.GetStatusPhase(32) != 0) UnlockFunction("money", 32);
+        if (WeaponStatus.instance.GetStatusPhase(34) != 0) UnlockFunction("money", 34);
+        if (WeaponStatus.instance.GetStatusPhase(36) != 0) UnlockFunction("money", 36);
 
-        // SaveFunction(42, "TESTを合計3000体倒す", "chara", 16);
-        // SaveFunction(43, "TESTを合計3000体倒す", "chara", 17);
-        // SaveFunction(44, "TESTを合計3000体倒す", "chara", 18);
-        // SaveFunction(45, "TESTを合計3000体倒す", "chara", 19);
-        // SaveFunction(46, "敵を合計5,000体倒す", "weapon", 21);
-        // SaveFunction(47, "敵を合計10,000体倒す", "chara", 10);
-        // SaveFunction(48, "狂乱の森に出現するTESTを撃破", "hyper", 1);
-        // SaveFunction(49, "象眼の図書館に出現するTESTを撃破", "hyper", 2);
-        // SaveFunction(50, "酪農場に出現するTESTを撃破", "hyper", 3);
-        // SaveFunction(51, "Gallo Towerに出現するTESTを撃破", "hyper", 4);
-        // SaveFunction(52, "木の剣を進化", "money", 2);
-        // SaveFunction(53, "松明を進化", "money", 4);
-        // SaveFunction(54, "矢を進化", "money", 6);
-        // SaveFunction(55, "ポーションを進化", "money", 18);
-        // SaveFunction(56, "雷の斧を進化", "money", 22);
-        // SaveFunction(57, "本を進化", "money", 12);
-        // SaveFunction(58, "十字架を進化", "money", 10);
-        // SaveFunction(59, "ブレイズ・ロッドを進化", "money", 14);
-        // SaveFunction(60, "石炭を進化", "money", 16);
-        // SaveFunction(61, "エンド・クリスタルを進化", "money", 20);
-        // SaveFunction(62, "エンド・ロッドを進化", "money", 24);
-        // SaveFunction(63, "鶏&ダーク・バットを合体", "money", 27);
-        // SaveFunction(64, "マジック&クレイジー・ワンドを合体", "money", 30);
-        // SaveFunction(65, "猫を進化", "money", 32);
-        // SaveFunction(66, "額縁を進化", "money", 34);
-        // SaveFunction(67, "サボテンを進化", "money", 36);
+        Json.instance.Save(player);
     }
 }
