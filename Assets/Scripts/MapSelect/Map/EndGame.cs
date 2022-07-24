@@ -133,6 +133,7 @@ public class EndGame : MonoBehaviour
 
     private static string ConvertFormat(float d)
     {
+        d = (int)d;
         if (d == 0f) return d.ToString();
 
         float exponent = Mathf.Log10(Mathf.Abs(d));

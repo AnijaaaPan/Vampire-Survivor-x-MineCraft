@@ -23,15 +23,18 @@ public class AttackWeapon19_20_Zone : MonoBehaviour
         {
             yield return new WaitForSeconds(0.015f);
 
-            if (ObjectCircleCollider2D.radius <= 1.25f)
+            if (IsPlaying.instance.isPlay())
             {
-                ObjectCircleCollider2D.radius += 0.1f;
-            }
+                if (ObjectCircleCollider2D.radius <= 1.25f)
+                {
+                    ObjectCircleCollider2D.radius += 0.1f;
+                }
 
-            ObjectImage.sprite = Images[ImageIndex];
-            ImageIndex++;
+                ObjectImage.sprite = Images[ImageIndex];
+                ImageIndex++;
 
-            if (ImageIndex >= ImageCount) Destroy(gameObject);
+                if (ImageIndex >= ImageCount) Destroy(gameObject);
+            };
         }
     }
 }

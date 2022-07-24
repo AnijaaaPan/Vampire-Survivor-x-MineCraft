@@ -10,7 +10,8 @@ public class WeaponParn
     public float atk_time; // Weaponの持続時間
     public float cooldown; // Weaponのクールダウン
     public int penetrate; // Weaponの敵貫通数
-    public float AddSpeed = 0; // Weaponの敵貫通数
+    public float AddSpeed = 0;
+    public float DropItem = 0;
 }
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "CreateWeapon")]
@@ -36,6 +37,9 @@ public class Weapon : ScriptableObject
 
     [SerializeField]
     private bool default_waepon; // デフォルトで武器が使用可能かどうか
+
+    [SerializeField]
+    private bool Evolution; // 進化した武器か否か
 
     [SerializeField]
     private int play_count; // プレイ中にパワーアップ出来る回数
@@ -76,6 +80,11 @@ public class Weapon : ScriptableObject
     public bool GetDefault()
     {
         return default_waepon;
+    }
+
+    public bool GetEvolution()
+    {
+        return Evolution;
     }
 
     public int GetPlayCount()

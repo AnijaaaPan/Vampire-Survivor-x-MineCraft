@@ -19,6 +19,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 410dca8d4931eff45a90409cc9a7d1fe, type: 3}
   weapon: {fileID: 0}
   default_waepon: 0
+  Evolution: 1
   play_count: 1
   parameter:
     damage: 16.5
@@ -28,3 +29,4 @@ MonoBehaviour:
     atk_time: 0
     cooldown: 1
     penetrate: 3
+    AddSpeed: 0

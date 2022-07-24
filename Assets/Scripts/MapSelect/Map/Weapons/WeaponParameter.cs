@@ -72,6 +72,9 @@ public class WeaponParameter : MonoBehaviour
         else if (WeaponID == 17) return UpdateWeaponID17(WeaponLv, DefaultWeaponParn);
         else if (WeaponID == 19) return UpdateWeaponID19(WeaponLv, DefaultWeaponParn);
         else if (WeaponID == 21) return UpdateWeaponID21(WeaponLv, DefaultWeaponParn);
+        else if (WeaponID == 23) return UpdateWeaponID23(WeaponLv, DefaultWeaponParn);
+        else if (WeaponID == 25 || WeaponID == 26) return UpdateWeaponID25_26(WeaponLv, DefaultWeaponParn);
+        else if (WeaponID == 27) return UpdateWeaponID27(WeaponLv, DefaultWeaponParn);
         return DefaultWeaponParn;
     }
 
@@ -468,6 +471,112 @@ public class WeaponParameter : MonoBehaviour
         if (WeaponLv >= 8)
         {
             DefaultWeaponParn.atk_count += 1;
+        }
+        return DefaultWeaponParn;
+    }
+
+    private WeaponParn UpdateWeaponID23(int WeaponLv, WeaponParn DefaultWeaponParn)
+    {
+        if (WeaponLv >= 2)
+        {
+            DefaultWeaponParn.cooldown -= 10;
+        }
+        if (WeaponLv >= 3)
+        {
+            DefaultWeaponParn.DropItem = 25;
+        }
+        if (WeaponLv >= 4)
+        {
+            DefaultWeaponParn.cooldown -= 10;
+        }
+        if (WeaponLv >= 5)
+        {
+            DefaultWeaponParn.DropItem = 45;
+        }
+        if (WeaponLv >= 6)
+        {
+            DefaultWeaponParn.cooldown -= 5;
+        }
+        if (WeaponLv >= 7)
+        {
+            DefaultWeaponParn.DropItem = 65;
+        }
+        if (WeaponLv >= 8)
+        {
+            DefaultWeaponParn.cooldown -= 5;
+        }
+        return DefaultWeaponParn;
+    }
+
+    private WeaponParn UpdateWeaponID25_26(int WeaponLv, WeaponParn DefaultWeaponParn)
+    {
+        if (WeaponLv >= 2)
+        {
+            DefaultWeaponParn.atk_count += 1;
+            DefaultWeaponParn.range += 0.4f;
+        }
+        if (WeaponLv >= 3)
+        {
+            DefaultWeaponParn.atk_count += 1;
+            DefaultWeaponParn.damage = 10;
+        }
+        if (WeaponLv >= 4)
+        {
+            DefaultWeaponParn.atk_count += 1;
+            DefaultWeaponParn.cooldown -= 0.3f;
+        }
+        if (WeaponLv >= 5)
+        {
+            DefaultWeaponParn.atk_count += 1;
+            DefaultWeaponParn.range += 0.4f;
+        }
+        if (WeaponLv >= 6)
+        {
+            DefaultWeaponParn.atk_count += 1;
+            DefaultWeaponParn.damage = 10;
+        }
+        if (WeaponLv >= 7)
+        {
+            DefaultWeaponParn.atk_count += 1;
+            DefaultWeaponParn.cooldown -= 0.3f;
+        }
+        if (WeaponLv >= 8)
+        {
+            DefaultWeaponParn.atk_count += 1;
+            DefaultWeaponParn.range += 0.4f;
+        }
+        return DefaultWeaponParn;
+    }
+
+    private WeaponParn UpdateWeaponID27(int WeaponLv, WeaponParn DefaultWeaponParn)
+    {
+        if (WeaponLv >= 2)
+        {
+            DefaultWeaponParn.range += 0.2f;
+        }
+        if (WeaponLv >= 3)
+        {
+            DefaultWeaponParn.cooldown -= 0.3f;
+        }
+        if (WeaponLv >= 4)
+        {
+            DefaultWeaponParn.range += 0.2f;
+        }
+        if (WeaponLv >= 5)
+        {
+            DefaultWeaponParn.cooldown -= 0.3f;
+        }
+        if (WeaponLv >= 6)
+        {
+            DefaultWeaponParn.range += 0.2f;
+        }
+        if (WeaponLv >= 7)
+        {
+            DefaultWeaponParn.cooldown -= 0.3f;
+        }
+        if (WeaponLv >= 8)
+        {
+            DefaultWeaponParn.range += 0.2f;
         }
         return DefaultWeaponParn;
     }

@@ -13,7 +13,7 @@ public class AttackWeapon15_16 : MonoBehaviour
     {
         InitLocalScale = transform.localScale;
         WeaponParn = WeaponParameter.instance.GetWeaponParameter(weapon);
-        GetComponent<AttackWeaponOnTrigger>().WeaponParn = WeaponParn;
+        GetComponent<AttackWeaponOnTrigger>().Weapon = weapon;
 
         while (true)
         {

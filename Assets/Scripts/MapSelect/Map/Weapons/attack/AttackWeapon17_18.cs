@@ -30,7 +30,7 @@ public class AttackWeapon17_18 : MonoBehaviour
     IEnumerator Start()
     {
         AttackZoneObject = transform.Find("AttackWeaponZone").gameObject;
-        AttackZoneObject.GetComponent<AttackWeaponOnTrigger>().WeaponParn = WeaponParn;
+        AttackZoneObject.GetComponent<AttackWeaponOnTrigger>().Weapon = weapon;
 
         SpreadPotionObject = AttackZoneObject.transform.Find("SpreadPotion").gameObject;
         SpreadPotionImage = SpreadPotionObject.GetComponent<Image>();

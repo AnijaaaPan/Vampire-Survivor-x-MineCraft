@@ -92,7 +92,6 @@ public class AttackWeapon21_22 : MonoBehaviour
         {
             yield return new WaitForSeconds(0.015f);
 
-
             if (IsPlaying.instance.isPlay()) {
                 LightningImage.color = ScaleValue >= 0.9f ? new Color(1, 1, 1, 1) : new Color(1, 1, 1, 0);
                 TimeLimitZoneTransform.sizeDelta = InitLocalScale * ScaleValue;

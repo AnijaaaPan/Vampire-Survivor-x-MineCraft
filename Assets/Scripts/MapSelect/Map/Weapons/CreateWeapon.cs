@@ -33,6 +33,10 @@ public class CreateWeapon : MonoBehaviour
     // WeaponID: 19, 20
     private float ID19_20_Radian;
 
+    // WeaponID: 25, 26, 27
+    public GameObject Bird;
+    public GameObject Zone;
+
     IEnumerator Start()
     {
         WeaponID = weapon.GetId();
@@ -103,6 +107,8 @@ public class CreateWeapon : MonoBehaviour
             Object = CreateWeaponID19_20(Object);
         else if (WeaponID == 21 || WeaponID == 22)
             Object = CreateWeaponID21_22(Object);
+        else if (WeaponID == 25 || WeaponID == 26 || WeaponID == 27)
+            Object = CreateWeaponID25_26_27(Object);
 
         if (Object == null) return;
 
@@ -112,8 +118,7 @@ public class CreateWeapon : MonoBehaviour
         Object.transform.SetParent(transform);
 
         AttackWeaponOnTrigger ObjectAttackWeaponOnTrigger = Object.AddComponent<AttackWeaponOnTrigger>();
-        ObjectAttackWeaponOnTrigger.WeaponParn = WeaponParn;
-
+        ObjectAttackWeaponOnTrigger.Weapon = weapon;
         Object.SetActive(true);
     }
 
@@ -317,6 +322,13 @@ public class CreateWeapon : MonoBehaviour
         ObjectAttackWeapon21_22.weapon = weapon;
         ObjectAttackWeapon21_22.EnemyData = GetRandom(GetEnemyDataList);
         ObjectAttackWeapon21_22.WeaponParn = WeaponParn;
+        return Object;
+    }
+
+    private GameObject CreateWeaponID25_26_27(GameObject Object)
+    {
+
+        AttackWeapon25_26_27 ObjectAttackWeapon25_26_27 = Object.AddComponent<AttackWeapon25_26_27>();
         return Object;
     }
 

@@ -74,7 +74,7 @@ public class AttackWeapon19_20 : MonoBehaviour
 
         Object.transform.position = transform.position;
         Object.transform.SetParent(transform.parent);
-        Object.GetComponent<AttackWeaponOnTrigger>().WeaponParn = WeaponParn;
+        Object.GetComponent<AttackWeaponOnTrigger>().Weapon = weapon;
         Object.GetComponent<AttackWeapon19_20_Zone>().WeaponParn = WeaponParn;
         Object.SetActive(true);
     }

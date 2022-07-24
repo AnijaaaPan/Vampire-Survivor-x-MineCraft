@@ -45,6 +45,7 @@ public class Json : MonoBehaviour
     {
         public int id;
         public bool use;
+        public bool Evolution;
     }
 
     [System.Serializable]
@@ -182,7 +183,8 @@ public class Json : MonoBehaviour
             WeaponData weapon = new WeaponData
             {
                 id = weapon_data.GetId(),
-                use = weapon_data.GetDefault()
+                use = weapon_data.GetDefault(),
+                Evolution = weapon_data.GetEvolution()
             };
             player.Weapon.Add(weapon);
         };

@@ -28,7 +28,7 @@ public class FireFritta : MonoBehaviour
 
     private void UpdatePositionObject()
     {
-        transform.position += new Vector3(MoveSpeed * cos * 3f, MoveSpeed * sin * 3f + 0.475f);
+        transform.position += new Vector3(MoveSpeed * cos * 3f, MoveSpeed * sin * 2.5f);
         transform.localScale += new Vector3(3f * Time.deltaTime, 3f * Time.deltaTime);
     }
 }

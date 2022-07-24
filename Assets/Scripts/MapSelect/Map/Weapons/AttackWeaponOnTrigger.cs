@@ -4,18 +4,21 @@ using System.Collections.Generic;
 
 public class AttackWeaponOnTrigger : MonoBehaviour
 {
-    public WeaponParn WeaponParn;
+    public Weapon Weapon;
 
+    private WeaponParn WeaponParn;
     private int Penetrate = 0;
     private List<GameObject> EnemyObjectList = new List<GameObject>();
 
     IEnumerator Start()
     {
+        WeaponParn = WeaponParameter.instance.GetWeaponParameter(Weapon);
         while (true)
         {
             yield return new WaitForSeconds(WeaponParn.cooldown);
 
             if (IsPlaying.instance.isPlay()) AttackToAllEnemy();
+            WeaponParn = WeaponParameter.instance.GetWeaponParameter(Weapon);
         }
     }
 
@@ -61,6 +64,7 @@ public class AttackWeaponOnTrigger : MonoBehaviour
         EnemyData EnemyData = EnemyStatus.instance.GetEnemyDataList().Find(e => e.Object == Object);
         if (EnemyData == null) return;
 
+        WeaponStatus.instance.WeaponDamage(Weapon, WeaponParn.damage);
         EnemyStatus.instance.UpdateEenmyDataHp(EnemyData.id, (int)WeaponParn.damage);
 
         Penetrate++;

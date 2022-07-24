@@ -88,7 +88,7 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         InitStatus();
-        CanUseWeaponList = player.Weapon.FindAll(w => w.use);
+        CanUseWeaponList = player.Weapon.FindAll(w => w.use && !w.Evolution);
         CanUseItemList = player.Item.FindAll(i => i.use);
 
         StartCoroutine(RunFireFritta());
@@ -231,7 +231,6 @@ public class PlayerStatus : MonoBehaviour
 
     public void UpdateExpStatus(int GrantEXP)
     {
-        GrantEXP += 10000;
         PlayerData.ALLEXP += GrantEXP;
         PlayerData.EXP += GrantEXP;
     }
@@ -385,7 +384,9 @@ public class PlayerStatus : MonoBehaviour
         List<ItemData> MaxPowerUpItemList = ItemDataList.FindAll(i => i.item.GetPlayCount() == i.phase);
         List<WeaponData> MaxPowerUpWeaponList = WeaponDataList.FindAll(i => i.weapon.GetPlayCount() == i.phase);
 
-        int RemainSlotCount = CanUseItemList.Count + CanUseWeaponList.Count - (MaxPowerUpItemList.Count + MaxPowerUpWeaponList.Count);
+        int RemainWeaponSlotCount = CanUseWeaponList.Count >= 6 ? 6 : CanUseWeaponList.Count;
+        int RemainItemSlotCount = CanUseItemList.Count >= 6 ? 6 : CanUseItemList.Count;
+        int RemainSlotCount = RemainWeaponSlotCount + RemainItemSlotCount - (MaxPowerUpItemList.Count + MaxPowerUpWeaponList.Count);
         if (RemainSlotCount == 0)
         {
             if (index >= 3) return null;
@@ -424,12 +425,19 @@ public class PlayerStatus : MonoBehaviour
             IndexList.Add(index);
             if (index < CanUseWeaponList.Count)
             {
+                List<WeaponData> WeaponDataList = WeaponStatus.instance.GetStatusList();
+                if (WeaponDataList.Count >= 6) continue;
+
                 Weapon weapon = WeaponDataBase.FindWeaponFromId(CanUseWeaponList[index].id);
+                if (weapon.GetEvolution()) continue;
                 if (WeaponStatus.instance.GetStatusList().Any(w => w.weapon == weapon)) continue;
                 NewIDataObject = CreateIDataObject(weapon.GetIcon(), "weapon", weapon.GetName(), "NEW!", weapon.GetDescription());
             }
             else
             {
+                List<ItemData> ItemDataList = ItemStatus.instance.GetStatusList();
+                if (ItemDataList.Count >= 6) continue;
+
                 Item item = ItemDataBase.FindItemFromId(CanUseItemList[index - CanUseWeaponList.Count].id);
                 if (ItemStatus.instance.GetStatusList().Any(w => w.item == item)) continue;
                 NewIDataObject = CreateIDataObject(item.GetIcon(), "item", item.GetName(), "NEW!", item.GetDescription());

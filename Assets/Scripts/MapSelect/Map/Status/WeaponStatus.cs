@@ -112,12 +112,11 @@ public class WeaponStatus : MonoBehaviour
 
     public void WeaponDamage(Weapon weapon, float damage) {
         AllWeaponData AllWeaponData = AllWeaponDataList.Find(i => i.weapon == weapon);
-        AllWeaponData.Damage += damage;
+        if (AllWeaponData != null) AllWeaponData.Damage += damage;
     }
 
     public void UpdateWeaponPhase(Weapon weapon)
     {
-
         WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase++;
 

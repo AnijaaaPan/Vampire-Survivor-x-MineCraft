@@ -1,12 +1,12 @@
 {
     "FirstTime": true,
-    "Money": 26,
+    "Money": 0,
     "Latest_Chara": 0,
     "Latest_Map": 1,
-    "GrantHP": -97,
+    "GrantHP": 0,
     "Latest_Map_Hyper": false,
-    "SoundEffect": 0.0,
-    "SoundMusic": 0.0,
+    "SoundEffect": 1.0,
+    "SoundMusic": 1.0,
     "Flash": true,
     "JoyStick": false,
     "Damage": true,
@@ -116,171 +116,213 @@
     "Weapon": [
         {
             "id": 1,
-            "use": true
+            "use": true,
+            "Evolution": false
         },
         {
             "id": 2,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 3,
-            "use": true
+            "use": true,
+            "Evolution": false
         },
         {
             "id": 4,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 5,
-            "use": true
+            "use": true,
+            "Evolution": false
         },
         {
             "id": 6,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 7,
-            "use": true
+            "use": true,
+            "Evolution": false
         },
         {
             "id": 8,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 9,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 10,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 11,
-            "use": true
+            "use": true,
+            "Evolution": false
         },
         {
             "id": 12,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 13,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 14,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 15,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 16,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 17,
-            "use": true
+            "use": true,
+            "Evolution": false
         },
         {
             "id": 18,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 19,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 20,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 21,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 22,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 23,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 24,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 25,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 26,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 27,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 28,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 29,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 30,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 31,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 32,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 33,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 34,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 35,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 36,
-            "use": false
+            "use": false,
+            "Evolution": true
         },
         {
             "id": 37,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 38,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 39,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 40,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 41,
-            "use": false
+            "use": false,
+            "Evolution": false
         },
         {
             "id": 42,
-            "use": false
+            "use": false,
+            "Evolution": false
         }
     ],
     "Item": [
@@ -302,15 +344,15 @@
         },
         {
             "id": 5,
-            "use": true
+            "use": false
         },
         {
             "id": 6,
-            "use": true
+            "use": false
         },
         {
             "id": 7,
-            "use": true
+            "use": false
         },
         {
             "id": 8,
@@ -318,11 +360,11 @@
         },
         {
             "id": 9,
-            "use": true
+            "use": false
         },
         {
             "id": 10,
-            "use": true
+            "use": false
         },
         {
             "id": 11,
@@ -334,7 +376,7 @@
         },
         {
             "id": 13,
-            "use": true
+            "use": false
         },
         {
             "id": 14,
@@ -475,21 +517,21 @@
             "type": "item",
             "description": "レベル5に到達",
             "type_id": 10,
-            "use": true
+            "use": false
         },
         {
             "id": 2,
             "type": "item",
             "description": "レベル10に到達",
             "type_id": 13,
-            "use": true
+            "use": false
         },
         {
             "id": 3,
             "type": "map",
             "description": "狂乱の森でレベル20に到達",
             "type_id": 2,
-            "use": true
+            "use": false
         },
         {
             "id": 4,
@@ -510,7 +552,7 @@
             "type": "item",
             "description": "いずれかのキャラクターで1分間生存",
             "type_id": 3,
-            "use": true
+            "use": false
         },
         {
             "id": 7,
@@ -601,14 +643,14 @@
             "type": "item",
             "description": "本のLvを4に",
             "type_id": 7,
-            "use": true
+            "use": false
         },
         {
             "id": 20,
             "type": "item",
             "description": "ポーションのLvを4に",
             "type_id": 6,
-            "use": true
+            "use": false
         },
         {
             "id": 21,
@@ -629,7 +671,7 @@
             "type": "item",
             "description": "松明のLvを7に",
             "type_id": 9,
-            "use": true
+            "use": false
         },
         {
             "id": 24,
@@ -664,7 +706,7 @@
             "type": "item",
             "description": "1度に6種類の武器を所持",
             "type_id": 5,
-            "use": true
+            "use": false
         },
         {
             "id": 29,
@@ -948,7 +990,7 @@
         },
         {
             "id": 2,
-            "use": true,
+            "use": false,
             "hyper": false
         },
         {
@@ -965,15 +1007,15 @@
     "Enemy": [
         {
             "id": 1,
-            "count": 1218
+            "count": 10
         },
         {
             "id": 2,
-            "count": 126
+            "count": 0
         },
         {
             "id": 3,
-            "count": 124
+            "count": 0
         },
         {
             "id": 4,
