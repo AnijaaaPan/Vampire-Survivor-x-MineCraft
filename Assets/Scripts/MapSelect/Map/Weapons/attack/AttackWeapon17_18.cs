@@ -39,6 +39,7 @@ public class AttackWeapon17_18 : MonoBehaviour
 
         Images = Resources.LoadAll<Sprite>($"Particle/potion/");
         ImageCount = Images.Length - 1;
+        
 
         while (true)
         {
@@ -60,8 +61,8 @@ public class AttackWeapon17_18 : MonoBehaviour
 
     private void MoveToDropPoint()
     {
-        float sin = Mathf.Sin(Radian * (Mathf.PI / 180)) * 0.25f;
-        float cos = Mathf.Cos(Radian * (Mathf.PI / 180)) * 0.25f;
+        float sin = Mathf.Sin(Radian * (Mathf.PI / 180)) * 0.25f * WeaponParn.AddSpeed;
+        float cos = Mathf.Cos(Radian * (Mathf.PI / 180)) * 0.25f * WeaponParn.AddSpeed;
 
         transform.position += new Vector3(cos, sin);
 
@@ -84,7 +85,7 @@ public class AttackWeapon17_18 : MonoBehaviour
         float sin = Mathf.Sin(MoveToCharaRadian * (Mathf.PI / 180));
         float cos = Mathf.Cos(MoveToCharaRadian * (Mathf.PI / 180));
 
-        transform.position += new Vector3(cos, sin, 0) * 2 * Time.deltaTime;
+        transform.position += new Vector3(cos, sin, 0) * 2 * Time.deltaTime * WeaponParn.AddSpeed;
 
         AttackZoneObject.transform.localScale = InitLocalScale * ScaleValue;
         ScaleValue += 0.0015f;

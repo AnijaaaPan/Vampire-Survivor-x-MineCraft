@@ -21,10 +21,11 @@ MonoBehaviour:
   default_waepon: 0
   play_count: 1
   parameter:
-    damage: 80
+    damage: 65
     range: 4
-    atk_spd: 1
+    atk_spd: 0.015
     atk_count: 6
     atk_time: 0
     cooldown: 4.5
     penetrate: -1
+    AddSpeed: 0

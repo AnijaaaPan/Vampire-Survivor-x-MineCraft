@@ -319,7 +319,7 @@ public class MoveChara : MonoBehaviour
 
             if (PlayerStatus.instance.GetStatus().FireFrittaTime != 0 && IsPlaying.instance.isPlay()) {
                 GameObject Object = new GameObject("FireFromPlayer");
-                Object.transform.position = new Vector3(CharaTransform.position.x, CharaTransform.position.y, 0);
+                Object.transform.position = new Vector3(CharaTransform.position.x, CharaTransform.position.y + 0.475f, 0);
                 Object.transform.SetParent(FireFrittaList.transform);
 
                 RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();

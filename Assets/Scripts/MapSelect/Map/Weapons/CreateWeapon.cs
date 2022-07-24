@@ -30,6 +30,9 @@ public class CreateWeapon : MonoBehaviour
     public GameObject InitAttackZone;
     private int AttackCount = 0;
 
+    // WeaponID: 19, 20
+    private float ID19_20_Radian;
+
     IEnumerator Start()
     {
         WeaponID = weapon.GetId();
@@ -57,6 +60,7 @@ public class CreateWeapon : MonoBehaviour
         WeaponParn = WeaponParameter.instance.GetWeaponParameter(weapon);
         if (WeaponID == 12) WeaponParn.atk_count *= 3;
         if (WeaponID == 13 || WeaponID == 14) ID13_14_Radian = Random.Range(-180f, 180f);
+        if (WeaponID == 19 || WeaponID == 20) ID19_20_Radian = Random.Range(-180f, 180f);
 
         int WeaponCount = 1;
         while (WeaponCount <= WeaponParn.atk_count)
@@ -94,6 +98,12 @@ public class CreateWeapon : MonoBehaviour
             Object = CreateWeaponID13_14(Object);
         else if (WeaponID == 17 || WeaponID == 18)
             Object = CreateWeaponID17_18(Object);
+        else if (WeaponID == 19 || WeaponID == 20)
+            Object = CreateWeaponID19_20(Object);
+        else if (WeaponID == 21 || WeaponID == 22)
+            Object = CreateWeaponID21_22(Object);
+
+        if (Object == null) return;
 
         Vector3 ObjectScale = Object.transform.localScale;
         Object.name = $"AttackWeapon{weapon.GetId()}";
@@ -131,6 +141,7 @@ public class CreateWeapon : MonoBehaviour
 
         AttackWeapon3_4 ObjectAttackWeapon3_4 = Object.AddComponent<AttackWeapon3_4>();
         ObjectAttackWeapon3_4.Chara = Chara;
+        ObjectAttackWeapon3_4.WeaponParn = WeaponParn;
         return Object;
     }
 
@@ -176,6 +187,7 @@ public class CreateWeapon : MonoBehaviour
         AttackWeapon8 ObjectAttackWeapon8 = Object.AddComponent<AttackWeapon8>();
         ObjectAttackWeapon8.Chara = Chara;
         ObjectAttackWeapon8.Radian = 90 - OneRadian * (WeaponCount - 1);
+        ObjectAttackWeapon8.WeaponParn = WeaponParn;
         return Object;
     }
 
@@ -189,6 +201,7 @@ public class CreateWeapon : MonoBehaviour
         ObjectAttackWeapon9_10.ObjectRectTransform = ObjectRectTransform;
         ObjectAttackWeapon9_10.acceleration = new Vector3(-10, -10f, 0);
         ObjectAttackWeapon9_10.initialVelocity = new Vector3(8, 8, 0);
+        ObjectAttackWeapon9_10.WeaponParn = WeaponParn;
         return Object;
     }
 
@@ -242,8 +255,8 @@ public class CreateWeapon : MonoBehaviour
             float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
             float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
-            DropPointX = Chara.transform.position.x + cos * 10f;
-            DropPointY = Chara.transform.position.y + sin * 5f;
+            DropPointX = Chara.transform.position.x + cos * 7.5f;
+            DropPointY = Chara.transform.position.y + sin * 3.75f;
 
             AttackCount++;
         }
@@ -259,6 +272,49 @@ public class CreateWeapon : MonoBehaviour
         ObjectAttackWeapon17_18.Radian = ID17_18_Radian;
         ObjectAttackWeapon17_18.DropPoint = new Vector2(DropPointX, DropPointY);
         ObjectAttackWeapon17_18.WeaponParn = WeaponParn;
+        return Object;
+    }
+
+    private GameObject CreateWeaponID19_20(GameObject Object)
+    {
+        RectTransform ObjectRectTransform = Object.GetComponent<RectTransform>();
+        ObjectRectTransform.position = new Vector3(Chara.position.x, Chara.position.y, 0);
+
+        AttackWeapon19_20 ObjectAttackWeapon19_20 = Object.AddComponent<AttackWeapon19_20>();
+        ObjectAttackWeapon19_20.weapon = weapon;
+        ObjectAttackWeapon19_20.Chara = Chara;
+        ObjectAttackWeapon19_20.Radian = ID19_20_Radian;
+        ObjectAttackWeapon19_20.WeaponParn = WeaponParn;
+
+        if (WeaponID == 19)
+        {
+            TrailRenderer ObjectTrailRenderer = Object.GetComponent<TrailRenderer>();
+            float RandomColor = Random.Range(0f, 1f);
+            ObjectTrailRenderer.startColor = Color.HSVToRGB(RandomColor, 0.5f, 1f);
+            ObjectTrailRenderer.endColor = Color.HSVToRGB(RandomColor, 0.3f, 0);
+        }
+        return Object;
+    }
+
+    private GameObject CreateWeaponID21_22(GameObject Object)
+    {
+        float CameraLeftX = Chara.transform.position.x - 10.75f;
+        float CameraRightX = Chara.transform.position.x + 10.75f;
+        float CameraTopY = Chara.transform.position.y + 6.05f;
+        float CameraBottomY = Chara.transform.position.y - 6.05f;
+
+        List<EnemyData> GetEnemyDataList = EnemyStatus.instance.GetEnemyDataList().FindAll(e => {
+            Vector3 p = e.Object.transform.position;
+            return CameraLeftX <= p.x && p.x <= CameraRightX && CameraBottomY <= p.y && p.y <= CameraTopY;
+        });
+
+        if (GetEnemyDataList.Count == 0) return null;
+
+        AttackWeapon21_22 ObjectAttackWeapon21_22 = Object.AddComponent<AttackWeapon21_22>();
+        ObjectAttackWeapon21_22.Chara = Chara;
+        ObjectAttackWeapon21_22.weapon = weapon;
+        ObjectAttackWeapon21_22.EnemyData = GetRandom(GetEnemyDataList);
+        ObjectAttackWeapon21_22.WeaponParn = WeaponParn;
         return Object;
     }
 

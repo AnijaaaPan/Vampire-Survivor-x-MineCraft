@@ -5,6 +5,7 @@ public class AttackWeapon9_10: MonoBehaviour
 {
     public RectTransform Chara;
     public RectTransform ObjectRectTransform;
+    public WeaponParn WeaponParn;
 
     // ‰Á‘¬“x
     public Vector3 acceleration;
@@ -31,8 +32,8 @@ public class AttackWeapon9_10: MonoBehaviour
         float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
         _velocity += acceleration * Time.deltaTime;
-        float MoveX = transform.position.x + cos * _velocity.x * Time.deltaTime;
-        float MoveY = transform.position.y + sin * _velocity.y * Time.deltaTime;
+        float MoveX = transform.position.x + cos * _velocity.x * Time.deltaTime * WeaponParn.AddSpeed;
+        float MoveY = transform.position.y + sin * _velocity.y * Time.deltaTime * WeaponParn.AddSpeed;
         transform.position = new Vector3(MoveX, MoveY, 0);
 
         float CameraLeftX = Chara.transform.position.x - 10.75f;

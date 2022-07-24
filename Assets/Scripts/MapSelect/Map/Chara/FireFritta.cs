@@ -20,7 +20,7 @@ public class FireFritta : MonoBehaviour
         if (!IsPlaying.instance.isPlay()) return;
 
         UpdatePositionObject();
-        if (transform.localScale.x >= 2f)
+        if (transform.localScale.x >= 3f)
         {
             Destroy(gameObject);
         }
@@ -28,7 +28,7 @@ public class FireFritta : MonoBehaviour
 
     private void UpdatePositionObject()
     {
-        transform.position += new Vector3(MoveSpeed * cos * 3f, MoveSpeed * sin * 3f);
-        transform.localScale += new Vector3(2f * Time.deltaTime, 2f * Time.deltaTime);
+        transform.position += new Vector3(MoveSpeed * cos * 3f, MoveSpeed * sin * 3f + 0.475f);
+        transform.localScale += new Vector3(3f * Time.deltaTime, 3f * Time.deltaTime);
     }
 }

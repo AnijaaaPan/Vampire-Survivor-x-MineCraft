@@ -127,6 +127,7 @@
     <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon15_16.cs" />
     <Compile Include="Assets\AfterImageEffect2D\Scripts\DynamicAfterImageEffect2D.cs" />
     <Compile Include="Assets\AfterImageEffect2D\Scripts\AfterImageEffect2DBase.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon17_18.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Enemy\SpawnEnemy.cs" />
     <Compile Include="Assets\Scripts\Database\Weapon\WeaponDataBase.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\EndGame.cs" />
@@ -140,10 +141,26 @@
     <Compile Include="Assets\Scripts\Header\CountMoney.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\UI\Setting.cs" />
     <Compile Include="Assets\Scripts\MapSelect\Map\Status\EnemyStatus.cs" />
-    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon17_18.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon19_20.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon19_20_Zone.cs" />
+    <Compile Include="Assets\Scripts\MapSelect\Map\Weapons\attack\AttackWeapon21_22.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Free.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
     <None Include="Assets\Font\damNum-export.xml" />
+    <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
     <None Include="Assets\AfterImageEffect2D\Readme.txt" />
   </ItemGroup>
   <ItemGroup>

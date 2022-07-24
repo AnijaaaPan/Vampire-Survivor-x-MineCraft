@@ -19,8 +19,7 @@ public class WeaponParameter : MonoBehaviour
             atk_spd = GetParameter.atk_spd,
             atk_count = GetParameter.atk_count,
             atk_time = GetParameter.atk_time,
-            cooldown = GetParameter.cooldown,
-            penetrate = GetParameter.penetrate
+            cooldown = GetParameter.cooldown
         };
 
         InitWeaponParn = UpdateWeaponParameter(Weapon, InitWeaponParn);
@@ -52,6 +51,8 @@ public class WeaponParameter : MonoBehaviour
         // 武器のクールダウン
         int ItemCoolTime = ItemStatus.instance.GetAllStatusPhase(5);
         UpdateWeaponParn.cooldown -= UpdateWeaponParn.cooldown * ItemCoolTime * 0.08f;
+
+        UpdateWeaponParn.AddSpeed = (1f + 1f - UpdateWeaponParn.atk_spd);
         return UpdateWeaponParn;
     }
 
@@ -69,6 +70,8 @@ public class WeaponParameter : MonoBehaviour
         else if (WeaponID == 13) return UpdateWeaponID13(WeaponLv, DefaultWeaponParn);
         else if (WeaponID == 15) return UpdateWeaponID15(WeaponLv, DefaultWeaponParn);
         else if (WeaponID == 17) return UpdateWeaponID17(WeaponLv, DefaultWeaponParn);
+        else if (WeaponID == 19) return UpdateWeaponID19(WeaponLv, DefaultWeaponParn);
+        else if (WeaponID == 21) return UpdateWeaponID21(WeaponLv, DefaultWeaponParn);
         return DefaultWeaponParn;
     }
 
@@ -355,7 +358,7 @@ public class WeaponParameter : MonoBehaviour
         }
         return DefaultWeaponParn;
     }
-    
+
     private WeaponParn UpdateWeaponID17(int WeaponLv, WeaponParn DefaultWeaponParn)
     {
         if (WeaponLv >= 2)
@@ -392,6 +395,79 @@ public class WeaponParameter : MonoBehaviour
         {
             DefaultWeaponParn.range += 0.2f;
             DefaultWeaponParn.damage += 5;
+        }
+        return DefaultWeaponParn;
+    }
+    
+    private WeaponParn UpdateWeaponID19(int WeaponLv, WeaponParn DefaultWeaponParn)
+    {
+        if (WeaponLv >= 2)
+        {
+            DefaultWeaponParn.damage += 5;
+            DefaultWeaponParn.atk_spd -= DefaultWeaponParn.atk_spd * 0.2f;
+        }
+        if (WeaponLv >= 3)
+        {
+            DefaultWeaponParn.atk_time += 0.3f;
+            DefaultWeaponParn.damage += 5;
+        }
+        if (WeaponLv >= 4)
+        {
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 5)
+        {
+            DefaultWeaponParn.damage += 5;
+            DefaultWeaponParn.atk_spd -= DefaultWeaponParn.atk_spd * 0.2f;
+        }
+        if (WeaponLv >= 6)
+        {
+            DefaultWeaponParn.atk_time += 0.3f;
+            DefaultWeaponParn.damage += 5;
+        }
+        if (WeaponLv >= 7)
+        {
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 8)
+        {
+            DefaultWeaponParn.atk_time += 0.5f;
+        }
+        return DefaultWeaponParn;
+    }
+
+    private WeaponParn UpdateWeaponID21(int WeaponLv, WeaponParn DefaultWeaponParn)
+    {
+        if (WeaponLv >= 2)
+        {
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 3)
+        {
+            DefaultWeaponParn.range += 1f;
+            DefaultWeaponParn.damage += 10;
+        }
+        if (WeaponLv >= 4)
+        {
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 5)
+        {
+            DefaultWeaponParn.range += 1f;
+            DefaultWeaponParn.damage += 20;
+        }
+        if (WeaponLv >= 6)
+        {
+            DefaultWeaponParn.atk_count += 1;
+        }
+        if (WeaponLv >= 7)
+        {
+            DefaultWeaponParn.range += 1f;
+            DefaultWeaponParn.damage += 20;
+        }
+        if (WeaponLv >= 8)
+        {
+            DefaultWeaponParn.atk_count += 1;
         }
         return DefaultWeaponParn;
     }

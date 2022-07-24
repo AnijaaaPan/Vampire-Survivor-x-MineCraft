@@ -4,6 +4,7 @@ public class AttackWeapon5_6 : MonoBehaviour
 {
     public RectTransform Chara;
     public float Radian;
+    public WeaponParn WeaponParn;
 
     void Update()
     {
@@ -12,8 +13,8 @@ public class AttackWeapon5_6 : MonoBehaviour
         float sin = Mathf.Sin(Radian * (Mathf.PI / 180));
         float cos = Mathf.Cos(Radian * (Mathf.PI / 180));
 
-        float MoveX = transform.position.x + cos * 0.2f;
-        float MoveY = transform.position.y + sin * 0.2f;
+        float MoveX = transform.position.x + cos * 0.2f * WeaponParn.AddSpeed;
+        float MoveY = transform.position.y + sin * 0.2f * WeaponParn.AddSpeed;
         transform.position = new Vector3(MoveX, MoveY, 0);
 
         float CameraLeftX = Chara.transform.position.x - 10.75f;
