@@ -18,6 +18,8 @@ public class AttackWeapon23_24 : MonoBehaviour
     public AudioClip BeatSound;
     public AudioClip EndSound;
 
+    public CircleCollider2D CircleCollider2D;
+
     private WeaponParn WeaponParn;
 
     private GameObject ClockBreak;
@@ -183,6 +185,13 @@ public class AttackWeapon23_24 : MonoBehaviour
         DeleteChildObject(LightSource);
     }
 
+    private IEnumerator VacuumAllExp()
+    {
+        CircleCollider2D.radius = 1000;
+        yield return new WaitForSeconds(0.05f);
+        CircleCollider2D.radius = 1;
+    }
+
     private IEnumerator ShowPentagram() {
         ClockBreak.SetActive(true);
         EvolutionZone.SetActive(false);
@@ -203,10 +212,11 @@ public class AttackWeapon23_24 : MonoBehaviour
                 };
             }
 
+            if (weapon.GetId() == 24) StartCoroutine(VacuumAllExp());
+
         } else
         {
             ClockBreakImage.color = new Color(1, 1, 1, 0.5f);
-
             DeleteScreenItem();
         }
 

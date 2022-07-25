@@ -35,7 +35,7 @@ public class MapSelect : MonoBehaviour
             Map map = MapDataBase.FindMapFromId(m.id);
 
             GameObject MapObject = CreateMapObject(map, m);
-            GameObject MapImageObject = CreateMapImageObject();
+            GameObject MapImageObject = CreateMapImageObject(map);
             GameObject MapBackgroundObject = CreateMapBackgroundObject();
             GameObject MapNameObject = CreateNameObject(map);
             GameObject MapSelectObject = CreateSelectObject(m);
@@ -174,7 +174,7 @@ public class MapSelect : MonoBehaviour
         return Object;
     }
 
-    private GameObject CreateMapImageObject()
+    private GameObject CreateMapImageObject(Map map)
     {
         GameObject Object = new GameObject("Image");
         Object.transform.localScale = new Vector3(InitInt, InitInt, InitInt);
@@ -183,7 +183,8 @@ public class MapSelect : MonoBehaviour
         ObjectRectTransform.sizeDelta = new Vector2(70, 45);
         ObjectRectTransform.position = new Vector3(-InitInt * 70, 0, 0);
 
-        Object.AddComponent<Image>();
+        Image ObjectImage = Object.AddComponent<Image>();
+        ObjectImage.sprite = map.GetIcon();
         return Object;
     }
 

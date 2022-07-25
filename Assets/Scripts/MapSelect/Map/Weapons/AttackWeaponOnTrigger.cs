@@ -61,6 +61,8 @@ public class AttackWeaponOnTrigger : MonoBehaviour
 
     private void AttackToEnemy(GameObject Object)
     {
+        if (Object == null) return;
+
         EnemyData EnemyData = EnemyStatus.instance.GetEnemyDataList().Find(e => e.Object == Object);
         if (EnemyData == null) return;
 

@@ -17,7 +17,7 @@ MonoBehaviour:
   id: 4
   description: This tower holdes great magical artifacts and historically accurate
     monsters.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8026c36e7bc8b83498670c593456de8a, type: 3}
   block_icon: {fileID: 21300000, guid: 7cb6a2a833a264244ae13b2f9489d816, type: 3}
   use: 0
   music: {fileID: 8300000, guid: 35e497e12fd7b4c4f96ca5ba6b6a4f97, type: 3}

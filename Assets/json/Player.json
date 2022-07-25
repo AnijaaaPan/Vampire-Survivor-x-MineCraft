@@ -1,14 +1,14 @@
 {
     "FirstTime": true,
-    "Money": 0,
-    "Latest_Chara": 0,
+    "Money": 683778,
+    "Latest_Chara": 7,
     "Latest_Map": 1,
-    "GrantHP": 0,
+    "GrantHP": -351,
     "Latest_Map_Hyper": false,
-    "SoundEffect": 1.0,
-    "SoundMusic": 1.0,
+    "SoundEffect": 0.08876592665910721,
+    "SoundMusic": 0.06678210198879242,
     "Flash": true,
-    "JoyStick": false,
+    "JoyStick": true,
     "Damage": true,
     "FullScreen": false,
     "Character": [
@@ -19,98 +19,98 @@
         },
         {
             "id": 1,
-            "use": false,
+            "use": true,
             "hidden": false
         },
         {
             "id": 2,
-            "use": false,
+            "use": true,
             "hidden": false
         },
         {
             "id": 3,
-            "use": false,
+            "use": true,
             "hidden": false
         },
         {
             "id": 4,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 5,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 6,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 7,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 8,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 9,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 10,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 11,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 12,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 13,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 14,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 15,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 16,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 17,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 18,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         },
         {
             "id": 19,
-            "use": false,
-            "hidden": true
+            "use": true,
+            "hidden": false
         }
     ],
     "Weapon": [
@@ -121,7 +121,7 @@
         },
         {
             "id": 2,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
@@ -131,7 +131,7 @@
         },
         {
             "id": 4,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
@@ -141,7 +141,7 @@
         },
         {
             "id": 6,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
@@ -151,17 +151,17 @@
         },
         {
             "id": 8,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 9,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 10,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
@@ -171,27 +171,27 @@
         },
         {
             "id": 12,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 13,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 14,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 15,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 16,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
@@ -201,127 +201,127 @@
         },
         {
             "id": 18,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 19,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 20,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 21,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 22,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 23,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 24,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 25,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 26,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 27,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 28,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 29,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 30,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 31,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 32,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 33,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 34,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 35,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 36,
-            "use": false,
+            "use": true,
             "Evolution": true
         },
         {
             "id": 37,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 38,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 39,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 40,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 41,
-            "use": false,
+            "use": true,
             "Evolution": false
         },
         {
             "id": 42,
-            "use": false,
+            "use": true,
             "Evolution": false
         }
     ],
@@ -340,175 +340,175 @@
         },
         {
             "id": 4,
-            "use": false
+            "use": true
         },
         {
             "id": 5,
-            "use": false
+            "use": true
         },
         {
             "id": 6,
-            "use": false
+            "use": true
         },
         {
             "id": 7,
-            "use": false
+            "use": true
         },
         {
             "id": 8,
-            "use": false
+            "use": true
         },
         {
             "id": 9,
-            "use": false
+            "use": true
         },
         {
             "id": 10,
-            "use": false
+            "use": true
         },
         {
             "id": 11,
-            "use": false
+            "use": true
         },
         {
             "id": 12,
-            "use": false
+            "use": true
         },
         {
             "id": 13,
-            "use": false
+            "use": true
         },
         {
             "id": 14,
-            "use": false
+            "use": true
         },
         {
             "id": 15,
-            "use": false
+            "use": true
         },
         {
             "id": 16,
-            "use": false
+            "use": true
         }
     ],
     "PowerUp": {
-        "allcost": 0,
-        "allcount": 0,
+        "allcost": 316279,
+        "allcount": 48,
         "poweruplist": [
             {
                 "id": 1,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 2,
-                "powerupcount": 3
+                "powerupcount": 0
             },
             {
                 "id": 3,
-                "powerupcount": 3
+                "powerupcount": 0
             },
             {
                 "id": 4,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 5,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 6,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 7,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 8,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 9,
-                "powerupcount": 1
+                "powerupcount": 0
             },
             {
                 "id": 10,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 11,
-                "powerupcount": 2
+                "powerupcount": 0
             },
             {
                 "id": 12,
-                "powerupcount": 3
+                "powerupcount": 0
             },
             {
                 "id": 13,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 14,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 15,
-                "powerupcount": 5
+                "powerupcount": 0
             },
             {
                 "id": 16,
-                "powerupcount": 1
+                "powerupcount": 0
             }
         ]
     },
     "SpecialItem": [
         {
             "id": 1,
-            "use": false
+            "use": true
         },
         {
             "id": 2,
-            "use": false
+            "use": true
         },
         {
             "id": 3,
-            "use": false
+            "use": true
         },
         {
             "id": 4,
-            "use": false
+            "use": true
         },
         {
             "id": 5,
-            "use": false
+            "use": true
         },
         {
             "id": 6,
-            "use": false
+            "use": true
         },
         {
             "id": 7,
-            "use": false
+            "use": true
         },
         {
             "id": 8,
-            "use": false
+            "use": true
         },
         {
             "id": 9,
-            "use": false
+            "use": true
         },
         {
             "id": 10,
-            "use": false
+            "use": true
         },
         {
             "id": 11,
-            "use": false
+            "use": true
         },
         {
             "id": 12,
-            "use": false
+            "use": true
         }
     ],
     "Achievement": [
@@ -517,513 +517,513 @@
             "type": "item",
             "description": "レベル5に到達",
             "type_id": 10,
-            "use": false
+            "use": true
         },
         {
             "id": 2,
             "type": "item",
             "description": "レベル10に到達",
             "type_id": 13,
-            "use": false
+            "use": true
         },
         {
             "id": 3,
             "type": "map",
             "description": "狂乱の森でレベル20に到達",
             "type_id": 2,
-            "use": false
+            "use": true
         },
         {
             "id": 4,
             "type": "map",
             "description": "象眼の図書館でレベル40に到達",
             "type_id": 3,
-            "use": false
+            "use": true
         },
         {
             "id": 5,
             "type": "map",
             "description": "酪農場でレベル60に到達",
             "type_id": 4,
-            "use": false
+            "use": true
         },
         {
             "id": 6,
             "type": "item",
             "description": "いずれかのキャラクターで1分間生存",
             "type_id": 3,
-            "use": false
+            "use": true
         },
         {
             "id": 7,
             "type": "weapon",
             "description": "Pasqualinaで5分間生存",
             "type_id": 19,
-            "use": false
+            "use": true
         },
         {
             "id": 8,
             "type": "item",
             "description": "Gennaroで5分間生存",
             "type_id": 4,
-            "use": false
+            "use": true
         },
         {
             "id": 9,
             "type": "weapon",
             "description": "いずれかのキャラクターで10分間生存",
             "type_id": 25,
-            "use": false
+            "use": true
         },
         {
             "id": 10,
             "type": "weapon",
             "description": "Pungnalaで10分間生存",
             "type_id": 28,
-            "use": false
+            "use": true
         },
         {
             "id": 11,
             "type": "weapon",
             "description": "Pungnalaで15分間生存",
             "type_id": 29,
-            "use": false
+            "use": true
         },
         {
             "id": 12,
             "type": "weapon",
             "description": "Poppeaを使って、15分間生存",
             "type_id": 33,
-            "use": false
+            "use": true
         },
         {
             "id": 13,
             "type": "weapon",
             "description": "Giovannaを使って、15分間生存",
             "type_id": 31,
-            "use": false
+            "use": true
         },
         {
             "id": 14,
             "type": "weapon",
             "description": "Concettaを使って、15分間生存",
             "type_id": 35,
-            "use": false
+            "use": true
         },
         {
             "id": 15,
             "type": "weapon",
             "description": "いずれかのキャラクターで20分間生存",
             "type_id": 23,
-            "use": false
+            "use": true
         },
         {
             "id": 16,
             "type": "item",
             "description": "Krochiで20分間生存",
             "type_id": 16,
-            "use": false
+            "use": true
         },
         {
             "id": 17,
             "type": "chara",
             "description": "呪い10％以上で、20分間以上生存",
             "type_id": 6,
-            "use": false
+            "use": true
         },
         {
             "id": 18,
             "type": "item",
             "description": "Lamaで、30分間生存",
             "type_id": 15,
-            "use": false
+            "use": true
         },
         {
             "id": 19,
             "type": "item",
             "description": "本のLvを4に",
             "type_id": 7,
-            "use": false
+            "use": true
         },
         {
             "id": 20,
             "type": "item",
             "description": "ポーションのLvを4に",
             "type_id": 6,
-            "use": false
+            "use": true
         },
         {
             "id": 21,
             "type": "chara",
             "description": "ブレイズ・ロッドのLvを4に",
             "type_id": 4,
-            "use": false
+            "use": true
         },
         {
             "id": 22,
             "type": "chara",
             "description": "雷の斧のLvを4に",
             "type_id": 5,
-            "use": false
+            "use": true
         },
         {
             "id": 23,
             "type": "item",
             "description": "松明のLvを7に",
             "type_id": 9,
-            "use": false
+            "use": true
         },
         {
             "id": 24,
             "type": "weapon",
             "description": "鶏のLvを7に",
             "type_id": 26,
-            "use": false
+            "use": true
         },
         {
             "id": 25,
             "type": "item",
             "description": "エンド・クリスタルのLvを7に",
             "type_id": 8,
-            "use": false
+            "use": true
         },
         {
             "id": 26,
             "type": "chara",
             "description": "石炭のLvを7に",
             "type_id": 7,
-            "use": false
+            "use": true
         },
         {
             "id": 27,
             "type": "chara",
             "description": "エンド・ロッドのLvを7に",
             "type_id": 11,
-            "use": false
+            "use": true
         },
         {
             "id": 28,
             "type": "item",
             "description": "1度に6種類の武器を所持",
             "type_id": 5,
-            "use": false
+            "use": true
         },
         {
             "id": 29,
             "type": "chara",
             "description": "合計1000HP回復",
             "type_id": 8,
-            "use": false
+            "use": true
         },
         {
             "id": 30,
             "type": "chara",
             "description": "一回のゲームで5000コイン入手",
             "type_id": 9,
-            "use": false
+            "use": true
         },
         {
             "id": 31,
             "type": "weapon",
             "description": "20個の光源を壊す",
             "type_id": 13,
-            "use": false
+            "use": true
         },
         {
             "id": 32,
             "type": "weapon",
             "description": "ステーキを5個入手",
             "type_id": 15,
-            "use": false
+            "use": true
         },
         {
             "id": 33,
             "type": "item",
             "description": "小さな・クローバーを入手",
             "type_id": 12,
-            "use": false
+            "use": true
         },
         {
             "id": 34,
             "type": "item",
             "description": "エンダー・アイを入手",
             "type_id": 11,
-            "use": false
+            "use": true
         },
         {
             "id": 35,
             "type": "weapon",
             "description": "懐中時計を入手",
             "type_id": 37,
-            "use": false
+            "use": true
         },
         {
             "id": 36,
             "type": "weapon",
             "description": "コマンド・ブロックを入手",
             "type_id": 9,
-            "use": false
+            "use": true
         },
         {
             "id": 37,
             "type": "item",
             "description": "強欲を入手",
             "type_id": 14,
-            "use": false
+            "use": true
         },
         {
             "id": 38,
             "type": "chara",
             "description": "狂乱の森をクリアする",
             "type_id": 12,
-            "use": false
+            "use": true
         },
         {
             "id": 39,
             "type": "chara",
             "description": "象眼の図書館をクリアする",
             "type_id": 13,
-            "use": false
+            "use": true
         },
         {
             "id": 40,
             "type": "chara",
             "description": "酪農場をクリアする",
             "type_id": 14,
-            "use": false
+            "use": true
         },
         {
             "id": 41,
             "type": "chara",
             "description": "Gallo Towerをクリアする",
             "type_id": 15,
-            "use": false
+            "use": true
         },
         {
             "id": 42,
             "type": "chara",
             "description": "Skeletonを合計3000体倒す",
             "type_id": 16,
-            "use": false
+            "use": true
         },
         {
             "id": 43,
             "type": "chara",
             "description": "LionHeadを合計3000体倒す",
             "type_id": 17,
-            "use": false
+            "use": true
         },
         {
             "id": 44,
             "type": "chara",
             "description": "Milk Elementalsを合計3000体倒す",
             "type_id": 18,
-            "use": false
+            "use": true
         },
         {
             "id": 45,
             "type": "chara",
             "description": "Dragon Shrimpsを合計3000体倒す",
             "type_id": 19,
-            "use": false
+            "use": true
         },
         {
             "id": 46,
             "type": "weapon",
             "description": "敵を合計5,000体倒す",
             "type_id": 21,
-            "use": false
+            "use": true
         },
         {
             "id": 47,
             "type": "chara",
             "description": "敵を合計10,000体倒す",
             "type_id": 10,
-            "use": false
+            "use": true
         },
         {
             "id": 48,
             "type": "hyper",
             "description": "狂乱の森に出現する25分ボスを撃破",
             "type_id": 1,
-            "use": false
+            "use": true
         },
         {
             "id": 49,
             "type": "hyper",
             "description": "象眼の図書館に出現する25分ボスを撃破",
             "type_id": 2,
-            "use": false
+            "use": true
         },
         {
             "id": 50,
             "type": "hyper",
             "description": "酪農場に出現する25分ボスを撃破",
             "type_id": 3,
-            "use": false
+            "use": true
         },
         {
             "id": 51,
             "type": "hyper",
             "description": "Gallo Towerに出現する25分ボスを撃破",
             "type_id": 4,
-            "use": false
+            "use": true
         },
         {
             "id": 52,
             "type": "money",
             "description": "木の剣を進化",
             "type_id": 2,
-            "use": false
+            "use": true
         },
         {
             "id": 53,
             "type": "money",
             "description": "松明を進化",
             "type_id": 4,
-            "use": false
+            "use": true
         },
         {
             "id": 54,
             "type": "money",
             "description": "矢を進化",
             "type_id": 6,
-            "use": false
+            "use": true
         },
         {
             "id": 55,
             "type": "money",
             "description": "ポーションを進化",
             "type_id": 18,
-            "use": false
+            "use": true
         },
         {
             "id": 56,
             "type": "money",
             "description": "雷の斧を進化",
             "type_id": 22,
-            "use": false
+            "use": true
         },
         {
             "id": 57,
             "type": "money",
             "description": "本を進化",
             "type_id": 12,
-            "use": false
+            "use": true
         },
         {
             "id": 58,
             "type": "money",
             "description": "十字架を進化",
             "type_id": 10,
-            "use": false
+            "use": true
         },
         {
             "id": 59,
             "type": "money",
             "description": "ブレイズ・ロッドを進化",
             "type_id": 14,
-            "use": false
+            "use": true
         },
         {
             "id": 60,
             "type": "money",
             "description": "石炭を進化",
             "type_id": 16,
-            "use": false
+            "use": true
         },
         {
             "id": 61,
             "type": "money",
             "description": "エンド・クリスタルを進化",
             "type_id": 20,
-            "use": false
+            "use": true
         },
         {
             "id": 62,
             "type": "money",
             "description": "エンド・ロッドを進化",
             "type_id": 24,
-            "use": false
+            "use": true
         },
         {
             "id": 63,
             "type": "money",
             "description": "鶏&ダーク・バットを合体",
             "type_id": 27,
-            "use": false
+            "use": true
         },
         {
             "id": 64,
             "type": "money",
             "description": "マジック&クレイジー・ワンドを合体",
             "type_id": 30,
-            "use": false
+            "use": true
         },
         {
             "id": 65,
             "type": "money",
             "description": "猫を進化",
             "type_id": 32,
-            "use": false
+            "use": true
         },
         {
             "id": 66,
             "type": "money",
             "description": "額縁を進化",
             "type_id": 34,
-            "use": false
+            "use": true
         },
         {
             "id": 67,
             "type": "money",
             "description": "サボテンを進化",
             "type_id": 36,
-            "use": false
+            "use": true
         }
     ],
     "Map": [
         {
             "id": 1,
             "use": true,
-            "hyper": false
+            "hyper": true
         },
         {
             "id": 2,
-            "use": false,
-            "hyper": false
+            "use": true,
+            "hyper": true
         },
         {
             "id": 3,
-            "use": false,
-            "hyper": false
+            "use": true,
+            "hyper": true
         },
         {
             "id": 4,
-            "use": false,
-            "hyper": false
+            "use": true,
+            "hyper": true
         }
     ],
     "Enemy": [
         {
             "id": 1,
-            "count": 10
+            "count": 1428
         },
         {
             "id": 2,
-            "count": 0
+            "count": 1218
         },
         {
             "id": 3,
-            "count": 0
+            "count": 432
         },
         {
             "id": 4,
-            "count": 0
+            "count": 4
         },
         {
             "id": 5,
-            "count": 0
+            "count": 120
         },
         {
             "id": 6,

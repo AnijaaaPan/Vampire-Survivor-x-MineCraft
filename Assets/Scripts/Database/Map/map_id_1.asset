@@ -17,16 +17,16 @@ MonoBehaviour:
   id: 1
   description: "\u57CE\u306F\u507D\u7269\u3060\u304C\u3001\u3053\u3053\u3067\u306F\u30BF\u30C0\u3067\u30B9\u30C6\u30FC\u30AD\u304C 
     \u624B\u306B\u5165\u308B\u306E\u3067\u826F\u3044\u3068\u3057\u3088\u3046\u3002"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 852e547ad507243499e824c439780c6e, type: 3}
   block_icon: {fileID: 21300000, guid: 18fadf8565c321e48ae11059178f4cc8, type: 3}
   use: 1
   music: {fileID: 8300000, guid: 049b4818f1284534ea706398fa9c9e80, type: 3}
   MapParameter:
     StartingSpawns: 5
-    MoveSpeed: 1
-    EnemyMoveSpeed: 1
-    ProjectileSpeed: 1
-    EmeraldBonus: 1
+    MoveSpeed: 0
+    EnemyMoveSpeed: 0
+    ProjectileSpeed: 0
+    EmeraldBonus: 0
     LuckBonus: 0
     EnemyMinimum: 1
   HyperMode:
@@ -80,6 +80,70 @@ MonoBehaviour:
     y: -218.5
     item: {fileID: 11400000, guid: 00406268eb019c647b6fea645e9f8dae, type: 2}
     Chance: 10
+  - x: 0
+    y: 0
+    item: {fileID: 11400000, guid: 2192aa3348a1e924180c88adc46e5d64, type: 2}
+    Chance: 100
+  - x: 0
+    y: 1
+    item: {fileID: 11400000, guid: ba94601d5b54b1048b3a00c5cb4ba631, type: 2}
+    Chance: 100
+  - x: 0
+    y: 2
+    item: {fileID: 11400000, guid: 9913763ba9722e344b5dd877fd7b2de0, type: 2}
+    Chance: 100
+  - x: 0
+    y: 3
+    item: {fileID: 11400000, guid: 9204870ee553f4d48bf16d8e4b21a17c, type: 2}
+    Chance: 100
+  - x: 0
+    y: 4
+    item: {fileID: 11400000, guid: cfa32cab295ecb649b2be4a38f0f3f59, type: 2}
+    Chance: 100
+  - x: 0
+    y: 5
+    item: {fileID: 11400000, guid: 65639a731190a4749a3e3c70cbceafc7, type: 2}
+    Chance: 100
+  - x: 0
+    y: 6
+    item: {fileID: 11400000, guid: 7cfd42ed99cf158449e069187b4696bb, type: 2}
+    Chance: 100
+  - x: 0
+    y: 7
+    item: {fileID: 11400000, guid: 60cde76c1fe99f147818c57c75cd011a, type: 2}
+    Chance: 100
+  - x: 0
+    y: 8
+    item: {fileID: 11400000, guid: 696ea1afbad585b4dbf66ee55efd53e7, type: 2}
+    Chance: 100
+  - x: 0
+    y: 9
+    item: {fileID: 11400000, guid: 1d00eca5839da8144b03adff126b3af6, type: 2}
+    Chance: 100
+  - x: 0
+    y: 10
+    item: {fileID: 11400000, guid: bd5670d7aa0a1c546a87c093baf36663, type: 2}
+    Chance: 100
+  - x: 0
+    y: 11
+    item: {fileID: 11400000, guid: 00406268eb019c647b6fea645e9f8dae, type: 2}
+    Chance: 100
+  - x: 0
+    y: 12
+    item: {fileID: 11400000, guid: 68eb10d4693770547aaf7fc314443c6d, type: 2}
+    Chance: 100
+  - x: 0
+    y: 13
+    item: {fileID: 11400000, guid: fbfcc229c2a6fc14889db29aa12de904, type: 2}
+    Chance: 100
+  - x: 0
+    y: 14
+    item: {fileID: 11400000, guid: 79aa878f7c718ff4a9af1e39cea7f66b, type: 2}
+    Chance: 100
+  - x: 0
+    y: 15
+    item: {fileID: 11400000, guid: fc625d3c78f0aeb45812b134a6080142, type: 2}
+    Chance: 100
   StageEnemys:
   - phase: 0
     Enemies:
