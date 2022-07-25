@@ -79,8 +79,7 @@ public class WeaponStatus : MonoBehaviour
             weapon = weapon
         };
 
-        PlayerWeaponList.transform.Find($"weapon_{weapon.GetId()}").gameObject.SetActive(true);
-
+        WeaponSetActive(weapon.GetId(), true);
         WeaponDataList.Add(WeaponData);
 
         AddAllWeaponDataList(weapon);
@@ -128,12 +127,18 @@ public class WeaponStatus : MonoBehaviour
     {
         WeaponData WeaponData = WeaponDataList.Find(i => i.weapon == weapon);
         WeaponData.phase = 1;
-        PlayerWeaponList.transform.Find($"weapon_{WeaponData.weapon.GetId()}").gameObject.SetActive(false);
+        WeaponSetActive(WeaponData.weapon.GetId(), false);
         WeaponData.weapon = weapon.GetWeapon();
-        PlayerWeaponList.transform.Find($"weapon_{weapon.GetId()}").gameObject.SetActive(true);
+        WeaponSetActive(WeaponData.weapon.GetId(), true);
 
         AddAllWeaponDataList(WeaponData.weapon);
         return WeaponData.weapon.GetIcon();
+    }
+
+    private void WeaponSetActive(int WeaponId, bool active)
+    {
+        if (PlayerWeaponList.transform.Find($"weapon_{WeaponId}") == null) return;
+        PlayerWeaponList.transform.Find($"weapon_{WeaponId}").gameObject.SetActive(active);
     }
 
     private GameObject GetWeaponObject(int id)

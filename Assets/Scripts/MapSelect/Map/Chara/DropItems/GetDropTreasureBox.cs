@@ -98,6 +98,12 @@ public class GetDropTreasureBox : MonoBehaviour
             WeaponItemBar.SetActive(true);
             TreasureSlot.SetActive(false);
             Option.SetActive(false);
+
+            Slot1.SetActive(false);
+            Slot2.SetActive(false);
+            Slot3.SetActive(false);
+            Slot4.SetActive(false);
+            Slot5.SetActive(false);
             isOpen = false;
 
             Destroy(gameObject);
