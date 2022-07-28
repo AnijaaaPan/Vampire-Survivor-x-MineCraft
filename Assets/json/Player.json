@@ -1,9 +1,9 @@
 {
     "FirstTime": true,
-    "Money": 683778,
+    "Money": 684578,
     "Latest_Chara": 7,
     "Latest_Map": 1,
-    "GrantHP": -584,
+    "GrantHP": -798,
     "Latest_Map_Hyper": false,
     "SoundEffect": 0.08876592665910721,
     "SoundMusic": 0.06678210198879242,
@@ -1007,23 +1007,23 @@
     "Enemy": [
         {
             "id": 1,
-            "count": 1664
+            "count": 4082
         },
         {
             "id": 2,
-            "count": 1258
+            "count": 3026
         },
         {
             "id": 3,
-            "count": 480
+            "count": 1374
         },
         {
             "id": 4,
-            "count": 4
+            "count": 12
         },
         {
             "id": 5,
-            "count": 120
+            "count": 150
         },
         {
             "id": 6,

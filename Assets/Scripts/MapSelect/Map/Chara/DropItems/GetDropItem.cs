@@ -64,7 +64,7 @@ public class GetDropItem : MonoBehaviour
         DescriptionObjectText.text = item.GetDescription();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.name.Contains("CharaImage")) return;
 

@@ -72,6 +72,25 @@ public class DropItemStatus : MonoBehaviour
             CreateDropItem(StageItem);
         }
 
+        List<string> TreasureList = new List<string>() { "Evolution", "Evolution", "Evolution", "Evolution", "Evolution" };
+        CreateTresure(null, TreasureList, 1, -8, -15);
+        CreateTresure(null, TreasureList, 2, -8, -14);
+        CreateTresure(null, TreasureList, 3, -8, -13);
+        CreateTresure(null, TreasureList, 1, -8, -12);
+        CreateTresure(null, TreasureList, 2, -8, -11);
+        CreateTresure(null, TreasureList, 3, -8, -10);
+
+        CreateLightSource(1, -10, -15);
+        CreateLightSource(2, -10, -14);
+        CreateLightSource(3, -10, -13);
+        CreateLightSource(4, -10, -12);
+        CreateLightSource(5, -10, -11);
+        CreateLightSource(6, -10, -10);
+        CreateLightSource(7, -10, -9);
+        CreateLightSource(8, -10, -8);
+        CreateLightSource(9, -10, -7);
+        CreateLightSource(10, -10, -6);
+        CreateLightSource(11, -10, -5);
         StartCoroutine(nameof(LightSourceSpawnInterval));
     }
 
@@ -90,14 +109,20 @@ public class DropItemStatus : MonoBehaviour
         DropItemObjects.Remove(Object);
     }
 
-    public void CreateTresure(GameObject EnemyObject, List<string> Treasure)
+    public void CreateTresure(GameObject EnemyObject, List<string> Treasure, int TreasureLv = 0, float EnemyX = 0, float EnemyY = 0)
     {
-        int TreasureLv = RandomSelectChest();
+        if (TreasureLv == 0)
+        {
+            TreasureLv = RandomSelectChest();
+        }
         Sprite[] GetChestImageList = GetChestImages(TreasureLv);
 
-        RectTransform EnemyDataObjectRectTransform = EnemyObject.GetComponent<RectTransform>();
-        float EnemyX = EnemyDataObjectRectTransform.anchoredPosition.x;
-        float EnemyY = EnemyDataObjectRectTransform.anchoredPosition.y;
+        if (EnemyObject)
+        {
+            RectTransform EnemyDataObjectRectTransform = EnemyObject.GetComponent<RectTransform>();
+            EnemyX = EnemyDataObjectRectTransform.anchoredPosition.x;
+            EnemyY = EnemyDataObjectRectTransform.anchoredPosition.y;
+        }
 
         GameObject Object = new GameObject("TresureBox");
         Object.transform.SetParent(TresureBoxs.transform);
@@ -113,6 +138,7 @@ public class DropItemStatus : MonoBehaviour
         BoxCollider2D ObjectBoxCollider2D = Object.AddComponent<BoxCollider2D>();
         ObjectBoxCollider2D.offset = new Vector2(0, -0.15f);
         ObjectBoxCollider2D.size = new Vector2(0.65f, 0.65f);
+        ObjectBoxCollider2D.isTrigger = true;
 
         GetDropTreasureBox ObjectGetDropTreasureBox = Object.AddComponent<GetDropTreasureBox>();
         ObjectGetDropTreasureBox.Emerald = Emerald;
@@ -146,6 +172,7 @@ public class DropItemStatus : MonoBehaviour
 
         CircleCollider2D ObjectCircleCollider2D = Object.AddComponent<CircleCollider2D>();
         ObjectCircleCollider2D.radius = 0.4f;
+        ObjectCircleCollider2D.isTrigger = true;
 
         GetDropItem ObjectGetDropItem = Object.AddComponent<GetDropItem>();
         ObjectGetDropItem.item = StageItem.item;
@@ -258,22 +285,28 @@ public class DropItemStatus : MonoBehaviour
         for (int i = 0; i < DeleteCount; i++)
         {
             GameObject Object = LightSourceList[i];
+            if (Object.name != "LightSource_0") continue;
+
             LightSourceList.Remove(Object);
             Destroy(Object);
         }
     }
 
-    private void CreateLightSource()
+    private void CreateLightSource(int DropItemID = 0, float SpawnX = 0, float SpawnY = 0)
     {
-        SpawnRange GetSpawn = SpawnEnemy.instance.GetRandomSpawnRange();
-        float SpawnX = Chara.transform.position.x + Random.Range(GetSpawn.LeftX, GetSpawn.RightX);
-        float SpawnY = Chara.transform.position.y + Random.Range(GetSpawn.DownY, GetSpawn.UpY);
+        if (DropItemID == 0)
+        {
+            SpawnRange GetSpawn = SpawnEnemy.instance.GetRandomSpawnRange();
+            SpawnX = Chara.transform.position.x + Random.Range(GetSpawn.LeftX, GetSpawn.RightX);
+            SpawnY = Chara.transform.position.y + Random.Range(GetSpawn.DownY, GetSpawn.UpY);
+        }
 
-        GameObject Object = new GameObject("LightSource");
+        GameObject Object = new GameObject($"LightSource_{DropItemID}");
+        Object.transform.SetParent(LightSourceObject.transform);
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
         ObjectRectTransform.sizeDelta = new Vector2(1f, 1f);
-        ObjectRectTransform.position = new Vector3(SpawnX, SpawnY, 0);
+        ObjectRectTransform.anchoredPosition = new Vector3(SpawnX, SpawnY, 0);
 
         Image ImageObject = Object.AddComponent<Image>();
         ImageObject.sprite = LightSourceImage;
@@ -289,8 +322,7 @@ public class DropItemStatus : MonoBehaviour
         LightSource ObjectLightSource = Object.AddComponent<LightSource>();
         ObjectLightSource.Chara = Chara;
         ObjectLightSource.LightSourceObject = LightSourceObject;
-
-        Object.transform.SetParent(LightSourceObject.transform);
+        ObjectLightSource.DropItemID = DropItemID;
 
         LightSourceList.Add(Object);
     }

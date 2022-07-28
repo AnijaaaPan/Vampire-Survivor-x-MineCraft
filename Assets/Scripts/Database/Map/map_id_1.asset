@@ -31,12 +31,12 @@ MonoBehaviour:
     EnemyMinimum: 1
   HyperMode:
     StartingSpawns: 20
-    MoveSpeed: 1.75
-    EnemyMoveSpeed: 1.75
-    ProjectileSpeed: 1.25
-    EmeraldBonus: 1.5
+    MoveSpeed: 75
+    EnemyMoveSpeed: 75
+    ProjectileSpeed: 25
+    EmeraldBonus: 50
     LuckBonus: 0
-    EnemyMinimum: 1.25
+    EnemyMinimum: 25
   LightSourceChance: 10
   EnemySpawn:
     North: 1

@@ -6,7 +6,9 @@ public class LightSource : MonoBehaviour
 {
     public GameObject Chara;
     public GameObject LightSourceObject;
+    public int DropItemID;
 
+    private SpecialItem SpecialItem;
     private readonly SpecialItemDataBase SpecialItemDataBase = Json.instance.SpecialItemDataBase;
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -14,11 +16,17 @@ public class LightSource : MonoBehaviour
         if (!collision.gameObject.name.Contains("AttackWeapon")) return;
 
         DropItemStatus.instance.RemoveLightSourceData(gameObject);
-        if (!ExpStatus.instance.Probability(50)) return;
+        if (!ExpStatus.instance.Probability(50) && DropItemID == 0) return;
 
         RectTransform RectTransform = gameObject.GetComponent<RectTransform>();
 
-        SpecialItem SpecialItem = GetRandom(SpecialItemDataBase.GetSpecialItemLists().FindAll(i => i.GetId() != 12));
+        if (DropItemID == 0)
+        {
+            SpecialItem = GetRandom(SpecialItemDataBase.GetSpecialItemLists().FindAll(i => i.GetId() != 12));
+        } else
+        {
+            SpecialItem = SpecialItemDataBase.GetSpecialItemLists().Find(i => i.GetId() == DropItemID);
+        }
         GameObject Object = new GameObject($"LightSourceDropItem_{SpecialItem}");
 
         RectTransform ObjectRectTransform = Object.AddComponent<RectTransform>();
