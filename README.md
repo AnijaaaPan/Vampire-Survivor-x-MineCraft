@@ -7,6 +7,7 @@
 - 種類: 大学制作課題
 - WebSite: https://anijaaa.com/works/vampire-survivor-x-minecraft
 - Youtube: https://youtu.be/Re_KfBOj03E
+- ゲーム内容PDF: https://anijaaa.com/pdf/vampire-survivor-x-minecraft.pdf
 
 # ゲーム内容
 ![vampire-survivor-x-minecraft-01](https://github.com/AnijaaaPan/Vampire-Survivor-x-MineCraft/assets/46297678/6eb6afc9-1ac6-41ff-833b-f8dc1902b605)
